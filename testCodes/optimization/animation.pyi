@@ -1,0 +1,6 @@
+
+def Animate(Current: float, Target: float, Speed: float, AO: float) -> float:
+	...
+
+def AnimateSpdUp(Negative: bool, Current: float, Start: float, Target: float, Speed: float, AO: float) -> float:
+	...
