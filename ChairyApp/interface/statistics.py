@@ -70,11 +70,11 @@ class TopBar(Component):
         """ "교시별 출석부"로 상단 바 선택란 위치 조정 """
         self.POS_X = 660
         self.SURFACE_.fill((0, 0, 0, 0))
-        txt = Styles.SANS_B3.render("일간 출석표", 1, Styles.DARKGRAY)
+        txt = Styles.SANS_B3.render("일간 출석부", 1, Styles.DARKGRAY)
         self.SURFACE_.blit(txt, center_top(82, 8, txt.get_size()))
-        txt = Styles.SANS_B3.render("월간 출석표", 1, Styles.DARKGRAY)
+        txt = Styles.SANS_B3.render("월간 출석부", 1, Styles.DARKGRAY)
         self.SURFACE_.blit(txt, center_top(227, 8, txt.get_size()))
-        txt = Styles.SANS_H5.render("교시별 출석표", 1, Styles.DARKGRAY)
+        txt = Styles.SANS_H5.render("교시별 출석부", 1, Styles.DARKGRAY)
         self.SURFACE_.blit(txt, center_top(372, 8, txt.get_size()))
         txt = Styles.SANS_B3.render("시간별 좌석", 1, Styles.DARKGRAY)
         self.SURFACE_.blit(txt, center_top(517, 8, txt.get_size()))
