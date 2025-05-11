@@ -1,0 +1,7 @@
+
+*.py linguist-detectable=true
+*.pyx linguist-detectable=true
+*.pxd linguist-detectable=true
+*.pyi linguist-detectable=true
+
+* linguist-detectable=false
