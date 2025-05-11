@@ -225,6 +225,9 @@ class Installer:
 
                 elif event.type == pg.MOUSEBUTTONDOWN:
 
+                    if event.button != 1:
+                        continue
+
                     if not self.MouseDown:
                         self.MouseDown = True
 
@@ -240,6 +243,9 @@ class Installer:
                     self.Render_Buttons(True)
 
                 elif event.type == pg.MOUSEBUTTONUP:
+
+                    if event.button != 1:
+                        continue
 
                     if self.MouseDown:
                         self.MouseDown = False
