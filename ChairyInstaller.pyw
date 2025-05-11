@@ -8,8 +8,6 @@ from datetime import datetime
 import json, requests, logging
 
 
-AUTH_INFO = ('RamelLatte', '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')
-
 
 class Installer:
     """
@@ -435,7 +433,7 @@ class Installer:
 
         # GitHub REST API에서 최신 버전 가져오기
         try:
-            response = requests.get('https://api.github.com/repos/RamelLatte/Chairy/releases', auth=AUTH_INFO)
+            response = requests.get('https://api.github.com/repos/RamelLatte/Chairy/releases')#, auth=AUTH_INFO)
 
             if response.status_code == 200:
                 latest = response.json()[0]
@@ -488,7 +486,7 @@ class Installer:
         self.Step_downloading('내려받는 중...')
         self.Logger.info('내려받는 중')
         
-        response = requests.get(self.DownloadURL, headers={'Accept': 'application/octet-stream'}, stream=True, auth=AUTH_INFO)
+        response = requests.get(self.DownloadURL, headers={'Accept': 'application/octet-stream'}, stream=True)#, auth=AUTH_INFO)
         
         if response.status_code == 200:
             update_newFile = self.file_path('./temp.zip')
