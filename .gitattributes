@@ -1,7 +1,5 @@
-
-*.py linguist-detectable=true
-*.pyx linguist-detectable=true
-*.pxd linguist-detectable=true
-*.pyi linguist-detectable=true
-
-* linguist-detectable=false
+* linguist-vendored
+*.py linguist-vendored=false
+*.pyx linguist-vendored=false
+*.pxd linguist-vendored=false
+*.pyi linguist-vendored=false
