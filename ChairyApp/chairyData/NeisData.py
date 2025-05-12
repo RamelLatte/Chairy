@@ -119,7 +119,7 @@ class NeisData():
             'pSize'         : '5',
             'SD_SCHUL_CODE' : self.SCHOOL_CODE
 
-        }, verify=Verify).text)
+        }, verify=Verify, timeout=15).text)
 
         if 'RESULT' in res:
 
@@ -161,7 +161,7 @@ class NeisData():
             'SD_SCHUL_CODE'     : self.SCHOOL_CODE,
             'AA_YMD'            : self.Today.strftime('%Y%m%d')
 
-        }, verify=Verify).text)
+        }, verify=Verify, timeout=15).text)
 
         if 'RESULT' in res:
 
@@ -205,7 +205,7 @@ class NeisData():
             'SD_SCHUL_CODE'     : self.SCHOOL_CODE,
             'MLSV_YMD'          : self.DinnerDate.strftime('%Y%m%d')
 
-        }, verify=Verify).text)
+        }, verify=Verify, timeout=15).text)
 
         if 'RESULT' in res:
 

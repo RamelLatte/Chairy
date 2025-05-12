@@ -298,9 +298,6 @@ class ExportSeats(Scene):
         Interface.SC_ExportButton.Reset(203, 818)
         Interface.SC_DateSelection.Reset(89, 361)
 
-        ChairyData.ROOMDATA.Save()
-        self._Roomdata()
-
         self.Seats_P.clear()
         self.Seats_R.clear()
         self.Seats_I.clear()
@@ -310,6 +307,9 @@ class ExportSeats(Scene):
         self.Occupied = 0
 
         DISPLAY.blit(Styles.SANS_B5.render("또는 [F9]를 다시 누릅니다", 1, Styles.DARKGRAY, Styles.SPRLIGHTGRAY), (1718, 60))
+
+        ChairyData.ROOMDATA.Save()
+        self._Roomdata()
         
         self._Preview()
         self.Updated = True

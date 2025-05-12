@@ -25,6 +25,7 @@ class Installer:
     Tick : int
 
     Screen: pg.Surface
+    Display: pg.Surface
 
     ButtonEnd: list[pg.Surface]
     ButtonEndActive: bool
@@ -73,7 +74,8 @@ class Installer:
         self.Clock = pg.time.Clock()
         self.Tick = self.Clock.tick(24)
 
-        self.Screen = pg.display.set_mode((640, 400))
+        self.Screen = pg.Surface((640, 400))
+        self.Display = pg.display.set_mode((640, 400))
 
         pg.display.set_caption('Chairy 설치 마법사')
         pg.display.set_icon(pg.image.load(self.resource_path('./InstallerAsset/InstallerLogo.png')))
@@ -279,24 +281,21 @@ class Installer:
 
                     self.Render_Buttons(True)
 
-                
+            # 화면 렌더링
+            self.Display.blit(self.Screen, (0, 0))
+            pg.display.flip()
 
+                
 
     # 버튼 렌더링
     def Render_Buttons(self, updatePartly: bool = False):
 
         if self.ButtonEndActive:
             self.Screen.blit(self.ButtonEnd[self.ButtonEndBtn], self.ButtonEndRect)
-            if updatePartly:
-                pg.display.update(self.ButtonEndRect)
         if self.ButtonProceedActive:
             self.Screen.blit(self.ButtonProceed[self.ButtonProceedBtn], self.ButtonProceedRect)
-            if updatePartly:
-                pg.display.update(self.ButtonProceedRect)
         if self.ButtonReinstallActive:
             self.Screen.blit(self.ButtonReinstall[self.ButtonReinstallBtn], self.ButtonReinstallRect)
-            if updatePartly:
-                pg.display.update(self.ButtonReinstallRect)
 
 
 
@@ -305,8 +304,6 @@ class Installer:
         self.Screen.fill((0xFB, 0xFB, 0xFB))
         txt = self.SANS_B5.render('정보를 가져오고 있습니다...', 1, (0x20, 0x21, 0x24), (0xFB, 0xFB, 0xFB))
         self.Screen.blit(txt, txt.get_rect(centerx=320, centery=200))
-
-        pg.display.flip()
 
 
     # 종료 메시지
@@ -325,8 +322,6 @@ class Installer:
         self.ButtonReinstallRect = pg.Rect(0, 0, 0, 0)
 
         self.Render_Buttons()
-
-        pg.display.flip()
 
     
     # 내려받기
@@ -347,8 +342,6 @@ class Installer:
         self.ButtonReinstallRect = pg.Rect(0, 0, 0, 0)
 
         self.Render_Buttons()
-
-        pg.display.flip()
 
 
     # 업데이트
@@ -372,8 +365,6 @@ class Installer:
 
         self.Render_Buttons()
 
-        pg.display.flip()
-
 
     # 최신버전 이용 중
     def Step_latest(self):
@@ -396,8 +387,6 @@ class Installer:
 
         self.Render_Buttons()
 
-        pg.display.flip()
-
 
     # 다운로드 중
     def Step_downloading(self, message: str = '내려받기 준비중..', length: int = 0):
@@ -415,12 +404,10 @@ class Installer:
         self.ButtonReinstallRect = pg.Rect(0, 0, 0, 0)
 
         self.Render_Buttons()
-
-        pg.display.flip()
                     
 
 
-    ##### ThreadPoolExecutor에  #####
+    ##### ThreadPoolExecutor에서 쓸거 #####
 
     # 버전 가져오기
     def getVersion(self):
