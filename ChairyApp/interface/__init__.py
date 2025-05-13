@@ -29,6 +29,8 @@ __all__ = ['Scene', 'SceneManager', 'SceneWarning', 'ComponentWarning', 'Interfa
         ]
 
 
+from ..Logging import LoggingManager as logging
+
 
 class Interface:
     """
@@ -36,6 +38,9 @@ class Interface:
 
     다양한 화면 상의 구성 요소(Component)를 관리함.
     """
+
+    # 준비 여부
+    Ready: bool = False
     
     # SD: Side Display
     SD_DateTime        : DateTimeDisplay       
@@ -72,6 +77,14 @@ class Interface:
 
     @staticmethod
     def Init():
+        try:
+            Interface._Init()
+        except Exception as e:
+            logging.error('인터페이스를 불러오는 중 오류가 발생하였습니다.', e, True, True)
+
+
+    @staticmethod
+    def _Init():
         """ Interface 초기화 함수 """
 
         Interface.SD_DateTime        = DateTimeDisplay()
@@ -101,3 +114,6 @@ class Interface:
 
         # 미디어
         Interface.MD_HideMediaBtn = HideMediaButton()
+
+        # 준비 완료
+        Interface.Ready = True

@@ -5,7 +5,6 @@ from .chairyData import *
 from .UpdateExecutor import UpdateExecutor
 from .interface import *
 from ctypes import windll
-from .StartDialog import StartDialog
 from .Info import ChairyInfo
 
 from .scenes.errorDialog import ErrorDialog
@@ -21,8 +20,6 @@ class ChairyApp:
 
     DIRECTORY   : str               = ""
 
-    STARTDIALOG : StartDialog
-
     RUNNING     : bool  = True
     DISPLAY     : pg.Surface
     RECTS       : list[pg.Rect] = []
@@ -31,7 +28,7 @@ class ChairyApp:
     ANIMATION_OFFSET: float = 0.136
     TICK            : int   = 17
 
-    UPDATER: UpdateExecutor
+    UPDATER: UpdateExecutor = None
 
 
     @staticmethod
@@ -61,39 +58,17 @@ class ChairyApp:
 
         # 디렉토리 지정
         ChairyApp.DIRECTORY = directory
+        ChairyData._Dir = directory
         SceneManager.directory(directory)
 
-        # StartDialog
-        ChairyApp.DISP = pg.display.set_mode((500, 300), (pg.NOFRAME))
-
-        ChairyApp.STARTDIALOG = StartDialog(ChairyApp.DIRECTORY, ChairyApp.DISP)
-        ChairyApp.STARTDIALOG.start()
-
-        # 데이터 불러옴
-        ChairyData.Init(ChairyApp.DIRECTORY)
-        ChairyData.LOADPROGRESS = ChairyData.MAX_PROGRESS
-
         # 화면 조정
-        ChairyApp.STARTDIALOG.join()
-        pg.display.quit()
-
         ChairyApp.DISPLAY = pg.display.set_mode((1920, 1080), (pg.FULLSCREEN | pg.SCALED))
 
         pg.display.set_caption("마산고등학교 학습 관리 시스템", "Chairy")
         pg.display.set_icon(pg.image.load(ChairyApp.DIRECTORY + "/ChairyApp/assets/ChairySquareBlack.png"))
 
-        # Interface 초기화
+        # Styles 초기화
         ChairyApp.InitStyles()
-        try:
-            Interface.Init()
-        except Exception as e:
-            LoggingManager.error("인터페이스를 시작하는 도중 오류가 발생하였습니다.", e, True)
-
-        # UpdateExecutor
-        try:
-            ChairyApp.UPDATER = UpdateExecutor(ChairyData.CURRENT_MEDIA, ChairyData.NEISDATA)
-        except Exception as e:
-            LoggingManager.error("Updater 준비 도중 오류가 발생하였습니다.", e, True)
 
         # 화면이 준비될 때까지 기다림
         while 1:
@@ -135,7 +110,8 @@ class ChairyApp:
                 ErrorDialog(problem[0], problem[1], problem[2], problem[3], LoggingManager.LOG_FILE_NM)
 
             # 데이터 업데이트
-            ChairyApp.UPDATER.tick(ChairyApp.TICK)
+            if ChairyApp.UPDATER is not None:
+                ChairyApp.UPDATER.tick(ChairyApp.TICK)
 
             ## 이벤트 처리
             for event in pg.event.get():
@@ -170,8 +146,10 @@ class ChairyApp:
                 LoggingManager.info('종료 중...')
                 SceneManager.CURRENT_SCENE.Event_Quit()
                 ChairyApp.UPDATER.stop()
-                LoggingManager.info("입실 데이터를 저장합니다...")
-                ChairyData.ROOMDATA.Save()
+
+                if SceneManager.CURRENT_SCENE.Identifier != 'start':
+                    LoggingManager.info("입실 데이터를 저장합니다...")
+                    ChairyData.ROOMDATA.Save()
                 return
 
             ## 화면 업데이트
@@ -189,3 +167,13 @@ class ChairyApp:
             if len(ChairyApp.RECTS) > 0:
                 pg.display.update(ChairyApp.RECTS)
                 ChairyApp.RECTS.clear()
+
+
+
+    @staticmethod
+    def Init_UpdateExecutor():
+        """ ChairyData가 준비되면 호출하는 메서드. 백그라운드에서 데이터를 업데이트하는 UpdateExecutor를 준비시킨다. """
+        try:
+            ChairyApp.UPDATER = UpdateExecutor(ChairyData.CURRENT_MEDIA, ChairyData.NEISDATA)
+        except Exception as e:
+            LoggingManager.error("Updater 준비 도중 오류가 발생하였습니다.", e, True)

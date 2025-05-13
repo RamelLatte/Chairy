@@ -29,6 +29,9 @@ class ChairyData:
 
     LOADPROGRESS    : int = 0
     MAX_PROGRESS    : int = 5
+    CURRENT_PROGRESS: str = 'Chairy 시작 중'
+    
+    Ready: bool = False
 
     _Dir            : str
 
@@ -51,24 +54,27 @@ class ChairyData:
 
 
     @staticmethod
-    def Init(directory: str):
+    def Progress(desc: str):
+        ChairyData.CURRENT_PROGRESS = desc
+        ChairyData.LOADPROGRESS += 1
+
+
+    @staticmethod
+    def Init():
         """
         다양한 데이터를 불러오고, ChairyData 클래스를 준비한다.
-        - - -
-        #### 매개변수:
-        - **directory:** 실행 파일이 존재하는 디렉토리 위치
+
+        **실행 전 미리 ChairyData._Dir의 값을 지정해야 함!**
         """
 
-        ChairyData._Dir     = directory
-
         # 시간
-
         ChairyData.DATETIME = datetime.now()
         ChairyData._min = ChairyData.DATETIME.minute
         ChairyData._hou = ChairyData.DATETIME.hour
         ChairyData._day = ChairyData.DATETIME.day
 
         # Configuration
+        ChairyData.Progress('구성 데이터를 불러오는 중') # 1
         logging.info("구성 데이터(configuration.xlsx)를 불러오는 중...")
 
         try:
@@ -79,10 +85,10 @@ class ChairyData:
         except Exception as e:
             logging.error("구성 데이터(configuration.xlsx)를 읽는 도중에 오류가 발생하였습니다.", e, True)
             return
-
-        ChairyData.LOADPROGRESS += 1 # 1
+        
 
         # NEIS
+        ChairyData.Progress('NEIS와 동기화 중') # 2
         ChairyData.NEISDATA = None
 
         try:
@@ -98,9 +104,8 @@ class ChairyData:
         if ChairyData.NEISDATA != None:
             ChairyData.NEISDATA.update()
 
-        ChairyData.LOADPROGRESS += 1 # 2
-
         # StudentData
+        ChairyData.Progress('학생 정보를 불러오는 중') # 3
         logging.info("학생 정보를 불러오는 중...")
 
         StudentData.CONFIG      = ChairyData.CONFIGURATION
@@ -121,7 +126,7 @@ class ChairyData:
             if Created > 0:
                 logging.info(str(Created) + "명의 학생 데이터가 새로 생성됨.")
 
-            ChairyData.LOADPROGRESS += 1 # 3
+            ChairyData.Progress('입실 데이터를 불러오는 중') # 4
 
             # RoomData
             ChairyData.ROOMDATA = RoomData.Init(ChairyData.CONFIGURATION, ChairyData._Dir)
@@ -129,14 +134,15 @@ class ChairyData:
                 if value[1] != None and value[1] in ChairyData.STUDENTS and 'VAC' not in value[0]:
                         ChairyData.STUDENTS[value[1]].CurrentSeat = str(key)
 
-            ChairyData.LOADPROGRESS += 1 # 4
-
         except Exception as e:
             logging.error("[" + CurrentID + "] 학번의 데이터를 처리하는 도중 오류가 발생했습니다.", e, True)
             return
 
-        ChairyData.LOADPROGRESS += 1 # 5
+        ChairyData.Progress('인터페이스를 불러오는 중') # 5
 
         # 이외 Class Init
         ChairyData.CURRENT_MEDIA = MediaInfo()
         ChairyData.CURRENT_MEDIA.UseMediaDetection = ChairyData.CONFIGURATION.MediaDetection
+
+        # 준비 완료 표시
+        ChairyData.Ready = True

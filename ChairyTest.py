@@ -1,7 +1,7 @@
 
 # Pyinstaller 빌드 명령어:
 #
-# pyinstaller --noupx --onedir --icon=Icon.ico Chairy.pyw --hidden-import=winrt.windows.media --hidden-import=winrt.windows.foundation --hidden-import=winrt.windows.foundation.collections --hidden-import=winrt.windows.storage --hidden-import=winrt.windows.storage.streams
+# pyinstaller --noupx --onedir --icon=Icon.ico Chairy.py --hidden-import=winrt.windows.media --hidden-import=winrt.windows.foundation --hidden-import=winrt.windows.foundation.collections --hidden-import=winrt.windows.storage --hidden-import=winrt.windows.storage.streams
 # 
 
 ### 지금 쓰고 있는 라이브러리 ####
