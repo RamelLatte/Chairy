@@ -219,7 +219,7 @@ class ExportPeriod(Scene):
 
     def On_Init(self, DISPLAY):
         DISPLAY.fill(Styles.SPRLIGHTGRAY)
-        Interface.SC_QuitButton.Reset(130, 940)
+        Interface.SC_QuitButton.Reset()
         Interface.SC_ExportButton.Reset(130, 926)
 
         DISPLAY.blit(Styles.SANS_B5.render("또는 [F9]를 다시 누릅니다", 1, Styles.DARKGRAY, Styles.SPRLIGHTGRAY), (1718, 60))

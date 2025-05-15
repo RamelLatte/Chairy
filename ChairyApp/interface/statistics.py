@@ -19,7 +19,6 @@ class TopBar(Component):
     Selection_X     : int
     Selection_X_    : int
 
-    X_      : int
     POS_X   : int
 
     Updated : bool
@@ -27,7 +26,7 @@ class TopBar(Component):
 
 
     def __init__(self):
-        super().__init__()
+        super().__init__(660, 15, 600, 40)
 
         self.SURFACE_   = Surface((600, 40), (SRCALPHA))
         self.Asset_Bar = SceneManager.loadAsset('/ChairyApp/assets/statistics/StaticsticsSelection0.png').convert_alpha()
@@ -100,7 +99,7 @@ class TopBar(Component):
     def Reset(self):
         self.POS_X = 660
         self.X = self.POS_X
-        self.X_ = self.X
+        self._X = self.X
         self.Selection_X    = 3
         self.Selection_X_   = 3
         self.Updated        = True
@@ -115,33 +114,17 @@ class TopBar(Component):
 
         if self.POS_X != self.X:
             self.Updated = True
-            self.X = Animate(self.X, self.POS_X, 1.25, A_OFFSET)
+            self.Animate_X(self.POS_X, 1.25, A_OFFSET)
 
         return self.Updated
     
 
     def Frame(self, DISP: Surface) -> Rect:
         self.Updated = False
-        if self.X != self.X_:
-            d = self.X - self.X_
-            if d < 0:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X + 599, 15, - d + 2, 40))
-                DISP.blit(self.Asset_Bar, (self.X, 15))
-                DISP.blit(self.Asset_Selection, (self.X + self.Selection_X, 15))
-                DISP.blit(self.SURFACE_, (self.X, 15))
-                self.X_ = self.X
-                return Rect(self.X, 15, 602 - d, 40)
-            else:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X_ - 2, 15, d + 2, 40))
-                DISP.blit(self.Asset_Bar, (self.X, 15))
-                DISP.blit(self.Asset_Selection, (self.X + self.Selection_X, 15))
-                DISP.blit(self.SURFACE_, (self.X, 15))
-                self.X_ = self.X
-                return Rect(self.X, 15, 660 + d, 40)
-        else:
-            DISP.blit(self.Asset_Bar, (self.X, 15))
-            DISP.blit(self.Asset_Selection, (self.X + self.Selection_X, 15))
-            DISP.blit(self.SURFACE_, (self.X, 15))
-            return Rect(self.X, 15, 600, 40)
 
-        
+        DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_X())
+        DISP.blit(self.Asset_Bar, (self.X, 15))
+        DISP.blit(self.Asset_Selection, (self.X + self.Selection_X, 15))
+        DISP.blit(self.SURFACE_, (self.X, 15))
+
+        return self.calculateRect()

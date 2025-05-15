@@ -3,14 +3,7 @@ from pygame import Surface, Rect
 
 
 
-class ComponentWarning(Exception):
-
-    def __init__(self, msg):
-        super().__init__(msg)
-
-
-
-class Component:
+class oldComponent:
     """
     ### 화면 상 구성 요소(Component)
 

@@ -12,7 +12,7 @@ from ..optimization.positioning import right_top, right_bottom, center_top
 
 
 class DateTimeDisplay(Component):
-    """ ### 날짜 및 시간간 """
+    """ ### 날짜 및 시간 """
 
     DateTime    : datetime
     Updated     : bool
@@ -20,7 +20,7 @@ class DateTimeDisplay(Component):
 
 
     def __init__(self):
-        super().__init__()
+        super().__init__(1575, 35, 300, 50)
 
         self.Reset()
 
@@ -79,7 +79,7 @@ class DietAndScheduleDisplay(Component):
 
 
     def __init__(self):
-        super().__init__()
+        super().__init__(1575, 391, 300, 648)
 
         self.BasementAsset = SM.loadAsset("/ChairyApp/assets/components/DietScheduleFrame.png").convert()
         self.Updated = False
@@ -168,7 +168,7 @@ class SeatingStatus(Component):
 
 
     def __init__(self):
-        super().__init__()
+        super().__init__(1572, 124, 300, 218)
 
         self.Asset      = SM.loadAsset("/ChairyApp/assets/components/SeatingStatus.png").convert()
         self.Bar        = SM.loadAsset("/ChairyApp/assets/components/SeatingStatusBar.png").convert()
@@ -209,8 +209,6 @@ class SeatingStatus(Component):
     def Update(self, A_OFFSET):
         if self.Bar_Length != self.Bar_Length_:
             self.Bar_Length_ = Animate(self.Bar_Length_, self.Bar_Length, 1.0, A_OFFSET)
-            if abs(self.Bar_Length_ - self.Bar_Length) < 1:
-                self.Bar_Length_ = self.Bar_Length
             self.Updated = True
         return self.Updated
     

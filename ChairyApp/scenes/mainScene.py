@@ -109,7 +109,7 @@ class MainScene(Scene):
         if Interface.ST_StudentInfo.Update(ANIMATION_OFFSET, TICK):
             RECTS.append(Interface.ST_StudentInfo.Frame(DISPLAY))
 
-        # 버튼 업데이트
+        # 버튼 렌더링
         if Interface.BTN_Cancel.Update():
             RECTS.append(Interface.BTN_Cancel.Frame(DISPLAY))
 
@@ -138,7 +138,7 @@ class MainScene(Scene):
 
         #Interface.SD_QR.Frame(SURFACE)
 
-        # 좌석표 렌터링
+        # 좌석표 렌더더링
         Interface.ST_SeatDisplay.Frame(SURFACE)
 
         # 학번 입력란 그룹 렌더링
@@ -151,7 +151,7 @@ class MainScene(Scene):
         # StudentInfo
         Interface.ST_StudentInfo.Frame(SURFACE)
 
-        # 버튼 업데이트
+        # 버튼 렌더링
         Interface.BTN_Cancel.Frame(SURFACE)
 
         Interface.BTN_Move.Frame(SURFACE)
@@ -205,12 +205,12 @@ class MainScene(Scene):
                 Interface.OT_CurrentMedia.Render()
 
             if Interface.OT_CurrentMedia.Init and Interface.OT_CurrentMedia.Y != 955:
-                Interface.OT_CurrentMedia.Y = Animate(Interface.OT_CurrentMedia.Y, 955, 1.25, ANIMATION_OFFSET)
+                Interface.OT_CurrentMedia.Animate_Y(955, 1.25, ANIMATION_OFFSET)
         
         ## 미디어 숨기기 ##
         else:
             if Interface.OT_CurrentMedia.Y != 1080:
-                Interface.OT_CurrentMedia.Y = AnimateSpdUp(False, Interface.OT_CurrentMedia.Y, 940, 1080, 2.25, ANIMATION_OFFSET)
+                Interface.OT_CurrentMedia.AnimateSpdUp_Y(False, 940, 1080, 2.25, ANIMATION_OFFSET)
 
 
         ## 이외의 애니메이션 연산 ##
@@ -231,14 +231,14 @@ class MainScene(Scene):
                     Interface.ID_KeyInstruction.useMouse()
 
             else:
-                Interface.BTN_Cancel.Y = Animate(Interface.BTN_Cancel.Y, 970, 1.0, ANIMATION_OFFSET)
+                Interface.BTN_Cancel.Animate_Y(970, 1.0, ANIMATION_OFFSET)
 
         # 단일 지우기 애니메이션
         elif MainScene.InteractionStep == 7:
             if Interface.ST_StudentInfo.Y > 450:
                 self.ID_Group_Y = Animate(self.ID_Group_Y, 430, 1.0, ANIMATION_OFFSET)
 
-            Interface.BTN_Cancel.Y = AnimateSpdUp(False, Interface.BTN_Cancel.Y, 970, 1080, 4.0, ANIMATION_OFFSET)
+            Interface.BTN_Cancel.AnimateSpdUp_Y(False, 970, 1080, 4.0, ANIMATION_OFFSET)
 
             if self.ID_Group_Y > 400:
                 Interface.ID_InstructionText.set("학번을 입력합니다", Styles.BLACK)
@@ -252,7 +252,7 @@ class MainScene(Scene):
             if Interface.ST_StudentInfo.Y > 450:
                 self.ID_Group_Y = Animate(self.ID_Group_Y, 432, 1.0, ANIMATION_OFFSET)
 
-            Interface.BTN_Cancel.Y = AnimateSpdUp(False, Interface.BTN_Cancel.Y, 970, 1080, 4.0, ANIMATION_OFFSET)
+            Interface.BTN_Cancel.AnimateSpdUp_Y(False, 970, 1080, 4.0, ANIMATION_OFFSET)
 
             if SceneManager.SCENE_TIME > 200:
                 Interface.ID_InstructionText.set("학번을 입력합니다", Styles.BLACK)
@@ -281,7 +281,7 @@ class MainScene(Scene):
             if Interface.ST_StudentInfo.Y > 450:
                 self.ID_Group_Y = Animate(self.ID_Group_Y, 432, 1.0, ANIMATION_OFFSET)
 
-            Interface.BTN_Cancel.Y = AnimateSpdUp(True, Interface.BTN_Cancel.Y, 970, 1080, 4.0, ANIMATION_OFFSET)
+            Interface.BTN_Cancel.AnimateSpdUp_Y(True, 970, 1080, 4.0, ANIMATION_OFFSET)
 
             if SceneManager.SCENE_TIME > 1300:
                 Interface.ID_InstructionText.set("학번을 입력합니다", Styles.BLACK)
@@ -359,24 +359,24 @@ class MainScene(Scene):
                 Interface.ID_KeyInstruction.useMouse()
 
             if SceneManager.SCENE_TIME > 0:
-                Interface.BTN_Checkout.Y = Animate(Interface.BTN_Checkout.Y, 556, 1.0, ANIMATION_OFFSET)
+                Interface.BTN_Checkout.Animate_Y(556, 1.0, ANIMATION_OFFSET)
 
             if SceneManager.SCENE_TIME > 80:
-                Interface.BTN_Move.Y = Animate(Interface.BTN_Move.Y, 631, 1.0, ANIMATION_OFFSET)
+                Interface.BTN_Move.Animate_Y(631, 1.0, ANIMATION_OFFSET)
 
             if SceneManager.SCENE_TIME > 160:
-                Interface.BTN_Cancel.Y = Animate(Interface.BTN_Cancel.Y, 706, 1.0, ANIMATION_OFFSET)
+                Interface.BTN_Cancel.Animate_Y(706, 1.0, ANIMATION_OFFSET)
 
         # 퇴실/이동 취소
         elif MainScene.InteractionStep in (14, 15):
 
-            Interface.BTN_Cancel.Y = AnimateSpdUp(False, Interface.BTN_Cancel.Y, 704, 1080, 2.0, ANIMATION_OFFSET)
+            Interface.BTN_Cancel.AnimateSpdUp_Y(False, 704, 1080, 2.0, ANIMATION_OFFSET)
 
             if SceneManager.SCENE_TIME > 30:
-                Interface.BTN_Move.Y = AnimateSpdUp(False, Interface.BTN_Move.Y, 629, 1080, 2.0, ANIMATION_OFFSET)
+                Interface.BTN_Move.AnimateSpdUp_Y(False, 629, 1080, 2.0, ANIMATION_OFFSET)
             
             if SceneManager.SCENE_TIME > 60:
-                Interface.BTN_Checkout.Y = AnimateSpdUp(False, Interface.BTN_Checkout.Y, 554, 1080, 2.0, ANIMATION_OFFSET)
+                Interface.BTN_Checkout.AnimateSpdUp_Y(False, 554, 1080, 2.0, ANIMATION_OFFSET)
 
             if MainScene.InteractionStep == 14:
                 if SceneManager.SCENE_TIME > 110 and Interface.ID_IdInputDialog.StudentId[0] != '-':
@@ -409,13 +409,13 @@ class MainScene(Scene):
         # 퇴실 완료
         elif MainScene.InteractionStep == 16:
 
-            Interface.BTN_Cancel.Y = AnimateSpdUp(False, Interface.BTN_Cancel.Y, 704, 1080, 2.0, ANIMATION_OFFSET)
+            Interface.BTN_Cancel.AnimateSpdUp_Y(False, 704, 1080, 2.0, ANIMATION_OFFSET)
 
             if SceneManager.SCENE_TIME > 30:
-                Interface.BTN_Move.Y = AnimateSpdUp(False, Interface.BTN_Move.Y, 629, 1080, 2.0, ANIMATION_OFFSET)
+                Interface.BTN_Move.AnimateSpdUp_Y(False, 629, 1080, 2.0, ANIMATION_OFFSET)
             
             if SceneManager.SCENE_TIME > 60:
-                Interface.BTN_Checkout.Y = AnimateSpdUp(False, Interface.BTN_Checkout.Y, 554, 1080, 2.0, ANIMATION_OFFSET)
+                Interface.BTN_Checkout.AnimateSpdUp_Y(False, 554, 1080, 2.0, ANIMATION_OFFSET)
 
             if SceneManager.SCENE_TIME > 200:
                 self.ID_Group_Y = Animate(self.ID_Group_Y, 432, 1.0, ANIMATION_OFFSET)
@@ -453,13 +453,16 @@ class MainScene(Scene):
         elif MainScene.InteractionStep == 18:
             
             self.ID_Group_Y = Animate(self.ID_Group_Y, 388, 1.0, ANIMATION_OFFSET)
-            Interface.BTN_Cancel.Y = Animate(Interface.BTN_Cancel.Y, 631, 1.0, ANIMATION_OFFSET)
+            Interface.BTN_Cancel.Animate_Y(631, 1.0, ANIMATION_OFFSET)
 
         # 이동 단계 취소
         elif MainScene.InteractionStep == 19:
             
             self.ID_Group_Y = Animate(self.ID_Group_Y, 432, 1.0, ANIMATION_OFFSET)
-            Interface.BTN_Cancel.Y = AnimateSpdUp(False, Interface.BTN_Cancel.Y, 600, 1080, 2.0, ANIMATION_OFFSET)
+            Interface.BTN_Cancel.AnimateSpdUp_Y(False, 600, 1080, 2.0, ANIMATION_OFFSET)
+
+            Interface.BTN_Checkout.Reset()
+            Interface.BTN_Move.Reset()
 
             if Interface.ID_IdInputDialog.StudentId[0] != '-':
                 Interface.ID_IdInputDialog.StudentId[0] = '-'
@@ -489,7 +492,7 @@ class MainScene(Scene):
             self.ID_Group_Y = Animate(self.ID_Group_Y, 432, 1.0, ANIMATION_OFFSET)
 
             if Interface.BTN_Cancel.Y != 1080:
-                Interface.BTN_Cancel.Y = AnimateSpdUp(False, Interface.BTN_Cancel.Y, 600, 1080, 2.0, ANIMATION_OFFSET)
+                Interface.BTN_Cancel.AnimateSpdUp_Y(False, 600, 1080, 2.0, ANIMATION_OFFSET)
             else:
                 Interface.BTN_Cancel.Y = 1080
                 Interface.ID_IdInputDialog.StudentId[3] = '-'
@@ -503,7 +506,7 @@ class MainScene(Scene):
 
             self.ID_Group_Y = Animate(self.ID_Group_Y, 432, 1.0, ANIMATION_OFFSET)
 
-            Interface.BTN_Cancel.Y = AnimateSpdUp(False, Interface.BTN_Cancel.Y, 600, 1080, 2.0, ANIMATION_OFFSET)
+            Interface.BTN_Cancel.AnimateSpdUp_Y(False, 600, 1080, 2.0, ANIMATION_OFFSET)
 
             if Interface.ID_IdInputDialog.StudentId[0] != '-':
                 Interface.ID_IdInputDialog.StudentId[0] = '-'

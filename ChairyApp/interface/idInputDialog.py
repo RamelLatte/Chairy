@@ -49,11 +49,10 @@ class IdInputDialog(Component):
     Moving  : bool
     Rect_   : Rect
 
-    Y_      : int
 
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x = 115, y = 492):
+        super().__init__(x, y, 300, 108)
         
         self.SURFACE    = Surface((300, 108))
         self.AssetStudentIdBox  = SM.loadAsset("/ChairyApp/assets/components/studentIdBox.png").convert(self.SURFACE)
@@ -134,9 +133,7 @@ class IdInputDialog(Component):
 
     
     def Reset(self, x = 115, y = 492):
-        self.X = x
-        self.Y = y
-        self.Y_= y
+        self.MoveTo(x, y)
 
         self.TextPos1   = 6
         self.TextPos2   = 6
@@ -246,23 +243,13 @@ class IdInputDialog(Component):
                 self._Text4 = None
                 self.Scrolling4 = False
 
-        return self.Updated or (self.Y != self.Y_)
+        return self.Updated or (self.Y != self._Y)
 
 
     def Frame(self, DISP: Surface) -> Rect:
         self.Updated = False
 
-        if self.Y != self.Y_:
-            d = self.Y - self.Y_
-            if d < 0:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y + 108, 300, - d + 1))
-                DISP.blit(self.SURFACE, (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y, 300, 109 - d)
-            else:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y_ - 1, 300, d + 2))
-                DISP.blit(self.SURFACE, (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y_, 300, 108 + d)
-        else:
-            return DISP.blit(self.SURFACE, (self.X, self.Y))
+        DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_Y())
+        DISP.blit(self.SURFACE, (self.X, self.Y))
+
+        return self.calculateRect()

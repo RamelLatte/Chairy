@@ -23,11 +23,11 @@ class ScrollingTextbox(Component):
 
     SURFACE : Surface
 
-    Y_ : int
 
+    def __init__(self, width: int, font: Font, text: str, color: tuple[int], x = 115, y = 432):
+        self.HEIGHT = font.get_height()
 
-    def __init__(self, width: int, font: Font, text: str, color: tuple[int]):
-        super().__init__()
+        super().__init__(x, y, width, self.HEIGHT)
         
         self.Reset(width, font, text, color)
 
@@ -50,12 +50,9 @@ class ScrollingTextbox(Component):
 
 
     def Reset(self, width: int, font: Font, text: str, color: tuple[int], x = 115, y = 432):
-        self.X = x
-        self.Y = y
-        self.Y_ = y
+        self.MoveTo(x, y)
 
         self.FONT = font
-        self.HEIGHT = font.get_height()
         self.WIDTH = width
         self.Text = self.FONT.render(text, True, color, Styles.SPRLIGHTGRAY)
         self._Text = self.FONT.render(text, True, color, Styles.SPRLIGHTGRAY)
@@ -78,7 +75,7 @@ class ScrollingTextbox(Component):
 
             return True
 
-        return (self.Y != self.Y_)
+        return (self.Y != self._Y)
 
 
     def Frame(self, DISP: Surface) -> Rect:
@@ -88,17 +85,7 @@ class ScrollingTextbox(Component):
         self.SURFACE.blit(self.Text, (0, self._textY))
         DISP.blit(self.SURFACE, (self.X, self.Y))
 
-        if self.Y != self.Y_:
-            d = self.Y - self.Y_
-            if d < 0:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y + self.HEIGHT, self.WIDTH, - d + 1))
-                DISP.blit(self.SURFACE, (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y, self.WIDTH, self.HEIGHT - d + 1)
-            else:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y_ - 1, self.WIDTH, d + 2))
-                DISP.blit(self.SURFACE, (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y_, self.WIDTH, self.HEIGHT + d)
-        else:
-            return DISP.blit(self.SURFACE, (self.X, self.Y))
+        DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_Y())
+        DISP.blit(self.SURFACE, (self.X, self.Y))
+
+        return self.calculateRect()

@@ -19,10 +19,9 @@ class KeyInstructionDisplay(Component):
 
     Pos: float
 
-    Y_  : int
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x = 153, y = 619):
+        super().__init__(x, y, 223, 29)
         
         self.SURFACE = Surface((223, 29))
         self.Asset = [ 
@@ -57,15 +56,13 @@ class KeyInstructionDisplay(Component):
     
 
     def Reset(self, x = 153, y = 619):
+        self.MoveTo(x, y)
+
         self.Use = 0
         self._Use = 1
         self.Pos = 0
 
         self.SURFACE.blit(self.Asset[0], (0, 0))
-        
-        self.X = x
-        self.Y = y
-        self.Y_ = y
 
     
     def Update(self, A_OFFSET):
@@ -82,21 +79,12 @@ class KeyInstructionDisplay(Component):
 
             return True
         
-        return (self.Y != self.Y_)
+        return (self.Y != self._Y)
     
 
     def Frame(self, DISP: Surface) -> Rect:
-        if self.Y != self.Y_:
-            d = self.Y - self.Y_
-            if d < 0:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y + 29, 223, - d + 1))
-                DISP.blit(self.SURFACE, (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y, 223, 30 - d)
-            else:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y_ - 1, 233, d + 2))
-                DISP.blit(self.SURFACE, (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y_, 223, 29 + d)
-        else:
-            return DISP.blit(self.SURFACE, (self.X, self.Y))
+
+        DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_Y())
+        DISP.blit(self.SURFACE, (self.X, self.Y))
+
+        return self.calculateRect()
