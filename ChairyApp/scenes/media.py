@@ -117,7 +117,7 @@ class Media(Scene):
         if self.InteractionStep == 0:
 
             self.ID_Group_Y = AnimateSpdUp(True, self.ID_Group_Y, 460, -216, 1.5, ANIMATION_OFFSET)
-            Interface.OT_CurrentMedia.Y = AnimateSpdUp(False, Interface.OT_CurrentMedia.Y, 935, 1080, 2.25, ANIMATION_OFFSET)
+            Interface.OT_CurrentMedia.AnimateSpdUp_Y(False, 935, 1080, 2.25, ANIMATION_OFFSET)
             
             if self.ID_Group_Y == -216 and Interface.OT_CurrentMedia.Y == 1080:
                 self.InteractionStep = 1
@@ -127,7 +127,7 @@ class Media(Scene):
             self.Y = Animate(self.Y, 338, 1.0, ANIMATION_OFFSET)
 
             if self.Y < 400:
-                Interface.MD_HideMediaBtn.Y = Animate(Interface.MD_HideMediaBtn.Y, 873, 1.0, ANIMATION_OFFSET)
+                Interface.MD_HideMediaBtn.Animate_Y(873, 1.0, ANIMATION_OFFSET)
 
             if self.Y == 338 and Interface.MD_HideMediaBtn.Y == 873:
                 self.InteractionStep = 2
@@ -160,7 +160,7 @@ class Media(Scene):
             if Interface.MD_HideMediaBtn.Y > 1000:
                 self.Y = AnimateSpdUp(False, self.Y, 300, 1080, 1.5, ANIMATION_OFFSET)
 
-            Interface.MD_HideMediaBtn.Y = AnimateSpdUp(False, Interface.MD_HideMediaBtn.Y, 850, 1080, 2.25, ANIMATION_OFFSET)
+            Interface.MD_HideMediaBtn.AnimateSpdUp_Y(False, 850, 1080, 2.25, ANIMATION_OFFSET)
 
             if self.Y == 1080 and Interface.MD_HideMediaBtn.Y == 1080:
                 Interface.OT_CurrentMedia.Reset()
@@ -169,7 +169,7 @@ class Media(Scene):
         elif self.InteractionStep == 4:
 
             if Interface.OT_CurrentMedia.Init and ChairyData.CURRENT_MEDIA.Playing:
-                Interface.OT_CurrentMedia.Y = Animate(Interface.OT_CurrentMedia.Y, 955, 1.25, ANIMATION_OFFSET)
+                Interface.OT_CurrentMedia.Animate_Y(955, 1.25, ANIMATION_OFFSET)
 
             self.ID_Group_Y = Animate(self.ID_Group_Y, 432, 1.0, ANIMATION_OFFSET)
 

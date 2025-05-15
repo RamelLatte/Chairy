@@ -4,8 +4,6 @@ from pygame import Surface, Rect
 from .Styles import Styles
 from .Scene import SceneManager as SM
 
-from ..optimization.positioning import collidepoint
-
 
 
 class CancelButton(Component):
@@ -19,11 +17,9 @@ class CancelButton(Component):
     MouseIn : bool
     Clicked : bool
 
-    Y_      : int
 
-
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x = 123, y = 1080):
+        super().__init__(x, y, 283, 60)
         
         self.Assets = [
                     SM.loadAsset('/ChairyApp/assets/components/CancelBtn0.png').convert(),
@@ -34,50 +30,40 @@ class CancelButton(Component):
 
 
     def Reset(self, x = 123, y = 1080):
-        self.X = x
-        self.Y = y
+        self.MoveTo(x, y)
 
         self.Button = 0
 
         self.MouseIn = False
         self.Clicked = False
 
+        self.newMouseFields(1)
+        self.setMouseField(0, 0, 0, 283, 60)
+
         self.Updated = True
-        self.Y_ = self.Y
 
     
     def reset(self):
         self.Show   = True
-        self.Y      = 1080
-        self.Y_     = 1080
+        self.MoveTo(self.X, 1080)
         self.Updated = True
 
     
     def Update(self):
-        return (self.Updated or self.Y != self.Y_)
+        return (self.Updated or self.Y != self._Y)
     
 
     def Frame(self, DISP):
         self.Updated = False
 
-        if self.Y != self.Y_:
-            d = self.Y - self.Y_
-            if d < 0:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y + 60, 283, - d + 1))
-                DISP.blit(self.Assets[self.Button], (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y, 283, 61 - d)
-            else:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y_ - 1, 283, d + 2))
-                DISP.blit(self.Assets[self.Button], (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y_, 283, 60 + d)
-        else:
-            return DISP.blit(self.Assets[self.Button], (self.X, self.Y))
+        DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_Y())
+        DISP.blit(self.Assets[self.Button], (self.X, self.Y))
+
+        return self.calculateRect()
         
 
     def _collide(self, POS) -> bool:
-        return collidepoint(self.X, self.Y, 283, 60, POS)
+        return self.collidepoint(0, POS)
     
 
     def MouseMotion(self, POS):
@@ -141,15 +127,13 @@ class CheckoutButton(Component):
     MouseIn : bool
     Clicked : bool
 
-    Y_      : int
-
     Alpha   : float
     Alpha_  : float
     Show    : bool
 
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x = 123, y = 1080):
+        super().__init__(x, y, 283, 60)
 
         self.Assets = [
                     SM.loadAsset('/ChairyApp/assets/components/CheckoutBtn0.png'),
@@ -159,16 +143,17 @@ class CheckoutButton(Component):
         self.Reset()
 
     def Reset(self, x = 123, y = 1080):
-        self.X = 123
-        self.Y = 1080
+        self.MoveTo(123, 1080)
         
         self.Button = 0
 
         self.MouseIn = False
         self.Clicked = False
 
+        self.newMouseFields(1)
+        self.setMouseField(0, 0, 0, 283, 60)
+
         self.Updated = True
-        self.Y_ = self.Y
 
         self.Alpha  = 255.
         self.Alpha_ = 255.
@@ -186,8 +171,7 @@ class CheckoutButton(Component):
     
     def reset(self):
         self.Show   = True
-        self.Y      = 1080
-        self.Y_     = 1080
+        self.MoveTo(self.X, 1080)
         self.Alpha  = 255.
         self.Alpha_ = 255.
         self.Assets[0].set_alpha(255)
@@ -219,34 +203,24 @@ class CheckoutButton(Component):
 
                 return True
 
-        return (self.Updated or self.Y != self.Y_)
+        return (self.Updated or self.Y != self._Y)
     
 
     def Frame(self, DISP):
         self.Updated = False
-        
+
         if self.Alpha != self.Alpha_:
             DISP.fill(Styles.SPRLIGHTGRAY, [self.X, self.Y, 283, 60])
             self.Alpha_ = self.Alpha
 
-        if self.Y != self.Y_:
-            d = self.Y - self.Y_
-            if d < 0:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y + 60, 283, - d + 1))
-                DISP.blit(self.Assets[self.Button], (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y, 283, 61 - d)
-            else:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y_ - 1, 283, d + 2))
-                DISP.blit(self.Assets[self.Button], (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y_, 283, 60 + d)
-        else:
-            return DISP.blit(self.Assets[self.Button], (self.X, self.Y))
+        DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_Y())
+        DISP.blit(self.Assets[self.Button], (self.X, self.Y))
+
+        return self.calculateRect()
         
 
     def _collide(self, POS) -> bool:
-        return collidepoint(self.X, self.Y, 283, 60, POS)
+        return self.collidepoint(0, POS)
     
 
     def MouseMotion(self, POS):
@@ -311,15 +285,13 @@ class MoveButton(Component):
     MouseIn : bool
     Clicked : bool
 
-    Y_      : int
-
     Alpha   : float
     Alpha_  : float
     Show    : bool
 
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x = 123, y = 1080):
+        super().__init__(x, y, 283, 60)
 
         self.Assets = [
                     SM.loadAsset('/ChairyApp/assets/components/MoveBtn0.png'),
@@ -331,17 +303,18 @@ class MoveButton(Component):
 
 
     def Reset(self, x = 123, y = 1080):
-        self.X = x
-        self.Y = y
+        self.MoveTo(x, y)
 
         self.Button = 0
 
         self.MouseIn = False
         self.Clicked = False
 
+        self.newMouseFields(1)
+        self.setMouseField(0, 0, 0, 283, 60)
+
         self.Updated = True
         self.Enabled = True
-        self.Y_ = self.Y
 
         self.Alpha  = 255.
         self.Alpha_ = 255.
@@ -373,8 +346,7 @@ class MoveButton(Component):
 
     def reset(self):
         self.Show   = True
-        self.Y      = 1080
-        self.Y_     = 1080
+        self.MoveTo(self.X, 1080)
         self.Alpha  = 255.
         self.Alpha_ = 255.
         self.Assets[0].set_alpha(255)
@@ -406,7 +378,7 @@ class MoveButton(Component):
 
                 return True
 
-        return (self.Updated or self.Y != self.Y_)
+        return (self.Updated or self.Y != self._Y)
     
 
     def Frame(self, DISP):
@@ -416,24 +388,16 @@ class MoveButton(Component):
             DISP.fill(Styles.SPRLIGHTGRAY, [self.X, self.Y, 283, 60])
             self.Alpha_ = self.Alpha
 
-        if self.Y != self.Y_:
-            d = self.Y - self.Y_
-            if d < 0:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y + 60, 283, - d + 1))
-                DISP.blit(self.Assets[self.Button], (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y, 283, 61 - d)
-            else:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y_ - 1, 283, d + 2))
-                DISP.blit(self.Assets[self.Button], (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y_, 283, 60 + d)
-        else:
-            return DISP.blit(self.Assets[self.Button], (self.X, self.Y))
+        self.Updated = False
+
+        DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_Y())
+        DISP.blit(self.Assets[self.Button], (self.X, self.Y))
+
+        return self.calculateRect()
         
 
     def _collide(self, POS) -> bool:
-        return collidepoint(self.X, self.Y, 283, 60, POS)
+        return self.collidepoint(0, POS)
     
 
     def MouseMotion(self, POS):
@@ -501,23 +465,26 @@ class StatisticsExitButton(Component):
 
 
     def __init__(self):
-        super().__init__()
+        super().__init__(1680, 15, 200, 40)
 
         self.Assets = [
                     SM.loadAsset('/ChairyApp/assets/statistics/StatisticsCancelBtn0.png'),
                     SM.loadAsset('/ChairyApp/assets/statistics/StatisticsCancelBtn1.png'),
                     SM.loadAsset('/ChairyApp/assets/statistics/StatisticsCancelBtn2.png'),
                 ]
-        self.Reset(0, 0)
+        self.Reset(1680, 15)
 
 
-    def Reset(self, x, y):
+    def Reset(self, x = 1680, y = 15):
         self.X = x
         self.Y = y
         self.Button = 0
 
         self.MouseIn = False
         self.Clicked = False
+
+        self.newMouseFields(1)
+        self.setMouseField(0, 0, 0, 200, 40)
 
         self.Updated = True
 
@@ -534,7 +501,7 @@ class StatisticsExitButton(Component):
         
 
     def _collide(self, POS) -> bool:
-        return collidepoint(1680, 15, 200, 40, POS)
+        return self.collidepoint(0, POS)
     
 
     def MouseMotion(self, POS):
@@ -599,7 +566,7 @@ class StatisticsExportButton(Component):
 
 
     def __init__(self, x, y):
-        super().__init__()
+        super().__init__(x, y, 250, 70)
 
         self.Assets = [
                     SM.loadAsset('/ChairyApp/assets/statistics/Export0.png'),
@@ -617,6 +584,9 @@ class StatisticsExportButton(Component):
         self.MouseIn = False
         self.Clicked = False
 
+        self.newMouseFields(1)
+        self.setMouseField(0, 0, 0, 250, 70)
+
         self.Updated = True
 
     
@@ -632,7 +602,7 @@ class StatisticsExportButton(Component):
         
 
     def _collide(self, POS) -> bool:
-        return collidepoint(self.X, self.Y, 250, 70, POS)
+        return self.collidepoint(0, POS)
     
 
     def MouseMotion(self, POS):
@@ -695,11 +665,9 @@ class HideMediaButton(Component):
     MouseIn : bool
     Clicked : bool
 
-    Y_      : int
 
-
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x = 165, y = 1080):
+        super().__init__(x, y, 210, 50)
         
         self.Assets = [
                     SM.loadAsset('/ChairyApp/assets/media/Hide0.png').convert(),
@@ -710,50 +678,40 @@ class HideMediaButton(Component):
 
 
     def Reset(self, x = 165, y = 1080):
-        self.X = x
-        self.Y = y
+        self.MoveTo(x, y)
 
         self.Button = 0
 
         self.MouseIn = False
         self.Clicked = False
 
+        self.newMouseFields(1)
+        self.setMouseField(0, 0, 0, 210, 50)
+
         self.Updated = True
-        self.Y_ = self.Y
 
     
     def reset(self):
         self.Show   = True
-        self.Y      = 1080
-        self.Y_     = 1080
+        self.MoveTo(self.X, 1080)
         self.Updated = True
 
     
     def Update(self):
-        return (self.Updated or self.Y != self.Y_)
+        return (self.Updated or self.Y != self._Y)
     
 
     def Frame(self, DISP):
         self.Updated = False
 
-        if self.Y != self.Y_:
-            d = self.Y - self.Y_
-            if d < 0:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y + 50, 210, - d + 1))
-                DISP.blit(self.Assets[self.Button], (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y, 210, 51 - d)
-            else:
-                DISP.fill(Styles.SPRLIGHTGRAY, Rect(self.X, self.Y_ - 1, 210, d + 2))
-                DISP.blit(self.Assets[self.Button], (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y_, 210, 50 + d)
-        else:
-            return DISP.blit(self.Assets[self.Button], (self.X, self.Y))
+        DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_Y())
+        DISP.blit(self.Assets[self.Button], (self.X, self.Y))
+
+        return self.calculateRect()
         
 
     def _collide(self, POS) -> bool:
-        return collidepoint(self.X, self.Y, 210, 50, POS)
+        return self.collidepoint(0, POS)
     
 
     def MouseMotion(self, POS):

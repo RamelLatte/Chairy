@@ -1,7 +1,6 @@
 
 from .Scene import Scene, SceneManager, SceneWarning
 from .Styles import Styles
-from .Component import ComponentWarning
 
 
 from .sideDisplays      import DateTimeDisplay, DietAndScheduleDisplay, SeatingStatus
@@ -30,6 +29,12 @@ __all__ = ['Scene', 'SceneManager', 'SceneWarning', 'ComponentWarning', 'Interfa
 
 
 from ..Logging import LoggingManager as logging
+
+
+class ComponentWarning(Exception):
+
+    def __init__(self, msg):
+        super().__init__(msg)
 
 
 class Interface:

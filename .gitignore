@@ -26,6 +26,9 @@ ENV/
 !cython/build/*.cpp
 cython/build/temp.win-amd64-cpython-310/
 
+!**/ChairyApp/**/*.pyd
+!**/testCodes/**/*.pyd
+
 # Chairy가 만드는 데이터는 무시
 **/log/*.log
 **/student_data/*.json

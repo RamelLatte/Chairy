@@ -6,7 +6,6 @@ from .Styles import Styles
 from datetime import datetime
 from .Scene import SceneManager as SM
 
-from ..optimization.animation import Animate, AnimateSpdUp
 from ..optimization.positioning import center_center
 
 
@@ -19,7 +18,6 @@ class StudentInfoBox(Component):
     Asset_Blue_Stamp    : Surface
     Asset_Yellow_Stamp  : Surface
 
-    Y_PRIOR: float
     SURFACE: Surface
 
     Alpha   : float
@@ -42,11 +40,11 @@ class StudentInfoBox(Component):
         elif dt.hour == 0:
             return dt.strftime("오전 12:%M")
         else:
-            return dt.strftime("오전 %h:%M")
+            return dt.strftime("오전 %H:%M")
 
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x = 123, y = 1080):
+        super().__init__(x, y, 284, 548)
         
         self.SURFACE = Surface((284, 548))
         self.Asset_Frame_Normal   = SM.loadAsset("/ChairyApp/assets/components/StudentInfo1.png").convert(self.SURFACE)
@@ -125,9 +123,7 @@ class StudentInfoBox(Component):
 
 
     def Reset(self, x = 123, y = 1080):
-        self.X = x
-        self.Y = y
-        self.Y_PRIOR = y
+        self.MoveTo(x, y)
 
         self.Alpha = 255.
         self.Updated = False
@@ -142,7 +138,7 @@ class StudentInfoBox(Component):
             if self.Y != 390:
                 updated = True
 
-            self.Y = Animate(self.Y, 390, 1.0, A_OFFSET)
+            self.Animate_Y(390, 1.0, A_OFFSET)
 
             if self.Alpha < 255:
                 self.Alpha += TICK * 1.5
@@ -157,7 +153,7 @@ class StudentInfoBox(Component):
             if self.Y != 1080:
                 updated = True
 
-            self.Y = AnimateSpdUp(False, self.Y, 356, 1080, 1.0, A_OFFSET)
+            self.AnimateSpdUp_Y(False, 356, 1080, 1.0, A_OFFSET)
 
             if self.Alpha > 0:
                 self.Alpha -= TICK
@@ -173,21 +169,11 @@ class StudentInfoBox(Component):
     def Frame(self, DISP: Surface) -> Rect:
         self.Updated = False
 
-        if self.Y != self.Y_PRIOR:
-            d = self.Y - self.Y_PRIOR
-            if d < 0:
-                r = Rect(self.X, self.Y, 300, 549 - d)
-                DISP.fill(Styles.SPRLIGHTGRAY, r)
-                self.SURFACE.set_alpha(self.Alpha)
-                DISP.blit(self.SURFACE, (self.X, self.Y))
-                self.Y_PRIOR = self.Y
-                return r
-            else:
-                r = Rect(self.X, self.Y_PRIOR, 300, 548 + d)
-                DISP.fill(Styles.SPRLIGHTGRAY, r)
-                self.SURFACE.set_alpha(self.Alpha)
-                DISP.blit(self.SURFACE, (self.X, self.Y))
-                self.Y_PRIOR = self.Y
-                return r
-        else:
-            return DISP.blit(self.SURFACE, (self.X, self.Y))
+        self.SURFACE.set_alpha(self.Alpha)
+
+        r = self.calculateRect()
+
+        DISP.fill(Styles.SPRLIGHTGRAY, r)
+        DISP.blit(self.SURFACE, (self.X, self.Y))
+
+        return r

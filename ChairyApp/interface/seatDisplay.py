@@ -60,8 +60,8 @@ class SeatsDisplay(Component):
 
 
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x = 530, y = 35):
+        super().__init__(x, y, 1002, 1045)
         
         self.SURFACE = Surface((1002, 1045))
         self.Asset_Structure        = SM.loadAsset("/school_data/structure.png").convert(self.SURFACE)
@@ -197,8 +197,7 @@ class SeatsDisplay(Component):
 
     
     def Reset(self, x = 530, y = 35):
-        self.X = x
-        self.Y = y
+        self.MoveTo(x, y)
 
         self.Alpha = 0.
 

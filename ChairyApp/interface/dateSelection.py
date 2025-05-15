@@ -44,8 +44,8 @@ class DateSelectionTemplate(Component):
     Clicked: int
 
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x = 108, y = 361):
+        super().__init__(x, y, 293, 358)
         self.Reset()
 
 
@@ -185,8 +185,7 @@ class DateSelectionTemplate(Component):
 
     
     def Reset(self, x = 108, y = 361):
-        self.X = x
-        self.Y = y
+        self.MoveTo(x, y)
         self.SURFACE = Surface((293, 358))
         self.SelectedDate = CD.ROOMDATA.DATA_DATE
         self.Year = CD.ROOMDATA.DATA_DATE.year
@@ -389,8 +388,8 @@ class MonthSelection(Component):
     Updated : bool
 
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, x = 108, y = 342):
+        super().__init__(x, y, 293, 388)
         self.Reset()
 
 
@@ -478,8 +477,7 @@ class MonthSelection(Component):
 
     
     def Reset(self, x = 108, y = 342):
-        self.X = x
-        self.Y = y
+        self.MoveTo(x, y)
         self.SURFACE = Surface((293, 388))
         self.Year = CD.ROOMDATA.DATA_DATE.year
         self.Month = CD.ROOMDATA.DATA_DATE.month

@@ -294,7 +294,7 @@ class ExportSeats(Scene):
 
     def On_Init(self, DISPLAY):
         DISPLAY.fill(Styles.SPRLIGHTGRAY)
-        Interface.SC_QuitButton.Reset(130, 940)
+        Interface.SC_QuitButton.Reset()
         Interface.SC_ExportButton.Reset(203, 818)
         Interface.SC_DateSelection.Reset(89, 361)
 

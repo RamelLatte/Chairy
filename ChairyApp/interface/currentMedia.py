@@ -5,8 +5,6 @@ from .Styles import Styles
 from ..chairyData import ChairyData
 from pygame import Surface, Rect, transform, SRCALPHA, BLEND_RGBA_MULT
 
-from ..optimization.positioning import collidepoint
-
 
 
 SPRLIGHTGRAY = (Styles.SPRLIGHTGRAY[0], Styles.SPRLIGHTGRAY[1], Styles.SPRLIGHTGRAY[2], 255)
@@ -24,7 +22,6 @@ class CurrentMedia(Component):
 
     SURFACE: Surface
     SURFACE_: Surface
-    Y_ : int
 
     Updated: bool
     
@@ -33,7 +30,7 @@ class CurrentMedia(Component):
     MouseIn: bool
 
     
-    def __init__(self):
+    def __init__(self, x = 56, y = 1080):
         self.SURFACE = Surface((460, 90), (SRCALPHA))
         self.Init = False
 
@@ -42,7 +39,7 @@ class CurrentMedia(Component):
         self.Mask_Title = SceneManager.loadAsset('/ChairyApp/assets/media/maskTitle.png').convert_alpha(self.SURFACE)
         self.Mask_Mouse = SceneManager.loadAsset('/ChairyApp/assets/media/maskMouse.png').convert_alpha()
         self.Reset()
-        super().__init__()
+        super().__init__(x, y, 460, 90)
 
 
     # 만능 ChatGPT가 작성한 함수
@@ -79,11 +76,12 @@ class CurrentMedia(Component):
 
 
     def Reset(self, x = 56, y = 1080):
-        self.X = x
-        self.Y = y
+        self.MoveTo(x, y)
 
-        self.Y_ = self.Y
         self.MouseIn = False
+
+        self.newMouseFields(1)
+        self.setMouseField_DisplayPos(0, self.X, self.Y, 80, 80)
 
         if not self.Init:
             self.Render()
@@ -123,42 +121,25 @@ class CurrentMedia(Component):
 
     
     def Update(self):
-        return (self.Updated or self.Y != self.Y_)
+        return (self.Updated or self.Y != self._Y)
 
 
     def Frame(self, DISP):
         self.Updated = False
 
-        if self.Y != self.Y_:
-            d = self.Y - self.Y_
-            if d < 0:
-                DISP.fill(SPRLIGHTGRAY, Rect(self.X, self.Y, 460, - d + 90))
-                if self.MouseIn:
-                    DISP.blit(self.SURFACE_, (self.X, self.Y))
-                else:
-                    DISP.blit(self.SURFACE, (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y, 460, 91 - d)
-            else:
-                DISP.fill(SPRLIGHTGRAY, Rect(self.X, self.Y_ - 1, 460, d + 92))
-                DISP.blit(self.SURFACE, (self.X, self.Y))
-                if self.MouseIn:
-                    DISP.blit(self.SURFACE_, (self.X, self.Y))
-                else:
-                    DISP.blit(self.SURFACE, (self.X, self.Y))
-                self.Y_ = self.Y
-                return Rect(self.X, self.Y_, 460, 90 + d)
+        DISP.fill(SPRLIGHTGRAY, self.calculateTrailRect_Y())
+
+        if self.MouseIn:
+            DISP.blit(self.SURFACE_, (self.X, self.Y))
         else:
-            DISP.fill(SPRLIGHTGRAY, Rect(self.X, self.Y, 460, 90))
-            if self.MouseIn:
-                return DISP.blit(self.SURFACE_, (self.X, self.Y))
-            else:    
-                return DISP.blit(self.SURFACE, (self.X, self.Y))
+            DISP.blit(self.SURFACE, (self.X, self.Y))
+
+        return self.calculateRect()
     
 
     def MouseMotion(self, POS):
         
-        if collidepoint(self.X, self.Y, 80, 80, POS):
+        if self.collidepoint(0, POS):
             
             if not self.MouseIn:
                 self.MouseIn = True

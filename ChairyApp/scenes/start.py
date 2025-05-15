@@ -8,7 +8,7 @@ from .exportPeriod  import ExportPeriod
 from .exportSeats   import ExportSeats
 from .mainScene     import MainScene
 from .transition    import Transition
-from pygame         import Surface, draw
+from pygame         import Surface, draw, Rect
 
 from ..optimization.animation import Animate
 
@@ -30,8 +30,8 @@ class StartScene(Scene):
     CurrentProcess_Surface  : Surface
     CurrentProcess_String   : str
 
-    Bar_Length: int
-    Bar_Length_: int
+    Bar_Length: float
+    Bar_Length_: float
 
     Executor: ThreadPoolExecutor
 
@@ -112,7 +112,7 @@ class StartScene(Scene):
             DISPLAY.blit(self.CurrentProcess_Surface, (560, 970))
             draw.rect(DISPLAY, Styles.GRAY, [560, 1000, 800, 5])
             draw.rect(DISPLAY, Styles.BLACK, [560, 1000, self.Bar_Length, 5])
-            RECTS.append([560, 970, 800, 35])
+            RECTS.append(Rect(560, 970, 800, 35))
         else:
             RECTS.append(DISPLAY.fill(Styles.SPRLIGHTGRAY, [560, 970, 800, 35]))
             
