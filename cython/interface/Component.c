@@ -1235,6 +1235,7 @@ static CYTHON_INLINE float __PYX_NAN() {
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
+#include <stdint.h>
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -1504,14 +1505,14 @@ struct __pyx_t_9Component_MouseField;
  * 
  * 
  * cdef struct MouseField:             # <<<<<<<<<<<<<<
- *     int X
- *     int Y
+ *     int16_t X
+ *     int16_t Y
  */
 struct __pyx_t_9Component_MouseField {
-  int X;
-  int Y;
-  int W;
-  int H;
+  int16_t X;
+  int16_t Y;
+  int16_t W;
+  int16_t H;
 };
 
 /* "Component.pyx":15
@@ -1528,19 +1529,19 @@ struct __pyx_obj_9Component_Component {
   float Y;
   float _X;
   float _Y;
-  int W;
-  int H;
+  int16_t W;
+  int16_t H;
   struct __pyx_t_9Component_MouseField *MouseFields;
-  int MouseFields_Size;
+  uint16_t MouseFields_Size;
 };
 
 
 
 struct __pyx_vtabstruct_9Component_Component {
-  void (*newMouseFields)(struct __pyx_obj_9Component_Component *, int, int __pyx_skip_dispatch);
-  void (*setMouseField)(struct __pyx_obj_9Component_Component *, int, int, int, int, int, int __pyx_skip_dispatch);
-  void (*setMouseField_DisplayPos)(struct __pyx_obj_9Component_Component *, int, int, int, int, int, int __pyx_skip_dispatch);
-  int (*collidepoint)(struct __pyx_obj_9Component_Component *, int, PyObject *, int __pyx_skip_dispatch);
+  void (*newMouseFields)(struct __pyx_obj_9Component_Component *, uint16_t, int __pyx_skip_dispatch);
+  void (*setMouseField)(struct __pyx_obj_9Component_Component *, uint16_t, int16_t, int16_t, int16_t, int16_t, int __pyx_skip_dispatch);
+  void (*setMouseField_DisplayPos)(struct __pyx_obj_9Component_Component *, uint16_t, int16_t, int16_t, int16_t, int16_t, int __pyx_skip_dispatch);
+  int (*collidepoint)(struct __pyx_obj_9Component_Component *, uint16_t, PyObject *, int __pyx_skip_dispatch);
   void (*MoveTo)(struct __pyx_obj_9Component_Component *, float, float, int __pyx_skip_dispatch);
   void (*Animate_X)(struct __pyx_obj_9Component_Component *, float, float, float, int __pyx_skip_dispatch);
   void (*Animate_Y)(struct __pyx_obj_9Component_Component *, float, float, float, int __pyx_skip_dispatch);
@@ -2122,13 +2123,25 @@ static void __Pyx_AddTraceback(const char *funcname, int c_line,
 #endif
 
 /* CIntFromPy.proto */
+static CYTHON_INLINE int16_t __Pyx_PyInt_As_int16_t(PyObject *);
+
+/* CIntFromPy.proto */
+static CYTHON_INLINE uint16_t __Pyx_PyInt_As_uint16_t(PyObject *);
+
+/* CIntFromPy.proto */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *);
 
 /* CIntToPy.proto */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint16_t(uint16_t value);
+
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int16_t(int16_t value);
 
 /* CIntToPy.proto */
 static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value);
+
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value);
 
 /* FormatTypeName.proto */
 #if CYTHON_COMPILING_IN_LIMITED_API
@@ -2171,10 +2184,10 @@ static int __Pyx_check_binary_version(unsigned long ct_version, unsigned long rt
 static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* #### Code section: module_declarations ### */
-static void __pyx_f_9Component_9Component_newMouseFields(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_size, int __pyx_skip_dispatch); /* proto*/
-static void __pyx_f_9Component_9Component_setMouseField(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_Index, int __pyx_v_X, int __pyx_v_Y, int __pyx_v_W, int __pyx_v_H, int __pyx_skip_dispatch); /* proto*/
-static void __pyx_f_9Component_9Component_setMouseField_DisplayPos(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_index, int __pyx_v_X, int __pyx_v_Y, int __pyx_v_W, int __pyx_v_H, int __pyx_skip_dispatch); /* proto*/
-static int __pyx_f_9Component_9Component_collidepoint(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_index, PyObject *__pyx_v_point, int __pyx_skip_dispatch); /* proto*/
+static void __pyx_f_9Component_9Component_newMouseFields(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_size, int __pyx_skip_dispatch); /* proto*/
+static void __pyx_f_9Component_9Component_setMouseField(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_Index, int16_t __pyx_v_X, int16_t __pyx_v_Y, int16_t __pyx_v_W, int16_t __pyx_v_H, int __pyx_skip_dispatch); /* proto*/
+static void __pyx_f_9Component_9Component_setMouseField_DisplayPos(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_index, int16_t __pyx_v_X, int16_t __pyx_v_Y, int16_t __pyx_v_W, int16_t __pyx_v_H, int __pyx_skip_dispatch); /* proto*/
+static int __pyx_f_9Component_9Component_collidepoint(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_index, PyObject *__pyx_v_point, int __pyx_skip_dispatch); /* proto*/
 static void __pyx_f_9Component_9Component_MoveTo(struct __pyx_obj_9Component_Component *__pyx_v_self, float __pyx_v_X, float __pyx_v_Y, int __pyx_skip_dispatch); /* proto*/
 static void __pyx_f_9Component_9Component_Animate_X(struct __pyx_obj_9Component_Component *__pyx_v_self, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO, int __pyx_skip_dispatch); /* proto*/
 static void __pyx_f_9Component_9Component_Animate_Y(struct __pyx_obj_9Component_Component *__pyx_v_self, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO, int __pyx_skip_dispatch); /* proto*/
@@ -2189,6 +2202,8 @@ static PyObject *__pyx_f_9Component_9Component_calculateTrailRect_Y(struct __pyx
 /* Module declarations from "libc.stdlib" */
 
 /* Module declarations from "libc.math" */
+
+/* Module declarations from "libc.stdint" */
 
 /* Module declarations from "Component" */
 /* #### Code section: typeinfo ### */
@@ -2292,11 +2307,11 @@ static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __red
 /* #### Code section: decls ### */
 static int __pyx_pf_9Component_9Component___cinit__(struct __pyx_obj_9Component_Component *__pyx_v_self); /* proto */
 static void __pyx_pf_9Component_9Component_2__dealloc__(struct __pyx_obj_9Component_Component *__pyx_v_self); /* proto */
-static int __pyx_pf_9Component_9Component_4__init__(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_x, int __pyx_v_y, int __pyx_v_w, int __pyx_v_h); /* proto */
-static PyObject *__pyx_pf_9Component_9Component_6newMouseFields(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_size); /* proto */
-static PyObject *__pyx_pf_9Component_9Component_8setMouseField(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_Index, int __pyx_v_X, int __pyx_v_Y, int __pyx_v_W, int __pyx_v_H); /* proto */
-static PyObject *__pyx_pf_9Component_9Component_10setMouseField_DisplayPos(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_index, int __pyx_v_X, int __pyx_v_Y, int __pyx_v_W, int __pyx_v_H); /* proto */
-static PyObject *__pyx_pf_9Component_9Component_12collidepoint(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_index, PyObject *__pyx_v_point); /* proto */
+static int __pyx_pf_9Component_9Component_4__init__(struct __pyx_obj_9Component_Component *__pyx_v_self, int16_t __pyx_v_x, int16_t __pyx_v_y, int16_t __pyx_v_w, int16_t __pyx_v_h); /* proto */
+static PyObject *__pyx_pf_9Component_9Component_6newMouseFields(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_size); /* proto */
+static PyObject *__pyx_pf_9Component_9Component_8setMouseField(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_Index, int16_t __pyx_v_X, int16_t __pyx_v_Y, int16_t __pyx_v_W, int16_t __pyx_v_H); /* proto */
+static PyObject *__pyx_pf_9Component_9Component_10setMouseField_DisplayPos(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_index, int16_t __pyx_v_X, int16_t __pyx_v_Y, int16_t __pyx_v_W, int16_t __pyx_v_H); /* proto */
+static PyObject *__pyx_pf_9Component_9Component_12collidepoint(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_index, PyObject *__pyx_v_point); /* proto */
 static PyObject *__pyx_pf_9Component_9Component_14MoveTo(struct __pyx_obj_9Component_Component *__pyx_v_self, float __pyx_v_X, float __pyx_v_Y); /* proto */
 static PyObject *__pyx_pf_9Component_9Component_16Animate_X(struct __pyx_obj_9Component_Component *__pyx_v_self, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO); /* proto */
 static PyObject *__pyx_pf_9Component_9Component_18Animate_Y(struct __pyx_obj_9Component_Component *__pyx_v_self, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO); /* proto */
@@ -2352,6 +2367,8 @@ typedef struct {
   #endif
   #ifdef __Pyx_Coroutine_USED
   PyTypeObject *__pyx_CoroutineType;
+  #endif
+  #if CYTHON_USE_MODULE_STATE
   #endif
   #if CYTHON_USE_MODULE_STATE
   #endif
@@ -2830,6 +2847,8 @@ static int __pyx_m_traverse(PyObject *m, visitproc visit, void *arg) {
 #if CYTHON_USE_MODULE_STATE
 #endif
 #if CYTHON_USE_MODULE_STATE
+#endif
+#if CYTHON_USE_MODULE_STATE
 #define __pyx_type_9Component_Component __pyx_mstate_global->__pyx_type_9Component_Component
 #endif
 #define __pyx_ptype_9Component_Component __pyx_mstate_global->__pyx_ptype_9Component_Component
@@ -3069,7 +3088,7 @@ static void __pyx_pf_9Component_9Component_2__dealloc__(struct __pyx_obj_9Compon
 /* "Component.pyx":38
  * 
  * 
- *     def __init__(self, int x, int y, int w, int h):             # <<<<<<<<<<<<<<
+ *     def __init__(self, int16_t x, int16_t y, int16_t w, int16_t h):             # <<<<<<<<<<<<<<
  *         self.X = x
  *         self._X = x
  */
@@ -3077,10 +3096,10 @@ static void __pyx_pf_9Component_9Component_2__dealloc__(struct __pyx_obj_9Compon
 /* Python wrapper */
 static int __pyx_pw_9Component_9Component_5__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
 static int __pyx_pw_9Component_9Component_5__init__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  int __pyx_v_x;
-  int __pyx_v_y;
-  int __pyx_v_w;
-  int __pyx_v_h;
+  int16_t __pyx_v_x;
+  int16_t __pyx_v_y;
+  int16_t __pyx_v_w;
+  int16_t __pyx_v_h;
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
   PyObject* values[4] = {0,0,0,0};
@@ -3164,10 +3183,10 @@ static int __pyx_pw_9Component_9Component_5__init__(PyObject *__pyx_v_self, PyOb
       values[2] = __Pyx_Arg_VARARGS(__pyx_args, 2);
       values[3] = __Pyx_Arg_VARARGS(__pyx_args, 3);
     }
-    __pyx_v_x = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_x == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 38, __pyx_L3_error)
-    __pyx_v_y = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_y == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 38, __pyx_L3_error)
-    __pyx_v_w = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_w == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 38, __pyx_L3_error)
-    __pyx_v_h = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_h == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 38, __pyx_L3_error)
+    __pyx_v_x = __Pyx_PyInt_As_int16_t(values[0]); if (unlikely((__pyx_v_x == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 38, __pyx_L3_error)
+    __pyx_v_y = __Pyx_PyInt_As_int16_t(values[1]); if (unlikely((__pyx_v_y == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 38, __pyx_L3_error)
+    __pyx_v_w = __Pyx_PyInt_As_int16_t(values[2]); if (unlikely((__pyx_v_w == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 38, __pyx_L3_error)
+    __pyx_v_h = __Pyx_PyInt_As_int16_t(values[3]); if (unlikely((__pyx_v_h == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 38, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
@@ -3198,12 +3217,12 @@ static int __pyx_pw_9Component_9Component_5__init__(PyObject *__pyx_v_self, PyOb
   return __pyx_r;
 }
 
-static int __pyx_pf_9Component_9Component_4__init__(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_x, int __pyx_v_y, int __pyx_v_w, int __pyx_v_h) {
+static int __pyx_pf_9Component_9Component_4__init__(struct __pyx_obj_9Component_Component *__pyx_v_self, int16_t __pyx_v_x, int16_t __pyx_v_y, int16_t __pyx_v_w, int16_t __pyx_v_h) {
   int __pyx_r;
 
   /* "Component.pyx":39
  * 
- *     def __init__(self, int x, int y, int w, int h):
+ *     def __init__(self, int16_t x, int16_t y, int16_t w, int16_t h):
  *         self.X = x             # <<<<<<<<<<<<<<
  *         self._X = x
  *         self.Y = y
@@ -3211,7 +3230,7 @@ static int __pyx_pf_9Component_9Component_4__init__(struct __pyx_obj_9Component_
   __pyx_v_self->X = __pyx_v_x;
 
   /* "Component.pyx":40
- *     def __init__(self, int x, int y, int w, int h):
+ *     def __init__(self, int16_t x, int16_t y, int16_t w, int16_t h):
  *         self.X = x
  *         self._X = x             # <<<<<<<<<<<<<<
  *         self.Y = y
@@ -3258,7 +3277,7 @@ static int __pyx_pf_9Component_9Component_4__init__(struct __pyx_obj_9Component_
   /* "Component.pyx":38
  * 
  * 
- *     def __init__(self, int x, int y, int w, int h):             # <<<<<<<<<<<<<<
+ *     def __init__(self, int16_t x, int16_t y, int16_t w, int16_t h):             # <<<<<<<<<<<<<<
  *         self.X = x
  *         self._X = x
  */
@@ -3271,7 +3290,7 @@ static int __pyx_pf_9Component_9Component_4__init__(struct __pyx_obj_9Component_
 /* "Component.pyx":47
  * 
  * 
- *     cpdef void newMouseFields(self, int size):             # <<<<<<<<<<<<<<
+ *     cpdef void newMouseFields(self, uint16_t size):             # <<<<<<<<<<<<<<
  *         if self.MouseFields != NULL:
  *             free(self.MouseFields)
  */
@@ -3283,7 +3302,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static void __pyx_f_9Component_9Component_newMouseFields(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_size, int __pyx_skip_dispatch) {
+static void __pyx_f_9Component_9Component_newMouseFields(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_size, int __pyx_skip_dispatch) {
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -3308,7 +3327,7 @@ static void __pyx_f_9Component_9Component_newMouseFields(struct __pyx_obj_9Compo
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_newMouseFields); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 47, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_9Component_9Component_7newMouseFields)) {
-        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 47, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_size); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 47, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
@@ -3353,7 +3372,7 @@ static void __pyx_f_9Component_9Component_newMouseFields(struct __pyx_obj_9Compo
 
   /* "Component.pyx":48
  * 
- *     cpdef void newMouseFields(self, int size):
+ *     cpdef void newMouseFields(self, uint16_t size):
  *         if self.MouseFields != NULL:             # <<<<<<<<<<<<<<
  *             free(self.MouseFields)
  * 
@@ -3362,7 +3381,7 @@ static void __pyx_f_9Component_9Component_newMouseFields(struct __pyx_obj_9Compo
   if (__pyx_t_7) {
 
     /* "Component.pyx":49
- *     cpdef void newMouseFields(self, int size):
+ *     cpdef void newMouseFields(self, uint16_t size):
  *         if self.MouseFields != NULL:
  *             free(self.MouseFields)             # <<<<<<<<<<<<<<
  * 
@@ -3372,7 +3391,7 @@ static void __pyx_f_9Component_9Component_newMouseFields(struct __pyx_obj_9Compo
 
     /* "Component.pyx":48
  * 
- *     cpdef void newMouseFields(self, int size):
+ *     cpdef void newMouseFields(self, uint16_t size):
  *         if self.MouseFields != NULL:             # <<<<<<<<<<<<<<
  *             free(self.MouseFields)
  * 
@@ -3400,7 +3419,7 @@ static void __pyx_f_9Component_9Component_newMouseFields(struct __pyx_obj_9Compo
   /* "Component.pyx":47
  * 
  * 
- *     cpdef void newMouseFields(self, int size):             # <<<<<<<<<<<<<<
+ *     cpdef void newMouseFields(self, uint16_t size):             # <<<<<<<<<<<<<<
  *         if self.MouseFields != NULL:
  *             free(self.MouseFields)
  */
@@ -3434,7 +3453,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ) {
-  int __pyx_v_size;
+  uint16_t __pyx_v_size;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
@@ -3483,7 +3502,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
     } else {
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
     }
-    __pyx_v_size = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_size == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 47, __pyx_L3_error)
+    __pyx_v_size = __Pyx_PyInt_As_uint16_t(values[0]); if (unlikely((__pyx_v_size == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 47, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
@@ -3514,7 +3533,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9Component_9Component_6newMouseFields(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_size) {
+static PyObject *__pyx_pf_9Component_9Component_6newMouseFields(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_size) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3544,7 +3563,7 @@ static PyObject *__pyx_pf_9Component_9Component_6newMouseFields(struct __pyx_obj
 /* "Component.pyx":55
  * 
  * 
- *     cpdef void setMouseField(self, int Index, int X, int Y, int W, int H):             # <<<<<<<<<<<<<<
+ *     cpdef void setMouseField(self, uint16_t Index, int16_t X, int16_t Y, int16_t W, int16_t H):             # <<<<<<<<<<<<<<
  *         if self.MouseFields_Size > Index:
  *             self.MouseFields[Index].X = X
  */
@@ -3556,7 +3575,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static void __pyx_f_9Component_9Component_setMouseField(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_Index, int __pyx_v_X, int __pyx_v_Y, int __pyx_v_W, int __pyx_v_H, int __pyx_skip_dispatch) {
+static void __pyx_f_9Component_9Component_setMouseField(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_Index, int16_t __pyx_v_X, int16_t __pyx_v_Y, int16_t __pyx_v_W, int16_t __pyx_v_H, int __pyx_skip_dispatch) {
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -3585,15 +3604,15 @@ static void __pyx_f_9Component_9Component_setMouseField(struct __pyx_obj_9Compon
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_setMouseField); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 55, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_9Component_9Component_9setMouseField)) {
-        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_Index); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 55, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_Index); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 55, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_X); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 55, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_From_int16_t(__pyx_v_X); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 55, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_Y); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 55, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyInt_From_int16_t(__pyx_v_Y); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 55, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_W); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 55, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyInt_From_int16_t(__pyx_v_W); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 55, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_H); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 55, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_From_int16_t(__pyx_v_H); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 55, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_8 = __pyx_t_1; __pyx_t_9 = NULL;
@@ -3642,7 +3661,7 @@ static void __pyx_f_9Component_9Component_setMouseField(struct __pyx_obj_9Compon
 
   /* "Component.pyx":56
  * 
- *     cpdef void setMouseField(self, int Index, int X, int Y, int W, int H):
+ *     cpdef void setMouseField(self, uint16_t Index, int16_t X, int16_t Y, int16_t W, int16_t H):
  *         if self.MouseFields_Size > Index:             # <<<<<<<<<<<<<<
  *             self.MouseFields[Index].X = X
  *             self.MouseFields[Index].Y = Y
@@ -3651,7 +3670,7 @@ static void __pyx_f_9Component_9Component_setMouseField(struct __pyx_obj_9Compon
   if (__pyx_t_11) {
 
     /* "Component.pyx":57
- *     cpdef void setMouseField(self, int Index, int X, int Y, int W, int H):
+ *     cpdef void setMouseField(self, uint16_t Index, int16_t X, int16_t Y, int16_t W, int16_t H):
  *         if self.MouseFields_Size > Index:
  *             self.MouseFields[Index].X = X             # <<<<<<<<<<<<<<
  *             self.MouseFields[Index].Y = Y
@@ -3688,7 +3707,7 @@ static void __pyx_f_9Component_9Component_setMouseField(struct __pyx_obj_9Compon
 
     /* "Component.pyx":56
  * 
- *     cpdef void setMouseField(self, int Index, int X, int Y, int W, int H):
+ *     cpdef void setMouseField(self, uint16_t Index, int16_t X, int16_t Y, int16_t W, int16_t H):
  *         if self.MouseFields_Size > Index:             # <<<<<<<<<<<<<<
  *             self.MouseFields[Index].X = X
  *             self.MouseFields[Index].Y = Y
@@ -3698,7 +3717,7 @@ static void __pyx_f_9Component_9Component_setMouseField(struct __pyx_obj_9Compon
   /* "Component.pyx":55
  * 
  * 
- *     cpdef void setMouseField(self, int Index, int X, int Y, int W, int H):             # <<<<<<<<<<<<<<
+ *     cpdef void setMouseField(self, uint16_t Index, int16_t X, int16_t Y, int16_t W, int16_t H):             # <<<<<<<<<<<<<<
  *         if self.MouseFields_Size > Index:
  *             self.MouseFields[Index].X = X
  */
@@ -3736,11 +3755,11 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ) {
-  int __pyx_v_Index;
-  int __pyx_v_X;
-  int __pyx_v_Y;
-  int __pyx_v_W;
-  int __pyx_v_H;
+  uint16_t __pyx_v_Index;
+  int16_t __pyx_v_X;
+  int16_t __pyx_v_Y;
+  int16_t __pyx_v_W;
+  int16_t __pyx_v_H;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
@@ -3841,11 +3860,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[3] = __Pyx_Arg_FASTCALL(__pyx_args, 3);
       values[4] = __Pyx_Arg_FASTCALL(__pyx_args, 4);
     }
-    __pyx_v_Index = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_Index == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 55, __pyx_L3_error)
-    __pyx_v_X = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_X == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 55, __pyx_L3_error)
-    __pyx_v_Y = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_Y == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 55, __pyx_L3_error)
-    __pyx_v_W = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_W == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 55, __pyx_L3_error)
-    __pyx_v_H = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_H == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 55, __pyx_L3_error)
+    __pyx_v_Index = __Pyx_PyInt_As_uint16_t(values[0]); if (unlikely((__pyx_v_Index == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 55, __pyx_L3_error)
+    __pyx_v_X = __Pyx_PyInt_As_int16_t(values[1]); if (unlikely((__pyx_v_X == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 55, __pyx_L3_error)
+    __pyx_v_Y = __Pyx_PyInt_As_int16_t(values[2]); if (unlikely((__pyx_v_Y == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 55, __pyx_L3_error)
+    __pyx_v_W = __Pyx_PyInt_As_int16_t(values[3]); if (unlikely((__pyx_v_W == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 55, __pyx_L3_error)
+    __pyx_v_H = __Pyx_PyInt_As_int16_t(values[4]); if (unlikely((__pyx_v_H == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 55, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
@@ -3876,7 +3895,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9Component_9Component_8setMouseField(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_Index, int __pyx_v_X, int __pyx_v_Y, int __pyx_v_W, int __pyx_v_H) {
+static PyObject *__pyx_pf_9Component_9Component_8setMouseField(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_Index, int16_t __pyx_v_X, int16_t __pyx_v_Y, int16_t __pyx_v_W, int16_t __pyx_v_H) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -3906,8 +3925,8 @@ static PyObject *__pyx_pf_9Component_9Component_8setMouseField(struct __pyx_obj_
 /* "Component.pyx":63
  * 
  * 
- *     cpdef void setMouseField_DisplayPos(self, int index, int X, int Y, int W, int H):             # <<<<<<<<<<<<<<
- *         self.setMouseField(index, X - <int>self.X, Y - <int>self.Y, W, H)
+ *     cpdef void setMouseField_DisplayPos(self, uint16_t index, int16_t X, int16_t Y, int16_t W, int16_t H):             # <<<<<<<<<<<<<<
+ *         self.setMouseField(index, X - <int16_t>self.X, Y - <int16_t>self.Y, W, H)
  * 
  */
 
@@ -3918,7 +3937,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static void __pyx_f_9Component_9Component_setMouseField_DisplayPos(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_index, int __pyx_v_X, int __pyx_v_Y, int __pyx_v_W, int __pyx_v_H, int __pyx_skip_dispatch) {
+static void __pyx_f_9Component_9Component_setMouseField_DisplayPos(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_index, int16_t __pyx_v_X, int16_t __pyx_v_Y, int16_t __pyx_v_W, int16_t __pyx_v_H, int __pyx_skip_dispatch) {
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   PyObject *__pyx_t_2 = NULL;
@@ -3946,15 +3965,15 @@ static void __pyx_f_9Component_9Component_setMouseField_DisplayPos(struct __pyx_
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_setMouseField_DisplayPos); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 63, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_9Component_9Component_11setMouseField_DisplayPos)) {
-        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 63, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 63, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
-        __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_X); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 63, __pyx_L1_error)
+        __pyx_t_4 = __Pyx_PyInt_From_int16_t(__pyx_v_X); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 63, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_4);
-        __pyx_t_5 = __Pyx_PyInt_From_int(__pyx_v_Y); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 63, __pyx_L1_error)
+        __pyx_t_5 = __Pyx_PyInt_From_int16_t(__pyx_v_Y); if (unlikely(!__pyx_t_5)) __PYX_ERR(1, 63, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
-        __pyx_t_6 = __Pyx_PyInt_From_int(__pyx_v_W); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 63, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyInt_From_int16_t(__pyx_v_W); if (unlikely(!__pyx_t_6)) __PYX_ERR(1, 63, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_6);
-        __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_H); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 63, __pyx_L1_error)
+        __pyx_t_7 = __Pyx_PyInt_From_int16_t(__pyx_v_H); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 63, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_7);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_8 = __pyx_t_1; __pyx_t_9 = NULL;
@@ -4003,18 +4022,18 @@ static void __pyx_f_9Component_9Component_setMouseField_DisplayPos(struct __pyx_
 
   /* "Component.pyx":64
  * 
- *     cpdef void setMouseField_DisplayPos(self, int index, int X, int Y, int W, int H):
- *         self.setMouseField(index, X - <int>self.X, Y - <int>self.Y, W, H)             # <<<<<<<<<<<<<<
+ *     cpdef void setMouseField_DisplayPos(self, uint16_t index, int16_t X, int16_t Y, int16_t W, int16_t H):
+ *         self.setMouseField(index, X - <int16_t>self.X, Y - <int16_t>self.Y, W, H)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  ((struct __pyx_vtabstruct_9Component_Component *)__pyx_v_self->__pyx_vtab)->setMouseField(__pyx_v_self, __pyx_v_index, (__pyx_v_X - ((int)__pyx_v_self->X)), (__pyx_v_Y - ((int)__pyx_v_self->Y)), __pyx_v_W, __pyx_v_H, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 64, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_9Component_Component *)__pyx_v_self->__pyx_vtab)->setMouseField(__pyx_v_self, __pyx_v_index, (__pyx_v_X - ((int16_t)__pyx_v_self->X)), (__pyx_v_Y - ((int16_t)__pyx_v_self->Y)), __pyx_v_W, __pyx_v_H, 0); if (unlikely(PyErr_Occurred())) __PYX_ERR(1, 64, __pyx_L1_error)
 
   /* "Component.pyx":63
  * 
  * 
- *     cpdef void setMouseField_DisplayPos(self, int index, int X, int Y, int W, int H):             # <<<<<<<<<<<<<<
- *         self.setMouseField(index, X - <int>self.X, Y - <int>self.Y, W, H)
+ *     cpdef void setMouseField_DisplayPos(self, uint16_t index, int16_t X, int16_t Y, int16_t W, int16_t H):             # <<<<<<<<<<<<<<
+ *         self.setMouseField(index, X - <int16_t>self.X, Y - <int16_t>self.Y, W, H)
  * 
  */
 
@@ -4051,11 +4070,11 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ) {
-  int __pyx_v_index;
-  int __pyx_v_X;
-  int __pyx_v_Y;
-  int __pyx_v_W;
-  int __pyx_v_H;
+  uint16_t __pyx_v_index;
+  int16_t __pyx_v_X;
+  int16_t __pyx_v_Y;
+  int16_t __pyx_v_W;
+  int16_t __pyx_v_H;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
   #endif
@@ -4156,11 +4175,11 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[3] = __Pyx_Arg_FASTCALL(__pyx_args, 3);
       values[4] = __Pyx_Arg_FASTCALL(__pyx_args, 4);
     }
-    __pyx_v_index = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_index == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 63, __pyx_L3_error)
-    __pyx_v_X = __Pyx_PyInt_As_int(values[1]); if (unlikely((__pyx_v_X == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 63, __pyx_L3_error)
-    __pyx_v_Y = __Pyx_PyInt_As_int(values[2]); if (unlikely((__pyx_v_Y == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 63, __pyx_L3_error)
-    __pyx_v_W = __Pyx_PyInt_As_int(values[3]); if (unlikely((__pyx_v_W == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 63, __pyx_L3_error)
-    __pyx_v_H = __Pyx_PyInt_As_int(values[4]); if (unlikely((__pyx_v_H == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 63, __pyx_L3_error)
+    __pyx_v_index = __Pyx_PyInt_As_uint16_t(values[0]); if (unlikely((__pyx_v_index == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 63, __pyx_L3_error)
+    __pyx_v_X = __Pyx_PyInt_As_int16_t(values[1]); if (unlikely((__pyx_v_X == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 63, __pyx_L3_error)
+    __pyx_v_Y = __Pyx_PyInt_As_int16_t(values[2]); if (unlikely((__pyx_v_Y == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 63, __pyx_L3_error)
+    __pyx_v_W = __Pyx_PyInt_As_int16_t(values[3]); if (unlikely((__pyx_v_W == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 63, __pyx_L3_error)
+    __pyx_v_H = __Pyx_PyInt_As_int16_t(values[4]); if (unlikely((__pyx_v_H == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 63, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
@@ -4191,7 +4210,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9Component_9Component_10setMouseField_DisplayPos(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_index, int __pyx_v_X, int __pyx_v_Y, int __pyx_v_W, int __pyx_v_H) {
+static PyObject *__pyx_pf_9Component_9Component_10setMouseField_DisplayPos(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_index, int16_t __pyx_v_X, int16_t __pyx_v_Y, int16_t __pyx_v_W, int16_t __pyx_v_H) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4221,7 +4240,7 @@ static PyObject *__pyx_pf_9Component_9Component_10setMouseField_DisplayPos(struc
 /* "Component.pyx":67
  * 
  * 
- *     cpdef bint collidepoint(self, int index, tuple point):             # <<<<<<<<<<<<<<
+ *     cpdef bint collidepoint(self, uint16_t index, tuple point):             # <<<<<<<<<<<<<<
  * 
  *         if index >= self.MouseFields_Size or index < 0:
  */
@@ -4233,11 +4252,11 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ); /*proto*/
-static int __pyx_f_9Component_9Component_collidepoint(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_index, PyObject *__pyx_v_point, int __pyx_skip_dispatch) {
-  int __pyx_v_x;
-  int __pyx_v_y;
-  int __pyx_v_cX;
-  int __pyx_v_cY;
+static int __pyx_f_9Component_9Component_collidepoint(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_index, PyObject *__pyx_v_point, int __pyx_skip_dispatch) {
+  int16_t __pyx_v_x;
+  int16_t __pyx_v_y;
+  int16_t __pyx_v_cX;
+  int16_t __pyx_v_cY;
   int __pyx_r;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
@@ -4248,7 +4267,7 @@ static int __pyx_f_9Component_9Component_collidepoint(struct __pyx_obj_9Componen
   unsigned int __pyx_t_6;
   int __pyx_t_7;
   int __pyx_t_8;
-  int __pyx_t_9;
+  int16_t __pyx_t_9;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
@@ -4265,7 +4284,7 @@ static int __pyx_f_9Component_9Component_collidepoint(struct __pyx_obj_9Componen
       __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_n_s_collidepoint); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 67, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void*) __pyx_pw_9Component_9Component_13collidepoint)) {
-        __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 67, __pyx_L1_error)
+        __pyx_t_3 = __Pyx_PyInt_From_uint16_t(__pyx_v_index); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 67, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_3);
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; __pyx_t_5 = NULL;
@@ -4311,7 +4330,7 @@ static int __pyx_f_9Component_9Component_collidepoint(struct __pyx_obj_9Componen
   }
 
   /* "Component.pyx":69
- *     cpdef bint collidepoint(self, int index, tuple point):
+ *     cpdef bint collidepoint(self, uint16_t index, tuple point):
  * 
  *         if index >= self.MouseFields_Size or index < 0:             # <<<<<<<<<<<<<<
  *             return False
@@ -4333,13 +4352,13 @@ static int __pyx_f_9Component_9Component_collidepoint(struct __pyx_obj_9Componen
  *         if index >= self.MouseFields_Size or index < 0:
  *             return False             # <<<<<<<<<<<<<<
  * 
- *         cdef int x = <int> point[0]
+ *         cdef int16_t x = <int16_t> point[0]
  */
     __pyx_r = 0;
     goto __pyx_L0;
 
     /* "Component.pyx":69
- *     cpdef bint collidepoint(self, int index, tuple point):
+ *     cpdef bint collidepoint(self, uint16_t index, tuple point):
  * 
  *         if index >= self.MouseFields_Size or index < 0:             # <<<<<<<<<<<<<<
  *             return False
@@ -4350,51 +4369,51 @@ static int __pyx_f_9Component_9Component_collidepoint(struct __pyx_obj_9Componen
   /* "Component.pyx":72
  *             return False
  * 
- *         cdef int x = <int> point[0]             # <<<<<<<<<<<<<<
- *         cdef int y = <int> point[1]
+ *         cdef int16_t x = <int16_t> point[0]             # <<<<<<<<<<<<<<
+ *         cdef int16_t y = <int16_t> point[1]
  * 
  */
   if (unlikely(__pyx_v_point == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 72, __pyx_L1_error)
   }
-  __pyx_t_9 = __Pyx_PyInt_As_int(PyTuple_GET_ITEM(__pyx_v_point, 0)); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 72, __pyx_L1_error)
-  __pyx_v_x = ((int)__pyx_t_9);
+  __pyx_t_9 = __Pyx_PyInt_As_int16_t(PyTuple_GET_ITEM(__pyx_v_point, 0)); if (unlikely((__pyx_t_9 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 72, __pyx_L1_error)
+  __pyx_v_x = ((int16_t)__pyx_t_9);
 
   /* "Component.pyx":73
  * 
- *         cdef int x = <int> point[0]
- *         cdef int y = <int> point[1]             # <<<<<<<<<<<<<<
+ *         cdef int16_t x = <int16_t> point[0]
+ *         cdef int16_t y = <int16_t> point[1]             # <<<<<<<<<<<<<<
  * 
- *         cdef int cX = <int> self.X + self.MouseFields[index].X
+ *         cdef int16_t cX = <int16_t> self.X + self.MouseFields[index].X
  */
   if (unlikely(__pyx_v_point == Py_None)) {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not subscriptable");
     __PYX_ERR(1, 73, __pyx_L1_error)
   }
-  __pyx_t_9 = __Pyx_PyInt_As_int(PyTuple_GET_ITEM(__pyx_v_point, 1)); if (unlikely((__pyx_t_9 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 73, __pyx_L1_error)
-  __pyx_v_y = ((int)__pyx_t_9);
+  __pyx_t_9 = __Pyx_PyInt_As_int16_t(PyTuple_GET_ITEM(__pyx_v_point, 1)); if (unlikely((__pyx_t_9 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 73, __pyx_L1_error)
+  __pyx_v_y = ((int16_t)__pyx_t_9);
 
   /* "Component.pyx":75
- *         cdef int y = <int> point[1]
+ *         cdef int16_t y = <int16_t> point[1]
  * 
- *         cdef int cX = <int> self.X + self.MouseFields[index].X             # <<<<<<<<<<<<<<
- *         cdef int cY = <int> self.Y + self.MouseFields[index].Y
+ *         cdef int16_t cX = <int16_t> self.X + self.MouseFields[index].X             # <<<<<<<<<<<<<<
+ *         cdef int16_t cY = <int16_t> self.Y + self.MouseFields[index].Y
  * 
  */
-  __pyx_v_cX = (((int)__pyx_v_self->X) + (__pyx_v_self->MouseFields[__pyx_v_index]).X);
+  __pyx_v_cX = (((int16_t)__pyx_v_self->X) + (__pyx_v_self->MouseFields[__pyx_v_index]).X);
 
   /* "Component.pyx":76
  * 
- *         cdef int cX = <int> self.X + self.MouseFields[index].X
- *         cdef int cY = <int> self.Y + self.MouseFields[index].Y             # <<<<<<<<<<<<<<
+ *         cdef int16_t cX = <int16_t> self.X + self.MouseFields[index].X
+ *         cdef int16_t cY = <int16_t> self.Y + self.MouseFields[index].Y             # <<<<<<<<<<<<<<
  * 
  *         return x > cX and y > cY and x < cX + self.MouseFields[index].W and y < cY + self.MouseFields[index].H
  */
-  __pyx_v_cY = (((int)__pyx_v_self->Y) + (__pyx_v_self->MouseFields[__pyx_v_index]).Y);
+  __pyx_v_cY = (((int16_t)__pyx_v_self->Y) + (__pyx_v_self->MouseFields[__pyx_v_index]).Y);
 
   /* "Component.pyx":78
- *         cdef int cY = <int> self.Y + self.MouseFields[index].Y
+ *         cdef int16_t cY = <int16_t> self.Y + self.MouseFields[index].Y
  * 
  *         return x > cX and y > cY and x < cX + self.MouseFields[index].W and y < cY + self.MouseFields[index].H             # <<<<<<<<<<<<<<
  * 
@@ -4427,7 +4446,7 @@ static int __pyx_f_9Component_9Component_collidepoint(struct __pyx_obj_9Componen
   /* "Component.pyx":67
  * 
  * 
- *     cpdef bint collidepoint(self, int index, tuple point):             # <<<<<<<<<<<<<<
+ *     cpdef bint collidepoint(self, uint16_t index, tuple point):             # <<<<<<<<<<<<<<
  * 
  *         if index >= self.MouseFields_Size or index < 0:
  */
@@ -4462,7 +4481,7 @@ PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
 PyObject *__pyx_args, PyObject *__pyx_kwds
 #endif
 ) {
-  int __pyx_v_index;
+  uint16_t __pyx_v_index;
   PyObject *__pyx_v_point = 0;
   #if !CYTHON_METH_FASTCALL
   CYTHON_UNUSED Py_ssize_t __pyx_nargs;
@@ -4525,7 +4544,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
       values[0] = __Pyx_Arg_FASTCALL(__pyx_args, 0);
       values[1] = __Pyx_Arg_FASTCALL(__pyx_args, 1);
     }
-    __pyx_v_index = __Pyx_PyInt_As_int(values[0]); if (unlikely((__pyx_v_index == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 67, __pyx_L3_error)
+    __pyx_v_index = __Pyx_PyInt_As_uint16_t(values[0]); if (unlikely((__pyx_v_index == ((uint16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 67, __pyx_L3_error)
     __pyx_v_point = ((PyObject*)values[1]);
   }
   goto __pyx_L6_skip;
@@ -4562,7 +4581,7 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_9Component_9Component_12collidepoint(struct __pyx_obj_9Component_Component *__pyx_v_self, int __pyx_v_index, PyObject *__pyx_v_point) {
+static PyObject *__pyx_pf_9Component_9Component_12collidepoint(struct __pyx_obj_9Component_Component *__pyx_v_self, uint16_t __pyx_v_index, PyObject *__pyx_v_point) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   int __pyx_t_1;
@@ -6549,9 +6568,9 @@ static PyObject *__pyx_f_9Component_9Component_calculateRect(struct __pyx_obj_9C
     __Pyx_GOTREF(__pyx_t_10);
     __pyx_t_9 = PyFloat_FromDouble(__pyx_v_self->Y); if (unlikely(!__pyx_t_9)) __PYX_ERR(1, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->W); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 142, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int16_t(__pyx_v_self->W); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->H); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 142, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int16_t(__pyx_v_self->H); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 142, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_11 = NULL;
     __pyx_t_5 = 0;
@@ -6797,7 +6816,7 @@ static PyObject *__pyx_f_9Component_9Component_calculateTrailRect_X(struct __pyx
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_7 = __Pyx_PyInt_From_long((((int)fabsf(__pyx_v_dx)) + 1)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 150, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyInt_From_int(__pyx_v_self->H); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 150, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyInt_From_int16_t(__pyx_v_self->H); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 150, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_9 = NULL;
     __pyx_t_5 = 0;
@@ -6855,7 +6874,7 @@ static PyObject *__pyx_f_9Component_9Component_calculateTrailRect_X(struct __pyx
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_4 = __Pyx_PyInt_From_long((((int)fabsf(__pyx_v_dx)) + 1)); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 152, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyInt_From_int(__pyx_v_self->H); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 152, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyInt_From_int16_t(__pyx_v_self->H); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 152, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_9 = NULL;
     __pyx_t_5 = 0;
@@ -7099,7 +7118,7 @@ static PyObject *__pyx_f_9Component_9Component_calculateTrailRect_Y(struct __pyx
     __Pyx_GOTREF(__pyx_t_3);
     __pyx_t_4 = __Pyx_PyInt_From_long((((int)__pyx_v_self->_Y) - 1)); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_7 = __Pyx_PyInt_From_int(__pyx_v_self->W); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 159, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyInt_From_int16_t(__pyx_v_self->W); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
     __pyx_t_8 = __Pyx_PyInt_From_long((((int)fabsf(__pyx_v_dy)) + 1)); if (unlikely(!__pyx_t_8)) __PYX_ERR(1, 159, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
@@ -7157,7 +7176,7 @@ static PyObject *__pyx_f_9Component_9Component_calculateTrailRect_Y(struct __pyx
     __Pyx_GOTREF(__pyx_t_8);
     __pyx_t_7 = __Pyx_PyInt_From_int((((int)__pyx_v_self->Y) + __pyx_v_self->H)); if (unlikely(!__pyx_t_7)) __PYX_ERR(1, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_4 = __Pyx_PyInt_From_int(__pyx_v_self->W); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 161, __pyx_L1_error)
+    __pyx_t_4 = __Pyx_PyInt_From_int16_t(__pyx_v_self->W); if (unlikely(!__pyx_t_4)) __PYX_ERR(1, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
     __pyx_t_3 = __Pyx_PyInt_From_long((((int)fabsf(__pyx_v_dy)) + 1)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 161, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
@@ -8291,7 +8310,7 @@ static int __pyx_pf_9Component_9Component_2_X_2__set__(struct __pyx_obj_9Compone
  *     cdef public float _X
  *     cdef public float _Y             # <<<<<<<<<<<<<<
  * 
- *     cdef public int W
+ *     cdef public int16_t W
  */
 
 /* Python wrapper */
@@ -8372,8 +8391,8 @@ static int __pyx_pf_9Component_9Component_2_Y_2__set__(struct __pyx_obj_9Compone
 /* "Component.pyx":22
  *     cdef public float _Y
  * 
- *     cdef public int W             # <<<<<<<<<<<<<<
- *     cdef public int H
+ *     cdef public int16_t W             # <<<<<<<<<<<<<<
+ *     cdef public int16_t H
  * 
  */
 
@@ -8401,7 +8420,7 @@ static PyObject *__pyx_pf_9Component_9Component_1W___get__(struct __pyx_obj_9Com
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->W); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 22, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int16_t(__pyx_v_self->W); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 22, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -8435,11 +8454,11 @@ static int __pyx_pw_9Component_9Component_1W_3__set__(PyObject *__pyx_v_self, Py
 
 static int __pyx_pf_9Component_9Component_1W_2__set__(struct __pyx_obj_9Component_Component *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
-  int __pyx_t_1;
+  int16_t __pyx_t_1;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 22, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 22, __pyx_L1_error)
   __pyx_v_self->W = __pyx_t_1;
 
   /* function exit code */
@@ -8454,8 +8473,8 @@ static int __pyx_pf_9Component_9Component_1W_2__set__(struct __pyx_obj_9Componen
 
 /* "Component.pyx":23
  * 
- *     cdef public int W
- *     cdef public int H             # <<<<<<<<<<<<<<
+ *     cdef public int16_t W
+ *     cdef public int16_t H             # <<<<<<<<<<<<<<
  * 
  *     cdef MouseField *MouseFields
  */
@@ -8484,7 +8503,7 @@ static PyObject *__pyx_pf_9Component_9Component_1H___get__(struct __pyx_obj_9Com
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("__get__", 1);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_self->H); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 23, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int16_t(__pyx_v_self->H); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 23, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -8518,11 +8537,11 @@ static int __pyx_pw_9Component_9Component_1H_3__set__(PyObject *__pyx_v_self, Py
 
 static int __pyx_pf_9Component_9Component_1H_2__set__(struct __pyx_obj_9Component_Component *__pyx_v_self, PyObject *__pyx_v_value) {
   int __pyx_r;
-  int __pyx_t_1;
+  int16_t __pyx_t_1;
   int __pyx_lineno = 0;
   const char *__pyx_filename = NULL;
   int __pyx_clineno = 0;
-  __pyx_t_1 = __Pyx_PyInt_As_int(__pyx_v_value); if (unlikely((__pyx_t_1 == (int)-1) && PyErr_Occurred())) __PYX_ERR(1, 23, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_As_int16_t(__pyx_v_value); if (unlikely((__pyx_t_1 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(1, 23, __pyx_L1_error)
   __pyx_v_self->H = __pyx_t_1;
 
   /* function exit code */
@@ -9131,7 +9150,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "Component.pyx":47
  * 
  * 
- *     cpdef void newMouseFields(self, int size):             # <<<<<<<<<<<<<<
+ *     cpdef void newMouseFields(self, uint16_t size):             # <<<<<<<<<<<<<<
  *         if self.MouseFields != NULL:
  *             free(self.MouseFields)
  */
@@ -9143,7 +9162,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "Component.pyx":55
  * 
  * 
- *     cpdef void setMouseField(self, int Index, int X, int Y, int W, int H):             # <<<<<<<<<<<<<<
+ *     cpdef void setMouseField(self, uint16_t Index, int16_t X, int16_t Y, int16_t W, int16_t H):             # <<<<<<<<<<<<<<
  *         if self.MouseFields_Size > Index:
  *             self.MouseFields[Index].X = X
  */
@@ -9155,8 +9174,8 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "Component.pyx":63
  * 
  * 
- *     cpdef void setMouseField_DisplayPos(self, int index, int X, int Y, int W, int H):             # <<<<<<<<<<<<<<
- *         self.setMouseField(index, X - <int>self.X, Y - <int>self.Y, W, H)
+ *     cpdef void setMouseField_DisplayPos(self, uint16_t index, int16_t X, int16_t Y, int16_t W, int16_t H):             # <<<<<<<<<<<<<<
+ *         self.setMouseField(index, X - <int16_t>self.X, Y - <int16_t>self.Y, W, H)
  * 
  */
   __pyx_tuple__6 = PyTuple_Pack(6, __pyx_n_s_self, __pyx_n_s_index, __pyx_n_s_X, __pyx_n_s_Y, __pyx_n_s_W, __pyx_n_s_H); if (unlikely(!__pyx_tuple__6)) __PYX_ERR(1, 63, __pyx_L1_error)
@@ -9167,7 +9186,7 @@ static CYTHON_SMALL_CODE int __Pyx_InitCachedConstants(void) {
   /* "Component.pyx":67
  * 
  * 
- *     cpdef bint collidepoint(self, int index, tuple point):             # <<<<<<<<<<<<<<
+ *     cpdef bint collidepoint(self, uint16_t index, tuple point):             # <<<<<<<<<<<<<<
  * 
  *         if index >= self.MouseFields_Size or index < 0:
  */
@@ -9404,10 +9423,10 @@ static int __Pyx_modinit_type_init_code(void) {
   __Pyx_RefNannySetupContext("__Pyx_modinit_type_init_code", 0);
   /*--- Type init code ---*/
   __pyx_vtabptr_9Component_Component = &__pyx_vtable_9Component_Component;
-  __pyx_vtable_9Component_Component.newMouseFields = (void (*)(struct __pyx_obj_9Component_Component *, int, int __pyx_skip_dispatch))__pyx_f_9Component_9Component_newMouseFields;
-  __pyx_vtable_9Component_Component.setMouseField = (void (*)(struct __pyx_obj_9Component_Component *, int, int, int, int, int, int __pyx_skip_dispatch))__pyx_f_9Component_9Component_setMouseField;
-  __pyx_vtable_9Component_Component.setMouseField_DisplayPos = (void (*)(struct __pyx_obj_9Component_Component *, int, int, int, int, int, int __pyx_skip_dispatch))__pyx_f_9Component_9Component_setMouseField_DisplayPos;
-  __pyx_vtable_9Component_Component.collidepoint = (int (*)(struct __pyx_obj_9Component_Component *, int, PyObject *, int __pyx_skip_dispatch))__pyx_f_9Component_9Component_collidepoint;
+  __pyx_vtable_9Component_Component.newMouseFields = (void (*)(struct __pyx_obj_9Component_Component *, uint16_t, int __pyx_skip_dispatch))__pyx_f_9Component_9Component_newMouseFields;
+  __pyx_vtable_9Component_Component.setMouseField = (void (*)(struct __pyx_obj_9Component_Component *, uint16_t, int16_t, int16_t, int16_t, int16_t, int __pyx_skip_dispatch))__pyx_f_9Component_9Component_setMouseField;
+  __pyx_vtable_9Component_Component.setMouseField_DisplayPos = (void (*)(struct __pyx_obj_9Component_Component *, uint16_t, int16_t, int16_t, int16_t, int16_t, int __pyx_skip_dispatch))__pyx_f_9Component_9Component_setMouseField_DisplayPos;
+  __pyx_vtable_9Component_Component.collidepoint = (int (*)(struct __pyx_obj_9Component_Component *, uint16_t, PyObject *, int __pyx_skip_dispatch))__pyx_f_9Component_9Component_collidepoint;
   __pyx_vtable_9Component_Component.MoveTo = (void (*)(struct __pyx_obj_9Component_Component *, float, float, int __pyx_skip_dispatch))__pyx_f_9Component_9Component_MoveTo;
   __pyx_vtable_9Component_Component.Animate_X = (void (*)(struct __pyx_obj_9Component_Component *, float, float, float, int __pyx_skip_dispatch))__pyx_f_9Component_9Component_Animate_X;
   __pyx_vtable_9Component_Component.Animate_Y = (void (*)(struct __pyx_obj_9Component_Component *, float, float, float, int __pyx_skip_dispatch))__pyx_f_9Component_9Component_Animate_Y;
@@ -9775,7 +9794,7 @@ if (!__Pyx_RefNanny) {
   /* "Component.pyx":47
  * 
  * 
- *     cpdef void newMouseFields(self, int size):             # <<<<<<<<<<<<<<
+ *     cpdef void newMouseFields(self, uint16_t size):             # <<<<<<<<<<<<<<
  *         if self.MouseFields != NULL:
  *             free(self.MouseFields)
  */
@@ -9788,7 +9807,7 @@ if (!__Pyx_RefNanny) {
   /* "Component.pyx":55
  * 
  * 
- *     cpdef void setMouseField(self, int Index, int X, int Y, int W, int H):             # <<<<<<<<<<<<<<
+ *     cpdef void setMouseField(self, uint16_t Index, int16_t X, int16_t Y, int16_t W, int16_t H):             # <<<<<<<<<<<<<<
  *         if self.MouseFields_Size > Index:
  *             self.MouseFields[Index].X = X
  */
@@ -9801,8 +9820,8 @@ if (!__Pyx_RefNanny) {
   /* "Component.pyx":63
  * 
  * 
- *     cpdef void setMouseField_DisplayPos(self, int index, int X, int Y, int W, int H):             # <<<<<<<<<<<<<<
- *         self.setMouseField(index, X - <int>self.X, Y - <int>self.Y, W, H)
+ *     cpdef void setMouseField_DisplayPos(self, uint16_t index, int16_t X, int16_t Y, int16_t W, int16_t H):             # <<<<<<<<<<<<<<
+ *         self.setMouseField(index, X - <int16_t>self.X, Y - <int16_t>self.Y, W, H)
  * 
  */
   __pyx_t_3 = __Pyx_CyFunction_New(&__pyx_mdef_9Component_9Component_11setMouseField_DisplayPos, __Pyx_CYFUNCTION_CCLASS, __pyx_n_s_Component_setMouseField_DisplayP, NULL, __pyx_n_s_Component, __pyx_d, ((PyObject *)__pyx_codeobj__7)); if (unlikely(!__pyx_t_3)) __PYX_ERR(1, 63, __pyx_L1_error)
@@ -9814,7 +9833,7 @@ if (!__Pyx_RefNanny) {
   /* "Component.pyx":67
  * 
  * 
- *     cpdef bint collidepoint(self, int index, tuple point):             # <<<<<<<<<<<<<<
+ *     cpdef bint collidepoint(self, uint16_t index, tuple point):             # <<<<<<<<<<<<<<
  * 
  *         if index >= self.MouseFields_Size or index < 0:
  */
@@ -13509,6 +13528,540 @@ bad:
     }
 
 /* CIntFromPy */
+static CYTHON_INLINE int16_t __Pyx_PyInt_As_int16_t(PyObject *x) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const int16_t neg_one = (int16_t) -1, const_zero = (int16_t) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
+        if ((sizeof(int16_t) < sizeof(long))) {
+            __PYX_VERIFY_RETURN_INT(int16_t, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (int16_t) val;
+        }
+    }
+#endif
+    if (unlikely(!PyLong_Check(x))) {
+        int16_t val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (int16_t) -1;
+        val = __Pyx_PyInt_As_int16_t(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+    if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+        if (unlikely(__Pyx_PyLong_IsNeg(x))) {
+            goto raise_neg_overflow;
+        } else if (__Pyx_PyLong_IsCompact(x)) {
+            __PYX_VERIFY_RETURN_INT(int16_t, __Pyx_compact_upylong, __Pyx_PyLong_CompactValueUnsigned(x))
+        } else {
+            const digit* digits = __Pyx_PyLong_Digits(x);
+            assert(__Pyx_PyLong_DigitCount(x) > 1);
+            switch (__Pyx_PyLong_DigitCount(x)) {
+                case 2:
+                    if ((8 * sizeof(int16_t) > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(int16_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(int16_t) >= 2 * PyLong_SHIFT)) {
+                            return (int16_t) (((((int16_t)digits[1]) << PyLong_SHIFT) | (int16_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if ((8 * sizeof(int16_t) > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(int16_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(int16_t) >= 3 * PyLong_SHIFT)) {
+                            return (int16_t) (((((((int16_t)digits[2]) << PyLong_SHIFT) | (int16_t)digits[1]) << PyLong_SHIFT) | (int16_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if ((8 * sizeof(int16_t) > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(int16_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(int16_t) >= 4 * PyLong_SHIFT)) {
+                            return (int16_t) (((((((((int16_t)digits[3]) << PyLong_SHIFT) | (int16_t)digits[2]) << PyLong_SHIFT) | (int16_t)digits[1]) << PyLong_SHIFT) | (int16_t)digits[0]));
+                        }
+                    }
+                    break;
+            }
+        }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX < 0x030C00A7
+        if (unlikely(Py_SIZE(x) < 0)) {
+            goto raise_neg_overflow;
+        }
+#else
+        {
+            int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+            if (unlikely(result < 0))
+                return (int16_t) -1;
+            if (unlikely(result == 1))
+                goto raise_neg_overflow;
+        }
+#endif
+        if ((sizeof(int16_t) <= sizeof(unsigned long))) {
+            __PYX_VERIFY_RETURN_INT_EXC(int16_t, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+        } else if ((sizeof(int16_t) <= sizeof(unsigned PY_LONG_LONG))) {
+            __PYX_VERIFY_RETURN_INT_EXC(int16_t, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+        }
+    } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+        if (__Pyx_PyLong_IsCompact(x)) {
+            __PYX_VERIFY_RETURN_INT(int16_t, __Pyx_compact_pylong, __Pyx_PyLong_CompactValue(x))
+        } else {
+            const digit* digits = __Pyx_PyLong_Digits(x);
+            assert(__Pyx_PyLong_DigitCount(x) > 1);
+            switch (__Pyx_PyLong_SignedDigitCount(x)) {
+                case -2:
+                    if ((8 * sizeof(int16_t) - 1 > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(int16_t, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(int16_t) - 1 > 2 * PyLong_SHIFT)) {
+                            return (int16_t) (((int16_t)-1)*(((((int16_t)digits[1]) << PyLong_SHIFT) | (int16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if ((8 * sizeof(int16_t) > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(int16_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(int16_t) - 1 > 2 * PyLong_SHIFT)) {
+                            return (int16_t) ((((((int16_t)digits[1]) << PyLong_SHIFT) | (int16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if ((8 * sizeof(int16_t) - 1 > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(int16_t, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(int16_t) - 1 > 3 * PyLong_SHIFT)) {
+                            return (int16_t) (((int16_t)-1)*(((((((int16_t)digits[2]) << PyLong_SHIFT) | (int16_t)digits[1]) << PyLong_SHIFT) | (int16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if ((8 * sizeof(int16_t) > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(int16_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(int16_t) - 1 > 3 * PyLong_SHIFT)) {
+                            return (int16_t) ((((((((int16_t)digits[2]) << PyLong_SHIFT) | (int16_t)digits[1]) << PyLong_SHIFT) | (int16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if ((8 * sizeof(int16_t) - 1 > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(int16_t, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(int16_t) - 1 > 4 * PyLong_SHIFT)) {
+                            return (int16_t) (((int16_t)-1)*(((((((((int16_t)digits[3]) << PyLong_SHIFT) | (int16_t)digits[2]) << PyLong_SHIFT) | (int16_t)digits[1]) << PyLong_SHIFT) | (int16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if ((8 * sizeof(int16_t) > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(int16_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(int16_t) - 1 > 4 * PyLong_SHIFT)) {
+                            return (int16_t) ((((((((((int16_t)digits[3]) << PyLong_SHIFT) | (int16_t)digits[2]) << PyLong_SHIFT) | (int16_t)digits[1]) << PyLong_SHIFT) | (int16_t)digits[0])));
+                        }
+                    }
+                    break;
+            }
+        }
+#endif
+        if ((sizeof(int16_t) <= sizeof(long))) {
+            __PYX_VERIFY_RETURN_INT_EXC(int16_t, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+        } else if ((sizeof(int16_t) <= sizeof(PY_LONG_LONG))) {
+            __PYX_VERIFY_RETURN_INT_EXC(int16_t, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+        }
+    }
+    {
+        int16_t val;
+        int ret = -1;
+#if PY_VERSION_HEX >= 0x030d00A6 && !CYTHON_COMPILING_IN_LIMITED_API
+        Py_ssize_t bytes_copied = PyLong_AsNativeBytes(
+            x, &val, sizeof(val), Py_ASNATIVEBYTES_NATIVE_ENDIAN | (is_unsigned ? Py_ASNATIVEBYTES_UNSIGNED_BUFFER | Py_ASNATIVEBYTES_REJECT_NEGATIVE : 0));
+        if (unlikely(bytes_copied == -1)) {
+        } else if (unlikely(bytes_copied > (Py_ssize_t) sizeof(val))) {
+            goto raise_overflow;
+        } else {
+            ret = 0;
+        }
+#elif PY_VERSION_HEX < 0x030d0000 && !(CYTHON_COMPILING_IN_PYPY || CYTHON_COMPILING_IN_LIMITED_API) || defined(_PyLong_AsByteArray)
+        int one = 1; int is_little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&val;
+        ret = _PyLong_AsByteArray((PyLongObject *)x,
+                                    bytes, sizeof(val),
+                                    is_little, !is_unsigned);
+#else
+        PyObject *v;
+        PyObject *stepval = NULL, *mask = NULL, *shift = NULL;
+        int bits, remaining_bits, is_negative = 0;
+        int chunk_size = (sizeof(long) < 8) ? 30 : 62;
+        if (likely(PyLong_CheckExact(x))) {
+            v = __Pyx_NewRef(x);
+        } else {
+            v = PyNumber_Long(x);
+            if (unlikely(!v)) return (int16_t) -1;
+            assert(PyLong_CheckExact(v));
+        }
+        {
+            int result = PyObject_RichCompareBool(v, Py_False, Py_LT);
+            if (unlikely(result < 0)) {
+                Py_DECREF(v);
+                return (int16_t) -1;
+            }
+            is_negative = result == 1;
+        }
+        if (is_unsigned && unlikely(is_negative)) {
+            Py_DECREF(v);
+            goto raise_neg_overflow;
+        } else if (is_negative) {
+            stepval = PyNumber_Invert(v);
+            Py_DECREF(v);
+            if (unlikely(!stepval))
+                return (int16_t) -1;
+        } else {
+            stepval = v;
+        }
+        v = NULL;
+        val = (int16_t) 0;
+        mask = PyLong_FromLong((1L << chunk_size) - 1); if (unlikely(!mask)) goto done;
+        shift = PyLong_FromLong(chunk_size); if (unlikely(!shift)) goto done;
+        for (bits = 0; bits < (int) sizeof(int16_t) * 8 - chunk_size; bits += chunk_size) {
+            PyObject *tmp, *digit;
+            long idigit;
+            digit = PyNumber_And(stepval, mask);
+            if (unlikely(!digit)) goto done;
+            idigit = PyLong_AsLong(digit);
+            Py_DECREF(digit);
+            if (unlikely(idigit < 0)) goto done;
+            val |= ((int16_t) idigit) << bits;
+            tmp = PyNumber_Rshift(stepval, shift);
+            if (unlikely(!tmp)) goto done;
+            Py_DECREF(stepval); stepval = tmp;
+        }
+        Py_DECREF(shift); shift = NULL;
+        Py_DECREF(mask); mask = NULL;
+        {
+            long idigit = PyLong_AsLong(stepval);
+            if (unlikely(idigit < 0)) goto done;
+            remaining_bits = ((int) sizeof(int16_t) * 8) - bits - (is_unsigned ? 0 : 1);
+            if (unlikely(idigit >= (1L << remaining_bits)))
+                goto raise_overflow;
+            val |= ((int16_t) idigit) << bits;
+        }
+        if (!is_unsigned) {
+            if (unlikely(val & (((int16_t) 1) << (sizeof(int16_t) * 8 - 1))))
+                goto raise_overflow;
+            if (is_negative)
+                val = ~val;
+        }
+        ret = 0;
+    done:
+        Py_XDECREF(shift);
+        Py_XDECREF(mask);
+        Py_XDECREF(stepval);
+#endif
+        if (unlikely(ret))
+            return (int16_t) -1;
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to int16_t");
+    return (int16_t) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to int16_t");
+    return (int16_t) -1;
+}
+
+/* CIntFromPy */
+static CYTHON_INLINE uint16_t __Pyx_PyInt_As_uint16_t(PyObject *x) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const uint16_t neg_one = (uint16_t) -1, const_zero = (uint16_t) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+#if PY_MAJOR_VERSION < 3
+    if (likely(PyInt_Check(x))) {
+        if ((sizeof(uint16_t) < sizeof(long))) {
+            __PYX_VERIFY_RETURN_INT(uint16_t, long, PyInt_AS_LONG(x))
+        } else {
+            long val = PyInt_AS_LONG(x);
+            if (is_unsigned && unlikely(val < 0)) {
+                goto raise_neg_overflow;
+            }
+            return (uint16_t) val;
+        }
+    }
+#endif
+    if (unlikely(!PyLong_Check(x))) {
+        uint16_t val;
+        PyObject *tmp = __Pyx_PyNumber_IntOrLong(x);
+        if (!tmp) return (uint16_t) -1;
+        val = __Pyx_PyInt_As_uint16_t(tmp);
+        Py_DECREF(tmp);
+        return val;
+    }
+    if (is_unsigned) {
+#if CYTHON_USE_PYLONG_INTERNALS
+        if (unlikely(__Pyx_PyLong_IsNeg(x))) {
+            goto raise_neg_overflow;
+        } else if (__Pyx_PyLong_IsCompact(x)) {
+            __PYX_VERIFY_RETURN_INT(uint16_t, __Pyx_compact_upylong, __Pyx_PyLong_CompactValueUnsigned(x))
+        } else {
+            const digit* digits = __Pyx_PyLong_Digits(x);
+            assert(__Pyx_PyLong_DigitCount(x) > 1);
+            switch (__Pyx_PyLong_DigitCount(x)) {
+                case 2:
+                    if ((8 * sizeof(uint16_t) > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(uint16_t) >= 2 * PyLong_SHIFT)) {
+                            return (uint16_t) (((((uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 3:
+                    if ((8 * sizeof(uint16_t) > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(uint16_t) >= 3 * PyLong_SHIFT)) {
+                            return (uint16_t) (((((((uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0]));
+                        }
+                    }
+                    break;
+                case 4:
+                    if ((8 * sizeof(uint16_t) > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(uint16_t) >= 4 * PyLong_SHIFT)) {
+                            return (uint16_t) (((((((((uint16_t)digits[3]) << PyLong_SHIFT) | (uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0]));
+                        }
+                    }
+                    break;
+            }
+        }
+#endif
+#if CYTHON_COMPILING_IN_CPYTHON && PY_VERSION_HEX < 0x030C00A7
+        if (unlikely(Py_SIZE(x) < 0)) {
+            goto raise_neg_overflow;
+        }
+#else
+        {
+            int result = PyObject_RichCompareBool(x, Py_False, Py_LT);
+            if (unlikely(result < 0))
+                return (uint16_t) -1;
+            if (unlikely(result == 1))
+                goto raise_neg_overflow;
+        }
+#endif
+        if ((sizeof(uint16_t) <= sizeof(unsigned long))) {
+            __PYX_VERIFY_RETURN_INT_EXC(uint16_t, unsigned long, PyLong_AsUnsignedLong(x))
+#ifdef HAVE_LONG_LONG
+        } else if ((sizeof(uint16_t) <= sizeof(unsigned PY_LONG_LONG))) {
+            __PYX_VERIFY_RETURN_INT_EXC(uint16_t, unsigned PY_LONG_LONG, PyLong_AsUnsignedLongLong(x))
+#endif
+        }
+    } else {
+#if CYTHON_USE_PYLONG_INTERNALS
+        if (__Pyx_PyLong_IsCompact(x)) {
+            __PYX_VERIFY_RETURN_INT(uint16_t, __Pyx_compact_pylong, __Pyx_PyLong_CompactValue(x))
+        } else {
+            const digit* digits = __Pyx_PyLong_Digits(x);
+            assert(__Pyx_PyLong_DigitCount(x) > 1);
+            switch (__Pyx_PyLong_SignedDigitCount(x)) {
+                case -2:
+                    if ((8 * sizeof(uint16_t) - 1 > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, long, -(long) (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(uint16_t) - 1 > 2 * PyLong_SHIFT)) {
+                            return (uint16_t) (((uint16_t)-1)*(((((uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 2:
+                    if ((8 * sizeof(uint16_t) > 1 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 2 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(uint16_t) - 1 > 2 * PyLong_SHIFT)) {
+                            return (uint16_t) ((((((uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -3:
+                    if ((8 * sizeof(uint16_t) - 1 > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, long, -(long) (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(uint16_t) - 1 > 3 * PyLong_SHIFT)) {
+                            return (uint16_t) (((uint16_t)-1)*(((((((uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 3:
+                    if ((8 * sizeof(uint16_t) > 2 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 3 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((((unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(uint16_t) - 1 > 3 * PyLong_SHIFT)) {
+                            return (uint16_t) ((((((((uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case -4:
+                    if ((8 * sizeof(uint16_t) - 1 > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, long, -(long) (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(uint16_t) - 1 > 4 * PyLong_SHIFT)) {
+                            return (uint16_t) (((uint16_t)-1)*(((((((((uint16_t)digits[3]) << PyLong_SHIFT) | (uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+                case 4:
+                    if ((8 * sizeof(uint16_t) > 3 * PyLong_SHIFT)) {
+                        if ((8 * sizeof(unsigned long) > 4 * PyLong_SHIFT)) {
+                            __PYX_VERIFY_RETURN_INT(uint16_t, unsigned long, (((((((((unsigned long)digits[3]) << PyLong_SHIFT) | (unsigned long)digits[2]) << PyLong_SHIFT) | (unsigned long)digits[1]) << PyLong_SHIFT) | (unsigned long)digits[0])))
+                        } else if ((8 * sizeof(uint16_t) - 1 > 4 * PyLong_SHIFT)) {
+                            return (uint16_t) ((((((((((uint16_t)digits[3]) << PyLong_SHIFT) | (uint16_t)digits[2]) << PyLong_SHIFT) | (uint16_t)digits[1]) << PyLong_SHIFT) | (uint16_t)digits[0])));
+                        }
+                    }
+                    break;
+            }
+        }
+#endif
+        if ((sizeof(uint16_t) <= sizeof(long))) {
+            __PYX_VERIFY_RETURN_INT_EXC(uint16_t, long, PyLong_AsLong(x))
+#ifdef HAVE_LONG_LONG
+        } else if ((sizeof(uint16_t) <= sizeof(PY_LONG_LONG))) {
+            __PYX_VERIFY_RETURN_INT_EXC(uint16_t, PY_LONG_LONG, PyLong_AsLongLong(x))
+#endif
+        }
+    }
+    {
+        uint16_t val;
+        int ret = -1;
+#if PY_VERSION_HEX >= 0x030d00A6 && !CYTHON_COMPILING_IN_LIMITED_API
+        Py_ssize_t bytes_copied = PyLong_AsNativeBytes(
+            x, &val, sizeof(val), Py_ASNATIVEBYTES_NATIVE_ENDIAN | (is_unsigned ? Py_ASNATIVEBYTES_UNSIGNED_BUFFER | Py_ASNATIVEBYTES_REJECT_NEGATIVE : 0));
+        if (unlikely(bytes_copied == -1)) {
+        } else if (unlikely(bytes_copied > (Py_ssize_t) sizeof(val))) {
+            goto raise_overflow;
+        } else {
+            ret = 0;
+        }
+#elif PY_VERSION_HEX < 0x030d0000 && !(CYTHON_COMPILING_IN_PYPY || CYTHON_COMPILING_IN_LIMITED_API) || defined(_PyLong_AsByteArray)
+        int one = 1; int is_little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&val;
+        ret = _PyLong_AsByteArray((PyLongObject *)x,
+                                    bytes, sizeof(val),
+                                    is_little, !is_unsigned);
+#else
+        PyObject *v;
+        PyObject *stepval = NULL, *mask = NULL, *shift = NULL;
+        int bits, remaining_bits, is_negative = 0;
+        int chunk_size = (sizeof(long) < 8) ? 30 : 62;
+        if (likely(PyLong_CheckExact(x))) {
+            v = __Pyx_NewRef(x);
+        } else {
+            v = PyNumber_Long(x);
+            if (unlikely(!v)) return (uint16_t) -1;
+            assert(PyLong_CheckExact(v));
+        }
+        {
+            int result = PyObject_RichCompareBool(v, Py_False, Py_LT);
+            if (unlikely(result < 0)) {
+                Py_DECREF(v);
+                return (uint16_t) -1;
+            }
+            is_negative = result == 1;
+        }
+        if (is_unsigned && unlikely(is_negative)) {
+            Py_DECREF(v);
+            goto raise_neg_overflow;
+        } else if (is_negative) {
+            stepval = PyNumber_Invert(v);
+            Py_DECREF(v);
+            if (unlikely(!stepval))
+                return (uint16_t) -1;
+        } else {
+            stepval = v;
+        }
+        v = NULL;
+        val = (uint16_t) 0;
+        mask = PyLong_FromLong((1L << chunk_size) - 1); if (unlikely(!mask)) goto done;
+        shift = PyLong_FromLong(chunk_size); if (unlikely(!shift)) goto done;
+        for (bits = 0; bits < (int) sizeof(uint16_t) * 8 - chunk_size; bits += chunk_size) {
+            PyObject *tmp, *digit;
+            long idigit;
+            digit = PyNumber_And(stepval, mask);
+            if (unlikely(!digit)) goto done;
+            idigit = PyLong_AsLong(digit);
+            Py_DECREF(digit);
+            if (unlikely(idigit < 0)) goto done;
+            val |= ((uint16_t) idigit) << bits;
+            tmp = PyNumber_Rshift(stepval, shift);
+            if (unlikely(!tmp)) goto done;
+            Py_DECREF(stepval); stepval = tmp;
+        }
+        Py_DECREF(shift); shift = NULL;
+        Py_DECREF(mask); mask = NULL;
+        {
+            long idigit = PyLong_AsLong(stepval);
+            if (unlikely(idigit < 0)) goto done;
+            remaining_bits = ((int) sizeof(uint16_t) * 8) - bits - (is_unsigned ? 0 : 1);
+            if (unlikely(idigit >= (1L << remaining_bits)))
+                goto raise_overflow;
+            val |= ((uint16_t) idigit) << bits;
+        }
+        if (!is_unsigned) {
+            if (unlikely(val & (((uint16_t) 1) << (sizeof(uint16_t) * 8 - 1))))
+                goto raise_overflow;
+            if (is_negative)
+                val = ~val;
+        }
+        ret = 0;
+    done:
+        Py_XDECREF(shift);
+        Py_XDECREF(mask);
+        Py_XDECREF(stepval);
+#endif
+        if (unlikely(ret))
+            return (uint16_t) -1;
+        return val;
+    }
+raise_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "value too large to convert to uint16_t");
+    return (uint16_t) -1;
+raise_neg_overflow:
+    PyErr_SetString(PyExc_OverflowError,
+        "can't convert negative value to uint16_t");
+    return (uint16_t) -1;
+}
+
+/* CIntFromPy */
 static CYTHON_INLINE int __Pyx_PyInt_As_int(PyObject *x) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
 #pragma GCC diagnostic push
@@ -13776,31 +14329,31 @@ raise_neg_overflow:
 }
 
 /* CIntToPy */
-static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_uint16_t(uint16_t value) {
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wconversion"
 #endif
-    const int neg_one = (int) -1, const_zero = (int) 0;
+    const uint16_t neg_one = (uint16_t) -1, const_zero = (uint16_t) 0;
 #ifdef __Pyx_HAS_GCC_DIAGNOSTIC
 #pragma GCC diagnostic pop
 #endif
     const int is_unsigned = neg_one > const_zero;
     if (is_unsigned) {
-        if (sizeof(int) < sizeof(long)) {
+        if (sizeof(uint16_t) < sizeof(long)) {
             return PyInt_FromLong((long) value);
-        } else if (sizeof(int) <= sizeof(unsigned long)) {
+        } else if (sizeof(uint16_t) <= sizeof(unsigned long)) {
             return PyLong_FromUnsignedLong((unsigned long) value);
 #ifdef HAVE_LONG_LONG
-        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
+        } else if (sizeof(uint16_t) <= sizeof(unsigned PY_LONG_LONG)) {
             return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
 #endif
         }
     } else {
-        if (sizeof(int) <= sizeof(long)) {
+        if (sizeof(uint16_t) <= sizeof(long)) {
             return PyInt_FromLong((long) value);
 #ifdef HAVE_LONG_LONG
-        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
+        } else if (sizeof(uint16_t) <= sizeof(PY_LONG_LONG)) {
             return PyLong_FromLongLong((PY_LONG_LONG) value);
 #endif
         }
@@ -13815,7 +14368,7 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
         }
 #elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
         int one = 1; int little = (int)*(unsigned char *)&one;
-        return _PyLong_FromByteArray(bytes, sizeof(int),
+        return _PyLong_FromByteArray(bytes, sizeof(uint16_t),
                                      little, !is_unsigned);
 #else
         int one = 1; int little = (int)*(unsigned char *)&one;
@@ -13823,7 +14376,78 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
         PyObject *py_bytes = NULL, *arg_tuple = NULL, *kwds = NULL, *order_str = NULL;
         from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
         if (!from_bytes) return NULL;
-        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(int));
+        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(uint16_t));
+        if (!py_bytes) goto limited_bad;
+        order_str = PyUnicode_FromString(little ? "little" : "big");
+        if (!order_str) goto limited_bad;
+        arg_tuple = PyTuple_Pack(2, py_bytes, order_str);
+        if (!arg_tuple) goto limited_bad;
+        if (!is_unsigned) {
+            kwds = PyDict_New();
+            if (!kwds) goto limited_bad;
+            if (PyDict_SetItemString(kwds, "signed", __Pyx_NewRef(Py_True))) goto limited_bad;
+        }
+        result = PyObject_Call(from_bytes, arg_tuple, kwds);
+        limited_bad:
+        Py_XDECREF(kwds);
+        Py_XDECREF(arg_tuple);
+        Py_XDECREF(order_str);
+        Py_XDECREF(py_bytes);
+        Py_XDECREF(from_bytes);
+        return result;
+#endif
+    }
+}
+
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int16_t(int16_t value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const int16_t neg_one = (int16_t) -1, const_zero = (int16_t) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(int16_t) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(int16_t) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(int16_t) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(int16_t) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(int16_t) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        unsigned char *bytes = (unsigned char *)&value;
+#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
+        if (is_unsigned) {
+            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
+        } else {
+            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
+        }
+#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        return _PyLong_FromByteArray(bytes, sizeof(int16_t),
+                                     little, !is_unsigned);
+#else
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        PyObject *from_bytes, *result = NULL;
+        PyObject *py_bytes = NULL, *arg_tuple = NULL, *kwds = NULL, *order_str = NULL;
+        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
+        if (!from_bytes) return NULL;
+        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(int16_t));
         if (!py_bytes) goto limited_bad;
         order_str = PyUnicode_FromString(little ? "little" : "big");
         if (!order_str) goto limited_bad;
@@ -13895,6 +14519,77 @@ static CYTHON_INLINE PyObject* __Pyx_PyInt_From_long(long value) {
         from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
         if (!from_bytes) return NULL;
         py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(long));
+        if (!py_bytes) goto limited_bad;
+        order_str = PyUnicode_FromString(little ? "little" : "big");
+        if (!order_str) goto limited_bad;
+        arg_tuple = PyTuple_Pack(2, py_bytes, order_str);
+        if (!arg_tuple) goto limited_bad;
+        if (!is_unsigned) {
+            kwds = PyDict_New();
+            if (!kwds) goto limited_bad;
+            if (PyDict_SetItemString(kwds, "signed", __Pyx_NewRef(Py_True))) goto limited_bad;
+        }
+        result = PyObject_Call(from_bytes, arg_tuple, kwds);
+        limited_bad:
+        Py_XDECREF(kwds);
+        Py_XDECREF(arg_tuple);
+        Py_XDECREF(order_str);
+        Py_XDECREF(py_bytes);
+        Py_XDECREF(from_bytes);
+        return result;
+#endif
+    }
+}
+
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_int(int value) {
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wconversion"
+#endif
+    const int neg_one = (int) -1, const_zero = (int) 0;
+#ifdef __Pyx_HAS_GCC_DIAGNOSTIC
+#pragma GCC diagnostic pop
+#endif
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(int) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(int) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(int) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(int) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(int) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        unsigned char *bytes = (unsigned char *)&value;
+#if !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX >= 0x030d00A4
+        if (is_unsigned) {
+            return PyLong_FromUnsignedNativeBytes(bytes, sizeof(value), -1);
+        } else {
+            return PyLong_FromNativeBytes(bytes, sizeof(value), -1);
+        }
+#elif !CYTHON_COMPILING_IN_LIMITED_API && PY_VERSION_HEX < 0x030d0000
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        return _PyLong_FromByteArray(bytes, sizeof(int),
+                                     little, !is_unsigned);
+#else
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        PyObject *from_bytes, *result = NULL;
+        PyObject *py_bytes = NULL, *arg_tuple = NULL, *kwds = NULL, *order_str = NULL;
+        from_bytes = PyObject_GetAttrString((PyObject*)&PyLong_Type, "from_bytes");
+        if (!from_bytes) return NULL;
+        py_bytes = PyBytes_FromStringAndSize((char*)bytes, sizeof(int));
         if (!py_bytes) goto limited_bad;
         order_str = PyUnicode_FromString(little ? "little" : "big");
         if (!order_str) goto limited_bad;

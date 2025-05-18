@@ -1,23 +1,19 @@
 
 import asyncio
-from concurrent.futures import ThreadPoolExecutor
-from .chairyData.MediaInfo import MediaInfo
-from .chairyData.NeisData import NeisData
-from .interface import Interface
+from threading import Thread
+from .interface import Interface, SceneManager
 from datetime import datetime
+from time import sleep
+from .chairyData import ChairyData
 
 
-
-class UpdateExecutor:
+class UpdateExecutor(Thread):
     """ ### 백그라운드 업데이트 실행기 """
 
-    Media_Info: MediaInfo
-    Neis_Data : NeisData
-
-    Executor: ThreadPoolExecutor
-    Loop: asyncio.AbstractEventLoop
-
     Running : bool
+
+    FREEZE  : bool = False
+
     Tick    : int
 
     Day: int
@@ -28,7 +24,7 @@ class UpdateExecutor:
 
 
 
-    def __init__(self, media_info: MediaInfo, neis_data: NeisData):
+    def __init__(self):
         """
         #### 매개변수:
         - **media_info:** MediaInfo
@@ -36,12 +32,6 @@ class UpdateExecutor:
 
         * **근데 절대로 인스턴스 새로 만들면 안되고 ChairyData에 있는거 그대로 투입해야함!**
         """
-        self.Media_Info = media_info
-        self.Neis_Data  = neis_data
-
-        self.Executor = ThreadPoolExecutor(max_workers=1)
-        self.Loop     = asyncio.new_event_loop()
-        asyncio.set_event_loop(self.Loop)
 
         self.Running  = True
 
@@ -53,29 +43,35 @@ class UpdateExecutor:
         self.Tick = 0
         self.Media = False
 
+        super().__init__()
+        self.start()
+
 
 
     def stop(self):
         """ UpdateExecuter 종료 """
         if self.Running:
             self.Running = False
-            self.Loop.call_soon_threadsafe(self.Loop.stop)
-            self.Executor.shutdown(wait=True)
+            self.join()
 
 
-    def tick(self, tick: int):
-        """ 타이밍 계산 """
-        self.Tick += tick
-
-        if self.Tick > 1000:
-            self.Tick = 0
-            self.Media = not self.Media
-            self._second()
+    @staticmethod
+    def Freeze():
+        UpdateExecutor.FREEZE = True
 
 
-    def _updateMedia(self):
-        """ MediaInfo 갱신 """
-        self.Loop.run_until_complete(self.Media_Info.update())
+    @staticmethod
+    def Unfreeze():
+        UpdateExecutor.FREEZE = False
+
+
+    def run(self):
+        while 1:
+            sleep(1)
+            if not self.Running:
+                return
+            if not UpdateExecutor.FREEZE:
+                self._second()
 
 
     def _second(self):
@@ -92,14 +88,21 @@ class UpdateExecutor:
         if self.Hou != dt.hour:
             # Neis 갱신
             if dt.hour == 0 or dt.hour == 18:
-                self.Executor.submit(self.Neis_Data.update)
+                ChairyData.NEISDATA.update()
             self.Hou = dt.hour
 
         # 분
         if self.Min != dt.minute:
-            self.Executor.submit(Interface.SD_DateTime.minuteChanged)
+            Interface.SD_DateTime.minuteChanged()
+            ChairyData.ROOMDATA.Save()
             self.Min = dt.minute
 
         # 미디어 갱신
+        self.Media = not self.Media
+
         if self.Media:
-            self.Executor.submit(self._updateMedia)
+            asyncio.run(ChairyData.CURRENT_MEDIA.update())
+
+        # 재시작 검사
+        if ChairyData.Ready and ChairyData.RESTART_AT < dt:
+            SceneManager.Restart()

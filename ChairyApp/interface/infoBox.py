@@ -76,10 +76,8 @@ class StudentInfoBox(Component):
         if not sd.SeatReserved:
             self.SURFACE.blit(self.Asset_Frame_Normal, (0, 0))
 
-            lastSeat = sd.getLastUsedSeat()
-
-            if lastSeat != None:
-                t = Styles.SANS_H3.render(lastSeat, 1, Styles.DARKGRAY, Styles.WHITE)
+            if sd.LastUsedSeat != None:
+                t = Styles.SANS_H3.render(sd.LastUsedSeat, 1, Styles.DARKGRAY, Styles.WHITE)
                 self.SURFACE.blit(t, center_center(142, 517, t.get_size()))        
             else:
                 t = Styles.SANS_H3.render("기록 없음", 1, Styles.DARKGRAY, Styles.WHITE)
@@ -99,20 +97,16 @@ class StudentInfoBox(Component):
             if sd.WeeklyCheckInStamp[i]:
                 self.SURFACE.blit(self.Asset_Blue_Stamp, (42 * i, 172))
         self.SURFACE.blit(self.Asset_Yellow_Stamp, (42 * ChairyData.ROOMDATA.DATA_DATE.weekday(), 172))
-
-        lastChkIn = sd.getLastCheckIn()
         
-        if lastChkIn != None:
-            t = Styles.SANS_H3.render(StudentInfoBox.timeStr(lastChkIn), 1, Styles.DARKGRAY, Styles.WHITE)
+        if sd.LastChkIn != None:
+            t = Styles.SANS_H3.render(StudentInfoBox.timeStr(sd.LastChkIn), 1, Styles.DARKGRAY, Styles.WHITE)
             self.SURFACE.blit(t, center_center(142, 293, t.get_size()))
         else:
             t = Styles.SANS_H3.render("기록 없음", 1, Styles.DARKGRAY, Styles.WHITE)
             self.SURFACE.blit(t, center_center(142, 293, t.get_size()))
 
-        lastChkOut = sd.getLastCheckOut()
-
-        if lastChkOut != None:
-            t = Styles.SANS_H3.render(StudentInfoBox.timeStr(lastChkOut), 1, Styles.DARKGRAY, Styles.WHITE)
+        if sd.LastChkOut != None:
+            t = Styles.SANS_H3.render(StudentInfoBox.timeStr(sd.LastChkOut), 1, Styles.DARKGRAY, Styles.WHITE)
             self.SURFACE.blit(t, center_center(142, 405, t.get_size()))
         else:
             t = Styles.SANS_H3.render("기록 없음", 1, Styles.DARKGRAY, Styles.WHITE)

@@ -262,7 +262,7 @@ class ExportPeriod(Scene):
     
 
     def On_Render(self, ANIMATION_OFFSET, TICK, DISPLAY, RECTS):
-        
+
         if Interface.SC_TopBar.Update(ANIMATION_OFFSET):
             RECTS.append(Interface.SC_TopBar.Frame(DISPLAY))
 

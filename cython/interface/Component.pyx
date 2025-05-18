@@ -1,14 +1,14 @@
 from pygame import Rect
 from libc.stdlib cimport malloc, free
 from libc.math cimport fabsf, fminf
-
+from libc.stdint cimport int16_t, uint16_t
 
 
 cdef struct MouseField:
-    int X
-    int Y
-    int W
-    int H
+    int16_t X
+    int16_t Y
+    int16_t W
+    int16_t H
 
 
 
@@ -19,11 +19,11 @@ cdef class Component:
     cdef public float _X
     cdef public float _Y
 
-    cdef public int W
-    cdef public int H
+    cdef public int16_t W
+    cdef public int16_t H
 
     cdef MouseField *MouseFields
-    cdef int MouseFields_Size
+    cdef uint16_t MouseFields_Size
 
 
     def __cinit__(self):
@@ -35,7 +35,7 @@ cdef class Component:
         free(self.MouseFields)
 
 
-    def __init__(self, int x, int y, int w, int h):
+    def __init__(self, int16_t x, int16_t y, int16_t w, int16_t h):
         self.X = x
         self._X = x
         self.Y = y
@@ -44,7 +44,7 @@ cdef class Component:
         self.H = h
 
 
-    cpdef void newMouseFields(self, int size):
+    cpdef void newMouseFields(self, uint16_t size):
         if self.MouseFields != NULL:
             free(self.MouseFields)
 
@@ -52,7 +52,7 @@ cdef class Component:
         self.MouseFields_Size = size
 
 
-    cpdef void setMouseField(self, int Index, int X, int Y, int W, int H):
+    cpdef void setMouseField(self, uint16_t Index, int16_t X, int16_t Y, int16_t W, int16_t H):
         if self.MouseFields_Size > Index:
             self.MouseFields[Index].X = X
             self.MouseFields[Index].Y = Y
@@ -60,20 +60,20 @@ cdef class Component:
             self.MouseFields[Index].H = H
 
     
-    cpdef void setMouseField_DisplayPos(self, int index, int X, int Y, int W, int H):
-        self.setMouseField(index, X - <int>self.X, Y - <int>self.Y, W, H)
+    cpdef void setMouseField_DisplayPos(self, uint16_t index, int16_t X, int16_t Y, int16_t W, int16_t H):
+        self.setMouseField(index, X - <int16_t>self.X, Y - <int16_t>self.Y, W, H)
 
 
-    cpdef bint collidepoint(self, int index, tuple point):
+    cpdef bint collidepoint(self, uint16_t index, tuple point):
 
         if index >= self.MouseFields_Size or index < 0:
             return False
 
-        cdef int x = <int> point[0]
-        cdef int y = <int> point[1]
+        cdef int16_t x = <int16_t> point[0]
+        cdef int16_t y = <int16_t> point[1]
 
-        cdef int cX = <int> self.X + self.MouseFields[index].X
-        cdef int cY = <int> self.Y + self.MouseFields[index].Y
+        cdef int16_t cX = <int16_t> self.X + self.MouseFields[index].X
+        cdef int16_t cY = <int16_t> self.Y + self.MouseFields[index].Y
 
         return x > cX and y > cY and x < cX + self.MouseFields[index].W and y < cY + self.MouseFields[index].H
 

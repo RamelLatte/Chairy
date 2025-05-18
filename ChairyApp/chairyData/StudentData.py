@@ -45,6 +45,12 @@ class StudentData():
     Activity: dict[list[str]]  # '%Y%m%d': ["<FirstChkIn>", "<LastChkOut>", "<LastSeat>", TotalMove]
 
 
+    LatestActivity: datetime # 마지막으로 자습한 날짜
+
+    LastUsedSeat: str
+    LastChkIn: datetime
+    LastChkOut: datetime
+
 
     def __init__(self, studentID: str):
         """ **studentID:** 데이터를 불러올 학번 """
@@ -59,6 +65,12 @@ class StudentData():
         self.Activity = {}
 
         self.TotalMove = 0
+
+        self.LatestActivity = None
+
+        self.LastUsedSeat = None
+        self.LastChkIn = None
+        self.LastChkOut = None
 
         # 기존 데이터가 없으면 만듦
         if not path.exists(StudentData.DIRECTORY + "/student_data/" + self.StudentID + ".json"):
@@ -104,6 +116,8 @@ class StudentData():
 
             self.Activity = d['Activity']
 
+            self.updateLatest()
+
 
     def save(self):
         """ StudentData를 저장함. JSON 형식으로 저장됨. """
@@ -130,8 +144,7 @@ class StudentData():
         }
     
 
-    def getLastUsedSeat(self) -> str:
-        """ 마지막으로 사용한 좌석 번호를 반환함. """
+    def updateLatest(self):
 
         Latest = -1
 
@@ -141,43 +154,15 @@ class StudentData():
 
         if Latest == -1:
             return None
-
-        Seat = self.Activity[str(Latest)][2]
-
-        return Seat
-    
-
-    def getLastCheckIn(self) -> datetime:
-        """ 마지막으로 자습한 날의 입실 시간을 반환함. **데이터가 없으면 None을 반환함.** """
-
-        Latest = -1
-
-        for date in self.Activity.keys():
-            if Latest < int(date):
-                Latest = int(date)
-
-        if Latest == -1:
-            return None
-
+        
         if self.Activity[str(Latest)][0] != None:
-            return datetime.strptime(self.Activity[str(Latest)][0], '%Y%m%d%H%M%S.%f')
+            self.LastChkIn = datetime.strptime(self.Activity[str(Latest)][0], '%Y%m%d%H%M%S.%f')
         else:
-            return None
-    
-
-    def getLastCheckOut(self) -> datetime:
-        """ 마지막으로 자습한 날의 퇴실 시간을 반환함. **데이터가 없으면 None을 반환함.** """
-
-        Latest = -1
-
-        for date in self.Activity.keys():
-            if Latest < int(date):
-                Latest = int(date)
-
-        if Latest == -1:
-            return None
+            self.LastChkIn = None
 
         if self.Activity[str(Latest)][1] != None:
-            return datetime.strptime(self.Activity[str(Latest)][1], '%Y%m%d%H%M%S.%f')
+            self.LastChkOut = datetime.strptime(self.Activity[str(Latest)][1], '%Y%m%d%H%M%S.%f')
         else:
-            return None
+            self.LastChkOut = None
+
+        self.LastUsedSeat = self.Activity[str(Latest)][2]

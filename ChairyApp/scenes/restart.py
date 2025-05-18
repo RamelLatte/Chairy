@@ -1,12 +1,7 @@
 
 from ..interface    import Scene, Styles, SceneManager, Interface
 from ..chairyData   import ChairyData
-from ChairyApp.ChairyApp import ChairyApp
-from .exportDaily   import ExportDaily
-from .exportMonthly import ExportMonthly
-from .exportPeriod  import ExportPeriod
-from .exportSeats   import ExportSeats
-from .mainScene     import MainScene
+from ..UpdateExecutor import UpdateExecutor
 from .transition    import Transition
 from pygame         import Surface, draw, Rect
 
@@ -16,7 +11,7 @@ from concurrent.futures import ThreadPoolExecutor, Future
 from ..Logging import LoggingManager as logging
 
 
-class StartScene(Scene):
+class RestartScene(Scene):
     """
     ### 시작 장면
 
@@ -26,8 +21,6 @@ class StartScene(Scene):
     Asset_MasanHighSchool: Surface
     Asset_HR: Surface
 
-    Queued_Interface: bool
-
     CurrentProcess_Surface  : Surface
     CurrentProcess_String   : str
 
@@ -35,16 +28,15 @@ class StartScene(Scene):
     Bar_Length_: float
 
     Executor: ThreadPoolExecutor
-    Task: Future
+    Task    : Future
 
-    Complete: bool
     Timer: int
 
 
     def __init__(self):
         super().__init__()
+        UpdateExecutor.Freeze()
         self.Identifier = 'start'
-        self.Queued_Interface = False
 
 
     def On_Init(self, DISPLAY):
@@ -62,7 +54,6 @@ class StartScene(Scene):
         self.Bar_Length = 0
         self.Bar_Length_ = 0
 
-        self.Complete = False
         self.Timer = 0
 
         # 로고 렌더링
@@ -72,7 +63,7 @@ class StartScene(Scene):
         draw.rect(DISPLAY, Styles.BLACK, [960, 480, 1, 120])
 
         # 데이터 불러오기
-        self.Task = self.Executor.submit(ChairyData.Init)
+        self.Task = self.Executor.submit(ChairyData.Restart)
 
 
     def On_Update(self, ANIMATION_OFFSET, TICK):
@@ -86,39 +77,24 @@ class StartScene(Scene):
 
         self.Bar_Length = Animate(self.Bar_Length, self.Bar_Length_, 1.5, ANIMATION_OFFSET)
 
-        if ChairyData.Ready and not self.Queued_Interface:
-            self.Queued_Interface = True
-            self.Task = self.Executor.submit(Interface.Init)
-            ChairyApp.Init_UpdateExecutor()
+        if self.Task.done():
 
-        if ChairyData.Ready and Interface.Ready and self.Bar_Length == 800:
-            MainScene.Init()
-            ExportDaily.Init()
-            ExportMonthly.Init()
-            ExportPeriod.Init()
-            ExportSeats.Init()
+            exc = self.Task.exception()
+
+            if exc:
+                logging.error('데이터를 재설정하는 도중 오류가 발생했습니다.', exc, True)
 
             self.Executor.shutdown()
-            self.Complete = True
-
-        if self.Task.done():
-            exc = self.Task.exception()
-            if exc:
-                if ChairyData.Ready:
-                    logging.error('인터페이스를 불러오는 도중 오류가 발생했습니다.', exc, True)
-                else:
-                    logging.error('데이터를 불러오는 도중 오류가 발생했습니다.', exc, True)
-
-            if self.Complete:
-                self.Timer += TICK
-                if self.Timer > 1000:
-                    Transition(SceneManager.MainScene)
+            UpdateExecutor.Unfreeze()
+            self.Timer += TICK
+            if self.Timer > 1000:
+                Transition(SceneManager.MainScene)
         
 
 
     def On_Render(self, ANIMATION_OFFSET, TICK, DISPLAY, RECTS):
         # 로딩 상황 렌더링
-        if not self.Complete:
+        if not self.Task.done():
             DISPLAY.blit(self.CurrentProcess_Surface, (560, 970))
             draw.rect(DISPLAY, Styles.GRAY, [560, 1000, 800, 5])
             draw.rect(DISPLAY, Styles.BLACK, [560, 1000, self.Bar_Length, 5])
