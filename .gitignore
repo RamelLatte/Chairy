@@ -20,7 +20,7 @@ ENV/
 
 # Cython 관련 파일
 !cython/build/
-!cython/build/*.pyx
+!cython/**/*.pyx
 !cython/build/*.pyd
 !cython/build/*.c
 !cython/build/*.cpp

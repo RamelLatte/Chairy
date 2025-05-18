@@ -6,6 +6,7 @@ from .UpdateExecutor import UpdateExecutor
 from .interface import *
 from ctypes import windll
 from .Info import ChairyInfo
+from .scenes.restart import RestartScene
 
 from .scenes.errorDialog import ErrorDialog
 
@@ -109,9 +110,10 @@ class ChairyApp:
                 problem = LoggingManager.popProblem()
                 ErrorDialog(problem[0], problem[1], problem[2], problem[3], LoggingManager.LOG_FILE_NM)
 
-            # 데이터 업데이트
-            if ChairyApp.UPDATER is not None:
-                ChairyApp.UPDATER.tick(ChairyApp.TICK)
+            # 리셋 확인
+            if SceneManager.RESET:
+                SceneManager.RESET = False
+                SceneManager.setScene(RestartScene())
 
             ## 이벤트 처리
             for event in pg.event.get():
@@ -137,12 +139,27 @@ class ChairyApp:
                 elif event.type == pg.KEYDOWN:
                     SceneManager.CURRENT_SCENE.Event_KeyDown(event.key)
 
+                    if event.key == pg.K_F12 and SceneManager.CURRENT_SCENE.Identifier == '':
+                        SceneManager.Restart()
+
                 # 키보드 키 놓음
                 elif event.type == pg.KEYUP:
                     SceneManager.CURRENT_SCENE.Event_KeyUp(event.key)
 
+
             ## 종료 확인
             if not ChairyApp.RUNNING or SceneManager.QUIT:
+
+                # 화면 어두워짐
+                disp = ChairyApp.DISPLAY.copy()
+                disp.set_alpha(128)
+                ChairyApp.DISPLAY.fill((0, 0, 0))
+                ChairyApp.DISPLAY.blit(disp, (0, 0))
+                txt = Styles.SANS_B4.render('종료 중...', 1, Styles.WHITE)
+                ChairyApp.DISPLAY.blit(txt, txt.get_rect(centerx=960, centery=540))
+                pg.display.flip()
+
+                # 종료 로직
                 LoggingManager.info('종료 중...')
                 SceneManager.CURRENT_SCENE.Event_Quit()
                 ChairyApp.UPDATER.stop()
@@ -174,6 +191,6 @@ class ChairyApp:
     def Init_UpdateExecutor():
         """ ChairyData가 준비되면 호출하는 메서드. 백그라운드에서 데이터를 업데이트하는 UpdateExecutor를 준비시킨다. """
         try:
-            ChairyApp.UPDATER = UpdateExecutor(ChairyData.CURRENT_MEDIA, ChairyData.NEISDATA)
+            ChairyApp.UPDATER = UpdateExecutor()
         except Exception as e:
             LoggingManager.error("Updater 준비 도중 오류가 발생하였습니다.", e, True)

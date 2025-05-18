@@ -46,8 +46,13 @@ class Configuration():
 
     def __init__(self, DIR: str):
         """ **DIR:** 'ChairyData._Dir'을 입력하면 됨. 실행 파일이 존재하는 디렉토리 위치 """
+        self.Directory = DIR
+        self.Init()
 
-        wb = xl.load_workbook(DIR + "/school_data/configuration.xlsx", True, False, True, False, False)
+
+    def Init(self):
+
+        wb = xl.load_workbook(self.Directory + "/school_data/configuration.xlsx", True, False, True, False, False)
         tmp: str
 
 

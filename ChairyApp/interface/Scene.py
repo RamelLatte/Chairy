@@ -98,6 +98,7 @@ class SceneManager:
     SCENE_TIME: int  = 0
     
     QUIT    : bool = False
+    RESET   : bool = False
 
     ## Scene들은 순환 Import 문제로 인해 SceneManager 클래스에서 Static으로 저장함. ##
 
@@ -162,3 +163,9 @@ class SceneManager:
     def Quit():
         """ 종료 호출 """
         SceneManager.QUIT = True
+
+
+    @staticmethod
+    def Restart():
+        """ 데이터 재설정 호출 """
+        SceneManager.RESET = True

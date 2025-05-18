@@ -4,7 +4,7 @@ from ..chairyData import ChairyData
 from pygame import constants
 from ..Logging import LoggingManager as logging
 
-from ..optimization.animation import Animate, AnimateSpdUp
+from ..optimization.animation import Animate
 
 
 

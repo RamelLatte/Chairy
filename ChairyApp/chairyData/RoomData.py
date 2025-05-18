@@ -144,6 +144,8 @@ class RoomData():
             self.UserNames.append(student.Name)
 
         self.Current[seat] = ['OCC_FRE', student.StudentID, student.Name]
+
+        self.Save()
     
 
     def CheckInReserved(self, student: StudentData):
@@ -183,6 +185,8 @@ class RoomData():
 
             self.Current[student.ReservedSeat] = ['OCC_RES', student.StudentID, student.Name]
 
+        self.Save()
+
 
     def CheckOut(self, student: StudentData):
         """
@@ -215,6 +219,8 @@ class RoomData():
 
         student.CurrentSeat = None
 
+        self.Save()
+
 
     def Move(self, student: StudentData, seatTo: str):
         """
@@ -240,6 +246,8 @@ class RoomData():
             self.Current[seatTo] = ['OCC_FRE', student.StudentID, student.Name]
 
         student.CurrentSeat = seatTo
+
+        self.Save()
 
         
     def ToRaw(self):

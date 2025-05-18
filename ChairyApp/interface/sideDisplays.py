@@ -191,10 +191,10 @@ class SeatingStatus(Component):
                 self.Occupied += 1
 
         self.TxtTotal = Styles.SANS_H5.render("전체 " + str(self.Total) + "석 중", 1, Styles.DARKGRAY, Styles.SPRLIGHTGRAY)
-        self.TxtOccupied = Styles.SANS_H5.render(str(self.Occupied) + "석 이용 중", 1, Styles.PURPLE, Styles.SPRLIGHTGRAY)
+        self.TxtOccupied = Styles.SANS_H5.render(str(self.Occupied) + "석 이용 중", 1, Styles.BLUE, Styles.SPRLIGHTGRAY)
         self.TxtTotalUser = Styles.SANS_H4.render(str(self.Users) + "명", 1, Styles.WHITE, Styles.BLUE)
-        self.TxtPercent = Styles.SANS_H5.render(str(round((self.Occupied / self.Total * 100), 1)) + "%", 1, Styles.PURPLE, Styles.SPRLIGHTGRAY)
-        self.TxtTotalStudent = Styles.SANS_H4.render(str(self.Students) + "명", 1, Styles.WHITE, Styles.YELLOW)
+        self.TxtPercent = Styles.SANS_H5.render(str(round((self.Occupied / self.Total * 100), 1)) + "%", 1, Styles.BLUE, Styles.SPRLIGHTGRAY)
+        self.TxtTotalStudent = Styles.SANS_H4.render(str(self.Students) + "명", 1, Styles.WHITE, Styles.GREEN)
 
         self.Bar_Length = 300 * (self.Occupied / self.Total)
 
