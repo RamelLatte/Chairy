@@ -8,6 +8,7 @@ from .Styles import Styles
 from .Scene import SceneManager as SM
 
 from ..optimization.positioning import center_top
+from ..optimization.rects import RectList
 
 
 
@@ -45,7 +46,7 @@ class SeatsDisplay(Component):
     SeatSurf    : list[Surface]
     SeatSurf_   : list[Surface]
     SeatSurf_P  : list[Surface]
-    SeatRect    : list[Rect]
+    SeatRect    : RectList
 
     Alpha : float
     ShowSeats: bool
@@ -209,7 +210,7 @@ class SeatsDisplay(Component):
         self.SeatSurf   = []
         self.SeatSurf_  = []
         self.SeatSurf_P = []
-        self.SeatRect   = []
+        self.SeatRect   = RectList(len(ChairyData.ROOMDATA.Arrangement))
 
         self.Updated = True
         self.ShowSeats = False
@@ -222,7 +223,7 @@ class SeatsDisplay(Component):
             self.SeatNames.append(None)
             self.SeatOccupied.append(False)
             self.SeatReserved.append(False)
-            self.SeatRect.append(Rect(a[1], a[2], 50, 50))
+            self.SeatRect.append(a[1], a[2], 50, 50)
             self.SeatSurf.append(Surface((50, 50)))
             self.SeatSurf_.append(Surface((50, 50)))
             self.SeatSurf_P.append(Surface((50, 50)))
@@ -232,7 +233,7 @@ class SeatsDisplay(Component):
         self.SURFACE.blit(self.Asset_Structure, (0, 0))
 
         for i in range(len(self.SeatIDs)):
-            self.SURFACE.blit(self.SeatSurf_P[i], self.SeatRect[i])
+            self.SURFACE.blit(self.SeatSurf_P[i], self.SeatRect.getCoordinate(i))
 
     
     def Update(self, TICK):
@@ -248,13 +249,13 @@ class SeatsDisplay(Component):
                 for i in range(len(self.SeatIDs)):
                     if self.SeatIDs[i] == self.MySeat:
                         self.CurrSurf.set_alpha(self.Alpha, RLEACCEL)
-                        self.SURFACE.blit(self.CurrSurf, self.SeatRect[i])
+                        self.SURFACE.blit(self.CurrSurf, self.SeatRect.getCoordinate(i))
                     else:
                         self.SeatSurf[i].set_alpha(self.Alpha, RLEACCEL)
 
-                        self.SURFACE.blit(self.SeatSurf_P[i], self.SeatRect[i])
+                        self.SURFACE.blit(self.SeatSurf_P[i], self.SeatRect.getCoordinate(i))
 
-                        self.SURFACE.blit(self.SeatSurf[i], self.SeatRect[i])
+                        self.SURFACE.blit(self.SeatSurf[i], self.SeatRect.getCoordinate(i))
 
                 return True
 
@@ -269,13 +270,13 @@ class SeatsDisplay(Component):
                 for i in range(len(self.SeatIDs)):
                     if self.SeatIDs[i] == self.MySeat:
                         self.CurrSurf.set_alpha(self.Alpha, RLEACCEL)
-                        self.SURFACE.blit(self.CurrSurf, self.SeatRect[i])
+                        self.SURFACE.blit(self.CurrSurf, self.SeatRect.getCoordinate(i))
 
                     self.SeatSurf[i].set_alpha(self.Alpha, RLEACCEL)
                     
-                    self.SURFACE.blit(self.SeatSurf_P[i], self.SeatRect[i])
+                    self.SURFACE.blit(self.SeatSurf_P[i], self.SeatRect.getCoordinate(i))
 
-                    self.SURFACE.blit(self.SeatSurf[i], self.SeatRect[i])
+                    self.SURFACE.blit(self.SeatSurf[i], self.SeatRect.getCoordinate(i))
 
                 return True
             
@@ -294,21 +295,31 @@ class SeatsDisplay(Component):
         if BUTTON != 1:
             return
         
-        for index, rect in enumerate(self.SeatRect):
-            if rect.collidepoint(POS[0] - self.X, POS[1] - self.Y):
-                if self.SeatIDs[index] == self.MySeat:
+        index = self.SeatRect.collidepoint(POS[0] - self.X, POS[1] - self.Y)
+
+        if index != -1:
+            if self.SeatIDs[index] == self.MySeat:
                     return
 
-                self.SURFACE.blit(self.SeatSurf_[index], self.SeatRect[index])
-                self.ClickedIndex = index
-                self.Updated = True
+            self.SURFACE.blit(self.SeatSurf_[index], self.SeatRect.getCoordinate(index))
+            self.ClickedIndex = index
+            self.Updated = True
+        
+#        for index, rect in enumerate(self.SeatRect):
+#            if rect.collidepoint(POS[0] - self.X, POS[1] - self.Y):
+#                if self.SeatIDs[index] == self.MySeat:
+#                    return
+#
+#                self.SURFACE.blit(self.SeatSurf_[index], self.SeatRect[index])
+#                self.ClickedIndex = index
+#                self.Updated = True
     
 
     def MouseButtonUp(self, POS, BUTTON) -> int:
         if BUTTON != 1 or self.ClickedIndex == -1:
             return -1
         
-        self.SURFACE.blit(self.SeatSurf[self.ClickedIndex], self.SeatRect[self.ClickedIndex])
+        self.SURFACE.blit(self.SeatSurf[self.ClickedIndex], self.SeatRect.getCoordinate(self.ClickedIndex))
         self.Updated = True
         
         if self.SeatOccupied[self.ClickedIndex] or self.SeatReserved[self.ClickedIndex]:
@@ -316,7 +327,7 @@ class SeatsDisplay(Component):
 
         ci = self.ClickedIndex
         self.ClickedIndex = -1
-        if self.SeatRect[ci].collidepoint(POS[0] - self.X, POS[1] - self.Y):
+        if self.SeatRect.collidepoint(POS[0] - self.X, POS[1] - self.Y) == ci:
             return ci
         else:
             return -1

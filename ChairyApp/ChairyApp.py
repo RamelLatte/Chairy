@@ -9,7 +9,7 @@ from .Info import ChairyInfo
 from .scenes.restart import RestartScene
 
 from .scenes.errorDialog import ErrorDialog
-
+from .optimization.rects import DirtyRectsManager
 
 
 class ChairyApp:
@@ -30,6 +30,8 @@ class ChairyApp:
     TICK            : int   = 17
 
     UPDATER: UpdateExecutor = None
+
+    DIRTY: DirtyRectsManager = DirtyRectsManager()
 
 
     @staticmethod
@@ -181,8 +183,11 @@ class ChairyApp:
             ## 프레임 모니터링하고 싶다면 주석 해제
             #ChairyApp.RECTS.append(ChairyApp.DISPLAY.blit(Styles.SANS_H4.render(str(int(ChairyApp.CLOCK.get_fps())), 1, Styles.BLACK, Styles.SPRLIGHTGRAY), (0, 0)))
 
+            for r in ChairyApp.RECTS:
+                ChairyApp.DIRTY.append(r.left, r.top, r.width, r.height)
+
             if len(ChairyApp.RECTS) > 0:
-                pg.display.update(ChairyApp.RECTS)
+                pg.display.update(ChairyApp.DIRTY.calculate())
                 ChairyApp.RECTS.clear()
 
 

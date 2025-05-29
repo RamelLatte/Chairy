@@ -8,7 +8,7 @@ import calendar, datetime
 from os.path import exists
 
 from ..optimization.positioning import collidepoint, center_top, center_bottom
-
+from ..optimization.rects import RectList
 
 
 class DateSelectionTemplate(Component):
@@ -24,7 +24,7 @@ class DateSelectionTemplate(Component):
 
     Calendar: list[list[int]]
 
-    Calendar_R: list[Rect]
+    Calendar_R: RectList
     Calendar_0: list[Surface] # 기본 상태
     Calendar_1: list[Surface] # 마우스가 위에 있는 상태
     Calendar_2: list[Surface] # 마우스를 클릭한 상태
@@ -139,7 +139,7 @@ class DateSelectionTemplate(Component):
                         self.Calendar_S.append(False)
 
 
-                self.Calendar_R.append(Rect(weekday * 43, 46 + (week * 43), 35, 35))
+                self.Calendar_R.append(weekday * 43, 46 + (week * 43), 35, 35)
 
         if update_surface:
             self._Surface()
@@ -171,14 +171,14 @@ class DateSelectionTemplate(Component):
         self.SURFACE.blit(txt, center_bottom(146, 358, txt.get_size()))
 
         # 캘린더
-        for i in range(len(self.Calendar_R)):
+        for i in range(self.Calendar_R.Length):
             if i != self.Hover and i != self.Clicked:
-                self.SURFACE.blit(self.Calendar_0[i], self.Calendar_R[i])
+                self.SURFACE.blit(self.Calendar_0[i], self.Calendar_R.getCoordinate(i))
 
         if self.Clicked != -1:
-            self.SURFACE.blit(self.Calendar_2[self.Clicked], self.Calendar_R[self.Clicked])
+            self.SURFACE.blit(self.Calendar_2[self.Clicked], self.Calendar_R.getCoordinate(self.Clicked))
         elif self.Hover != -1:
-            self.SURFACE.blit(self.Calendar_1[self.Hover], self.Calendar_R[self.Hover])
+            self.SURFACE.blit(self.Calendar_1[self.Hover], self.Calendar_R.getCoordinate(self.Hover))
 
         self.Updated = True
 
@@ -193,7 +193,7 @@ class DateSelectionTemplate(Component):
         self.Hover = -1
         self.Clicked = -1
 
-        self.Calendar_R = []
+        self.Calendar_R = RectList(31)
         self.Calendar_0 = []
         self.Calendar_1 = []
         self.Calendar_2 = []
@@ -270,13 +270,15 @@ class DateSelectionTemplate(Component):
                 self._Surface()
                 return
             
-            self.Clicked = -1
-        
-            for ri, rect in enumerate(self.Calendar_R):
+            self.Clicked = self.Calendar_R.collidepoint(POS[0] - self.X, POS[1] - self.Y)
 
-                if rect.collidepoint(POS[0] - self.X, POS[1] - self.Y):
-                    self.Clicked = ri
-                    break
+#            self.Clicked = -1
+#        
+#            for ri, rect in enumerate(self.Calendar_R):
+#
+#                if rect.collidepoint(POS[0] - self.X, POS[1] - self.Y):
+#                    self.Clicked = ri
+#                    break
             
             self._Surface()
 
@@ -338,14 +340,16 @@ class DateSelectionTemplate(Component):
                 
             self._Surface()
             return
-
-        self.Hover = -1
         
-        for ri, rect in enumerate(self.Calendar_R):
+        self.Hover = self.Calendar_R.collidepoint(POS[0] - self.X, POS[1] - self.Y)
 
-            if rect.collidepoint(POS[0] - self.X, POS[1] - self.Y):
-                self.Hover = ri
-                break
+#        self.Hover = -1
+#        
+#        for ri, rect in enumerate(self.Calendar_R):
+#
+#            if rect.collidepoint(POS[0] - self.X, POS[1] - self.Y):
+#                self.Hover = ri
+#                break
 
         if self.Hover != -1 and self.Clicked != -1 and self.Clicked != self.Hover:
             self.Clicked = self.Hover
@@ -376,7 +380,7 @@ class MonthSelection(Component):
 
     Calendar: list[list[int]]
 
-    Calendar_R: list[Rect]
+    Calendar_R: RectList
     Calendar_0: list[Surface] # 기본 상태
     Calendar_D: list[int]
 
@@ -438,7 +442,7 @@ class MonthSelection(Component):
                         tmpSurface.blit(txt, center_top(17, 7, txt.get_size()))
                         self.Calendar_0.append(tmpSurface)
 
-                self.Calendar_R.append(Rect(weekday * 43, 76 + (week * 43), 35, 35))
+                self.Calendar_R.append(weekday * 43, 76 + (week * 43), 35, 35)
 
         if update_surface:
             self._Surface()
@@ -469,8 +473,11 @@ class MonthSelection(Component):
         self.SURFACE.blit(self.Asset, (23, 42))
 
         # 캘린더
-        for i, r in enumerate(self.Calendar_R):
-            self.SURFACE.blit(self.Calendar_0[i], r)
+        for i in range(self.Calendar_R.Length):
+            self.SURFACE.blit(self.Calendar_0[i], self.Calendar_R.getCoordinate(i))
+
+#        for i, r in enumerate(self.Calendar_R):
+#            self.SURFACE.blit(self.Calendar_0[i], r)
 
         self.Updated = True
 
@@ -482,7 +489,7 @@ class MonthSelection(Component):
         self.Year = CD.ROOMDATA.DATA_DATE.year
         self.Month = CD.ROOMDATA.DATA_DATE.month
 
-        self.Calendar_R = []
+        self.Calendar_R = RectList(31)
         self.Calendar_0 = []
         self.Calendar_D = []
 
