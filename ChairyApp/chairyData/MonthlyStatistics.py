@@ -17,6 +17,9 @@ class MonthlyStatistics():
     특정한 달의 RoomData를 모두 취합하여 그 달의 일자별 입퇴실 시간, 이용 좌석을 통계로 만드는 클래스.
     """
 
+    __slots__ = ('Year', 'Month', 'FileDates', 'Statistics', 'Empty')
+
+
     Year    : int
     Month   : int
 

@@ -1,6 +1,6 @@
 
 from pygame.font import Font
-from pygame import Surface, Rect
+from pygame import Surface
 from .Component import Component
 from .Styles import Styles
 
@@ -78,7 +78,7 @@ class ScrollingTextbox(Component):
         return (self.Y != self._Y)
 
 
-    def Frame(self, DISP: Surface) -> Rect:
+    def Frame(self, DISP: Surface):
         self.SURFACE.fill(Styles.SPRLIGHTGRAY)
         if self.Shift:
             self.SURFACE.blit(self._Text, (0, self._textY - self.HEIGHT))

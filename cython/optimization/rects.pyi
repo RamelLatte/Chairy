@@ -1,4 +1,5 @@
 from pygame import Rect
+from array import array
 
 
 class RectList:
@@ -37,10 +38,34 @@ class RectList:
 
 class DirtyRectsManager:
 
-    def __init__(self):
+    def __init__(self, init_size: int = 48):
         ...
 
-    def append(self, X: int, Y: int, W: int, H: int):
+    def updateFull(self):
+        ...
+
+    def append(self, RectValue: array):
+        ...
+
+    def appendRect(self, Rect: Rect):
+        ...
+
+    def calculate(self) -> list[Rect]:
+        ...
+
+
+class EmptyDRManager:
+
+    def __init__(self, init_size: int = 48):
+        ...
+
+    def updateFull(self):
+        ...
+
+    def append(self, RectValue: array):
+        ...
+
+    def appendRect(self, Rect: Rect):
         ...
 
     def calculate(self) -> list[Rect]:

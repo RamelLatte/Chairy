@@ -1,5 +1,5 @@
 
-from pygame import Surface, Rect
+from pygame import Surface
 from .Component import Component
 from .Styles import Styles
 from .Scene import SceneManager as SM
@@ -47,8 +47,6 @@ class IdInputDialog(Component):
     StudentId   : list[str]
 
     Moving  : bool
-    Rect_   : Rect
-
 
 
     def __init__(self, x = 115, y = 492):
@@ -246,7 +244,7 @@ class IdInputDialog(Component):
         return self.Updated or (self.Y != self._Y)
 
 
-    def Frame(self, DISP: Surface) -> Rect:
+    def Frame(self, DISP: Surface):
         self.Updated = False
 
         DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_Y())

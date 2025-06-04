@@ -44,6 +44,7 @@ class Interface:
     다양한 화면 상의 구성 요소(Component)를 관리함.
     """
 
+
     # 준비 여부
     Ready: bool = False
     

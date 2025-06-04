@@ -4,9 +4,11 @@ from pygame import Surface, Rect, constants
 from datetime import datetime, date, time, timedelta
 from .dialog import Dialog
 from ..Info import ChairyInfo
+from array import array
 
 from ..Logging import LoggingManager as logging
 from ..optimization.positioning import center_top, collidepoint
+from ..optimization.rects import DirtyRectsManager
 import openpyxl as xl
 
 
@@ -28,7 +30,7 @@ class StatisticDialog(Dialog):
         super().__init__("좌석표를 내보내는 중...", "좌석표를 내보내고 있습니다.")
 
 
-    def run(self):
+    def task(self):
 
         logging.info(self.Datetime.strftime('좌석표 작성 시작: %Y.%m.%d. %H:%M:%S'))
 
@@ -91,7 +93,7 @@ class ExportSeats(Scene):
     AssetStudentInfo0: Surface  # 에셋
     AssetStudentInfo1: Surface  # 에셋
 
-    Seats_R : list[Rect]    # Rects  : 좌석 아이콘의 위치
+    Seats_R : list[tuple[int]]    # Rects  : 좌석 아이콘의 위치
     Seats_P : list[Surface] # Preview: 미리보기 렌더링용 좌석 아이콘 임시 저장
     Seats_I : list[str]     # Index  : ID를 대입해서 위 2개 리스트의 Index 획득
 
@@ -232,7 +234,7 @@ class ExportSeats(Scene):
         # 좌석 배치 구현
         for seat in self.CurrentRoomdata.Arrangement:
             self.Seats_I.append(seat[0])
-            self.Seats_R.append(Rect(seat[1] + 660, seat[2] + 42, 50, 50))
+            self.Seats_R.append((seat[1] + 660, seat[2] + 42, 50, 50))
             surface = Surface((50, 50))
 
             surface.blit(self.AssetIcons[0], (0, 0))
@@ -253,7 +255,7 @@ class ExportSeats(Scene):
         self.Updated = True
 
 
-    def _DrawPreview(self, DISPLAY: Surface, RECTS: list[Rect] = None):
+    def _DrawPreview(self, DISPLAY: Surface, RECTS: DirtyRectsManager = None):
         """ 내부 미리보기 Surface 렌더링 """
 
         self._Preview()
@@ -286,8 +288,8 @@ class ExportSeats(Scene):
 
         # RECTS
         if RECTS is not None:
-            RECTS.append(Rect(652, 33, 1001, 1047))
-            RECTS.append(Rect(435, 328, 191, 418))
+            RECTS.append(array('i', [652, 33, 1001, 1047]))
+            RECTS.append(array('i', [435, 328, 191, 418]))
             #RECTS.append(Rect(1692, 310, 200, 460))
 
 
@@ -328,13 +330,13 @@ class ExportSeats(Scene):
             RECTS.append(Interface.SC_ExportButton.Frame(DISPLAY))
 
         if Interface.SC_DateSelection.Update():
-            RECTS.append(DISPLAY.blit(self.DateSelection, (61, 326)))
+            RECTS.appendRect(DISPLAY.blit(self.DateSelection, (61, 326)))
             Interface.SC_DateSelection.Frame(DISPLAY)
 
         if self.Updated:
             self.Updated = False
             self._DrawPreview(DISPLAY, RECTS)
-            RECTS.append(Rect(640, 0, 1280, 1080))
+            RECTS.append(array('i', [640, 0, 1280, 1080]))
 
         if Interface.SC_TopBar.Update(ANIMATION_OFFSET):
             RECTS.append(Interface.SC_TopBar.Frame(DISPLAY))

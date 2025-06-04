@@ -127,14 +127,16 @@ class CurrentMedia(Component):
     def Frame(self, DISP):
         self.Updated = False
 
-        DISP.fill(SPRLIGHTGRAY, self.calculateTrailRect_Y())
+        r = self.calculateRect()
+
+        DISP.fill(SPRLIGHTGRAY, (r[0], r[1], r[2], r[3]))
 
         if self.MouseIn:
             DISP.blit(self.SURFACE_, (self.X, self.Y))
         else:
             DISP.blit(self.SURFACE, (self.X, self.Y))
 
-        return self.calculateRect()
+        return r
     
 
     def MouseMotion(self, POS):

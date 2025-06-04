@@ -178,17 +178,15 @@ class ChairyApp:
                 pg.display.flip()
 
             SceneManager.CURRENT_SCENE.On_Update(ChairyApp.ANIMATION_OFFSET, ChairyApp.TICK)
-            SceneManager.CURRENT_SCENE.On_Render(ChairyApp.ANIMATION_OFFSET, ChairyApp.TICK, ChairyApp.DISPLAY, ChairyApp.RECTS)
+            SceneManager.CURRENT_SCENE.On_Render(ChairyApp.ANIMATION_OFFSET, ChairyApp.TICK, ChairyApp.DISPLAY, ChairyApp.DIRTY)
 
             ## 프레임 모니터링하고 싶다면 주석 해제
-            #ChairyApp.RECTS.append(ChairyApp.DISPLAY.blit(Styles.SANS_H4.render(str(int(ChairyApp.CLOCK.get_fps())), 1, Styles.BLACK, Styles.SPRLIGHTGRAY), (0, 0)))
+            #ChairyApp.RECTS.append(ChairyApp.DISPLAY.blit(Styles.SANS_H4.render(str(int(ChairyApp.CLOCK.get_fps())), 1, Styles.BLACK, Styles.SPRLIGHTGRAY), (0, 0))
 
-            for r in ChairyApp.RECTS:
-                ChairyApp.DIRTY.append(r.left, r.top, r.width, r.height)
+            ChairyApp.RECTS = ChairyApp.DIRTY.calculate()
 
             if len(ChairyApp.RECTS) > 0:
-                pg.display.update(ChairyApp.DIRTY.calculate())
-                ChairyApp.RECTS.clear()
+                pg.display.update(ChairyApp.RECTS)
 
 
 

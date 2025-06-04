@@ -18,6 +18,9 @@ class MediaInfo:
     **update() 메서드는 UpdateExecuter에서 실행하여 미디어 정보를 업데이트 함.**
     """
 
+    __slots__ = ('UseMediaDetection', 'Playing', 'Updated', 'Album', 'Artist', 'Title', 'Thumbnail', 'Thumbnail_Hash', 'Thumbnail_Retry')
+
+
     UseMediaDetection: bool # 미디어 감지 사용 여부, Configuration에 값이 있음.
     Playing: bool # 재생 중 여부
 

@@ -1,4 +1,8 @@
 
+# 가상환경 활성화:
+#
+# .\venv\Scripts\activate
+#
 # Pyinstaller 빌드 명령어:
 #
 # pyinstaller --noupx --onedir --icon=Icon.ico Chairy.py --hidden-import=winrt.windows.media --hidden-import=winrt.windows.foundation --hidden-import=winrt.windows.foundation.collections --hidden-import=winrt.windows.storage --hidden-import=winrt.windows.storage.streams
@@ -9,6 +13,8 @@
 #  - pygame   : GUI 및 상호작용
 #  - pyopenxl : 통계 자료 관리
 #  - requests : NEIS 연동용 API 호출
+#  - cython   : Cython 언어
+#  - pyinstaller: Executable 파일로 처리
 #
 # ■ 미디어 재생 현황 확인 기능에 쓰이는 라이브러리는 다음과 같음.
 #  - winrt-Windows.media

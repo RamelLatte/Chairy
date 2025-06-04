@@ -476,6 +476,9 @@ class Installer:
         import shutil
 
         # 다운로드 로직
+        shutil.rmtree(self.file_path('./_internal'))
+        shutil.rmtree(self.file_path('./ChairyApp'))
+
         self.Step_downloading('내려받는 중...')
         self.Logger.info('내려받는 중')
         

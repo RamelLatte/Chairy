@@ -1,9 +1,10 @@
 
 from .Component import Component
-from pygame import Surface, Rect
+from pygame import Surface
 from .Styles import Styles
 from .Scene import SceneManager as SM
 
+from array import array
 
 
 class CancelButton(Component):
@@ -210,7 +211,7 @@ class CheckoutButton(Component):
         self.Updated = False
 
         if self.Alpha != self.Alpha_:
-            DISP.fill(Styles.SPRLIGHTGRAY, [self.X, self.Y, 283, 60])
+            DISP.fill(Styles.SPRLIGHTGRAY, (self.X, self.Y, 283, 60))
             self.Alpha_ = self.Alpha
 
         DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_Y())
@@ -385,7 +386,7 @@ class MoveButton(Component):
         self.Updated = False
 
         if self.Alpha != self.Alpha_:
-            DISP.fill(Styles.SPRLIGHTGRAY, [self.X, self.Y, 283, 60])
+            DISP.fill(Styles.SPRLIGHTGRAY, (self.X, self.Y, 283, 60))
             self.Alpha_ = self.Alpha
 
         self.Updated = False
@@ -497,7 +498,7 @@ class StatisticsExitButton(Component):
         self.Updated = False
 
         DISP.blit(self.Assets[self.Button], (1680, 15))
-        return Rect(1680, 15, 200, 40)
+        return array('i', (1680, 15, 200, 40))
         
 
     def _collide(self, POS) -> bool:
@@ -598,7 +599,7 @@ class StatisticsExportButton(Component):
         self.Updated = False
 
         DISP.blit(self.Assets[self.Button], (self.X, self.Y))
-        return Rect(self.X, self.Y, 250, 70)
+        return array('i', (int(self.X), int(self.Y), 250, 70))
         
 
     def _collide(self, POS) -> bool:

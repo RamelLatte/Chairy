@@ -1,6 +1,6 @@
 
 from .Component import Component
-from pygame import Surface, Rect
+from pygame import Surface
 from ..chairyData import StudentData, ChairyData
 from .Styles import Styles
 from datetime import datetime
@@ -160,14 +160,14 @@ class StudentInfoBox(Component):
         return (self.Updated or updated)
     
 
-    def Frame(self, DISP: Surface) -> Rect:
+    def Frame(self, DISP: Surface):
         self.Updated = False
 
         self.SURFACE.set_alpha(self.Alpha)
 
         r = self.calculateRect()
 
-        DISP.fill(Styles.SPRLIGHTGRAY, r)
+        DISP.fill(Styles.SPRLIGHTGRAY, (r[0], r[1], r[2], r[3]))
         DISP.blit(self.SURFACE, (self.X, self.Y))
 
         return r

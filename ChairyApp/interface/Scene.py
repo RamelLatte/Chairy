@@ -1,6 +1,9 @@
 
-from pygame import constants, Surface, Rect, image
+from pygame import constants, Surface, image
 from os.path import exists
+from gc import collect
+
+from ..optimization.rects import DirtyRectsManager
 
 class SceneWarning(Exception):
 
@@ -38,7 +41,7 @@ class Scene:
         - **ANIMATION_OFFSET:** 프레임레이트에 따라 변화하는 값이며, 프레임레이트의 변동에 따라 애니메이션 위치 변화를 보정하는데 사용됨.
         - **TICK:** 프레임레이트에 따라 변화하는 값이며, 프레임레이트의 변동에 따라 특정한 Surface의 Alpha 값 변화를 보정하는데 사용됨.
         """
-    def On_Render(self, ANIMATION_OFFSET: float, TICK: int, DISPLAY: Surface, RECTS: list[Rect]):
+    def On_Render(self, ANIMATION_OFFSET: float, TICK: int, DISPLAY: Surface, RECTS: DirtyRectsManager):
         """
         ChiaryApp에서 매 프레임마다 호출되는 화면 렌더링 함수.
         On_Update() 메서드 이후로 호출되며, 화면 렌더링의 목적임.
@@ -93,7 +96,7 @@ class SceneManager:
     """
 
     DIRECTORY       : str
-    CURRENT_SCENE   : Scene
+    CURRENT_SCENE   : Scene = None
 
     SCENE_TIME: int  = 0
     
@@ -140,16 +143,18 @@ class SceneManager:
 
     
     @staticmethod
-    def setScene(scene: Scene):
+    def setScene(scene: Scene, init: bool = True):
         """
-        Scene을 지정함. 장면 전환 이후 **On_Init()** 메서드가 호출됨.
+        Scene을 지정함. init 매개변수가 True인 경우, 장면 전환 이후 **On_Init()** 메서드가 호출됨.
         - - -
         #### 매개변수:
         - **scene:** 전환할 장면
+        - **init:** 초기화 함수 호출 여부(기본값 True)
         """
         SceneManager.CURRENT_SCENE  = scene
-        scene.INIT                  = True
+        scene.INIT                  = init
         SceneManager.SCENE_TIME     = 0
+        collect()
 
 
     @staticmethod

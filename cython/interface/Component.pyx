@@ -3,6 +3,8 @@ from libc.stdlib cimport malloc, free
 from libc.math cimport fabsf, fminf
 from libc.stdint cimport int16_t, uint16_t
 
+from array import array
+
 
 cdef struct MouseField:
     int16_t X
@@ -137,10 +139,13 @@ cdef class Component:
             self._X = self.X
             self._Y = self.Y
 
-            return Rect(fminf(self.X, _x) - 1, fminf(self.Y, _y) - 1, self.W + dx + 2, self.H + dy + 2)
+            return array('i', [<int>(fminf(self.X, _x) - 1), <int>(fminf(self.Y, _y) - 1), <int>(self.W + dx + 2), <int>(self.H + dy + 2)])
         else:
-            return Rect(self.X, self.Y, self.W, self.H)
+            return array('i', [<int>self.X, <int>self.Y, <int>self.W, <int>self.H])
 
+
+    cpdef object convertRect(self, object rect):
+        return array('i', [<int>rect.left, <int>rect.top, <int>rect.width, <int>rect.height])
 
     
     cpdef object calculateTrailRect_X(self):

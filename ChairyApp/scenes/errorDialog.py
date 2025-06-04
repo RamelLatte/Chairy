@@ -1,6 +1,6 @@
 
 from ..interface import Scene, SceneManager, Styles
-from pygame import Surface, Rect, SRCALPHA, constants
+from pygame import Surface, SRCALPHA, constants
 
 from ..optimization.animation import Animate
 from ..optimization.positioning import center_top
@@ -135,11 +135,10 @@ class ErrorDialog(Scene):
 
         DISPLAY.blit(self.Dialog, (0, self.DialogY))
 
-        RECTS.append(Rect(0, 0, 1920, 1080))
+        RECTS.updateFull()
 
         if not self.Fatal and self.Complete and self.DialogY > 1080 and self.BgAlpha == 255.:
-            SceneManager.SCENE_TIME = self.BackgroundSceneTime
-            SceneManager.CURRENT_SCENE = self.BackgroundScene
+            SceneManager.setScene(self.BackgroundScene, False)
 
 
 

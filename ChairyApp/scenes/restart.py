@@ -1,9 +1,10 @@
 
-from ..interface    import Scene, Styles, SceneManager, Interface
+from ..interface    import Scene, Styles, SceneManager
 from ..chairyData   import ChairyData
 from ..UpdateExecutor import UpdateExecutor
 from .transition    import Transition
-from pygame         import Surface, draw, Rect
+from pygame         import Surface, draw
+from array import array
 
 from ..optimization.animation import Animate
 
@@ -57,10 +58,10 @@ class RestartScene(Scene):
         self.Timer = 0
 
         # 로고 렌더링
-        DISPLAY.fill(Styles.SPRLIGHTGRAY, [0, 480, 1920, 120])
+        DISPLAY.fill(Styles.SPRLIGHTGRAY, (0, 480, 1920, 120))
         DISPLAY.blit(self.Asset_MasanHighSchool, (812, 509))
         DISPLAY.blit(self.Asset_HR, (1028, 509))
-        draw.rect(DISPLAY, Styles.BLACK, [960, 480, 1, 120])
+        draw.rect(DISPLAY, Styles.BLACK, (960, 480, 1, 120))
 
         # 데이터 불러오기
         self.Task = self.Executor.submit(ChairyData.Restart)
@@ -96,15 +97,15 @@ class RestartScene(Scene):
         # 로딩 상황 렌더링
         if not self.Task.done():
             DISPLAY.blit(self.CurrentProcess_Surface, (560, 970))
-            draw.rect(DISPLAY, Styles.GRAY, [560, 1000, 800, 5])
-            draw.rect(DISPLAY, Styles.BLACK, [560, 1000, self.Bar_Length, 5])
-            RECTS.append(Rect(560, 970, 800, 35))
+            draw.rect(DISPLAY, Styles.GRAY, (560, 1000, 800, 5))
+            draw.rect(DISPLAY, Styles.BLACK, (560, 1000, self.Bar_Length, 5))
+            RECTS.append(array('i', (560, 970, 800, 35)))
         else:
-            RECTS.append(DISPLAY.fill(Styles.SPRLIGHTGRAY, [560, 970, 800, 35]))
+            RECTS.appendRect(DISPLAY.fill(Styles.SPRLIGHTGRAY, (560, 970, 800, 35)))
             
 
     def Draw(self, SURFACE):
         SURFACE.fill(Styles.SPRLIGHTGRAY)
         SURFACE.blit(self.Asset_MasanHighSchool, (812, 509))
         SURFACE.blit(self.Asset_HR, (1028, 509))
-        draw.rect(SURFACE, Styles.BLACK, [960, 480, 1, 120])
+        draw.rect(SURFACE, Styles.BLACK, (960, 480, 1, 120))

@@ -1,10 +1,11 @@
 
 from datetime import datetime
-from pygame import Surface, Rect, draw, gfxdraw
+from pygame import Surface, draw, gfxdraw
 from .Component import Component
 from .Styles import Styles
 from .Scene import SceneManager as SM
 from ..chairyData import ChairyData
+from array import array
 
 from ..optimization.animation import Animate
 from ..optimization.positioning import right_top, right_bottom, center_top
@@ -55,7 +56,7 @@ class DateTimeDisplay(Component):
 
 
     def Frame(self, DISP):
-        draw.rect(DISP, Styles.SPRLIGHTGRAY, [1575, 35, 300, 50])
+        draw.rect(DISP, Styles.SPRLIGHTGRAY, (1575, 35, 300, 50))
         DISP.blit(Styles.SANS_H4.render(self.DateTime.strftime("%m월 %d일"), 1, Styles.BLACK, Styles.SPRLIGHTGRAY), (1575, 46))
 
         tmp: Surface = Styles.SANS_H5.render(self.timeStr(), 1, Styles.BLACK, Styles.SPRLIGHTGRAY)
@@ -65,7 +66,7 @@ class DateTimeDisplay(Component):
         tmp = Styles.SANS_B3.render(weekdays[self.DateTime.weekday()], 1, Styles.BLACK, Styles.SPRLIGHTGRAY)
         DISP.blit(tmp, right_bottom(1875, 85, tmp.get_size()))
         self.Updated = False
-        return Rect(1575, 35, 300, 50)
+        return array('i', (1575, 35, 300, 50))
 
     
         
@@ -109,7 +110,7 @@ class DietAndScheduleDisplay(Component):
             else:
                 txt = Styles.SANS_B3.render("오류가 발생했습니다.", 1, Styles.DARKGRAY, Styles.WHITE)
             DISP.blit(txt, center_top(1722, 567, txt.get_size()))
-            DISP.fill(Styles.WHITE, [1830, 717, 20, 22])
+            DISP.fill(Styles.WHITE, (1830, 717, 20, 22))
 
         if len(ChairyData.NEISDATA.Events) > 0:
             for i in range(len(ChairyData.NEISDATA.Events)):
@@ -139,7 +140,7 @@ class DietAndScheduleDisplay(Component):
                 txt = Styles.SANS_B3.render("오류가 발생했습니다.", 1, Styles.DARKGRAY, Styles.WHITE)
             DISP.blit(txt, center_top(1722, 910, txt.get_size()))
 
-        return Rect(1575, 391, 300, 648)
+        return array('i', (1575, 391, 300, 648))
     
 
 
@@ -218,8 +219,8 @@ class SeatingStatus(Component):
         DISP.blit(self.Asset, (1572, 124))
         DISP.blit(self.TxtTotal, (1580, 174))
         DISP.blit(self.TxtOccupied, right_top(1862, 174, self.TxtOccupied.get_size()))
-        DISP.blit(self.Bar.subsurface([0, 0, self.Bar_Length_, 15]), (1572, 202))
+        DISP.blit(self.Bar.subsurface((0, 0, self.Bar_Length_, 15)), (1572, 202))
         DISP.blit(self.TxtTotalUser, center_top(1654, 280, self.TxtTotalUser.get_size()))
         DISP.blit(self.TxtTotalStudent, center_top(1812, 280, self.TxtTotalStudent.get_size()))
         DISP.blit(self.TxtPercent, center_top(1725, 221, self.TxtPercent.get_size()))
-        return Rect(1572, 124, 300, 218)
+        return array('i', (1572, 124, 300, 218))

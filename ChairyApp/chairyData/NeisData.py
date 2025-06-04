@@ -1,5 +1,6 @@
 
-import requests, json
+import requests
+import orjson as json
 from datetime import datetime, timedelta, timezone
 from re import sub as ReSub
 from ..Logging import LoggingManager as logging
@@ -35,6 +36,10 @@ class NeisData():
     
     Neis Open API로부터 학교 정보, 식단 정보, 학사 일정을 받아와 필요한 형태로 다듬고 저장함.
     """
+
+    __slots__ = ('CanIgnoreSSL', 'KEY', 'OFFICE_CODE', 'SCHOOL_CODE', 'OfficeName', 'SchoolName', 'Kcal', 'Dish', 'Events', 'Holiday',
+                 'DinnerDate', 'DinnerInfoDate', 'Today', 'TargetGrade', 'ErrorCode')
+
 
     # 설정
     CanIgnoreSSL: bool
@@ -111,7 +116,7 @@ class NeisData():
         self.ErrorCode = None
 
         ## 학교 정보 획득 ##
-        res = json.loads(requests.get(SCHOOLINFO_URL, params={
+        resp = requests.get(SCHOOLINFO_URL, params={
 
             'KEY'           : self.KEY,
             'Type'          : 'json',
@@ -119,7 +124,9 @@ class NeisData():
             'pSize'         : '5',
             'SD_SCHUL_CODE' : self.SCHOOL_CODE
 
-        }, verify=Verify, timeout=15).text)
+        }, verify=Verify, timeout=15)
+
+        res = json.loads(resp.text)
 
         if 'RESULT' in res:
 
@@ -132,6 +139,8 @@ class NeisData():
 
         self.OfficeName = res['schoolInfo'][1]['row'][0]['ATPT_OFCDC_SC_NM']
         self.SchoolName = res['schoolInfo'][1]['row'][0]['SCHUL_NM']
+
+        resp.close()
 
 
         ## 날짜 연산 ##
@@ -151,7 +160,7 @@ class NeisData():
 
 
         ## 학사 일정 ##
-        res = json.loads(requests.get(SCHOOLSCHEDULE_URL, params={
+        resp = requests.get(SCHOOLSCHEDULE_URL, params={
 
             'KEY'               : self.KEY,
             'Type'              : 'json',
@@ -161,7 +170,9 @@ class NeisData():
             'SD_SCHUL_CODE'     : self.SCHOOL_CODE,
             'AA_YMD'            : self.Today.strftime('%Y%m%d')
 
-        }, verify=Verify, timeout=15).text)
+        }, verify=Verify, timeout=15)
+
+        res = json.loads(resp.text)
 
         if 'RESULT' in res:
 
@@ -193,9 +204,11 @@ class NeisData():
             if event[1] in ("공휴일", "휴업일"):
                 self.Holiday = True
 
+        resp.close()
+
 
         ## 석식 식단 ##
-        res = json.loads(requests.get(DIETINFO_URL, params={
+        resp = requests.get(DIETINFO_URL, params={
 
             'KEY'               : self.KEY,
             'Type'              : 'json',
@@ -205,7 +218,9 @@ class NeisData():
             'SD_SCHUL_CODE'     : self.SCHOOL_CODE,
             'MLSV_YMD'          : self.DinnerDate.strftime('%Y%m%d')
 
-        }, verify=Verify, timeout=15).text)
+        }, verify=Verify, timeout=15)
+
+        res = json.loads(resp.text)
 
         if 'RESULT' in res:
 
@@ -226,6 +241,8 @@ class NeisData():
                     self.Kcal = row['CAL_INFO']
                     self.Dish = [ReSub(r'\s*\(\d+(?:[.,]\d+)*\)', '', item) for item in str(row['DDISH_NM']).split("<br/>")]
                     break
+
+        resp.close()
 
 
     def update(self) -> int:

@@ -1,7 +1,7 @@
 
 from . import SceneManager, Styles
 from .Component import Component
-from pygame import Rect, Surface, SRCALPHA
+from pygame import Surface, SRCALPHA
 
 from ..optimization.animation import Animate
 from ..optimization.positioning import center_top
@@ -119,7 +119,7 @@ class TopBar(Component):
         return self.Updated
     
 
-    def Frame(self, DISP: Surface) -> Rect:
+    def Frame(self, DISP: Surface):
         self.Updated = False
 
         DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_X())

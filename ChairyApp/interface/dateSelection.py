@@ -1,7 +1,7 @@
 
 from .Component import Component
 from . import Styles
-from pygame import Surface, Rect
+from pygame import Surface
 from ..chairyData import ChairyData as CD
 from .Scene import SceneManager as SM
 import calendar, datetime
@@ -223,7 +223,7 @@ class DateSelectionTemplate(Component):
 
     def Frame(self, DISP):
         self.Updated = False
-        return DISP.blit(self.SURFACE, (self.X, self.Y))
+        return self.convertRect(DISP.blit(self.SURFACE, (self.X, self.Y)))
     
 
 
@@ -511,7 +511,7 @@ class MonthSelection(Component):
 
     def Frame(self, DISP):
         self.Updated = False
-        return DISP.blit(self.SURFACE, (self.X, self.Y))
+        return self.convertRect(DISP.blit(self.SURFACE, (self.X, self.Y)))
     
 
     def MouseButtonDown(self, POS, BUTTON): # 4: 스크롤 올림, 5: 스크롤 내림

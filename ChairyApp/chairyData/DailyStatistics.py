@@ -15,6 +15,8 @@ class DailyStatistics():
     특정 일자의 RoomData를 기반으로 학번, 이름, 입실 시간, 퇴실 시간, 좌석, 이동 횟수를 확인해 통계를 만드는 클래스.
     """
 
+    __slots__ = ('Statistics', 'Empty', 'TotalMove', 'DATE')
+
     
     Statistics: list[list[str]]
     # [<StudentID: str>, <Name: str>, <LastChkIn: time>, <LastChkOut: time>, <LastSeat: str>, <MoveCount: int>]

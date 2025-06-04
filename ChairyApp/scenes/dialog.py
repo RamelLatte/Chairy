@@ -1,8 +1,7 @@
 
 from ..interface import Scene, SceneManager, Styles
-from pygame import Surface, Rect, SRCALPHA
-from concurrent.futures import Future
-from ..ChairyApp import ChairyApp
+from pygame import Surface, SRCALPHA
+from threading import Thread
 
 from ..Logging import LoggingManager as logging
 from ..optimization.animation import Animate, AnimateSpdUp
@@ -10,7 +9,7 @@ from ..optimization.positioning import center_top, center_center, center_bottom
 
 
 
-class Dialog(Scene):
+class Dialog(Scene, Thread):
     """ ### 안내창 """
 
     BackgroundScene     : Scene     # 배경 Scene
@@ -27,10 +26,11 @@ class Dialog(Scene):
     Description: str # 설명 텍스트
     Lower: str       # 하단 텍스트
 
-    ExecutorFuture: Future # 처리할 작업
+    Complete: bool # Dialog 완료 여부
 
-    Complete: bool # 작업 완료 여부
-
+    Done: bool # 작업 완료 여부
+    Except: bool # 오류 여부
+    Except_: Exception # 오류
 
 
     def __init__(self, title: str, desc: str, lower: str = '잠시만 기다려주십시오...'):
@@ -54,7 +54,12 @@ class Dialog(Scene):
 
         self.Complete = False
 
+        self.Done = False
+        self.Except = False
+        self.Except_ = None
+
         SceneManager.setScene(self)
+        super().__init__()
 
 
     def _Update(self):
@@ -91,23 +96,34 @@ class Dialog(Scene):
         self._Update()
 
 
-    def run(self):
+    def task(self):
         """
         Dialog가 표시되는 동안 수행할 작업 로직, **Dialog가 표시될 때 따로 Thread가 호출되어 해당 메서드를 실행함.**
         
-        해당 메서드가 완료되면 Dialog를 숨기며, **상속을 통해 run() 메서드를 Override하여 다른 기능을 수행하도록 할 수 있음.**
+        해당 메서드가 완료되면 Dialog를 숨기며, **상속을 통해 task() 메서드를 Override하여 다른 기능을 수행하도록 할 수 있음.**
         """
         
         from time import sleep
         sleep(2.25)
 
 
+    def run(self):
+
+        try:
+            self.task()
+            self.Complete = True
+        except Exception as e:
+            self.Except = True
+            self.Except_ = e
+        finally:
+            self.Done = True
+
 
     def On_Init(self, DISPLAY):
         self.Asset = SceneManager.loadAsset('/ChairyApp/assets/components/Dialog.png').convert_alpha(DISPLAY)
         self._Update()
 
-        self.ExecutorFuture = ChairyApp.UPDATER.Executor.submit(self.run)
+        self.start()
 
         self.BackgroundScene.Draw(self.BackgroundSurface)
         self.BackgroundSurface = self.BackgroundSurface.convert()
@@ -116,10 +132,9 @@ class Dialog(Scene):
     
     def On_Update(self, ANIMATION_OFFSET, TICK):
 
-        if not self.Complete and self.ExecutorFuture is not None and self.ExecutorFuture.done():
-            e = self.ExecutorFuture.exception()
-            if e is not None:
-                logging.error('작업 처리 도중 오류가 발생했습니다.', e)
+        if not self.Complete and self.Done:
+            if self.Except:
+                logging.error('작업 처리 도중 오류가 발생했습니다.', self.Except_)
             self.Complete = True
 
         # Thread 완료
@@ -160,8 +175,7 @@ class Dialog(Scene):
 
         DISPLAY.blit(self.Dialog, (710, self.DialogY))
 
-        RECTS.append(Rect(0, 0, 1920, 1080))
+        RECTS.updateFull()
 
         if self.Complete and self.DialogY == 1080 and self.BgAlpha == 255.:
-            SceneManager.SCENE_TIME = 0
-            SceneManager.CURRENT_SCENE = self.BackgroundScene
+            SceneManager.setScene(self.BackgroundScene, False)
