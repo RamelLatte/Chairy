@@ -15,6 +15,9 @@ class RoomData():
     **매일 오전 5시에 자동으로 초기화되도록 프로그램이 설계되었으며. JSON으로 저장되고 불러와짐.**
     """
 
+    __slots__ = ('DIRECTORY', 'CONFIG', 'DIRNAME', 'FILENAME', 'DATA_DATE', 'DATA', 'Current', 'Arrangement', 'UserNames', 'Begin', 'End', 'Version', 'Logs')
+
+
     # Static
     DIRECTORY   : str
     CONFIG      : Configuration
@@ -293,11 +296,11 @@ class RoomData():
         """
         RoomData를 JSON 형식의 파일로 저장함.
         """
-        import json, os
+        import orjson, os
         if not os.path.exists(RoomData.DIRECTORY + '/RoomData/' + RoomData.DIRNAME + '/'):
             os.makedirs(RoomData.DIRECTORY + '/RoomData/' + RoomData.DIRNAME + '/')
         with open(RoomData.DIRECTORY + '/RoomData/' + RoomData.DIRNAME + '/' + RoomData.FILENAME, 'w', encoding='utf-8') as f:
-            f.write(json.dumps(self.ToRaw(), indent='  '))
+            f.write(orjson.dumps(self.ToRaw()).decode('utf-8'))
 
     
     @staticmethod
@@ -328,9 +331,13 @@ class RoomData():
             return RoomData()
         
         else:
-            import json
+            import orjson
+
+            s: str = ""
             with open(DIR + '/RoomData/' + RoomData.DIRNAME + '/' + RoomData.FILENAME, 'r', encoding='utf-8') as f:
-                return RoomData.FromRaw(json.load(f))
+                for line in f.readlines():
+                    s += line
+            return RoomData.FromRaw(orjson.loads(s))
                 
     
     @staticmethod
@@ -349,9 +356,12 @@ class RoomData():
             return None
         
         else:
-            import json
+            import orjson
+            s : str = ""
             with open(RoomData.DIRECTORY + '/RoomData/' + fn, 'r', encoding='utf-8') as f:
-                return RoomData.FromRaw(json.load(f))
+                for line in f.readlines():
+                    s += line
+            return RoomData.FromRaw(orjson.loads(s))
                 
 
     @staticmethod

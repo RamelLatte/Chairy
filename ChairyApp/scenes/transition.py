@@ -1,7 +1,8 @@
 
 from ..interface import Scene, SceneManager, Styles
-from pygame import Surface, Rect
+from pygame import Surface
 
+from ..optimization.rects import EmptyDRManager
 from ..optimization.animation import AnimateSpdUp, Animate
 
 
@@ -90,19 +91,17 @@ class Transition(Scene):
         DISPLAY.fill(Styles.SPRLIGHTGRAY)
 
         if self.AnimationStep:
-            self.Scene_B.On_Render(ANIMATION_OFFSET, TICK, self.Surface_B, [])
+            self.Scene_B.On_Render(ANIMATION_OFFSET, TICK, self.Surface_B, EmptyDRManager())
             self.Surface_B.set_alpha(self.Alpha)
             DISPLAY.blit(self.Surface_B, (self.Position, 0))
         else:
-            self.Scene_A.On_Render(ANIMATION_OFFSET, TICK, self.Surface_A, [])
+            self.Scene_A.On_Render(ANIMATION_OFFSET, TICK, self.Surface_A, EmptyDRManager())
             self.Surface_A.set_alpha(self.Alpha)
             DISPLAY.blit(self.Surface_A, (self.Position, 0))
-        RECTS.append(Rect(0, 0, 1920, 1080))
+        RECTS.updateFull()
 
         if self.Continue:
-            SceneManager.CURRENT_SCENE = self.Scene_B
-            SceneManager.SCENE_TIME = 0
-
+            SceneManager.setScene(self.Scene_B, False)
 
 
     def Event_Quit(self):

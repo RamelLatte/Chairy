@@ -1,5 +1,5 @@
 
-from pygame import Surface, Rect
+from pygame import Surface
 from pygame.constants import RLEACCEL
 
 from ChairyApp.chairyData import ChairyData
@@ -94,8 +94,8 @@ class SeatsDisplay(Component):
         if self.MySeat != None and self.MySeat in self.SeatIDs:
             i = self.SeatIDs.index(self.MySeat)
             self.CurrSurf = self.Asset_CurrentSeat.copy()
-            txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.GREEN)
-            self.CurrSurf.blit(txt, center_top(25, 5, txt.get_size()))
+            txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.GREEN)
+            self.CurrSurf.blit(txt, center_top(25, 2, txt.get_size()))
 
         for i in range(len(self.SeatIDs)):
 
@@ -104,30 +104,30 @@ class SeatsDisplay(Component):
                 self.SeatReserved[i] = True
 
                 self.SeatSurf_P[i].blit(self.Asset_PreviewOccupied, (0, 0))
-                txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.DARKGRAY)
-                self.SeatSurf_P[i].blit(txt, center_top(25, 5, txt.get_size()))
+                txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.DARKGRAY)
+                self.SeatSurf_P[i].blit(txt, center_top(25, 2, txt.get_size()))
 
                 if ChairyData.ROOMDATA.isVacant(self.SeatIDs[i]):
                     self.SeatOccupied[i] = False
 
                     self.SeatSurf[i].blit(self.Asset_VacantReserved0, (0, 0))
-                    txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.YELLOW)
-                    self.SeatSurf[i].blit(txt, center_top(25, 5, txt.get_size()))
+                    txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.YELLOW)
+                    self.SeatSurf[i].blit(txt, center_top(25, 2, txt.get_size()))
 
                     self.SeatSurf_[i].blit(self.Asset_VacantReserved1, (0, 0))
-                    txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.LIGHTYELLOW)
-                    self.SeatSurf_[i].blit(txt, center_top(25, 5, txt.get_size()))
+                    txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.LIGHTYELLOW)
+                    self.SeatSurf_[i].blit(txt, center_top(25, 2, txt.get_size()))
 
                 else:
                     self.SeatOccupied[i] = True
 
                     self.SeatSurf[i].blit(self.Asset_Occupied0, (0, 0))
-                    txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.RED)
-                    self.SeatSurf[i].blit(txt, center_top(25, 5, txt.get_size()))
+                    txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.RED)
+                    self.SeatSurf[i].blit(txt, center_top(25, 2, txt.get_size()))
 
                     self.SeatSurf_[i].blit(self.Asset_Occupied1, (0, 0))
-                    txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.LIGHTRED)
-                    self.SeatSurf_[i].blit(txt, center_top(25, 5, txt.get_size()))
+                    txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.LIGHTRED)
+                    self.SeatSurf_[i].blit(txt, center_top(25, 2, txt.get_size()))
 
                 txt = Styles.SANS_H6.render(self.SeatNames[i], 1, Styles.WHITE)
                 self.SeatSurf[i].blit(txt, center_top(25, 30, txt.get_size()))
@@ -142,30 +142,30 @@ class SeatsDisplay(Component):
                     self.SeatOccupied[i] = False
 
                     self.SeatSurf[i].blit(self.Asset_Vacant0, (0, 0))
-                    txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.BLUE)
-                    self.SeatSurf[i].blit(txt, center_top(25, 5, txt.get_size()))
+                    txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.BLUE)
+                    self.SeatSurf[i].blit(txt, center_top(25, 10, txt.get_size()))
 
                     self.SeatSurf_[i].blit(self.Asset_Vacant1, (0, 0))
-                    txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.LIGHTBLUE)
-                    self.SeatSurf_[i].blit(txt, center_top(25, 5, txt.get_size()))
+                    txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.LIGHTBLUE)
+                    self.SeatSurf_[i].blit(txt, center_top(25, 10, txt.get_size()))
 
                     self.SeatSurf_P[i].blit(self.Asset_PreviewVacant, (0, 0))
-                    txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.DARKGRAY)
-                    self.SeatSurf_P[i].blit(txt, center_top(25, 5, txt.get_size()))
+                    txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.DARKGRAY)
+                    self.SeatSurf_P[i].blit(txt, center_top(25, 10, txt.get_size()))
                 else:
                     self.SeatOccupied[i] = True
 
                     self.SeatSurf[i].blit(self.Asset_Occupied0, (0, 0))
-                    txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.RED)
-                    self.SeatSurf[i].blit(txt, center_top(25, 5, txt.get_size()))
+                    txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.RED)
+                    self.SeatSurf[i].blit(txt, center_top(25, 2, txt.get_size()))
 
                     self.SeatSurf_[i].blit(self.Asset_Occupied1, (0, 0))
-                    txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.LIGHTRED)
-                    self.SeatSurf_[i].blit(txt, center_top(25, 5, txt.get_size()))
+                    txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.LIGHTRED)
+                    self.SeatSurf_[i].blit(txt, center_top(25, 2, txt.get_size()))
 
                     self.SeatSurf_P[i].blit(self.Asset_PreviewOccupied, (0, 0))
-                    txt = Styles.SANS_H5.render(self.SeatIDs[i], 1, Styles.DARKGRAY)
-                    self.SeatSurf_P[i].blit(txt, center_top(25, 5, txt.get_size()))
+                    txt = Styles.ANTON_H5.render(self.SeatIDs[i], 1, Styles.DARKGRAY)
+                    self.SeatSurf_P[i].blit(txt, center_top(25, 2, txt.get_size()))
 
                     txt = Styles.SANS_H6.render(self.SeatNames[i], 1, Styles.WHITE)
                     self.SeatSurf[i].blit(txt, center_top(25, 30, txt.get_size()))
@@ -287,7 +287,7 @@ class SeatsDisplay(Component):
         if self.Updated:
             self.Updated = False
 
-        return DISP.blit(self.SURFACE, (self.X, self.Y))
+        return self.convertRect(DISP.blit(self.SURFACE, (self.X, self.Y)))
     
 
 

@@ -1,7 +1,8 @@
 
 from ..interface import Scene, SceneManager, Styles, Interface
-from pygame import Surface, Rect, SRCALPHA, BLEND_RGBA_MULT
+from pygame import Surface, SRCALPHA, BLEND_RGBA_MULT
 from ..chairyData import ChairyData
+from array import array
 
 from ..optimization.animation import AnimateSpdUp, Animate
 
@@ -174,9 +175,8 @@ class Media(Scene):
             self.ID_Group_Y = Animate(self.ID_Group_Y, 432, 1.0, ANIMATION_OFFSET)
 
             if (Interface.OT_CurrentMedia.Y == 955 or not ChairyData.CURRENT_MEDIA.Playing) and self.ID_Group_Y == 432:
-                SceneManager.CURRENT_SCENE = SceneManager.MainScene
-                SceneManager.SCENE_TIME = 0
                 SceneManager.MainScene.InteractionStep = 0
+                SceneManager.setScene(SceneManager.MainScene, False)
 
 
     def On_Render(self, ANIMATION_OFFSET, TICK, DISPLAY, RECTS):
@@ -201,28 +201,28 @@ class Media(Scene):
             if self.Y != self.Y_:
                 d = self.Y - self.Y_
                 if d < 0:
-                    DISPLAY.fill(Styles.SPRLIGHTGRAY, Rect(51, self.Y, 438, - d + 405))
+                    DISPLAY.fill(Styles.SPRLIGHTGRAY, (51, self.Y, 438, - d + 405))
                     DISPLAY.blit(self.Surface_Top, (69, self.Y))
                     DISPLAY.blit(self.Surface_Bottom, (51, self.Y + 291))
                     self.Y_ = self.Y
-                    RECTS.append(Rect(51, self.Y, 438, 405 - d))
+                    RECTS.append(array('i', (51, int(self.Y), 438, int(405 - d))))
                 else:
-                    DISPLAY.fill(Styles.SPRLIGHTGRAY, Rect(51, self.Y_ - 1, 438, d + 406))
+                    DISPLAY.fill(Styles.SPRLIGHTGRAY, (51, self.Y_ - 1, 438, d + 406))
                     DISPLAY.blit(self.Surface_Top, (69, self.Y))
                     DISPLAY.blit(self.Surface_Bottom, (51, self.Y + 291))
                     self.Y_ = self.Y
-                    RECTS.append(Rect(51, self.Y_, 438, 404 + d))
+                    RECTS.append(array('i', (51, int(self.Y_), 438, int(404 + d))))
             else:
-                DISPLAY.fill(Styles.SPRLIGHTGRAY, Rect(51, 338, 438, 404))
+                DISPLAY.fill(Styles.SPRLIGHTGRAY, (51, 338, 438, 404))
                 DISPLAY.blit(self.Surface_Top, (69, self.Y))
                 DISPLAY.blit(self.Surface_Bottom, (51, self.Y + 291))
-                RECTS.append(Rect(51, 338, 438, 404))
+                RECTS.append(array('i', (51, 338, 438, 404)))
 
         elif self.InteractionStep == 2:
-            DISPLAY.fill(Styles.SPRLIGHTGRAY, Rect(51, 338, 438, 404))
+            DISPLAY.fill(Styles.SPRLIGHTGRAY, (51, 338, 438, 404))
             DISPLAY.blit(self.Surface_Top, (69, self.Y))
             DISPLAY.blit(self.Surface_Bottom, (51, self.Y + 291))
-            RECTS.append(Rect(51, 338, 438, 404))
+            RECTS.append(array('i', (51, 338, 438, 404)))
         
         # 가리기 버튼
         if Interface.MD_HideMediaBtn.Update():

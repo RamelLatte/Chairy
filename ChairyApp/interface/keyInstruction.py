@@ -1,5 +1,5 @@
 
-from pygame import Surface, Rect
+from pygame import Surface
 from .Component import Component
 from .Styles import Styles
 from .Scene import SceneManager as SM
@@ -82,7 +82,7 @@ class KeyInstructionDisplay(Component):
         return (self.Y != self._Y)
     
 
-    def Frame(self, DISP: Surface) -> Rect:
+    def Frame(self, DISP: Surface):
 
         DISP.fill(Styles.SPRLIGHTGRAY, self.calculateTrailRect_Y())
         DISP.blit(self.SURFACE, (self.X, self.Y))

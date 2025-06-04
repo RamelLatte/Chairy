@@ -1,5 +1,6 @@
 
 from pygame import Surface, Rect
+from array import array
 
 
 class Component:
@@ -67,8 +68,13 @@ class Component:
     def AnimateSpdUp_Y(self, Negative: bool, Start: float, Target: float, Speed: float, AO: float): ...
 
 
-    def calculateRect(self) -> Rect:
+    def calculateRect(self) -> array:
         """ 애니메이션으로 인한 위치 변화를 고려해 최적의 화면 업데이트 영역을 반환함. """
+        ...
+
+
+    def convertRect(self, Rect: Rect) -> array:
+        """ Pygame Rect를 DirtyRectsManager가 쓸 수 있는 array로 변환함. """
         ...
 
 
@@ -87,7 +93,7 @@ class Component:
     def Update(self, A_OFFSET: float) -> bool:
         """ Component 내의 데이터를 저장하고 계산 작업을 수행함. **Component의 생김새가 바뀌면 True를 반환함.** """
         return False
-    def Frame(self, DISP: Surface) -> Rect:
+    def Frame(self, DISP: Surface) -> array:
         """ Component를 지정된 Surface에 그림. **일반적으로 Update()를 호출하고, True일 때 Frame()을 호출하는 형태임.** """
         ...
     

@@ -3,13 +3,13 @@ from optimization.rects import DirtyRectsManager as OptimizedDirtyRectsManager
 from pygame import Rect
 from random import randint
 from time import time
+from array import array
 
 
 class DirtyRectsManager:
 
     def __init__(self):
         self.current = []  # 이번 프레임
-        self.prior = []    # 이전 프레임
 
     def append(self, x: int, y: int, w: int, h: int):
         self.current.append((x, y, w, h))
@@ -34,22 +34,19 @@ class DirtyRectsManager:
         return (x1, y1, x2 - x1, y2 - y1)
 
     def calculate(self):
-        merged = self.current + self.prior
         result = []
-
-        self.prior = self.current[:]
 
         while True:
             did_merge = False
             i = 0
-            while i < len(merged):
-                current = merged[i]
+            while i < len(self.current):
+                current = self.current[i]
                 j = i + 1
-                while j < len(merged):
-                    if self.is_overlap(current, merged[j]):
-                        current = self.merge_rects(current, merged[j])
-                        merged[i] = current
-                        del merged[j]
+                while j < len(self.current):
+                    if self.is_overlap(current, self.current[j]):
+                        current = self.merge_rects(current, self.current[j])
+                        self.current[i] = current
+                        del self.current[j]
                         did_merge = True
                     else:
                         j += 1
@@ -59,7 +56,7 @@ class DirtyRectsManager:
                 break
 
         # 결과 리스트 생성
-        for rect in merged:
+        for rect in self.current:
             result.append(Rect(*rect))
 
         # Prior 백업 및 초기화
@@ -88,8 +85,8 @@ o_manager = OptimizedDirtyRectsManager()
 start = time()
 
 for i in range(100):
-    for j in range(128):
-        o_manager.append(randint(-32767, 32767), randint(-32767, 32767), randint(-32767, 32767), randint(-32767, 32767))
+    for j in range(16):
+        o_manager.append(array('i', [randint(-32767, 32767), randint(-32767, 32767), randint(-32767, 32767), randint(-32767, 32767)]))
 
     o_manager.calculate()
 
@@ -100,14 +97,14 @@ o_manager = OptimizedDirtyRectsManager()
 
 fail = False
 
-for i in range(1000):
+for i in range(10000):
     for j in range(512):
         a = randint(-1920, 1920)
         b = randint(-1080, 1080)
         c = randint(0, 1920)
         d = randint(0, 1080)
 
-        o_manager.append(a, b, c, d)
+        o_manager.append(array('i', [a, b, c, d]))
         manager.append(a, b, c, d)
 
     A = len(manager.calculate())

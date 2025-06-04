@@ -3,7 +3,7 @@ from . import Configuration
 from datetime import datetime
 from os import path
 from . import RoomData
-import json
+import orjson
 
 
 
@@ -20,6 +20,10 @@ class StudentData():
     def Init(config: Configuration, Directory: str):
         StudentData.CONFIG = config
         StudentData.DIRECTORY = Directory
+
+
+    __slots__ = ('CONFIG', 'DIRECTORY', 'Created', 'StudentID', 'Name', 'SeatReserved', 'ReservedSeat', 'WeeklyCheckInStamp', 'WeeklyCheckInStamp_',
+                 'CurrentSeat', 'Activity', 'LatestActivity', 'LastUsedSeat', 'LastChkIn', 'LastChkOut', 'TotalMove')
 
 
     CONFIG      : Configuration     # Static
@@ -94,8 +98,11 @@ class StudentData():
         else:
             self.Created = False
             d: dict
+            s: str = ""
             with open(StudentData.DIRECTORY + "/student_data/" + self.StudentID + ".json", 'r', encoding='utf-8') as f:
-                d = json.load(f)
+                for line in f.readlines():
+                    s += line
+            d = orjson.loads(s)
 
             self.Name = d['Name']
             for s in self.CONFIG.Students:
@@ -125,7 +132,7 @@ class StudentData():
         if not os.path.exists(StudentData.DIRECTORY + '/student_data/'):
             os.makedirs(StudentData.DIRECTORY + '/student_data/')
         with open(StudentData.DIRECTORY + "/student_data/" + self.StudentID + ".json", 'w', encoding='utf-8') as f:
-            json.dump(self.raw(), f, indent="\t")
+            f.write(orjson.dumps(self.raw()).decode('utf-8'))
 
 
     def raw(self) -> dict:

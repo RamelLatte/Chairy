@@ -16,7 +16,7 @@ class StatisticDialog(Dialog):
         super().__init__("통계를 내보내는 중...", "「월간 출석부」 통계를 내보내고 있습니다.")
 
 
-    def run(self):
+    def task(self):
         from time import sleep
 
         self.set("통계 내보내기 완료!", self.Statistic.Write() + '\n로 저장되었습니다.')
@@ -67,8 +67,8 @@ class ExportMonthly(Scene):
         """ 미리보기 렌더링 """
 
         self.PreviewScreen = Surface((1365, 892))
-        self.PreviewScreen.fill(Styles.SPRLIGHTGRAY, [1350, 0, 15, 892])
-        self.PreviewScreen.fill(Styles.SPRLIGHTGRAY, [0, 889, 1365, 3])
+        self.PreviewScreen.fill(Styles.SPRLIGHTGRAY, (1350, 0, 15, 892))
+        self.PreviewScreen.fill(Styles.SPRLIGHTGRAY, (0, 889, 1365, 3))
 
         if self.CurrentStatistics.Empty:
             self.PreviewScreen.fill(Styles.SPRLIGHTGRAY)
@@ -230,12 +230,12 @@ class ExportMonthly(Scene):
             RECTS.append(Interface.SC_ExportButton.Frame(DISPLAY))
 
         if Interface.SC_MonthSelection.Update():
-            RECTS.append(DISPLAY.blit(self.DateSelection, (80, 326)))
+            RECTS.appendRect(DISPLAY.blit(self.DateSelection, (80, 326)))
             Interface.SC_MonthSelection.Frame(DISPLAY)
 
         if self.Updated:
             self.Updated = False
-            RECTS.append(DISPLAY.blit(self.PreviewScreen, (492, 86)))
+            RECTS.appendRect(DISPLAY.blit(self.PreviewScreen, (492, 86)))
 
 
     def Draw(self, SURFACE):

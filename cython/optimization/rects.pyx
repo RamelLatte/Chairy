@@ -1,6 +1,5 @@
 from libc.stdint cimport int16_t, uint16_t
 from libc.stdlib cimport malloc, free, realloc
-from libc.string cimport memcpy
 from pygame import Rect
 
 
@@ -90,38 +89,6 @@ cdef class RectList:
 ### Dirty Rectangles ###
 
 
-cdef class GeometryArray:
-    cdef Geometry* arr
-    cdef int size
-    cdef int length
-
-    def __cinit__(self, int init_size=64):
-        self.arr = <Geometry*> malloc(sizeof(Geometry) * init_size)
-        self.size = init_size
-        self.length = 0
-
-    def __dealloc__(self):
-        if self.arr != NULL:
-            free(self.arr)
-
-    cdef void append(self, Geometry g):
-        if self.length >= self.size:
-            self.size *= 2
-            self.arr = <Geometry*> realloc(self.arr, sizeof(Geometry) * self.size)
-        self.arr[self.length] = g
-        self.length += 1
-
-    cdef void delete(self, int index):
-        cdef int i
-        for i in range(index, self.length - 1):
-            self.arr[i] = self.arr[i + 1]
-        self.length -= 1
-
-    cdef Geometry get(self, int index):
-        return self.arr[index]
-
-
-
 # 겹침 여부 함수
 cdef bint is_overlap(Geometry a, Geometry b):
     return not (
@@ -148,68 +115,105 @@ cdef Geometry merge_rects(Geometry a, Geometry b):
 cdef class DirtyRectsManager:
 
     cdef Geometry *Arr
-    cdef Geometry *Prior
 
-    cdef uint16_t Prior_Length
+    cdef uint16_t Init_Size
+    cdef uint16_t Size
     cdef uint16_t Length
 
+    cdef bint Full
 
-    def __cinit__(self):
 
-        self.Arr = <Geometry*> malloc(sizeof(Geometry) * 512)
-        self.Prior = <Geometry*> malloc(sizeof(Geometry) * 0)
+    def __cinit__(self, uint16_t init_size = 48):
 
-        self.Prior_Length = 0
+        self.Init_Size = init_size
+
+        self.Arr = <Geometry*> malloc(sizeof(Geometry) * self.Init_Size)
+
+        self.Size = 64
         self.Length = 0
+
+        self.Full = False
 
 
     def __dealloc__(self):
-        free(self.Arr)
-        free(self.Prior)
+        if self.Arr != NULL:
+            free(self.Arr)
 
 
-    cpdef void append(self, int16_t X, int16_t Y, int16_t W, int16_t H):
-        self.Arr[self.Length].X = X
-        self.Arr[self.Length].Y = Y
-        self.Arr[self.Length].W = W
-        self.Arr[self.Length].H = H
+    cdef void _append(self, Geometry g):
+        if self.Length >= self.Size:
+            self.Size += 32
+            self.Arr = <Geometry*> realloc(self.Arr, sizeof(Geometry) * self.Size)
+        self.Arr[self.Length] = g
         self.Length += 1
 
 
+    cdef void _delete(self, int index):
+        cdef int i
+        for i in range(index, self.Length - 1):
+            self.Arr[i] = self.Arr[i + 1]
+        self.Length -= 1
+
+
+    cdef Geometry _get(self, int index):
+        return self.Arr[index]
+
+
+    cpdef void updateFull(self):
+        self.Full = True
+
+
+    cpdef void append(self, int[::1] RectValue):
+        cdef Geometry g
+        g.X = RectValue[0]
+        g.Y = RectValue[1]
+        g.W = RectValue[2]
+        g.H = RectValue[3]
+        self._append(g)
+
+
+    cpdef void appendRect(self, object Rect):
+        cdef Geometry g
+        g.X = Rect.left
+        g.Y = Rect.top
+        g.W = Rect.width
+        g.H = Rect.height
+        self._append(g)
+
+
     cpdef list calculate(self):
-        cdef GeometryArray merged = GeometryArray(self.Length + self.Prior_Length + 8)
+
+        # 화면 전체 업데이트인 경우
+        if self.Full:
+
+            # 초기화
+            self.Size = self.Init_Size
+            self.Arr = <Geometry*> realloc(self.Arr, sizeof(Geometry) * self.Size)
+            self.Length = 0
+
+            self.Full = False
+
+            return [Rect(0, 0, 1920, 1080)]
+
+        # 아닌 경우 Dirty Rectangles 계산
         cdef Geometry current, other
         cdef int i, j
         cdef bint did_merge
         cdef list result = []
 
-        # 병합 배열 초기화
-        for i in range(self.Length):
-            merged.append(self.Arr[i])
-        for i in range(self.Prior_Length):
-            merged.append(self.Prior[i])
-
-        # Prior 갱신
-        if self.Prior != NULL:
-            free(self.Prior)
-
-        self.Prior = <Geometry*> malloc(sizeof(Geometry) * self.Length)
-        memcpy(self.Prior, self.Arr, sizeof(Geometry) * self.Length)
-        self.Prior_Length = self.Length
-
         # 병합 루프
         while True:
             did_merge = False
             i = 0
-            while i < merged.length:
-                current = merged.get(i)
+            while i < self.Length:
+                current = self._get(i)
                 j = i + 1
-                while j < merged.length:
-                    other = merged.get(j)
+                while j < self.Length:
+                    other = self._get(j)
                     if is_overlap(current, other):
                         current = merge_rects(current, other)
-                        merged.arr[i] = current
-                        merged.delete(j)
+                        self.Arr[i] = current
+                        self._delete(j)
                         did_merge = True
                         # j는 그대로 유지 → 새로 당겨온 값도 다시 검사
                     else:
@@ -219,11 +223,33 @@ cdef class DirtyRectsManager:
                 break
 
         # 결과 리스트
-        for i in range(merged.length):
-            current = merged.get(i)
+        for i in range(self.Length):
+            current = self._get(i)
             result.append(Rect(current.X, current.Y, current.W, current.H))
 
         # 초기화
+        self.Size = self.Init_Size
+        self.Arr = <Geometry*> realloc(self.Arr, sizeof(Geometry) * self.Size)
         self.Length = 0
 
         return result
+
+
+
+cdef class EmptyDRManager:
+
+
+    cpdef void updateFull(self):
+        ...
+
+
+    cpdef void append(self, int[::1] RectValue):
+        ...
+
+
+    cpdef void appendRect(self, object Rect):
+        ...
+
+
+    cpdef list calculate(self):
+        ...

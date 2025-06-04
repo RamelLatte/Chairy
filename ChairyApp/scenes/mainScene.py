@@ -756,8 +756,7 @@ class MainScene(Scene):
             
             if Interface.OT_CurrentMedia.MouseButtonUp(POS, BUTTON):
                 from .media import Media
-                SceneManager.CURRENT_SCENE = Media()
-                SceneManager.SCENE_TIME = 0
+                SceneManager.setScene(Media(), False)
 
         # 좌석 선택 단계
         elif MainScene.InteractionStep == 6:

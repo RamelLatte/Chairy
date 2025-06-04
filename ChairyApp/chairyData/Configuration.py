@@ -17,6 +17,10 @@ class Configuration():
     '/school_data/configuration.xlsx'로부터 설정 값을 읽고 저장하는 클래스.
     """
 
+    __slots__ = ('NeisOpenApiKey', 'NeisOfficeCode', 'NeisSchoolCode', 'NeisCanIgnoreSSL', 'NeisTargetGrade',
+                 'ReservedSeatInHoliday', 'Students', 'StudentIDs', 'Arrangement', 'MediaDetection', 'Alphabet',
+                 'SelfStudyTimeData', 'SelfStudyTimeVaild', 'Directory')
+
     # Neis 연동 관련 설정
     NeisOpenApiKey  : str
     NeisOfficeCode  : str

@@ -8,7 +8,8 @@ from .exportPeriod  import ExportPeriod
 from .exportSeats   import ExportSeats
 from .mainScene     import MainScene
 from .transition    import Transition
-from pygame         import Surface, draw, Rect
+from pygame         import Surface, draw
+from array import array
 
 from ..optimization.animation import Animate
 
@@ -120,15 +121,15 @@ class StartScene(Scene):
         # 로딩 상황 렌더링
         if not self.Complete:
             DISPLAY.blit(self.CurrentProcess_Surface, (560, 970))
-            draw.rect(DISPLAY, Styles.GRAY, [560, 1000, 800, 5])
-            draw.rect(DISPLAY, Styles.BLACK, [560, 1000, self.Bar_Length, 5])
-            RECTS.append(Rect(560, 970, 800, 35))
+            draw.rect(DISPLAY, Styles.GRAY, (560, 1000, 800, 5))
+            draw.rect(DISPLAY, Styles.BLACK, (560, 1000, self.Bar_Length, 5))
+            RECTS.append(array('i', (560, 970, 800, 35)))
         else:
-            RECTS.append(DISPLAY.fill(Styles.SPRLIGHTGRAY, [560, 970, 800, 35]))
+            RECTS.appendRect(DISPLAY.fill(Styles.SPRLIGHTGRAY, (560, 970, 800, 35)))
             
 
     def Draw(self, SURFACE):
         SURFACE.fill(Styles.SPRLIGHTGRAY)
         SURFACE.blit(self.Asset_MasanHighSchool, (812, 509))
         SURFACE.blit(self.Asset_HR, (1028, 509))
-        draw.rect(SURFACE, Styles.BLACK, [960, 480, 1, 120])
+        draw.rect(SURFACE, Styles.BLACK, (960, 480, 1, 120))

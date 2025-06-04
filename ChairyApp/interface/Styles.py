@@ -1,15 +1,17 @@
 
 from pygame.font import Font
 from pygame.font import init
+from dataclasses import dataclass
 
 
-
+@dataclass(slots=True)
 class Styles:
     """
     ### 스타일
 
     색깔 및 폰트를 미리 지정, 불러옴.
     """
+
 
     # Colors
 
@@ -62,32 +64,36 @@ class Styles:
     SERIF_B3: Font
     SERIF_B4: Font
 
+    ANTON_H5: Font
+
 
     @staticmethod
     def initStyles(DIR: str):
         """ Styles 클래스를 초기화함. **매개변수로 실행 파일이 있는 디렉토리 위치를 투입하면 됨.** """
 
         init()
-        Styles.SANS_H1 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-8ExtraBold.ttf", 64)
-        Styles.SANS_H2 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-8ExtraBold.ttf", 48)
+        #Styles.SANS_H1 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-8ExtraBold.ttf", 64)
+        #Styles.SANS_H2 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-8ExtraBold.ttf", 48)
         Styles.SANS_H3 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-8ExtraBold.ttf", 36)
         Styles.SANS_H4 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-8ExtraBold.ttf", 28)
         Styles.SANS_H5 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-8ExtraBold.ttf", 18)
         Styles.SANS_H6 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-8ExtraBold.ttf", 12)
 
-        Styles.SANS_B1 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-4Regular.ttf", 42)
-        Styles.SANS_B2 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-4Regular.ttf", 30)
+        #Styles.SANS_B1 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-4Regular.ttf", 42)
+        #Styles.SANS_B2 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-4Regular.ttf", 30)
         Styles.SANS_B3 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-4Regular.ttf", 18)
         Styles.SANS_B4 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-4Regular.ttf", 16)
         Styles.SANS_B5 = Font(DIR + "/ChairyApp/assets/fonts/Paperlogy-4Regular.ttf", 12)
 
         Styles.SERIF_H1 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-ExtraBold.ttf", 64)
-        Styles.SERIF_H2 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-ExtraBold.ttf", 48)
-        Styles.SERIF_H3 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-ExtraBold.ttf", 36)
-        Styles.SERIF_H4 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-ExtraBold.ttf", 24)
-        Styles.SERIF_H5 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-ExtraBold.ttf", 18)
+        #Styles.SERIF_H2 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-ExtraBold.ttf", 48)
+        #Styles.SERIF_H3 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-ExtraBold.ttf", 36)
+        #Styles.SERIF_H4 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-ExtraBold.ttf", 24)
+        #Styles.SERIF_H5 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-ExtraBold.ttf", 18)
 
-        Styles.SERIF_B1 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-Regular.ttf", 42)
-        Styles.SERIF_B2 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-Regular.ttf", 30)
-        Styles.SERIF_B3 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-Regular.ttf", 18)
-        Styles.SERIF_B4 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-Regular.ttf", 12)
+        #Styles.SERIF_B1 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-Regular.ttf", 42)
+        #Styles.SERIF_B2 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-Regular.ttf", 30)
+        #Styles.SERIF_B3 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-Regular.ttf", 18)
+        #Styles.SERIF_B4 = Font(DIR + "/ChairyApp/assets/fonts/NotoSerif_Condensed-Regular.ttf", 12)
+
+        Styles.ANTON_H5 = Font(DIR + "/ChairyApp/assets/fonts/Anton-Regular.ttf", 18)

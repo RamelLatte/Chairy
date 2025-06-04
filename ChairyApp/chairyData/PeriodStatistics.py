@@ -17,6 +17,9 @@ class PeriodStatistics():
     학생별 입,퇴실 시간을 분석하여 Configuration에 입력된 자습 시간에 따라 기호로 해당 교시에서의 자습 참여 여부를 통계로 만드는 클래스.
     """
 
+    __slots__ = ('Year', 'Month', 'FileDates', 'Statistics', 'Empty')
+
+
     Year    : int
     Month   : int
 
