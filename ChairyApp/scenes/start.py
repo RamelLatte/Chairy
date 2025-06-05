@@ -89,7 +89,7 @@ class StartScene(Scene):
 
         if ChairyData.Ready and not self.Queued_Interface:
             self.Queued_Interface = True
-            self.Task = self.Executor.submit(Interface.Init)
+            self.Task = self.Executor.submit(Interface.Init, ChairyApp.LAYER0, ChairyApp.LAYER1)
             ChairyApp.Init_UpdateExecutor()
 
         if ChairyData.Ready and Interface.Ready and self.Bar_Length == 800:

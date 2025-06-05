@@ -7,7 +7,7 @@ from .Component import Component
 from .Styles import Styles
 from .Scene import SceneManager as SM
 
-from ..optimization.positioning import center_top
+from ..optimization.positioning import center_top, collidepoint
 from ..optimization.rects import RectList
 
 
@@ -331,3 +331,16 @@ class SeatsDisplay(Component):
             return ci
         else:
             return -1
+        
+
+    def MouseMotion(self, POS) -> str:
+        
+        if not collidepoint(self.X, self.Y, 1002, 1045, POS):
+            return None
+
+        index = self.SeatRect.collidepoint(POS[0] - self.X, POS[1] - self.Y)
+
+        if index == -1:
+            return None
+        
+        return self.SeatIDs[index]

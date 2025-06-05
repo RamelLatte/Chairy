@@ -89,14 +89,14 @@ cdef class Component:
 
 
     cpdef void Animate_X(self, float Target, float Speed, float AO):
-        if fabsf(self.X - Target) < 1:
+        if fabsf(self.X - Target) < 0.5:
             self.X = Target
         else:
             self.X += (Target - self.X) * AO * Speed
 
     
     cpdef void Animate_Y(self, float Target, float Speed, float AO):
-        if fabsf(self.Y - Target) < 1:
+        if fabsf(self.Y - Target) < 0.5:
             self.Y = Target
         else:
             self.Y += (Target - self.Y) * AO * Speed

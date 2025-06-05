@@ -1,6 +1,7 @@
 from libc.stdint cimport int16_t, uint16_t
 from libc.stdlib cimport malloc, free, realloc
 from pygame import Rect
+from array import array
 
 
 cdef struct Geometry:
@@ -120,7 +121,7 @@ cdef class DirtyRectsManager:
     cdef uint16_t Size
     cdef uint16_t Length
 
-    cdef bint Full
+    cdef readonly bint Full
 
 
     def __cinit__(self, uint16_t init_size = 48):
@@ -181,25 +182,16 @@ cdef class DirtyRectsManager:
         self._append(g)
 
 
-    cpdef list calculate(self):
+    cpdef void calculate(self):
 
         # 화면 전체 업데이트인 경우
         if self.Full:
-
-            # 초기화
-            self.Size = self.Init_Size
-            self.Arr = <Geometry*> realloc(self.Arr, sizeof(Geometry) * self.Size)
-            self.Length = 0
-
-            self.Full = False
-
-            return [Rect(0, 0, 1920, 1080)]
+            return
 
         # 아닌 경우 Dirty Rectangles 계산
         cdef Geometry current, other
         cdef int i, j
         cdef bint did_merge
-        cdef list result = []
 
         # 병합 루프
         while True:
@@ -222,18 +214,36 @@ cdef class DirtyRectsManager:
             if not did_merge:
                 break
 
-        # 결과 리스트
+
+    cpdef list get(self):
+
+        # 화면 전체 업데이트인 경우
+        if self.Full:
+            return [Rect(0, 0, 1920, 1080)]
+
+        cdef list result = []
+        cdef Geometry current
+
         for i in range(self.Length):
             current = self._get(i)
             result.append(Rect(current.X, current.Y, current.W, current.H))
 
-        # 초기화
+        return result
+
+    
+    cpdef list clear(self):
         self.Size = self.Init_Size
         self.Arr = <Geometry*> realloc(self.Arr, sizeof(Geometry) * self.Size)
         self.Length = 0
 
-        return result
 
+    cpdef bint empty(self):
+        return self.Length == 0
+
+
+    def iter(self) -> array:
+        for i in range(self.Length):
+            yield array('i', [self.Arr[i].X, self.Arr[i].Y, self.Arr[i].W, self.Arr[i].H])
 
 
 cdef class EmptyDRManager:

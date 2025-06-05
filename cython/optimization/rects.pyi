@@ -38,6 +38,8 @@ class RectList:
 
 class DirtyRectsManager:
 
+    Full: bool
+
     def __init__(self, init_size: int = 48):
         ...
 
@@ -50,7 +52,19 @@ class DirtyRectsManager:
     def appendRect(self, Rect: Rect):
         ...
 
-    def calculate(self) -> list[Rect]:
+    def calculate(self):
+        ...
+
+    def iter(self) -> array:
+        ...
+
+    def get(self) -> list:
+        ...
+
+    def clear(self):
+        ...
+
+    def empty(self) -> bool:
         ...
 
 

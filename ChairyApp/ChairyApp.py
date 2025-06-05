@@ -31,7 +31,10 @@ class ChairyApp:
 
     UPDATER: UpdateExecutor = None
 
-    DIRTY: DirtyRectsManager = DirtyRectsManager()
+    LAYER0: pg.Surface
+    LAYER0_RECTS: DirtyRectsManager = DirtyRectsManager()
+    LAYER1: pg.Surface
+    LAYER1_RECTS: DirtyRectsManager = DirtyRectsManager()
 
 
     @staticmethod
@@ -67,6 +70,13 @@ class ChairyApp:
         # 화면 조정
         ChairyApp.DISPLAY = pg.display.set_mode((1920, 1080), (pg.FULLSCREEN | pg.SCALED))
 
+        # 레이어 설정
+        ChairyApp.LAYER0 = pg.Surface((1920, 1080))
+        ChairyApp.LAYER0.fill(Styles.SPRLIGHTGRAY)
+        ChairyApp.LAYER1 = pg.Surface((1920, 1080), (pg.SRCALPHA))
+        ChairyApp.LAYER1.fill((0, 0, 0, 0))
+
+        # 상단 아이콘 및 캡션 설정
         pg.display.set_caption("마산고등학교 학습 관리 시스템", "Chairy")
         pg.display.set_icon(pg.image.load(ChairyApp.DIRECTORY + "/ChairyApp/assets/ChairySquareBlack.png"))
 
@@ -175,18 +185,52 @@ class ChairyApp:
             if SceneManager.CURRENT_SCENE.INIT:
                 SceneManager.CURRENT_SCENE.INIT = False
                 SceneManager.CURRENT_SCENE.On_Init(ChairyApp.DISPLAY)
+                ChairyApp.LAYER1.fill((0, 0, 0, 0))
                 pg.display.flip()
 
             SceneManager.CURRENT_SCENE.On_Update(ChairyApp.ANIMATION_OFFSET, ChairyApp.TICK)
-            SceneManager.CURRENT_SCENE.On_Render(ChairyApp.ANIMATION_OFFSET, ChairyApp.TICK, ChairyApp.DISPLAY, ChairyApp.DIRTY)
+            SceneManager.CURRENT_SCENE.On_Render(ChairyApp.ANIMATION_OFFSET, ChairyApp.TICK, ChairyApp.LAYER0, ChairyApp.LAYER0_RECTS)
+            SceneManager.CURRENT_SCENE.On_Layer (ChairyApp.ANIMATION_OFFSET, ChairyApp.TICK, ChairyApp.LAYER1, ChairyApp.LAYER1_RECTS)
 
             ## 프레임 모니터링하고 싶다면 주석 해제
             #ChairyApp.RECTS.append(ChairyApp.DISPLAY.blit(Styles.SANS_H4.render(str(int(ChairyApp.CLOCK.get_fps())), 1, Styles.BLACK, Styles.SPRLIGHTGRAY), (0, 0))
 
-            ChairyApp.RECTS = ChairyApp.DIRTY.calculate()
+            # 메인 레이어 처리
+            if ChairyApp.LAYER0_RECTS.Full:
+                ChairyApp.DISPLAY.blit(ChairyApp.LAYER0, (0, 0))
+            elif not ChairyApp.LAYER0_RECTS.empty():
 
-            if len(ChairyApp.RECTS) > 0:
-                pg.display.update(ChairyApp.RECTS)
+                ChairyApp.LAYER0_RECTS.calculate()
+
+                for r in ChairyApp.LAYER0_RECTS.iter():
+                    ChairyApp.DISPLAY.blit(ChairyApp.LAYER0, (r[0], r[1]), r)
+
+            
+            # 서브 레이어 처리    
+            if ChairyApp.LAYER1_RECTS.Full:
+                ChairyApp.DISPLAY.blit(ChairyApp.LAYER1, (0, 0))
+            elif not ChairyApp.LAYER1_RECTS.empty():
+
+                ChairyApp.LAYER1_RECTS.calculate()
+
+                for r in ChairyApp.LAYER1_RECTS.iter():
+                    ChairyApp.DISPLAY.blit(ChairyApp.LAYER1, (r[0], r[1]), r)
+                    ChairyApp.LAYER0_RECTS.append(r)
+
+
+            # 마무리 렌더링
+            if ChairyApp.LAYER0_RECTS.Full:
+                pg.display.update()
+            else:
+                ChairyApp.LAYER0_RECTS.calculate()
+
+                if not ChairyApp.LAYER0_RECTS.empty():
+                    pg.display.update(ChairyApp.LAYER0_RECTS.get())
+
+                    
+            # 정리
+            ChairyApp.LAYER0_RECTS.clear()
+            ChairyApp.LAYER1_RECTS.clear()
 
 
 

@@ -4,9 +4,11 @@ from datetime import datetime
 from os import path
 from . import RoomData
 import orjson
+from dataclasses import dataclass
 
 
 
+@dataclass(slots=True)
 class StudentData():
     """
     ### 학생별 데이터
@@ -21,9 +23,6 @@ class StudentData():
         StudentData.CONFIG = config
         StudentData.DIRECTORY = Directory
 
-
-    __slots__ = ('CONFIG', 'DIRECTORY', 'Created', 'StudentID', 'Name', 'SeatReserved', 'ReservedSeat', 'WeeklyCheckInStamp', 'WeeklyCheckInStamp_',
-                 'CurrentSeat', 'Activity', 'LatestActivity', 'LastUsedSeat', 'LastChkIn', 'LastChkOut', 'TotalMove')
 
 
     CONFIG      : Configuration     # Static
@@ -54,6 +53,8 @@ class StudentData():
     LastUsedSeat: str
     LastChkIn: datetime
     LastChkOut: datetime
+
+    TotalMove: int
 
 
     def __init__(self, studentID: str):

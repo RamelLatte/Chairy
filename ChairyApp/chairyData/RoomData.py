@@ -2,9 +2,11 @@
 from . import Configuration, StudentData
 from datetime import datetime, timedelta, time, date
 from ..Info import ChairyInfo as CI
+from dataclasses import dataclass
 
 
 
+@dataclass(slots=True)
 class RoomData():
     """
     ### 좌석 데이터
@@ -14,8 +16,6 @@ class RoomData():
     
     **매일 오전 5시에 자동으로 초기화되도록 프로그램이 설계되었으며. JSON으로 저장되고 불러와짐.**
     """
-
-    __slots__ = ('DIRECTORY', 'CONFIG', 'DIRNAME', 'FILENAME', 'DATA_DATE', 'DATA', 'Current', 'Arrangement', 'UserNames', 'Begin', 'End', 'Version', 'Logs')
 
 
     # Static
@@ -126,11 +126,10 @@ class RoomData():
         self.Logs.append({'TimeStamp': now.strftime('%Y%m%d%H%M%S.%f'), 'ID': student.StudentID, 'Name': student.Name, 'Action': 'ChkIn', 'Seat': seat})
 
         date = self.DATA_DATE.strftime('%Y%m%d')
-        time = float(now.strftime('%H%M%S.%f'))
 
         if date in student.Activity:
             if student.Activity[date][0] != None:
-                if float(student.Activity[date][0]) > time:
+                if datetime.strptime(student.Activity[date][0], '%Y%m%d%H%M%S.%f') > now:
                     student.Activity[date][0] = now.strftime('%Y%m%d%H%M%S.%f')
             else:
                 student.Activity[date][0] = now.strftime('%Y%m%d%H%M%S.%f')
@@ -147,6 +146,8 @@ class RoomData():
             self.UserNames.append(student.Name)
 
         self.Current[seat] = ['OCC_FRE', student.StudentID, student.Name]
+
+        student.updateLatest()
 
         self.Save()
     
@@ -166,11 +167,10 @@ class RoomData():
             self.Logs.append({'TimeStamp': now.strftime('%Y%m%d%H%M%S.%f'), 'ID': student.StudentID, 'Name': student.Name, 'Action': 'ChkIn', 'Seat': student.ReservedSeat, 'Comment':'Reserved'})
 
             date = self.DATA_DATE.strftime('%Y%m%d')
-            time = float(now.strftime('%Y%m%d%H%M%S.%f'))
 
             if date in student.Activity:
                 if student.Activity[date][0] != None:
-                    if float(student.Activity[date][0]) > time:
+                    if datetime.strptime(student.Activity[date][0], '%Y%m%d%H%M%S.%f') > now:
                         student.Activity[date][0] = now.strftime('%Y%m%d%H%M%S.%f')
                 else:
                     student.Activity[date][0] = now.strftime('%Y%m%d%H%M%S.%f')
@@ -188,6 +188,8 @@ class RoomData():
 
             self.Current[student.ReservedSeat] = ['OCC_RES', student.StudentID, student.Name]
 
+        student.updateLatest()
+
         self.Save()
 
 
@@ -204,13 +206,10 @@ class RoomData():
         self.Logs.append({'TimeStamp': now.strftime('%Y%m%d%H%M%S.%f'), 'ID': student.StudentID, 'Name': student.Name, 'Action': 'ChkOut', 'Seat': student.CurrentSeat})
 
         date = self.DATA_DATE.strftime('%Y%m%d')
-        time = float(now.strftime('%Y%m%d%H%M%S.%f'))
 
         if date in student.Activity:
             if student.Activity[date][1] != None:
-                if float(student.Activity[date][1]) < time:
-                    student.Activity[date][1] = now.strftime('%Y%m%d%H%M%S.%f')
-                else:
+                if datetime.strptime(student.Activity[date][1], '%Y%m%d%H%M%S.%f') < now:
                     student.Activity[date][1] = now.strftime('%Y%m%d%H%M%S.%f')
             else:
                 student.Activity[date][1] = now.strftime('%Y%m%d%H%M%S.%f')
@@ -221,6 +220,7 @@ class RoomData():
             self.Current[student.CurrentSeat] = ['VAC_RES', student.StudentID, student.Name]
 
         student.CurrentSeat = None
+        student.updateLatest()
 
         self.Save()
 

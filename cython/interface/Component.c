@@ -4491,7 +4491,7 @@ static PyObject *__pyx_pf_9Component_9Component_14MoveTo(struct __pyx_obj_9Compo
  * 
  * 
  *     cpdef void Animate_X(self, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
- *         if fabsf(self.X - Target) < 1:
+ *         if fabsf(self.X - Target) < 0.5:
  *             self.X = Target
 */
 
@@ -4588,16 +4588,16 @@ static void __pyx_f_9Component_9Component_Animate_X(struct __pyx_obj_9Component_
   /* "Component.pyx":92
  * 
  *     cpdef void Animate_X(self, float Target, float Speed, float AO):
- *         if fabsf(self.X - Target) < 1:             # <<<<<<<<<<<<<<
+ *         if fabsf(self.X - Target) < 0.5:             # <<<<<<<<<<<<<<
  *             self.X = Target
  *         else:
 */
-  __pyx_t_9 = (fabsf((__pyx_v_self->X - __pyx_v_Target)) < 1.0);
+  __pyx_t_9 = (fabsf((__pyx_v_self->X - __pyx_v_Target)) < 0.5);
   if (__pyx_t_9) {
 
     /* "Component.pyx":93
  *     cpdef void Animate_X(self, float Target, float Speed, float AO):
- *         if fabsf(self.X - Target) < 1:
+ *         if fabsf(self.X - Target) < 0.5:
  *             self.X = Target             # <<<<<<<<<<<<<<
  *         else:
  *             self.X += (Target - self.X) * AO * Speed
@@ -4607,7 +4607,7 @@ static void __pyx_f_9Component_9Component_Animate_X(struct __pyx_obj_9Component_
     /* "Component.pyx":92
  * 
  *     cpdef void Animate_X(self, float Target, float Speed, float AO):
- *         if fabsf(self.X - Target) < 1:             # <<<<<<<<<<<<<<
+ *         if fabsf(self.X - Target) < 0.5:             # <<<<<<<<<<<<<<
  *             self.X = Target
  *         else:
 */
@@ -4630,7 +4630,7 @@ static void __pyx_f_9Component_9Component_Animate_X(struct __pyx_obj_9Component_
  * 
  * 
  *     cpdef void Animate_X(self, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
- *         if fabsf(self.X - Target) < 1:
+ *         if fabsf(self.X - Target) < 0.5:
  *             self.X = Target
 */
 
@@ -4781,7 +4781,7 @@ static PyObject *__pyx_pf_9Component_9Component_16Animate_X(struct __pyx_obj_9Co
  * 
  * 
  *     cpdef void Animate_Y(self, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
- *         if fabsf(self.Y - Target) < 1:
+ *         if fabsf(self.Y - Target) < 0.5:
  *             self.Y = Target
 */
 
@@ -4878,16 +4878,16 @@ static void __pyx_f_9Component_9Component_Animate_Y(struct __pyx_obj_9Component_
   /* "Component.pyx":99
  * 
  *     cpdef void Animate_Y(self, float Target, float Speed, float AO):
- *         if fabsf(self.Y - Target) < 1:             # <<<<<<<<<<<<<<
+ *         if fabsf(self.Y - Target) < 0.5:             # <<<<<<<<<<<<<<
  *             self.Y = Target
  *         else:
 */
-  __pyx_t_9 = (fabsf((__pyx_v_self->Y - __pyx_v_Target)) < 1.0);
+  __pyx_t_9 = (fabsf((__pyx_v_self->Y - __pyx_v_Target)) < 0.5);
   if (__pyx_t_9) {
 
     /* "Component.pyx":100
  *     cpdef void Animate_Y(self, float Target, float Speed, float AO):
- *         if fabsf(self.Y - Target) < 1:
+ *         if fabsf(self.Y - Target) < 0.5:
  *             self.Y = Target             # <<<<<<<<<<<<<<
  *         else:
  *             self.Y += (Target - self.Y) * AO * Speed
@@ -4897,7 +4897,7 @@ static void __pyx_f_9Component_9Component_Animate_Y(struct __pyx_obj_9Component_
     /* "Component.pyx":99
  * 
  *     cpdef void Animate_Y(self, float Target, float Speed, float AO):
- *         if fabsf(self.Y - Target) < 1:             # <<<<<<<<<<<<<<
+ *         if fabsf(self.Y - Target) < 0.5:             # <<<<<<<<<<<<<<
  *             self.Y = Target
  *         else:
 */
@@ -4920,7 +4920,7 @@ static void __pyx_f_9Component_9Component_Animate_Y(struct __pyx_obj_9Component_
  * 
  * 
  *     cpdef void Animate_Y(self, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
- *         if fabsf(self.Y - Target) < 1:
+ *         if fabsf(self.Y - Target) < 0.5:
  *             self.Y = Target
 */
 
@@ -9279,7 +9279,7 @@ __Pyx_RefNannySetupContext("PyInit_Component", 0);
  * 
  * 
  *     cpdef void Animate_X(self, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
- *         if fabsf(self.X - Target) < 1:
+ *         if fabsf(self.X - Target) < 0.5:
  *             self.X = Target
 */
   __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9Component_9Component_17Animate_X, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_Component_Animate_X, NULL, __pyx_mstate_global->__pyx_n_u_Component, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[5])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 91, __pyx_L1_error)
@@ -9291,7 +9291,7 @@ __Pyx_RefNannySetupContext("PyInit_Component", 0);
  * 
  * 
  *     cpdef void Animate_Y(self, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
- *         if fabsf(self.Y - Target) < 1:
+ *         if fabsf(self.Y - Target) < 0.5:
  *             self.Y = Target
 */
   __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9Component_9Component_19Animate_Y, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_Component_Animate_Y, NULL, __pyx_mstate_global->__pyx_n_u_Component, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[6])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 98, __pyx_L1_error)

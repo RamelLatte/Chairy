@@ -7,6 +7,7 @@ from ..Logging import LoggingManager as logging
 from requests.exceptions import SSLError, ConnectionError, HTTPError, Timeout
 from urllib3.exceptions import NameResolutionError, MaxRetryError
 from socket import gaierror
+from dataclasses import dataclass
 
 
 
@@ -30,15 +31,13 @@ class NeisError(Exception):
 
 
 
+@dataclass(slots=True)
 class NeisData():
     """
     ### 나이스 연동 데이터
     
     Neis Open API로부터 학교 정보, 식단 정보, 학사 일정을 받아와 필요한 형태로 다듬고 저장함.
     """
-
-    __slots__ = ('CanIgnoreSSL', 'KEY', 'OFFICE_CODE', 'SCHOOL_CODE', 'OfficeName', 'SchoolName', 'Kcal', 'Dish', 'Events', 'Holiday',
-                 'DinnerDate', 'DinnerInfoDate', 'Today', 'TargetGrade', 'ErrorCode')
 
 
     # 설정
