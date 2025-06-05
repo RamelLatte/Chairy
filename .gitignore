@@ -23,6 +23,7 @@ ENV/
 !cython/**/*.pyx
 !cython/build/*.pyd
 !cython/build/*.c
+!cython/optimization/*.c
 !cython/build/*.cpp
 cython/build/temp.win-amd64-cpython-310/
 
