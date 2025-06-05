@@ -162,9 +162,16 @@ cdef class DirtyRectsManager:
 
     cpdef void updateFull(self):
         self.Full = True
+        self.Arr[0].X = 0
+        self.Arr[0].Y = 0
+        self.Arr[0].W = 1920
+        self.Arr[0].H = 1080
+        self.Length = 1
 
 
     cpdef void append(self, int[::1] RectValue):
+        if self.Full:
+            return
         cdef Geometry g
         g.X = RectValue[0]
         g.Y = RectValue[1]
@@ -174,6 +181,8 @@ cdef class DirtyRectsManager:
 
 
     cpdef void appendRect(self, object Rect):
+        if self.Full:
+            return
         cdef Geometry g
         g.X = Rect.left
         g.Y = Rect.top

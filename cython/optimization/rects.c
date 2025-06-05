@@ -1613,7 +1613,7 @@ struct __pyx_obj_5rects_DirtyRectsManager {
 };
 
 
-/* "rects.pyx":249
+/* "rects.pyx":258
  * 
  * 
  * cdef class EmptyDRManager:             # <<<<<<<<<<<<<<
@@ -1626,7 +1626,7 @@ struct __pyx_obj_5rects_EmptyDRManager {
 };
 
 
-/* "rects.pyx":244
+/* "rects.pyx":253
  * 
  * 
  *     def iter(self) -> array:             # <<<<<<<<<<<<<<
@@ -1762,7 +1762,7 @@ struct __pyx_vtabstruct_5rects_DirtyRectsManager {
 static struct __pyx_vtabstruct_5rects_DirtyRectsManager *__pyx_vtabptr_5rects_DirtyRectsManager;
 
 
-/* "rects.pyx":249
+/* "rects.pyx":258
  * 
  * 
  * cdef class EmptyDRManager:             # <<<<<<<<<<<<<<
@@ -3120,7 +3120,6 @@ static const char __pyx_k_new[] = "__new__";
 static const char __pyx_k_obj[] = "obj";
 static const char __pyx_k_pop[] = "pop";
 static const char __pyx_k_top[] = "top";
-static const char __pyx_k_A_HA[] = "\200A\330\010\014\210H\220A";
 static const char __pyx_k_A_Ja[] = "\200A\330\010\014\210J\220a";
 static const char __pyx_k_Rect[] = "Rect";
 static const char __pyx_k_base[] = "base";
@@ -3218,7 +3217,6 @@ static const char __pyx_k_is_coroutine[] = "_is_coroutine";
 static const char __pyx_k_pyx_checksum[] = "__pyx_checksum";
 static const char __pyx_k_stringsource[] = "<stringsource>";
 static const char __pyx_k_use_setstate[] = "use_setstate";
-static const char __pyx_k_A_d_d_d_d_HAQ[] = "\200A\340\010\t\210\025\210d\220!\330\010\t\210\025\210d\220!\330\010\t\210\025\210d\220!\330\010\t\210\025\210d\220!\330\010\014\210H\220A\220Q";
 static const char __pyx_k_MemoryView_of[] = "<MemoryView of ";
 static const char __pyx_k_class_getitem[] = "__class_getitem__";
 static const char __pyx_k_getCoordinate[] = "getCoordinate";
@@ -3233,13 +3231,14 @@ static const char __pyx_k_collections_abc[] = "collections.abc";
 static const char __pyx_k_dtype_is_object[] = "dtype_is_object";
 static const char __pyx_k_pyx_PickleError[] = "__pyx_PickleError";
 static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
-static const char __pyx_k_A_iq_iq_iq_iq_HAQ[] = "\200A\340\010\t\210\025\210i\220q\230\001\330\010\t\210\025\210i\220q\230\001\330\010\t\210\025\210i\220q\230\001\330\010\t\210\025\210i\220q\230\001\330\010\014\210H\220A\220Q";
+static const char __pyx_k_A_4q_d_d_d_d_HAQ[] = "\200A\330\010\013\2104\210q\330\014\r\340\010\t\210\025\210d\220!\330\010\t\210\025\210d\220!\330\010\t\210\025\210d\220!\330\010\t\210\025\210d\220!\330\010\014\210H\220A\220Q";
 static const char __pyx_k_DirtyRectsManager[] = "DirtyRectsManager";
 static const char __pyx_k_pyx_unpickle_Enum[] = "__pyx_unpickle_Enum";
 static const char __pyx_k_A_HD_G_wat61B_D_Ja[] = "\200A\330\010\014\210H\220D\230\001\330\010\014\210G\220<\230w\240a\240t\2506\3201B\300\"\300D\310\001\330\010\014\210J\220a";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_strided_and_direct[] = "<strided and direct>";
+static const char __pyx_k_A_4q_iq_iq_iq_iq_HAQ[] = "\200A\330\010\013\2104\210q\330\014\r\340\010\t\210\025\210i\220q\230\001\330\010\t\210\025\210i\220q\230\001\330\010\t\210\025\210i\220q\230\001\330\010\t\210\025\210i\220q\230\001\330\010\014\210H\220A\220Q";
 static const char __pyx_k_RectList_colliderect[] = "RectList.colliderect";
 static const char __pyx_k_strided_and_indirect[] = "<strided and indirect>";
 static const char __pyx_k_DirtyRectsManager_get[] = "DirtyRectsManager.get";
@@ -3251,6 +3250,7 @@ static const char __pyx_k_Cannot_index_with_type[] = "Cannot index with type '";
 static const char __pyx_k_DirtyRectsManager_iter[] = "DirtyRectsManager.iter";
 static const char __pyx_k_RectList_getCoordinate[] = "RectList.getCoordinate";
 static const char __pyx_k_optimization_rects_pyx[] = "optimization/rects.pyx";
+static const char __pyx_k_A_HA_D_5_D_5_D_5_D_5_Ja[] = "\200A\330\010\014\210H\220A\330\010\014\210D\220\001\220\022\2205\230\001\330\010\014\210D\220\001\220\022\2205\230\001\330\010\014\210D\220\001\220\022\2205\230\001\330\010\014\210D\220\001\220\022\2205\230\001\330\010\014\210J\220a";
 static const char __pyx_k_DirtyRectsManager_clear[] = "DirtyRectsManager.clear";
 static const char __pyx_k_DirtyRectsManager_empty[] = "DirtyRectsManager.empty";
 static const char __pyx_k_contiguous_and_indirect[] = "<contiguous and indirect>";
@@ -19988,7 +19988,7 @@ static struct __pyx_t_5rects_Geometry __pyx_f_5rects_17DirtyRectsManager__get(st
  * 
  *     cpdef void updateFull(self):             # <<<<<<<<<<<<<<
  *         self.Full = True
- * 
+ *         self.Arr[0].X = 0
 */
 
 static PyObject *__pyx_pw_5rects_17DirtyRectsManager_5updateFull(PyObject *__pyx_v_self, 
@@ -20072,17 +20072,62 @@ static void __pyx_f_5rects_17DirtyRectsManager_updateFull(struct __pyx_obj_5rect
  * 
  *     cpdef void updateFull(self):
  *         self.Full = True             # <<<<<<<<<<<<<<
+ *         self.Arr[0].X = 0
+ *         self.Arr[0].Y = 0
+*/
+  __pyx_v_self->Full = 1;
+
+  /* "rects.pyx":165
+ *     cpdef void updateFull(self):
+ *         self.Full = True
+ *         self.Arr[0].X = 0             # <<<<<<<<<<<<<<
+ *         self.Arr[0].Y = 0
+ *         self.Arr[0].W = 1920
+*/
+  (__pyx_v_self->Arr[0]).X = 0;
+
+  /* "rects.pyx":166
+ *         self.Full = True
+ *         self.Arr[0].X = 0
+ *         self.Arr[0].Y = 0             # <<<<<<<<<<<<<<
+ *         self.Arr[0].W = 1920
+ *         self.Arr[0].H = 1080
+*/
+  (__pyx_v_self->Arr[0]).Y = 0;
+
+  /* "rects.pyx":167
+ *         self.Arr[0].X = 0
+ *         self.Arr[0].Y = 0
+ *         self.Arr[0].W = 1920             # <<<<<<<<<<<<<<
+ *         self.Arr[0].H = 1080
+ *         self.Length = 1
+*/
+  (__pyx_v_self->Arr[0]).W = 0x780;
+
+  /* "rects.pyx":168
+ *         self.Arr[0].Y = 0
+ *         self.Arr[0].W = 1920
+ *         self.Arr[0].H = 1080             # <<<<<<<<<<<<<<
+ *         self.Length = 1
+ * 
+*/
+  (__pyx_v_self->Arr[0]).H = 0x438;
+
+  /* "rects.pyx":169
+ *         self.Arr[0].W = 1920
+ *         self.Arr[0].H = 1080
+ *         self.Length = 1             # <<<<<<<<<<<<<<
  * 
  * 
 */
-  __pyx_v_self->Full = 1;
+  __pyx_v_self->Length = 1;
 
   /* "rects.pyx":163
  * 
  * 
  *     cpdef void updateFull(self):             # <<<<<<<<<<<<<<
  *         self.Full = True
- * 
+ *         self.Arr[0].X = 0
 */
 
   /* function exit code */
@@ -20166,12 +20211,12 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_4updateFull(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "rects.pyx":167
+/* "rects.pyx":172
  * 
  * 
  *     cpdef void append(self, int[::1] RectValue):             # <<<<<<<<<<<<<<
- *         cdef Geometry g
- *         g.X = RectValue[0]
+ *         if self.Full:
+ *             return
 */
 
 static PyObject *__pyx_pw_5rects_17DirtyRectsManager_7append(PyObject *__pyx_v_self, 
@@ -20211,14 +20256,14 @@ static void __pyx_f_5rects_17DirtyRectsManager_append(struct __pyx_obj_5rects_Di
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_append); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_append); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5rects_17DirtyRectsManager_7append)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
-        if (unlikely(!__pyx_v_RectValue.memview)) { __Pyx_RaiseUnboundLocalError("RectValue"); __PYX_ERR(0, 167, __pyx_L1_error) }
-        __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_RectValue, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
+        if (unlikely(!__pyx_v_RectValue.memview)) { __Pyx_RaiseUnboundLocalError("RectValue"); __PYX_ERR(0, 172, __pyx_L1_error) }
+        __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_RectValue, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_6 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -20238,7 +20283,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_append(struct __pyx_obj_5rects_Di
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 167, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 172, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -20258,8 +20303,35 @@ static void __pyx_f_5rects_17DirtyRectsManager_append(struct __pyx_obj_5rects_Di
     #endif
   }
 
-  /* "rects.pyx":169
+  /* "rects.pyx":173
+ * 
  *     cpdef void append(self, int[::1] RectValue):
+ *         if self.Full:             # <<<<<<<<<<<<<<
+ *             return
+ *         cdef Geometry g
+*/
+  if (__pyx_v_self->Full) {
+
+    /* "rects.pyx":174
+ *     cpdef void append(self, int[::1] RectValue):
+ *         if self.Full:
+ *             return             # <<<<<<<<<<<<<<
+ *         cdef Geometry g
+ *         g.X = RectValue[0]
+*/
+    goto __pyx_L0;
+
+    /* "rects.pyx":173
+ * 
+ *     cpdef void append(self, int[::1] RectValue):
+ *         if self.Full:             # <<<<<<<<<<<<<<
+ *             return
+ *         cdef Geometry g
+*/
+  }
+
+  /* "rects.pyx":176
+ *             return
  *         cdef Geometry g
  *         g.X = RectValue[0]             # <<<<<<<<<<<<<<
  *         g.Y = RectValue[1]
@@ -20268,7 +20340,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_append(struct __pyx_obj_5rects_Di
   __pyx_t_7 = 0;
   __pyx_v_g.X = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_RectValue.data) + __pyx_t_7)) )));
 
-  /* "rects.pyx":170
+  /* "rects.pyx":177
  *         cdef Geometry g
  *         g.X = RectValue[0]
  *         g.Y = RectValue[1]             # <<<<<<<<<<<<<<
@@ -20278,7 +20350,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_append(struct __pyx_obj_5rects_Di
   __pyx_t_7 = 1;
   __pyx_v_g.Y = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_RectValue.data) + __pyx_t_7)) )));
 
-  /* "rects.pyx":171
+  /* "rects.pyx":178
  *         g.X = RectValue[0]
  *         g.Y = RectValue[1]
  *         g.W = RectValue[2]             # <<<<<<<<<<<<<<
@@ -20288,7 +20360,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_append(struct __pyx_obj_5rects_Di
   __pyx_t_7 = 2;
   __pyx_v_g.W = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_RectValue.data) + __pyx_t_7)) )));
 
-  /* "rects.pyx":172
+  /* "rects.pyx":179
  *         g.Y = RectValue[1]
  *         g.W = RectValue[2]
  *         g.H = RectValue[3]             # <<<<<<<<<<<<<<
@@ -20298,21 +20370,21 @@ static void __pyx_f_5rects_17DirtyRectsManager_append(struct __pyx_obj_5rects_Di
   __pyx_t_7 = 3;
   __pyx_v_g.H = (*((int *) ( /* dim=0 */ ((char *) (((int *) __pyx_v_RectValue.data) + __pyx_t_7)) )));
 
-  /* "rects.pyx":173
+  /* "rects.pyx":180
  *         g.W = RectValue[2]
  *         g.H = RectValue[3]
  *         self._append(g)             # <<<<<<<<<<<<<<
  * 
  * 
 */
-  ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_append(__pyx_v_self, __pyx_v_g); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 173, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_append(__pyx_v_self, __pyx_v_g); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 180, __pyx_L1_error)
 
-  /* "rects.pyx":167
+  /* "rects.pyx":172
  * 
  * 
  *     cpdef void append(self, int[::1] RectValue):             # <<<<<<<<<<<<<<
- *         cdef Geometry g
- *         g.X = RectValue[0]
+ *         if self.Full:
+ *             return
 */
 
   /* function exit code */
@@ -20367,32 +20439,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_RectValue,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 167, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 172, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 167, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 172, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "append", 0) < 0) __PYX_ERR(0, 167, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "append", 0) < 0) __PYX_ERR(0, 172, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("append", 1, 1, 1, i); __PYX_ERR(0, 167, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("append", 1, 1, 1, i); __PYX_ERR(0, 172, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 167, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 172, __pyx_L3_error)
     }
-    __pyx_v_RectValue = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_RectValue.memview)) __PYX_ERR(0, 167, __pyx_L3_error)
+    __pyx_v_RectValue = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_RectValue.memview)) __PYX_ERR(0, 172, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("append", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 167, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("append", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 172, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -20424,9 +20496,9 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_6append(struct __pyx_obj_5r
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("append", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_RectValue.memview)) { __Pyx_RaiseUnboundLocalError("RectValue"); __PYX_ERR(0, 167, __pyx_L1_error) }
-  __pyx_f_5rects_17DirtyRectsManager_append(__pyx_v_self, __pyx_v_RectValue, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 167, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 167, __pyx_L1_error)
+  if (unlikely(!__pyx_v_RectValue.memview)) { __Pyx_RaiseUnboundLocalError("RectValue"); __PYX_ERR(0, 172, __pyx_L1_error) }
+  __pyx_f_5rects_17DirtyRectsManager_append(__pyx_v_self, __pyx_v_RectValue, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 172, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -20443,12 +20515,12 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_6append(struct __pyx_obj_5r
   return __pyx_r;
 }
 
-/* "rects.pyx":176
+/* "rects.pyx":183
  * 
  * 
  *     cpdef void appendRect(self, object Rect):             # <<<<<<<<<<<<<<
- *         cdef Geometry g
- *         g.X = Rect.left
+ *         if self.Full:
+ *             return
 */
 
 static PyObject *__pyx_pw_5rects_17DirtyRectsManager_9appendRect(PyObject *__pyx_v_self, 
@@ -20487,7 +20559,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_appendRect(struct __pyx_obj_5rect
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_appendRect); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_appendRect); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5rects_17DirtyRectsManager_9appendRect)) {
         __pyx_t_3 = NULL;
@@ -20510,7 +20582,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_appendRect(struct __pyx_obj_5rect
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 176, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 183, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -20530,73 +20602,100 @@ static void __pyx_f_5rects_17DirtyRectsManager_appendRect(struct __pyx_obj_5rect
     #endif
   }
 
-  /* "rects.pyx":178
+  /* "rects.pyx":184
+ * 
  *     cpdef void appendRect(self, object Rect):
+ *         if self.Full:             # <<<<<<<<<<<<<<
+ *             return
+ *         cdef Geometry g
+*/
+  if (__pyx_v_self->Full) {
+
+    /* "rects.pyx":185
+ *     cpdef void appendRect(self, object Rect):
+ *         if self.Full:
+ *             return             # <<<<<<<<<<<<<<
+ *         cdef Geometry g
+ *         g.X = Rect.left
+*/
+    goto __pyx_L0;
+
+    /* "rects.pyx":184
+ * 
+ *     cpdef void appendRect(self, object Rect):
+ *         if self.Full:             # <<<<<<<<<<<<<<
+ *             return
+ *         cdef Geometry g
+*/
+  }
+
+  /* "rects.pyx":187
+ *             return
  *         cdef Geometry g
  *         g.X = Rect.left             # <<<<<<<<<<<<<<
  *         g.Y = Rect.top
  *         g.W = Rect.width
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_Rect, __pyx_mstate_global->__pyx_n_u_left); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_Rect, __pyx_mstate_global->__pyx_n_u_left); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyLong_As_int16_t(__pyx_t_1); if (unlikely((__pyx_t_6 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 178, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_As_int16_t(__pyx_t_1); if (unlikely((__pyx_t_6 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 187, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_g.X = __pyx_t_6;
 
-  /* "rects.pyx":179
+  /* "rects.pyx":188
  *         cdef Geometry g
  *         g.X = Rect.left
  *         g.Y = Rect.top             # <<<<<<<<<<<<<<
  *         g.W = Rect.width
  *         g.H = Rect.height
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_Rect, __pyx_mstate_global->__pyx_n_u_top); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_Rect, __pyx_mstate_global->__pyx_n_u_top); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyLong_As_int16_t(__pyx_t_1); if (unlikely((__pyx_t_6 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 179, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_As_int16_t(__pyx_t_1); if (unlikely((__pyx_t_6 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 188, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_g.Y = __pyx_t_6;
 
-  /* "rects.pyx":180
+  /* "rects.pyx":189
  *         g.X = Rect.left
  *         g.Y = Rect.top
  *         g.W = Rect.width             # <<<<<<<<<<<<<<
  *         g.H = Rect.height
  *         self._append(g)
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_Rect, __pyx_mstate_global->__pyx_n_u_width); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_Rect, __pyx_mstate_global->__pyx_n_u_width); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyLong_As_int16_t(__pyx_t_1); if (unlikely((__pyx_t_6 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 180, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_As_int16_t(__pyx_t_1); if (unlikely((__pyx_t_6 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 189, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_g.W = __pyx_t_6;
 
-  /* "rects.pyx":181
+  /* "rects.pyx":190
  *         g.Y = Rect.top
  *         g.W = Rect.width
  *         g.H = Rect.height             # <<<<<<<<<<<<<<
  *         self._append(g)
  * 
 */
-  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_Rect, __pyx_mstate_global->__pyx_n_u_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyObject_GetAttrStr(__pyx_v_Rect, __pyx_mstate_global->__pyx_n_u_height); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  __pyx_t_6 = __Pyx_PyLong_As_int16_t(__pyx_t_1); if (unlikely((__pyx_t_6 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 181, __pyx_L1_error)
+  __pyx_t_6 = __Pyx_PyLong_As_int16_t(__pyx_t_1); if (unlikely((__pyx_t_6 == ((int16_t)-1)) && PyErr_Occurred())) __PYX_ERR(0, 190, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   __pyx_v_g.H = __pyx_t_6;
 
-  /* "rects.pyx":182
+  /* "rects.pyx":191
  *         g.W = Rect.width
  *         g.H = Rect.height
  *         self._append(g)             # <<<<<<<<<<<<<<
  * 
  * 
 */
-  ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_append(__pyx_v_self, __pyx_v_g); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 182, __pyx_L1_error)
+  ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_append(__pyx_v_self, __pyx_v_g); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 191, __pyx_L1_error)
 
-  /* "rects.pyx":176
+  /* "rects.pyx":183
  * 
  * 
  *     cpdef void appendRect(self, object Rect):             # <<<<<<<<<<<<<<
- *         cdef Geometry g
- *         g.X = Rect.left
+ *         if self.Full:
+ *             return
 */
 
   /* function exit code */
@@ -20650,32 +20749,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_Rect,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 176, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 183, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 176, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 183, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "appendRect", 0) < 0) __PYX_ERR(0, 176, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "appendRect", 0) < 0) __PYX_ERR(0, 183, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("appendRect", 1, 1, 1, i); __PYX_ERR(0, 176, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("appendRect", 1, 1, 1, i); __PYX_ERR(0, 183, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 176, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 183, __pyx_L3_error)
     }
     __pyx_v_Rect = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("appendRect", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 176, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("appendRect", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 183, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -20705,8 +20804,8 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_8appendRect(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("appendRect", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_5rects_17DirtyRectsManager_appendRect(__pyx_v_self, __pyx_v_Rect, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 176, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_f_5rects_17DirtyRectsManager_appendRect(__pyx_v_self, __pyx_v_Rect, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 183, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -20723,7 +20822,7 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_8appendRect(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "rects.pyx":185
+/* "rects.pyx":194
  * 
  * 
  *     cpdef void calculate(self):             # <<<<<<<<<<<<<<
@@ -20772,7 +20871,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_calculate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_calculate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5rects_17DirtyRectsManager_11calculate)) {
         __pyx_t_3 = NULL;
@@ -20795,7 +20894,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 185, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 194, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -20815,7 +20914,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
     #endif
   }
 
-  /* "rects.pyx":188
+  /* "rects.pyx":197
  * 
  *         #
  *         if self.Full:             # <<<<<<<<<<<<<<
@@ -20824,7 +20923,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
 */
   if (__pyx_v_self->Full) {
 
-    /* "rects.pyx":189
+    /* "rects.pyx":198
  *         #
  *         if self.Full:
  *             return             # <<<<<<<<<<<<<<
@@ -20833,7 +20932,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
 */
     goto __pyx_L0;
 
-    /* "rects.pyx":188
+    /* "rects.pyx":197
  * 
  *         #
  *         if self.Full:             # <<<<<<<<<<<<<<
@@ -20842,7 +20941,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
 */
   }
 
-  /* "rects.pyx":197
+  /* "rects.pyx":206
  * 
  *         #
  *         while True:             # <<<<<<<<<<<<<<
@@ -20851,7 +20950,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
 */
   while (1) {
 
-    /* "rects.pyx":198
+    /* "rects.pyx":207
  *         #
  *         while True:
  *             did_merge = False             # <<<<<<<<<<<<<<
@@ -20860,7 +20959,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
 */
     __pyx_v_did_merge = 0;
 
-    /* "rects.pyx":199
+    /* "rects.pyx":208
  *         while True:
  *             did_merge = False
  *             i = 0             # <<<<<<<<<<<<<<
@@ -20869,7 +20968,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
 */
     __pyx_v_i = 0;
 
-    /* "rects.pyx":200
+    /* "rects.pyx":209
  *             did_merge = False
  *             i = 0
  *             while i < self.Length:             # <<<<<<<<<<<<<<
@@ -20880,17 +20979,17 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
       __pyx_t_6 = (__pyx_v_i < __pyx_v_self->Length);
       if (!__pyx_t_6) break;
 
-      /* "rects.pyx":201
+      /* "rects.pyx":210
  *             i = 0
  *             while i < self.Length:
  *                 current = self._get(i)             # <<<<<<<<<<<<<<
  *                 j = i + 1
  *                 while j < self.Length:
 */
-      __pyx_t_7 = ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_get(__pyx_v_self, __pyx_v_i); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 201, __pyx_L1_error)
+      __pyx_t_7 = ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_get(__pyx_v_self, __pyx_v_i); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 210, __pyx_L1_error)
       __pyx_v_current = __pyx_t_7;
 
-      /* "rects.pyx":202
+      /* "rects.pyx":211
  *             while i < self.Length:
  *                 current = self._get(i)
  *                 j = i + 1             # <<<<<<<<<<<<<<
@@ -20899,7 +20998,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
 */
       __pyx_v_j = (__pyx_v_i + 1);
 
-      /* "rects.pyx":203
+      /* "rects.pyx":212
  *                 current = self._get(i)
  *                 j = i + 1
  *                 while j < self.Length:             # <<<<<<<<<<<<<<
@@ -20910,37 +21009,37 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
         __pyx_t_6 = (__pyx_v_j < __pyx_v_self->Length);
         if (!__pyx_t_6) break;
 
-        /* "rects.pyx":204
+        /* "rects.pyx":213
  *                 j = i + 1
  *                 while j < self.Length:
  *                     other = self._get(j)             # <<<<<<<<<<<<<<
  *                     if is_overlap(current, other):
  *                         current = merge_rects(current, other)
 */
-        __pyx_t_7 = ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_get(__pyx_v_self, __pyx_v_j); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 204, __pyx_L1_error)
+        __pyx_t_7 = ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_get(__pyx_v_self, __pyx_v_j); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 213, __pyx_L1_error)
         __pyx_v_other = __pyx_t_7;
 
-        /* "rects.pyx":205
+        /* "rects.pyx":214
  *                 while j < self.Length:
  *                     other = self._get(j)
  *                     if is_overlap(current, other):             # <<<<<<<<<<<<<<
  *                         current = merge_rects(current, other)
  *                         self.Arr[i] = current
 */
-        __pyx_t_6 = __pyx_f_5rects_is_overlap(__pyx_v_current, __pyx_v_other); if (unlikely(__pyx_t_6 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 205, __pyx_L1_error)
+        __pyx_t_6 = __pyx_f_5rects_is_overlap(__pyx_v_current, __pyx_v_other); if (unlikely(__pyx_t_6 == ((int)-1) && PyErr_Occurred())) __PYX_ERR(0, 214, __pyx_L1_error)
         if (__pyx_t_6) {
 
-          /* "rects.pyx":206
+          /* "rects.pyx":215
  *                     other = self._get(j)
  *                     if is_overlap(current, other):
  *                         current = merge_rects(current, other)             # <<<<<<<<<<<<<<
  *                         self.Arr[i] = current
  *                         self._delete(j)
 */
-          __pyx_t_7 = __pyx_f_5rects_merge_rects(__pyx_v_current, __pyx_v_other); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 206, __pyx_L1_error)
+          __pyx_t_7 = __pyx_f_5rects_merge_rects(__pyx_v_current, __pyx_v_other); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 215, __pyx_L1_error)
           __pyx_v_current = __pyx_t_7;
 
-          /* "rects.pyx":207
+          /* "rects.pyx":216
  *                     if is_overlap(current, other):
  *                         current = merge_rects(current, other)
  *                         self.Arr[i] = current             # <<<<<<<<<<<<<<
@@ -20949,16 +21048,16 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
 */
           (__pyx_v_self->Arr[__pyx_v_i]) = __pyx_v_current;
 
-          /* "rects.pyx":208
+          /* "rects.pyx":217
  *                         current = merge_rects(current, other)
  *                         self.Arr[i] = current
  *                         self._delete(j)             # <<<<<<<<<<<<<<
  *                         did_merge = True
  *                         # j
 */
-          ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_delete(__pyx_v_self, __pyx_v_j); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 208, __pyx_L1_error)
+          ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_delete(__pyx_v_self, __pyx_v_j); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 217, __pyx_L1_error)
 
-          /* "rects.pyx":209
+          /* "rects.pyx":218
  *                         self.Arr[i] = current
  *                         self._delete(j)
  *                         did_merge = True             # <<<<<<<<<<<<<<
@@ -20967,7 +21066,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
 */
           __pyx_v_did_merge = 1;
 
-          /* "rects.pyx":205
+          /* "rects.pyx":214
  *                 while j < self.Length:
  *                     other = self._get(j)
  *                     if is_overlap(current, other):             # <<<<<<<<<<<<<<
@@ -20977,7 +21076,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
           goto __pyx_L10;
         }
 
-        /* "rects.pyx":212
+        /* "rects.pyx":221
  *                         # j
  *                     else:
  *                         j += 1             # <<<<<<<<<<<<<<
@@ -20990,7 +21089,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
         __pyx_L10:;
       }
 
-      /* "rects.pyx":213
+      /* "rects.pyx":222
  *                     else:
  *                         j += 1
  *                 i += 1             # <<<<<<<<<<<<<<
@@ -21000,7 +21099,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
       __pyx_v_i = (__pyx_v_i + 1);
     }
 
-    /* "rects.pyx":214
+    /* "rects.pyx":223
  *                         j += 1
  *                 i += 1
  *             if not did_merge:             # <<<<<<<<<<<<<<
@@ -21010,7 +21109,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
     __pyx_t_6 = (!__pyx_v_did_merge);
     if (__pyx_t_6) {
 
-      /* "rects.pyx":215
+      /* "rects.pyx":224
  *                 i += 1
  *             if not did_merge:
  *                 break             # <<<<<<<<<<<<<<
@@ -21019,7 +21118,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
 */
       goto __pyx_L5_break;
 
-      /* "rects.pyx":214
+      /* "rects.pyx":223
  *                         j += 1
  *                 i += 1
  *             if not did_merge:             # <<<<<<<<<<<<<<
@@ -21030,7 +21129,7 @@ static void __pyx_f_5rects_17DirtyRectsManager_calculate(struct __pyx_obj_5rects
   }
   __pyx_L5_break:;
 
-  /* "rects.pyx":185
+  /* "rects.pyx":194
  * 
  * 
  *     cpdef void calculate(self):             # <<<<<<<<<<<<<<
@@ -21101,8 +21200,8 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_10calculate(struct __pyx_ob
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calculate", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_5rects_17DirtyRectsManager_calculate(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 185, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_f_5rects_17DirtyRectsManager_calculate(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 194, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -21119,7 +21218,7 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_10calculate(struct __pyx_ob
   return __pyx_r;
 }
 
-/* "rects.pyx":218
+/* "rects.pyx":227
  * 
  * 
  *     cpdef list get(self):             # <<<<<<<<<<<<<<
@@ -21173,7 +21272,7 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_get(struct __pyx_obj_5rects_
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_get); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5rects_17DirtyRectsManager_13get)) {
         __Pyx_XDECREF(__pyx_r);
@@ -21197,10 +21296,10 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_get(struct __pyx_obj_5rects_
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 218, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 227, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(0, 218, __pyx_L1_error)
+        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(0, 227, __pyx_L1_error)
         __pyx_r = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -21219,7 +21318,7 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_get(struct __pyx_obj_5rects_
     #endif
   }
 
-  /* "rects.pyx":221
+  /* "rects.pyx":230
  * 
  *         #
  *         if self.Full:             # <<<<<<<<<<<<<<
@@ -21228,7 +21327,7 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_get(struct __pyx_obj_5rects_
 */
   if (__pyx_v_self->Full) {
 
-    /* "rects.pyx":222
+    /* "rects.pyx":231
  *         #
  *         if self.Full:
  *             return [Rect(0, 0, 1920, 1080)]             # <<<<<<<<<<<<<<
@@ -21236,21 +21335,21 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_get(struct __pyx_obj_5rects_
  *         cdef list result = []
 */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_Rect); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_1, __pyx_mstate_global->__pyx_n_u_Rect); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
-    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_mstate_global->__pyx_tuple[2], NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 222, __pyx_L1_error)
+    __pyx_t_2 = __Pyx_PyObject_Call(__pyx_t_1, __pyx_mstate_global->__pyx_tuple[2], NULL); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 231, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_2);
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 222, __pyx_L1_error)
+    __pyx_t_1 = PyList_New(1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 231, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_1);
     __Pyx_GIVEREF(__pyx_t_2);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 222, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_1, 0, __pyx_t_2) != (0)) __PYX_ERR(0, 231, __pyx_L1_error);
     __pyx_t_2 = 0;
     __pyx_r = ((PyObject*)__pyx_t_1);
     __pyx_t_1 = 0;
     goto __pyx_L0;
 
-    /* "rects.pyx":221
+    /* "rects.pyx":230
  * 
  *         #
  *         if self.Full:             # <<<<<<<<<<<<<<
@@ -21259,19 +21358,19 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_get(struct __pyx_obj_5rects_
 */
   }
 
-  /* "rects.pyx":224
+  /* "rects.pyx":233
  *             return [Rect(0, 0, 1920, 1080)]
  * 
  *         cdef list result = []             # <<<<<<<<<<<<<<
  *         cdef Geometry current
  * 
 */
-  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 224, __pyx_L1_error)
+  __pyx_t_1 = PyList_New(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 233, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_v_result = ((PyObject*)__pyx_t_1);
   __pyx_t_1 = 0;
 
-  /* "rects.pyx":227
+  /* "rects.pyx":236
  *         cdef Geometry current
  * 
  *         for i in range(self.Length):             # <<<<<<<<<<<<<<
@@ -21283,17 +21382,17 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_get(struct __pyx_obj_5rects_
   for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
     __pyx_v_i = __pyx_t_8;
 
-    /* "rects.pyx":228
+    /* "rects.pyx":237
  * 
  *         for i in range(self.Length):
  *             current = self._get(i)             # <<<<<<<<<<<<<<
  *             result.append(Rect(current.X, current.Y, current.W, current.H))
  * 
 */
-    __pyx_t_9 = ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_get(__pyx_v_self, __pyx_v_i); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 228, __pyx_L1_error)
+    __pyx_t_9 = ((struct __pyx_vtabstruct_5rects_DirtyRectsManager *)__pyx_v_self->__pyx_vtab)->_get(__pyx_v_self, __pyx_v_i); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 237, __pyx_L1_error)
     __pyx_v_current = __pyx_t_9;
 
-    /* "rects.pyx":229
+    /* "rects.pyx":238
  *         for i in range(self.Length):
  *             current = self._get(i)
  *             result.append(Rect(current.X, current.Y, current.W, current.H))             # <<<<<<<<<<<<<<
@@ -21301,15 +21400,15 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_get(struct __pyx_obj_5rects_
  *         return result
 */
     __pyx_t_2 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_Rect); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 229, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_4, __pyx_mstate_global->__pyx_n_u_Rect); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_4);
-    __pyx_t_3 = __Pyx_PyLong_From_int16_t(__pyx_v_current.X); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 229, __pyx_L1_error)
+    __pyx_t_3 = __Pyx_PyLong_From_int16_t(__pyx_v_current.X); if (unlikely(!__pyx_t_3)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_3);
-    __pyx_t_10 = __Pyx_PyLong_From_int16_t(__pyx_v_current.Y); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 229, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyLong_From_int16_t(__pyx_v_current.Y); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_11 = __Pyx_PyLong_From_int16_t(__pyx_v_current.W); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 229, __pyx_L1_error)
+    __pyx_t_11 = __Pyx_PyLong_From_int16_t(__pyx_v_current.W); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
-    __pyx_t_12 = __Pyx_PyLong_From_int16_t(__pyx_v_current.H); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 229, __pyx_L1_error)
+    __pyx_t_12 = __Pyx_PyLong_From_int16_t(__pyx_v_current.H); if (unlikely(!__pyx_t_12)) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_12);
     __pyx_t_5 = 1;
     #if CYTHON_UNPACK_METHODS
@@ -21332,14 +21431,14 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_get(struct __pyx_obj_5rects_
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_12); __pyx_t_12 = 0;
       __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 229, __pyx_L1_error)
+      if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 238, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
     }
-    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_1); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 229, __pyx_L1_error)
+    __pyx_t_13 = __Pyx_PyList_Append(__pyx_v_result, __pyx_t_1); if (unlikely(__pyx_t_13 == ((int)-1))) __PYX_ERR(0, 238, __pyx_L1_error)
     __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
   }
 
-  /* "rects.pyx":231
+  /* "rects.pyx":240
  *             result.append(Rect(current.X, current.Y, current.W, current.H))
  * 
  *         return result             # <<<<<<<<<<<<<<
@@ -21351,7 +21450,7 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_get(struct __pyx_obj_5rects_
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
 
-  /* "rects.pyx":218
+  /* "rects.pyx":227
  * 
  * 
  *     cpdef list get(self):             # <<<<<<<<<<<<<<
@@ -21428,7 +21527,7 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_12get(struct __pyx_obj_5rec
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("get", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5rects_17DirtyRectsManager_get(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5rects_17DirtyRectsManager_get(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -21445,7 +21544,7 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_12get(struct __pyx_obj_5rec
   return __pyx_r;
 }
 
-/* "rects.pyx":234
+/* "rects.pyx":243
  * 
  * 
  *     cpdef list clear(self):             # <<<<<<<<<<<<<<
@@ -21489,7 +21588,7 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_clear(struct __pyx_obj_5rect
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_clear); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_clear); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5rects_17DirtyRectsManager_15clear)) {
         __Pyx_XDECREF(__pyx_r);
@@ -21513,10 +21612,10 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_clear(struct __pyx_obj_5rect
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 234, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 243, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(0, 234, __pyx_L1_error)
+        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(0, 243, __pyx_L1_error)
         __pyx_r = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -21535,7 +21634,7 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_clear(struct __pyx_obj_5rect
     #endif
   }
 
-  /* "rects.pyx":235
+  /* "rects.pyx":244
  * 
  *     cpdef list clear(self):
  *         self.Size = self.Init_Size             # <<<<<<<<<<<<<<
@@ -21545,7 +21644,7 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_clear(struct __pyx_obj_5rect
   __pyx_t_6 = __pyx_v_self->Init_Size;
   __pyx_v_self->Size = __pyx_t_6;
 
-  /* "rects.pyx":236
+  /* "rects.pyx":245
  *     cpdef list clear(self):
  *         self.Size = self.Init_Size
  *         self.Arr = <Geometry*> realloc(self.Arr, sizeof(Geometry) * self.Size)             # <<<<<<<<<<<<<<
@@ -21554,7 +21653,7 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_clear(struct __pyx_obj_5rect
 */
   __pyx_v_self->Arr = ((struct __pyx_t_5rects_Geometry *)realloc(__pyx_v_self->Arr, ((sizeof(struct __pyx_t_5rects_Geometry)) * __pyx_v_self->Size)));
 
-  /* "rects.pyx":237
+  /* "rects.pyx":246
  *         self.Size = self.Init_Size
  *         self.Arr = <Geometry*> realloc(self.Arr, sizeof(Geometry) * self.Size)
  *         self.Length = 0             # <<<<<<<<<<<<<<
@@ -21563,7 +21662,7 @@ static PyObject *__pyx_f_5rects_17DirtyRectsManager_clear(struct __pyx_obj_5rect
 */
   __pyx_v_self->Length = 0;
 
-  /* "rects.pyx":234
+  /* "rects.pyx":243
  * 
  * 
  *     cpdef list clear(self):             # <<<<<<<<<<<<<<
@@ -21638,7 +21737,7 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_14clear(struct __pyx_obj_5r
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("clear", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5rects_17DirtyRectsManager_clear(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5rects_17DirtyRectsManager_clear(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -21655,7 +21754,7 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_14clear(struct __pyx_obj_5r
   return __pyx_r;
 }
 
-/* "rects.pyx":240
+/* "rects.pyx":249
  * 
  * 
  *     cpdef bint empty(self):             # <<<<<<<<<<<<<<
@@ -21699,7 +21798,7 @@ static int __pyx_f_5rects_17DirtyRectsManager_empty(struct __pyx_obj_5rects_Dirt
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 240, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_empty); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 249, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5rects_17DirtyRectsManager_17empty)) {
         __pyx_t_3 = NULL;
@@ -21722,10 +21821,10 @@ static int __pyx_f_5rects_17DirtyRectsManager_empty(struct __pyx_obj_5rects_Dirt
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L1_error)
+        __pyx_t_6 = __Pyx_PyObject_IsTrue(__pyx_t_2); if (unlikely((__pyx_t_6 == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L1_error)
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
         __pyx_r = __pyx_t_6;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -21744,7 +21843,7 @@ static int __pyx_f_5rects_17DirtyRectsManager_empty(struct __pyx_obj_5rects_Dirt
     #endif
   }
 
-  /* "rects.pyx":241
+  /* "rects.pyx":250
  * 
  *     cpdef bint empty(self):
  *         return self.Length == 0             # <<<<<<<<<<<<<<
@@ -21754,7 +21853,7 @@ static int __pyx_f_5rects_17DirtyRectsManager_empty(struct __pyx_obj_5rects_Dirt
   __pyx_r = (__pyx_v_self->Length == 0);
   goto __pyx_L0;
 
-  /* "rects.pyx":240
+  /* "rects.pyx":249
  * 
  * 
  *     cpdef bint empty(self):             # <<<<<<<<<<<<<<
@@ -21827,8 +21926,8 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_16empty(struct __pyx_obj_5r
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("empty", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5rects_17DirtyRectsManager_empty(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 240, __pyx_L1_error)
-  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5rects_17DirtyRectsManager_empty(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_t_2 = __Pyx_PyBool_FromLong(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
@@ -21846,7 +21945,7 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_16empty(struct __pyx_obj_5r
 }
 static PyObject *__pyx_gb_5rects_17DirtyRectsManager_20generator(__pyx_CoroutineObject *__pyx_generator, CYTHON_UNUSED PyThreadState *__pyx_tstate, PyObject *__pyx_sent_value); /* proto */
 
-/* "rects.pyx":244
+/* "rects.pyx":253
  * 
  * 
  *     def iter(self) -> array:             # <<<<<<<<<<<<<<
@@ -21908,7 +22007,7 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_18iter(struct __pyx_obj_5re
   if (unlikely(!__pyx_cur_scope)) {
     __pyx_cur_scope = ((struct __pyx_obj_5rects___pyx_scope_struct__iter *)Py_None);
     __Pyx_INCREF(Py_None);
-    __PYX_ERR(0, 244, __pyx_L1_error)
+    __PYX_ERR(0, 253, __pyx_L1_error)
   } else {
     __Pyx_GOTREF((PyObject *)__pyx_cur_scope);
   }
@@ -21916,7 +22015,7 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_18iter(struct __pyx_obj_5re
   __Pyx_INCREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   __Pyx_GIVEREF((PyObject *)__pyx_cur_scope->__pyx_v_self);
   {
-    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5rects_17DirtyRectsManager_20generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_iter, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_iter, __pyx_mstate_global->__pyx_n_u_rects); if (unlikely(!gen)) __PYX_ERR(0, 244, __pyx_L1_error)
+    __pyx_CoroutineObject *gen = __Pyx_Generator_New((__pyx_coroutine_body_t) __pyx_gb_5rects_17DirtyRectsManager_20generator, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0]), (PyObject *) __pyx_cur_scope, __pyx_mstate_global->__pyx_n_u_iter, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_iter, __pyx_mstate_global->__pyx_n_u_rects); if (unlikely(!gen)) __PYX_ERR(0, 253, __pyx_L1_error)
     __Pyx_DECREF(__pyx_cur_scope);
     __Pyx_RefNannyFinishContext();
     return (PyObject *) gen;
@@ -21963,10 +22062,10 @@ static PyObject *__pyx_gb_5rects_17DirtyRectsManager_20generator(__pyx_Coroutine
   __pyx_L3_first_run:;
   if (unlikely(__pyx_sent_value != Py_None)) {
     if (unlikely(__pyx_sent_value)) PyErr_SetString(PyExc_TypeError, "can't send non-None value to a just-started generator");
-    __PYX_ERR(0, 244, __pyx_L1_error)
+    __PYX_ERR(0, 253, __pyx_L1_error)
   }
 
-  /* "rects.pyx":245
+  /* "rects.pyx":254
  * 
  *     def iter(self) -> array:
  *         for i in range(self.Length):             # <<<<<<<<<<<<<<
@@ -21978,7 +22077,7 @@ static PyObject *__pyx_gb_5rects_17DirtyRectsManager_20generator(__pyx_Coroutine
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_cur_scope->__pyx_v_i = __pyx_t_3;
 
-    /* "rects.pyx":246
+    /* "rects.pyx":255
  *     def iter(self) -> array:
  *         for i in range(self.Length):
  *             yield array('i', [self.Arr[i].X, self.Arr[i].Y, self.Arr[i].W, self.Arr[i].H])             # <<<<<<<<<<<<<<
@@ -21986,26 +22085,26 @@ static PyObject *__pyx_gb_5rects_17DirtyRectsManager_20generator(__pyx_Coroutine
  * 
 */
     __pyx_t_5 = NULL;
-    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 246, __pyx_L1_error)
+    __Pyx_GetModuleGlobalName(__pyx_t_6, __pyx_mstate_global->__pyx_n_u_array); if (unlikely(!__pyx_t_6)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_6);
-    __pyx_t_7 = __Pyx_PyLong_From_int16_t((__pyx_cur_scope->__pyx_v_self->Arr[__pyx_cur_scope->__pyx_v_i]).X); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 246, __pyx_L1_error)
+    __pyx_t_7 = __Pyx_PyLong_From_int16_t((__pyx_cur_scope->__pyx_v_self->Arr[__pyx_cur_scope->__pyx_v_i]).X); if (unlikely(!__pyx_t_7)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_7);
-    __pyx_t_8 = __Pyx_PyLong_From_int16_t((__pyx_cur_scope->__pyx_v_self->Arr[__pyx_cur_scope->__pyx_v_i]).Y); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 246, __pyx_L1_error)
+    __pyx_t_8 = __Pyx_PyLong_From_int16_t((__pyx_cur_scope->__pyx_v_self->Arr[__pyx_cur_scope->__pyx_v_i]).Y); if (unlikely(!__pyx_t_8)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_8);
-    __pyx_t_9 = __Pyx_PyLong_From_int16_t((__pyx_cur_scope->__pyx_v_self->Arr[__pyx_cur_scope->__pyx_v_i]).W); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 246, __pyx_L1_error)
+    __pyx_t_9 = __Pyx_PyLong_From_int16_t((__pyx_cur_scope->__pyx_v_self->Arr[__pyx_cur_scope->__pyx_v_i]).W); if (unlikely(!__pyx_t_9)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_9);
-    __pyx_t_10 = __Pyx_PyLong_From_int16_t((__pyx_cur_scope->__pyx_v_self->Arr[__pyx_cur_scope->__pyx_v_i]).H); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 246, __pyx_L1_error)
+    __pyx_t_10 = __Pyx_PyLong_From_int16_t((__pyx_cur_scope->__pyx_v_self->Arr[__pyx_cur_scope->__pyx_v_i]).H); if (unlikely(!__pyx_t_10)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_10);
-    __pyx_t_11 = PyList_New(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 246, __pyx_L1_error)
+    __pyx_t_11 = PyList_New(4); if (unlikely(!__pyx_t_11)) __PYX_ERR(0, 255, __pyx_L1_error)
     __Pyx_GOTREF(__pyx_t_11);
     __Pyx_GIVEREF(__pyx_t_7);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_11, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 246, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_11, 0, __pyx_t_7) != (0)) __PYX_ERR(0, 255, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_8);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_11, 1, __pyx_t_8) != (0)) __PYX_ERR(0, 246, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_11, 1, __pyx_t_8) != (0)) __PYX_ERR(0, 255, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_9);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_11, 2, __pyx_t_9) != (0)) __PYX_ERR(0, 246, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_11, 2, __pyx_t_9) != (0)) __PYX_ERR(0, 255, __pyx_L1_error);
     __Pyx_GIVEREF(__pyx_t_10);
-    if (__Pyx_PyList_SET_ITEM(__pyx_t_11, 3, __pyx_t_10) != (0)) __PYX_ERR(0, 246, __pyx_L1_error);
+    if (__Pyx_PyList_SET_ITEM(__pyx_t_11, 3, __pyx_t_10) != (0)) __PYX_ERR(0, 255, __pyx_L1_error);
     __pyx_t_7 = 0;
     __pyx_t_8 = 0;
     __pyx_t_9 = 0;
@@ -22028,7 +22127,7 @@ static PyObject *__pyx_gb_5rects_17DirtyRectsManager_20generator(__pyx_Coroutine
       __Pyx_XDECREF(__pyx_t_5); __pyx_t_5 = 0;
       __Pyx_DECREF(__pyx_t_11); __pyx_t_11 = 0;
       __Pyx_DECREF(__pyx_t_6); __pyx_t_6 = 0;
-      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 246, __pyx_L1_error)
+      if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 255, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_4);
     }
     __pyx_r = __pyx_t_4;
@@ -22046,11 +22145,11 @@ static PyObject *__pyx_gb_5rects_17DirtyRectsManager_20generator(__pyx_Coroutine
     __pyx_t_1 = __pyx_cur_scope->__pyx_t_0;
     __pyx_t_2 = __pyx_cur_scope->__pyx_t_1;
     __pyx_t_3 = __pyx_cur_scope->__pyx_t_2;
-    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 246, __pyx_L1_error)
+    if (unlikely(!__pyx_sent_value)) __PYX_ERR(0, 255, __pyx_L1_error)
   }
   CYTHON_MAYBE_UNUSED_VAR(__pyx_cur_scope);
 
-  /* "rects.pyx":244
+  /* "rects.pyx":253
  * 
  * 
  *     def iter(self) -> array:             # <<<<<<<<<<<<<<
@@ -22338,7 +22437,7 @@ static PyObject *__pyx_pf_5rects_17DirtyRectsManager_23__setstate_cython__(CYTHO
   return __pyx_r;
 }
 
-/* "rects.pyx":252
+/* "rects.pyx":261
  * 
  * 
  *     cpdef void updateFull(self):             # <<<<<<<<<<<<<<
@@ -22380,7 +22479,7 @@ static void __pyx_f_5rects_14EmptyDRManager_updateFull(CYTHON_UNUSED struct __py
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_updateFull); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_updateFull); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5rects_14EmptyDRManager_1updateFull)) {
         __pyx_t_3 = NULL;
@@ -22403,7 +22502,7 @@ static void __pyx_f_5rects_14EmptyDRManager_updateFull(CYTHON_UNUSED struct __py
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 252, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 261, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -22423,7 +22522,7 @@ static void __pyx_f_5rects_14EmptyDRManager_updateFull(CYTHON_UNUSED struct __py
     #endif
   }
 
-  /* "rects.pyx":253
+  /* "rects.pyx":262
  * 
  *     cpdef void updateFull(self):
  *         ...             # <<<<<<<<<<<<<<
@@ -22443,7 +22542,7 @@ static void __pyx_f_5rects_14EmptyDRManager_updateFull(CYTHON_UNUSED struct __py
   __Pyx_RefNannyFinishContext();
 }
 
-/* "rects.pyx":252
+/* "rects.pyx":261
  * 
  * 
  *     cpdef void updateFull(self):             # <<<<<<<<<<<<<<
@@ -22502,8 +22601,8 @@ static PyObject *__pyx_pf_5rects_14EmptyDRManager_updateFull(struct __pyx_obj_5r
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("updateFull", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_5rects_14EmptyDRManager_updateFull(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 252, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 252, __pyx_L1_error)
+  __pyx_f_5rects_14EmptyDRManager_updateFull(__pyx_v_self, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 261, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -22520,7 +22619,7 @@ static PyObject *__pyx_pf_5rects_14EmptyDRManager_updateFull(struct __pyx_obj_5r
   return __pyx_r;
 }
 
-/* "rects.pyx":256
+/* "rects.pyx":265
  * 
  * 
  *     cpdef void append(self, int[::1] RectValue):             # <<<<<<<<<<<<<<
@@ -22563,14 +22662,14 @@ static void __pyx_f_5rects_14EmptyDRManager_append(CYTHON_UNUSED struct __pyx_ob
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_append); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_append); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5rects_14EmptyDRManager_3append)) {
         __pyx_t_3 = NULL;
         __Pyx_INCREF(__pyx_t_1);
         __pyx_t_4 = __pyx_t_1; 
-        if (unlikely(!__pyx_v_RectValue.memview)) { __Pyx_RaiseUnboundLocalError("RectValue"); __PYX_ERR(0, 256, __pyx_L1_error) }
-        __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_RectValue, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 256, __pyx_L1_error)
+        if (unlikely(!__pyx_v_RectValue.memview)) { __Pyx_RaiseUnboundLocalError("RectValue"); __PYX_ERR(0, 265, __pyx_L1_error) }
+        __pyx_t_5 = __pyx_memoryview_fromslice(__pyx_v_RectValue, 1, (PyObject *(*)(char *)) __pyx_memview_get_int, (int (*)(char *, PyObject *)) __pyx_memview_set_int, 0);; if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 265, __pyx_L1_error)
         __Pyx_GOTREF(__pyx_t_5);
         __pyx_t_6 = 1;
         #if CYTHON_UNPACK_METHODS
@@ -22590,7 +22689,7 @@ static void __pyx_f_5rects_14EmptyDRManager_append(CYTHON_UNUSED struct __pyx_ob
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 256, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 265, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -22610,7 +22709,7 @@ static void __pyx_f_5rects_14EmptyDRManager_append(CYTHON_UNUSED struct __pyx_ob
     #endif
   }
 
-  /* "rects.pyx":257
+  /* "rects.pyx":266
  * 
  *     cpdef void append(self, int[::1] RectValue):
  *         ...             # <<<<<<<<<<<<<<
@@ -22631,7 +22730,7 @@ static void __pyx_f_5rects_14EmptyDRManager_append(CYTHON_UNUSED struct __pyx_ob
   __Pyx_RefNannyFinishContext();
 }
 
-/* "rects.pyx":256
+/* "rects.pyx":265
  * 
  * 
  *     cpdef void append(self, int[::1] RectValue):             # <<<<<<<<<<<<<<
@@ -22678,32 +22777,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_RectValue,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 256, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 265, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 256, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 265, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "append", 0) < 0) __PYX_ERR(0, 256, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "append", 0) < 0) __PYX_ERR(0, 265, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("append", 1, 1, 1, i); __PYX_ERR(0, 256, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("append", 1, 1, 1, i); __PYX_ERR(0, 265, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 256, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 265, __pyx_L3_error)
     }
-    __pyx_v_RectValue = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_RectValue.memview)) __PYX_ERR(0, 256, __pyx_L3_error)
+    __pyx_v_RectValue = __Pyx_PyObject_to_MemoryviewSlice_dc_int(values[0], PyBUF_WRITABLE); if (unlikely(!__pyx_v_RectValue.memview)) __PYX_ERR(0, 265, __pyx_L3_error)
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("append", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 256, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("append", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 265, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -22735,9 +22834,9 @@ static PyObject *__pyx_pf_5rects_14EmptyDRManager_2append(struct __pyx_obj_5rect
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("append", 0);
   __Pyx_XDECREF(__pyx_r);
-  if (unlikely(!__pyx_v_RectValue.memview)) { __Pyx_RaiseUnboundLocalError("RectValue"); __PYX_ERR(0, 256, __pyx_L1_error) }
-  __pyx_f_5rects_14EmptyDRManager_append(__pyx_v_self, __pyx_v_RectValue, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 256, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 256, __pyx_L1_error)
+  if (unlikely(!__pyx_v_RectValue.memview)) { __Pyx_RaiseUnboundLocalError("RectValue"); __PYX_ERR(0, 265, __pyx_L1_error) }
+  __pyx_f_5rects_14EmptyDRManager_append(__pyx_v_self, __pyx_v_RectValue, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 265, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -22754,7 +22853,7 @@ static PyObject *__pyx_pf_5rects_14EmptyDRManager_2append(struct __pyx_obj_5rect
   return __pyx_r;
 }
 
-/* "rects.pyx":260
+/* "rects.pyx":269
  * 
  * 
  *     cpdef void appendRect(self, object Rect):             # <<<<<<<<<<<<<<
@@ -22796,7 +22895,7 @@ static void __pyx_f_5rects_14EmptyDRManager_appendRect(CYTHON_UNUSED struct __py
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_appendRect); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_appendRect); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5rects_14EmptyDRManager_5appendRect)) {
         __pyx_t_3 = NULL;
@@ -22819,7 +22918,7 @@ static void __pyx_f_5rects_14EmptyDRManager_appendRect(CYTHON_UNUSED struct __py
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (2-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 260, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 269, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
         __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
@@ -22839,7 +22938,7 @@ static void __pyx_f_5rects_14EmptyDRManager_appendRect(CYTHON_UNUSED struct __py
     #endif
   }
 
-  /* "rects.pyx":261
+  /* "rects.pyx":270
  * 
  *     cpdef void appendRect(self, object Rect):
  *         ...             # <<<<<<<<<<<<<<
@@ -22859,7 +22958,7 @@ static void __pyx_f_5rects_14EmptyDRManager_appendRect(CYTHON_UNUSED struct __py
   __Pyx_RefNannyFinishContext();
 }
 
-/* "rects.pyx":260
+/* "rects.pyx":269
  * 
  * 
  *     cpdef void appendRect(self, object Rect):             # <<<<<<<<<<<<<<
@@ -22906,32 +23005,32 @@ PyObject *__pyx_args, PyObject *__pyx_kwds
   {
     PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_Rect,0};
     const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
-    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 260, __pyx_L3_error)
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 269, __pyx_L3_error)
     if (__pyx_kwds_len > 0) {
       switch (__pyx_nargs) {
         case  1:
         values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 260, __pyx_L3_error)
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 269, __pyx_L3_error)
         CYTHON_FALLTHROUGH;
         case  0: break;
         default: goto __pyx_L5_argtuple_error;
       }
       const Py_ssize_t kwd_pos_args = __pyx_nargs;
-      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "appendRect", 0) < 0) __PYX_ERR(0, 260, __pyx_L3_error)
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "appendRect", 0) < 0) __PYX_ERR(0, 269, __pyx_L3_error)
       for (Py_ssize_t i = __pyx_nargs; i < 1; i++) {
-        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("appendRect", 1, 1, 1, i); __PYX_ERR(0, 260, __pyx_L3_error) }
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("appendRect", 1, 1, 1, i); __PYX_ERR(0, 269, __pyx_L3_error) }
       }
     } else if (unlikely(__pyx_nargs != 1)) {
       goto __pyx_L5_argtuple_error;
     } else {
       values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
-      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 260, __pyx_L3_error)
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 269, __pyx_L3_error)
     }
     __pyx_v_Rect = values[0];
   }
   goto __pyx_L6_skip;
   __pyx_L5_argtuple_error:;
-  __Pyx_RaiseArgtupleInvalid("appendRect", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 260, __pyx_L3_error)
+  __Pyx_RaiseArgtupleInvalid("appendRect", 1, 1, 1, __pyx_nargs); __PYX_ERR(0, 269, __pyx_L3_error)
   __pyx_L6_skip:;
   goto __pyx_L4_argument_unpacking_done;
   __pyx_L3_error:;
@@ -22961,8 +23060,8 @@ static PyObject *__pyx_pf_5rects_14EmptyDRManager_4appendRect(struct __pyx_obj_5
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("appendRect", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_f_5rects_14EmptyDRManager_appendRect(__pyx_v_self, __pyx_v_Rect, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 260, __pyx_L1_error)
-  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_f_5rects_14EmptyDRManager_appendRect(__pyx_v_self, __pyx_v_Rect, 1); if (unlikely(PyErr_Occurred())) __PYX_ERR(0, 269, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_void_to_None(NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -22979,7 +23078,7 @@ static PyObject *__pyx_pf_5rects_14EmptyDRManager_4appendRect(struct __pyx_obj_5
   return __pyx_r;
 }
 
-/* "rects.pyx":264
+/* "rects.pyx":273
  * 
  * 
  *     cpdef list calculate(self):             # <<<<<<<<<<<<<<
@@ -23021,7 +23120,7 @@ static PyObject *__pyx_f_5rects_14EmptyDRManager_calculate(CYTHON_UNUSED struct 
     if (unlikely(!__Pyx_object_dict_version_matches(((PyObject *)__pyx_v_self), __pyx_tp_dict_version, __pyx_obj_dict_version))) {
       PY_UINT64_T __pyx_typedict_guard = __Pyx_get_tp_dict_version(((PyObject *)__pyx_v_self));
       #endif
-      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_calculate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+      __pyx_t_1 = __Pyx_PyObject_GetAttrStr(((PyObject *)__pyx_v_self), __pyx_mstate_global->__pyx_n_u_calculate); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
       __Pyx_GOTREF(__pyx_t_1);
       if (!__Pyx_IsSameCFunction(__pyx_t_1, (void(*)(void)) __pyx_pw_5rects_14EmptyDRManager_7calculate)) {
         __Pyx_XDECREF(__pyx_r);
@@ -23045,10 +23144,10 @@ static PyObject *__pyx_f_5rects_14EmptyDRManager_calculate(CYTHON_UNUSED struct 
           __pyx_t_2 = __Pyx_PyObject_FastCall(__pyx_t_4, __pyx_callargs+__pyx_t_5, (1-__pyx_t_5) | (__pyx_t_5*__Pyx_PY_VECTORCALL_ARGUMENTS_OFFSET));
           __Pyx_XDECREF(__pyx_t_3); __pyx_t_3 = 0;
           __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
-          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 264, __pyx_L1_error)
+          if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 273, __pyx_L1_error)
           __Pyx_GOTREF(__pyx_t_2);
         }
-        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(0, 264, __pyx_L1_error)
+        if (!(likely(PyList_CheckExact(__pyx_t_2))||((__pyx_t_2) == Py_None) || __Pyx_RaiseUnexpectedTypeError("list", __pyx_t_2))) __PYX_ERR(0, 273, __pyx_L1_error)
         __pyx_r = ((PyObject*)__pyx_t_2);
         __pyx_t_2 = 0;
         __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
@@ -23067,7 +23166,7 @@ static PyObject *__pyx_f_5rects_14EmptyDRManager_calculate(CYTHON_UNUSED struct 
     #endif
   }
 
-  /* "rects.pyx":265
+  /* "rects.pyx":274
  * 
  *     cpdef list calculate(self):
  *         ...             # <<<<<<<<<<<<<<
@@ -23089,7 +23188,7 @@ static PyObject *__pyx_f_5rects_14EmptyDRManager_calculate(CYTHON_UNUSED struct 
   return __pyx_r;
 }
 
-/* "rects.pyx":264
+/* "rects.pyx":273
  * 
  * 
  *     cpdef list calculate(self):             # <<<<<<<<<<<<<<
@@ -23147,7 +23246,7 @@ static PyObject *__pyx_pf_5rects_14EmptyDRManager_6calculate(struct __pyx_obj_5r
   int __pyx_clineno = 0;
   __Pyx_RefNannySetupContext("calculate", 0);
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_f_5rects_14EmptyDRManager_calculate(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_1 = __pyx_f_5rects_14EmptyDRManager_calculate(__pyx_v_self, 1); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
@@ -25545,35 +25644,35 @@ static int __Pyx_modinit_type_init_code(__pyx_mstatetype *__pyx_mstate) {
   __pyx_vtable_5rects_EmptyDRManager.appendRect = (void (*)(struct __pyx_obj_5rects_EmptyDRManager *, PyObject *, int __pyx_skip_dispatch))__pyx_f_5rects_14EmptyDRManager_appendRect;
   __pyx_vtable_5rects_EmptyDRManager.calculate = (PyObject *(*)(struct __pyx_obj_5rects_EmptyDRManager *, int __pyx_skip_dispatch))__pyx_f_5rects_14EmptyDRManager_calculate;
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_5rects_EmptyDRManager = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5rects_EmptyDRManager_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_5rects_EmptyDRManager)) __PYX_ERR(0, 249, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5rects_EmptyDRManager_spec, __pyx_mstate->__pyx_ptype_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_5rects_EmptyDRManager = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5rects_EmptyDRManager_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_5rects_EmptyDRManager)) __PYX_ERR(0, 258, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5rects_EmptyDRManager_spec, __pyx_mstate->__pyx_ptype_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_5rects_EmptyDRManager = &__pyx_type_5rects_EmptyDRManager;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_5rects_EmptyDRManager->tp_dictoffset && __pyx_mstate->__pyx_ptype_5rects_EmptyDRManager->tp_getattro == PyObject_GenericGetAttr)) {
     __pyx_mstate->__pyx_ptype_5rects_EmptyDRManager->tp_getattro = PyObject_GenericGetAttr;
   }
   #endif
-  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_5rects_EmptyDRManager, __pyx_vtabptr_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
-  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
-  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_EmptyDRManager, (PyObject *) __pyx_mstate->__pyx_ptype_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
+  if (__Pyx_SetVtable(__pyx_mstate->__pyx_ptype_5rects_EmptyDRManager, __pyx_vtabptr_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
+  if (__Pyx_MergeVtables(__pyx_mstate->__pyx_ptype_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
+  if (PyObject_SetAttr(__pyx_m, __pyx_mstate_global->__pyx_n_u_EmptyDRManager, (PyObject *) __pyx_mstate->__pyx_ptype_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
+  if (__Pyx_setup_reduce((PyObject *) __pyx_mstate->__pyx_ptype_5rects_EmptyDRManager) < 0) __PYX_ERR(0, 258, __pyx_L1_error)
   #if CYTHON_USE_TYPE_SPECS
-  __pyx_mstate->__pyx_ptype_5rects___pyx_scope_struct__iter = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5rects___pyx_scope_struct__iter_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_5rects___pyx_scope_struct__iter)) __PYX_ERR(0, 244, __pyx_L1_error)
-  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5rects___pyx_scope_struct__iter_spec, __pyx_mstate->__pyx_ptype_5rects___pyx_scope_struct__iter) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
+  __pyx_mstate->__pyx_ptype_5rects___pyx_scope_struct__iter = (PyTypeObject *) __Pyx_PyType_FromModuleAndSpec(__pyx_m, &__pyx_type_5rects___pyx_scope_struct__iter_spec, NULL); if (unlikely(!__pyx_mstate->__pyx_ptype_5rects___pyx_scope_struct__iter)) __PYX_ERR(0, 253, __pyx_L1_error)
+  if (__Pyx_fix_up_extension_type_from_spec(&__pyx_type_5rects___pyx_scope_struct__iter_spec, __pyx_mstate->__pyx_ptype_5rects___pyx_scope_struct__iter) < 0) __PYX_ERR(0, 253, __pyx_L1_error)
   #else
   __pyx_mstate->__pyx_ptype_5rects___pyx_scope_struct__iter = &__pyx_type_5rects___pyx_scope_struct__iter;
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   #endif
   #if !CYTHON_USE_TYPE_SPECS
-  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_5rects___pyx_scope_struct__iter) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
+  if (__Pyx_PyType_Ready(__pyx_mstate->__pyx_ptype_5rects___pyx_scope_struct__iter) < 0) __PYX_ERR(0, 253, __pyx_L1_error)
   #endif
   #if !CYTHON_COMPILING_IN_LIMITED_API
   if ((CYTHON_USE_TYPE_SLOTS && CYTHON_USE_PYTYPE_LOOKUP) && likely(!__pyx_mstate->__pyx_ptype_5rects___pyx_scope_struct__iter->tp_dictoffset && __pyx_mstate->__pyx_ptype_5rects___pyx_scope_struct__iter->tp_getattro == PyObject_GenericGetAttr)) {
@@ -26681,100 +26780,100 @@ __Pyx_RefNannySetupContext("PyInit_rects", 0);
  * 
  *     cpdef void updateFull(self):             # <<<<<<<<<<<<<<
  *         self.Full = True
- * 
+ *         self.Arr[0].X = 0
 */
   __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_5updateFull, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_updateFull, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[9])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
   if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_updateFull, __pyx_t_5) < 0) __PYX_ERR(0, 163, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "rects.pyx":167
+  /* "rects.pyx":172
  * 
  * 
  *     cpdef void append(self, int[::1] RectValue):             # <<<<<<<<<<<<<<
- *         cdef Geometry g
- *         g.X = RectValue[0]
+ *         if self.Full:
+ *             return
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_7append, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_append, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 167, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_7append, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_append, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[10])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_append, __pyx_t_5) < 0) __PYX_ERR(0, 167, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_append, __pyx_t_5) < 0) __PYX_ERR(0, 172, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "rects.pyx":176
+  /* "rects.pyx":183
  * 
  * 
  *     cpdef void appendRect(self, object Rect):             # <<<<<<<<<<<<<<
- *         cdef Geometry g
- *         g.X = Rect.left
+ *         if self.Full:
+ *             return
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_9appendRect, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_appendRect, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 176, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_9appendRect, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_appendRect, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[11])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_appendRect, __pyx_t_5) < 0) __PYX_ERR(0, 176, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_appendRect, __pyx_t_5) < 0) __PYX_ERR(0, 183, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "rects.pyx":185
+  /* "rects.pyx":194
  * 
  * 
  *     cpdef void calculate(self):             # <<<<<<<<<<<<<<
  * 
  *         #
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_11calculate, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_calculate, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 185, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_11calculate, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_calculate, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[12])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_calculate, __pyx_t_5) < 0) __PYX_ERR(0, 185, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_calculate, __pyx_t_5) < 0) __PYX_ERR(0, 194, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "rects.pyx":218
+  /* "rects.pyx":227
  * 
  * 
  *     cpdef list get(self):             # <<<<<<<<<<<<<<
  * 
  *         #
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_13get, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_get, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 218, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_13get, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_get, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[13])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_get, __pyx_t_5) < 0) __PYX_ERR(0, 218, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_get, __pyx_t_5) < 0) __PYX_ERR(0, 227, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "rects.pyx":234
+  /* "rects.pyx":243
  * 
  * 
  *     cpdef list clear(self):             # <<<<<<<<<<<<<<
  *         self.Size = self.Init_Size
  *         self.Arr = <Geometry*> realloc(self.Arr, sizeof(Geometry) * self.Size)
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_15clear, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_clear, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[14])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 234, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_15clear, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_clear, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[14])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_clear, __pyx_t_5) < 0) __PYX_ERR(0, 234, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_clear, __pyx_t_5) < 0) __PYX_ERR(0, 243, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "rects.pyx":240
+  /* "rects.pyx":249
  * 
  * 
  *     cpdef bint empty(self):             # <<<<<<<<<<<<<<
  *         return self.Length == 0
  * 
 */
-  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_17empty, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_empty, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[15])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 240, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_17empty, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_empty, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[15])); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_empty, __pyx_t_5) < 0) __PYX_ERR(0, 240, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_empty, __pyx_t_5) < 0) __PYX_ERR(0, 249, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
 
-  /* "rects.pyx":244
+  /* "rects.pyx":253
  * 
  * 
  *     def iter(self) -> array:             # <<<<<<<<<<<<<<
  *         for i in range(self.Length):
  *             yield array('i', [self.Arr[i].X, self.Arr[i].Y, self.Arr[i].W, self.Arr[i].H])
 */
-  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 244, __pyx_L1_error)
+  __pyx_t_5 = __Pyx_PyDict_NewPresized(1); if (unlikely(!__pyx_t_5)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_5);
-  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_array) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_19iter, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_iter, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 244, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_t_5, __pyx_mstate_global->__pyx_n_u_return, __pyx_mstate_global->__pyx_n_u_array) < 0) __PYX_ERR(0, 253, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_17DirtyRectsManager_19iter, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_DirtyRectsManager_iter, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
   __Pyx_CyFunction_SetAnnotationsDict(__pyx_t_4, __pyx_t_5);
   __Pyx_DECREF(__pyx_t_5); __pyx_t_5 = 0;
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_iter, __pyx_t_4) < 0) __PYX_ERR(0, 244, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_DirtyRectsManager, __pyx_mstate_global->__pyx_n_u_iter, __pyx_t_4) < 0) __PYX_ERR(0, 253, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "(tree fragment)":1
@@ -26798,51 +26897,51 @@ __Pyx_RefNannySetupContext("PyInit_rects", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_setstate_cython, __pyx_t_4) < 0) __PYX_ERR(1, 3, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "rects.pyx":252
+  /* "rects.pyx":261
  * 
  * 
  *     cpdef void updateFull(self):             # <<<<<<<<<<<<<<
  *         ...
  * 
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_14EmptyDRManager_1updateFull, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_EmptyDRManager_updateFull, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[18])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 252, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_14EmptyDRManager_1updateFull, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_EmptyDRManager_updateFull, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[18])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_EmptyDRManager, __pyx_mstate_global->__pyx_n_u_updateFull, __pyx_t_4) < 0) __PYX_ERR(0, 252, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_EmptyDRManager, __pyx_mstate_global->__pyx_n_u_updateFull, __pyx_t_4) < 0) __PYX_ERR(0, 261, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "rects.pyx":256
+  /* "rects.pyx":265
  * 
  * 
  *     cpdef void append(self, int[::1] RectValue):             # <<<<<<<<<<<<<<
  *         ...
  * 
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_14EmptyDRManager_3append, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_EmptyDRManager_append, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[19])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 256, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_14EmptyDRManager_3append, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_EmptyDRManager_append, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[19])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_EmptyDRManager, __pyx_mstate_global->__pyx_n_u_append, __pyx_t_4) < 0) __PYX_ERR(0, 256, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_EmptyDRManager, __pyx_mstate_global->__pyx_n_u_append, __pyx_t_4) < 0) __PYX_ERR(0, 265, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "rects.pyx":260
+  /* "rects.pyx":269
  * 
  * 
  *     cpdef void appendRect(self, object Rect):             # <<<<<<<<<<<<<<
  *         ...
  * 
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_14EmptyDRManager_5appendRect, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_EmptyDRManager_appendRect, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[20])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 260, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_14EmptyDRManager_5appendRect, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_EmptyDRManager_appendRect, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[20])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_EmptyDRManager, __pyx_mstate_global->__pyx_n_u_appendRect, __pyx_t_4) < 0) __PYX_ERR(0, 260, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_EmptyDRManager, __pyx_mstate_global->__pyx_n_u_appendRect, __pyx_t_4) < 0) __PYX_ERR(0, 269, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
-  /* "rects.pyx":264
+  /* "rects.pyx":273
  * 
  * 
  *     cpdef list calculate(self):             # <<<<<<<<<<<<<<
  *         ...
 */
-  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_14EmptyDRManager_7calculate, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_EmptyDRManager_calculate, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[21])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 264, __pyx_L1_error)
+  __pyx_t_4 = __Pyx_CyFunction_New(&__pyx_mdef_5rects_14EmptyDRManager_7calculate, __Pyx_CYFUNCTION_CCLASS, __pyx_mstate_global->__pyx_n_u_EmptyDRManager_calculate, NULL, __pyx_mstate_global->__pyx_n_u_rects, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[21])); if (unlikely(!__pyx_t_4)) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_4);
-  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_EmptyDRManager, __pyx_mstate_global->__pyx_n_u_calculate, __pyx_t_4) < 0) __PYX_ERR(0, 264, __pyx_L1_error)
+  if (__Pyx_SetItemOnTypeDict(__pyx_mstate_global->__pyx_ptype_5rects_EmptyDRManager, __pyx_mstate_global->__pyx_n_u_calculate, __pyx_t_4) < 0) __PYX_ERR(0, 273, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_4); __pyx_t_4 = 0;
 
   /* "(tree fragment)":1
@@ -27200,14 +27299,14 @@ static int __Pyx_InitCachedConstants(__pyx_mstatetype *__pyx_mstate) {
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[1]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[1]);
 
-  /* "rects.pyx":222
+  /* "rects.pyx":231
  *         #
  *         if self.Full:
  *             return [Rect(0, 0, 1920, 1080)]             # <<<<<<<<<<<<<<
  * 
  *         cdef list result = []
 */
-  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(4, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_1920, __pyx_mstate_global->__pyx_int_1080); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 222, __pyx_L1_error)
+  __pyx_mstate_global->__pyx_tuple[2] = PyTuple_Pack(4, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_0, __pyx_mstate_global->__pyx_int_1920, __pyx_mstate_global->__pyx_int_1080); if (unlikely(!__pyx_mstate_global->__pyx_tuple[2])) __PYX_ERR(0, 231, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_mstate_global->__pyx_tuple[2]);
   __Pyx_GIVEREF(__pyx_mstate_global->__pyx_tuple[2]);
 
@@ -27275,7 +27374,7 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
   PyObject* tuple_dedup_map = PyDict_New();
   if (unlikely(!tuple_dedup_map)) return -1;
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 244, 5};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS|CO_GENERATOR), 253, 5};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_i};
     __pyx_mstate_global->__pyx_codeobj_tab[0] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_iter, __pyx_k_a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[0])) goto bad;
   }
@@ -27320,37 +27419,37 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[8] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[8])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 163, 9};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 163, 68};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
-    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_updateFull, __pyx_k_A_HA, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[9] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_updateFull, __pyx_k_A_HA_D_5_D_5_D_5_D_5_Ja, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[9])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 167, 55};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 172, 65};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_RectValue};
-    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_append, __pyx_k_A_iq_iq_iq_iq_HAQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[10] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_append, __pyx_k_A_4q_iq_iq_iq_iq_HAQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[10])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 176, 47};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 183, 57};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_Rect};
-    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_appendRect, __pyx_k_A_d_d_d_d_HAQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
+    __pyx_mstate_global->__pyx_codeobj_tab[11] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_appendRect, __pyx_k_A_4q_d_d_d_d_HAQ, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[11])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 185, 151};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 194, 151};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[12] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_calculate, __pyx_k_A_4q_Bd_e1A_Bb_b_a_D_Qa_z_1_Qiq, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[12])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 218, 91};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 227, 91};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[13] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_get, __pyx_k_A_4q_1D_CvQ_1_E_at1_d_q_awd_WD_q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[13])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 234, 42};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 243, 42};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[14] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_clear, __pyx_k_A_HD_G_wat61B_D_Ja, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[14])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 240, 13};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 249, 13};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[15] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_empty, __pyx_k_A_t83a, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[15])) goto bad;
   }
@@ -27365,22 +27464,22 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     __pyx_mstate_global->__pyx_codeobj_tab[17] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_stringsource, __pyx_mstate->__pyx_n_u_setstate_cython, __pyx_k_Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[17])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 252, 2};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 261, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[18] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_updateFull, __pyx_k_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[18])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 256, 2};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 265, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_RectValue};
     __pyx_mstate_global->__pyx_codeobj_tab[19] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_append, __pyx_k_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[19])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 260, 2};
+    const __Pyx_PyCode_New_function_description descr = {2, 0, 0, 2, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 269, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self, __pyx_mstate->__pyx_n_u_Rect};
     __pyx_mstate_global->__pyx_codeobj_tab[20] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_appendRect, __pyx_k_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[20])) goto bad;
   }
   {
-    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 264, 2};
+    const __Pyx_PyCode_New_function_description descr = {1, 0, 0, 1, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 273, 2};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_self};
     __pyx_mstate_global->__pyx_codeobj_tab[21] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_rects_pyx, __pyx_mstate->__pyx_n_u_calculate, __pyx_k_A, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[21])) goto bad;
   }

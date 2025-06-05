@@ -184,7 +184,8 @@ class ChairyApp:
             ## 화면 업데이트
             if SceneManager.CURRENT_SCENE.INIT:
                 SceneManager.CURRENT_SCENE.INIT = False
-                SceneManager.CURRENT_SCENE.On_Init(ChairyApp.DISPLAY)
+                SceneManager.CURRENT_SCENE.On_Init(ChairyApp.LAYER0)
+                ChairyApp.DISPLAY.blit(ChairyApp.LAYER0, (0, 0))
                 ChairyApp.LAYER1.fill((0, 0, 0, 0))
                 pg.display.flip()
 
