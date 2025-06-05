@@ -1,10 +1,11 @@
 
 from ..interface import Interface, Scene, SceneManager, Styles, SeatsDataVerifyError
-from ..chairyData import ChairyData
+from ..chairyData import ChairyData, StudentData
 from pygame import constants
 from ..Logging import LoggingManager as logging
 
 from ..optimization.animation import Animate
+from ..optimization.positioning import collidepoint
 
 
 
@@ -38,6 +39,8 @@ class MainScene(Scene):
 
     ID_Group_Y: int
 
+    StudentHoverID: str
+
 
     @staticmethod
     def Init():
@@ -47,6 +50,7 @@ class MainScene(Scene):
 
     def __init__(self):
         self.ID_Group_Y = 432
+        MainScene.StudentHoverID = None
 
     
     def On_Init(self, DISPLAY):
@@ -124,6 +128,16 @@ class MainScene(Scene):
             RECTS.append(Interface.OT_CurrentMedia.Frame(DISPLAY))
 
 
+    
+    def On_Layer(self, ANIMATION_OFFSET, TICK, LAYER, RECTS):
+        
+        if Interface.LY_StudentInfo.Show:
+            RECTS.append(Interface.LY_StudentInfo.Frame(LAYER))
+
+        if Interface.LY_Notice.Update(ANIMATION_OFFSET, TICK):
+            RECTS.append(Interface.LY_Notice.Frame(LAYER))
+
+
 
     # 전체 그림
     def Draw(self, SURFACE):
@@ -173,6 +187,7 @@ class MainScene(Scene):
 
 
     def On_Update(self, ANIMATION_OFFSET, TICK):
+
         
         ## 미등록 이용자 단계 타이밍 계산 ##
         if MainScene.InteractionStep == 5:
@@ -313,6 +328,7 @@ class MainScene(Scene):
                 Interface.ST_StudentInfo.hide()
                 MainScene.InteractionStep = 11
                 SceneManager.SCENE_TIME = 0
+                Interface.LY_StudentInfo.hide()
 
         # 지정석 이용자 입실 완료 2
         elif MainScene.InteractionStep == 11:
@@ -323,6 +339,7 @@ class MainScene(Scene):
                 else:
                     MainScene.InteractionStep = 12
                     SceneManager.SCENE_TIME = 0
+                    Interface.LY_StudentInfo.hide()
 
         # 지정석 이용자 입실 완료 3
         elif MainScene.InteractionStep == 12:
@@ -448,6 +465,7 @@ class MainScene(Scene):
             if Interface.BTN_Checkout.Alpha == 0. and Interface.BTN_Move.Alpha == 0.:
                 Interface.ID_InstructionText.set("이동할 좌석을 선택합니다.", Styles.YELLOW)
                 MainScene.InteractionStep = 18
+                Interface.LY_StudentInfo.hide()
 
         # 자리 이동 단계
         elif MainScene.InteractionStep == 18:
@@ -617,6 +635,8 @@ class MainScene(Scene):
                     if ChairyData.CURRENT_STUDENT.CurrentSeat != None:
                         MainScene.InteractionStep = 13
                         Interface.ID_InstructionText.set("퇴실하시겠습니까?", Styles.BLACK)
+                        
+                        Interface.LY_StudentInfo.hide()
                         if ChairyData.CURRENT_STUDENT.SeatReserved:
                             Interface.BTN_Move.disable()
                         else:
@@ -642,6 +662,8 @@ class MainScene(Scene):
                         MainScene.InteractionStep = 10
                         Interface.ID_InstructionText.set("지정석 입실 완료!", Styles.BLUE)
                         Interface.ID_KeyInstruction.wait()
+                        
+                        Interface.LY_StudentInfo.hide()
 
                         ChairyData.ROOMDATA.CheckInReserved(ChairyData.CURRENT_STUDENT)
                         logging.info("지정석 입실 처리 -> " + ChairyData.CURRENT_STUDENT.StudentID + " : " 
@@ -654,6 +676,8 @@ class MainScene(Scene):
                     # 일반 입실
                     else:
                         MainScene.InteractionStep = 6
+                        
+                        Interface.LY_StudentInfo.hide()
 
                     SceneManager.SCENE_TIME = 0
                     Interface.ST_SeatDisplay.mySeat(None)
@@ -663,16 +687,19 @@ class MainScene(Scene):
                     Interface.ID_InstructionText.set("미등록된 학번입니다.", Styles.RED)
                     MainScene.InteractionStep = 5
                     SceneManager.SCENE_TIME = 0
+                    Interface.LY_StudentInfo.hide()
         
         # 좌석 선택
         elif MainScene.InteractionStep == 6:
             if KEY == constants.K_BACKSPACE:
                 MainScene.InteractionStep = 7
+                Interface.LY_StudentInfo.hide()
                 Interface.ST_SeatDisplay.hide()
                 Interface.ST_StudentInfo.hide()
             elif KEY in (constants.K_KP_PERIOD, constants.K_ESCAPE):
                 SceneManager.SCENE_TIME = 0
                 MainScene.InteractionStep = 8
+                Interface.LY_StudentInfo.hide()
                 Interface.ST_SeatDisplay.hide()
                 Interface.ST_StudentInfo.hide()
 
@@ -680,6 +707,7 @@ class MainScene(Scene):
         elif MainScene.InteractionStep == 13:
             if KEY in (constants.K_KP_PERIOD, constants.K_ESCAPE):
                 MainScene.InteractionStep = 14
+                Interface.LY_StudentInfo.hide()
                 Interface.ID_KeyInstruction.wait()
                 Interface.ST_SeatDisplay.hide()
                 SceneManager.SCENE_TIME = 0
@@ -689,6 +717,7 @@ class MainScene(Scene):
                 Interface.ID_IdInputDialog.StudentId[3] = '-'
                 Interface.ID_IdInputDialog.text4()
                 MainScene.InteractionStep = 15
+                Interface.LY_StudentInfo.hide()
                 SceneManager.SCENE_TIME = 0 
             elif KEY in (constants.K_KP_ENTER, constants.K_RETURN):
                 ChairyData.ROOMDATA.CheckOut(ChairyData.CURRENT_STUDENT)
@@ -703,6 +732,7 @@ class MainScene(Scene):
                 ChairyData.CURRENT_STUDENT = None
                 
                 MainScene.InteractionStep = 16
+                Interface.LY_StudentInfo.hide()
             elif KEY in (constants.K_MINUS, constants.K_KP_MINUS):
                 if not ChairyData.CURRENT_STUDENT.SeatReserved:
                     self.UpdateSeats()
@@ -711,6 +741,7 @@ class MainScene(Scene):
                     SceneManager.SCENE_TIME = 0
                     
                     MainScene.InteractionStep = 17
+                    Interface.LY_StudentInfo.hide()
 
         # 자리 이동 단계
         elif MainScene.InteractionStep == 18:
@@ -720,6 +751,7 @@ class MainScene(Scene):
                 ChairyData.CURRENT_STUDENT.save()
                 ChairyData.CURRENT_STUDENT = None
                 MainScene.InteractionStep = 19
+                Interface.LY_StudentInfo.hide()
                 Interface.ST_SeatDisplay.hide()
 
             elif KEY == constants.K_BACKSPACE:
@@ -727,6 +759,7 @@ class MainScene(Scene):
                 ChairyData.CURRENT_STUDENT.save()
                 ChairyData.CURRENT_STUDENT = None
                 MainScene.InteractionStep = 20
+                Interface.LY_StudentInfo.hide()
                 Interface.ST_SeatDisplay.hide()
 
 
@@ -751,12 +784,83 @@ class MainScene(Scene):
 
     def Event_MouseButtonUp(self, POS, BUTTON):
 
-        # 미디어
+        # 미디어 및 학번 일괄 채움
         if MainScene.InteractionStep == 0:
             
+            # 미디어
             if Interface.OT_CurrentMedia.MouseButtonUp(POS, BUTTON):
                 from .media import Media
                 SceneManager.setScene(Media(), False)
+
+            # 학번 일괄 채움
+            id = Interface.ST_SeatDisplay.MouseMotion(POS)
+
+            if id is not None:
+                s = ChairyData.ROOMDATA.getStudent(id)
+
+                if s is not None:
+                    Interface.ID_IdInputDialog.StudentId[0] = s[0]
+                    Interface.ID_IdInputDialog.text1()
+                    Interface.ID_IdInputDialog.StudentId[1] = s[1]
+                    Interface.ID_IdInputDialog.text2()
+                    Interface.ID_IdInputDialog.StudentId[2] = s[2]
+                    Interface.ID_IdInputDialog.text3()
+                    Interface.ID_IdInputDialog.StudentId[3] = s[3]
+                    Interface.ID_IdInputDialog.text4()
+                    Interface.LY_StudentInfo.hide()
+                    
+                    if s in ChairyData.STUDENTS: # 학번이 등록된 경우
+
+                        ChairyData.CURRENT_STUDENT = ChairyData.STUDENTS[s]
+
+                        # 이용중
+                        if ChairyData.CURRENT_STUDENT.CurrentSeat != None:
+                            MainScene.InteractionStep = 13
+                            Interface.ID_InstructionText.set("퇴실하시겠습니까?", Styles.BLACK)
+                            
+                            Interface.LY_StudentInfo.hide()
+                            if ChairyData.CURRENT_STUDENT.SeatReserved:
+                                Interface.BTN_Move.disable()
+                            else:
+                                Interface.BTN_Move.enable()
+
+                            Interface.ST_SeatDisplay.mySeat(ChairyData.CURRENT_STUDENT.CurrentSeat)
+                            self.UpdateSeats()
+                            Interface.ST_SeatDisplay.show()
+
+                            Interface.BTN_Cancel.reset()
+                            Interface.BTN_Move.reset()
+                            Interface.BTN_Checkout.reset()
+
+                            SceneManager.SCENE_TIME = 0
+
+                        else:
+                            Interface.ID_IdInputDialog.StudentId[0] = '-'
+                            Interface.ID_IdInputDialog.text1()
+                            Interface.ID_IdInputDialog.StudentId[1] = '-'
+                            Interface.ID_IdInputDialog.text2()
+                            Interface.ID_IdInputDialog.StudentId[2] = '-'
+                            Interface.ID_IdInputDialog.text3()
+                            Interface.ID_IdInputDialog.StudentId[3] = '-'
+                            Interface.ID_IdInputDialog.text4()
+                            MainScene.InteractionStep = 0
+
+                    else:
+                        Interface.ID_IdInputDialog.StudentId[0] = '-'
+                        Interface.ID_IdInputDialog.text1()
+                        Interface.ID_IdInputDialog.StudentId[1] = '-'
+                        Interface.ID_IdInputDialog.text2()
+                        Interface.ID_IdInputDialog.StudentId[2] = '-'
+                        Interface.ID_IdInputDialog.text3()
+                        Interface.ID_IdInputDialog.StudentId[3] = '-'
+                        Interface.ID_IdInputDialog.text4()
+                        MainScene.InteractionStep = 0
+
+                # 학번 기입 안내
+                elif collidepoint(POS[0], POS[1], 1002, 1045, POS):
+                    Interface.LY_Notice.show_IdFirst()
+
+
 
         # 좌석 선택 단계
         elif MainScene.InteractionStep == 6:
@@ -764,7 +868,8 @@ class MainScene(Scene):
             # 취소 버튼을 눌렀을 시
             if Interface.BTN_Cancel.MouseButtonUp(POS, BUTTON):
                 SceneManager.SCENE_TIME = 0
-                MainScene.InteractionStep = 8           
+                MainScene.InteractionStep = 8      
+                Interface.LY_StudentInfo.hide()     
                 Interface.ST_SeatDisplay.hide()
                 Interface.ST_StudentInfo.hide()
             
@@ -772,7 +877,7 @@ class MainScene(Scene):
             SeatIndex = Interface.ST_SeatDisplay.MouseButtonUp(POS, BUTTON)
 
             if SeatIndex != -1:
-                s = ChairyData.ROOMDATA.Arrangement[SeatIndex][0]
+                s = ChairyData.ROOMDATA.Arrangement[SeatIndex][0] # 좌석 번호
                 ChairyData.ROOMDATA.CheckIn(ChairyData.CURRENT_STUDENT, s)
                 logging.info("입실 처리 -> " + ChairyData.CURRENT_STUDENT.StudentID + " : " + ChairyData.CURRENT_STUDENT.Name + " -> "
                 "" + ChairyData.ROOMDATA.Arrangement[SeatIndex][0])
@@ -787,6 +892,7 @@ class MainScene(Scene):
                 ChairyData.CURRENT_STUDENT = None
                 
                 MainScene.InteractionStep = 9
+                Interface.LY_StudentInfo.hide()
 
 
         # 퇴실/이동 선택 단계
@@ -797,6 +903,7 @@ class MainScene(Scene):
                 Interface.ID_KeyInstruction.wait()
                 Interface.ST_SeatDisplay.hide()
                 MainScene.InteractionStep = 14
+                Interface.LY_StudentInfo.hide()
                 SceneManager.SCENE_TIME = 0
 
             # 퇴실 버튼
@@ -813,6 +920,7 @@ class MainScene(Scene):
                 ChairyData.CURRENT_STUDENT = None
                 
                 MainScene.InteractionStep = 16
+                Interface.LY_StudentInfo.hide()
 
             # 좌석 이동
             elif Interface.BTN_Move.MouseButtonUp(POS, BUTTON):
@@ -822,6 +930,7 @@ class MainScene(Scene):
                 SceneManager.SCENE_TIME = 0
                 
                 MainScene.InteractionStep = 17
+                Interface.LY_StudentInfo.hide()
 
         # 이동할 자리 선택 단계
         elif MainScene.InteractionStep == 18:
@@ -832,6 +941,7 @@ class MainScene(Scene):
                 ChairyData.CURRENT_STUDENT = None
 
                 MainScene.InteractionStep = 19
+                Interface.LY_StudentInfo.hide()
                 Interface.ST_SeatDisplay.hide()
 
             SeatIndex = Interface.ST_SeatDisplay.MouseButtonUp(POS, BUTTON)
@@ -852,6 +962,7 @@ class MainScene(Scene):
                 ChairyData.CURRENT_STUDENT = None
                 
                 MainScene.InteractionStep = 21
+                Interface.LY_StudentInfo.hide()
 
 
     def Event_MouseMotion(self, POS):
@@ -873,7 +984,25 @@ class MainScene(Scene):
         # 자리 이동 단계
         elif MainScene.InteractionStep == 18:
             Interface.BTN_Cancel.MouseMotion(POS)
-    
+
+        # 마우스 호버
+        if MainScene.InteractionStep in (0, 1, 2, 3):
+            Interface.LY_StudentInfo.MouseMotion(POS)
+            id = Interface.ST_SeatDisplay.MouseMotion(POS)
+
+            if id != MainScene.StudentHoverID:
+
+                if id is None:
+                    Interface.LY_StudentInfo.hide()
+
+                else:
+                    s: StudentData = ChairyData.STUDENTS.get(ChairyData.ROOMDATA.getStudent(id), None)
+
+                    if s is not None:
+                        Interface.LY_StudentInfo.render(s.StudentID, s.Name, s.LastChkIn)
+                        Interface.LY_StudentInfo.show()
+
+                MainScene.StudentHoverID = id
     
 
     def AlphabetInput(self, KEY: constants):

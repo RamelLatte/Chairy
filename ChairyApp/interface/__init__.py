@@ -13,6 +13,7 @@ from .buttons           import CancelButton, CheckoutButton, MoveButton, Statist
 from .statistics        import TopBar
 from .dateSelection     import DateSelection, MonthSelection
 from .currentMedia      import CurrentMedia
+from .layerComponents   import StudentHoverInfo, Notice
 
 
 
@@ -25,10 +26,12 @@ __all__ = ['Scene', 'SceneManager', 'SceneWarning', 'ComponentWarning', 'Interfa
            'StudentInfoBox',
            'CancelButton', 'CheckoutButton', 'MoveButton', 'StatisticsExitButton', 'StatisticsExportButton',
            'CurrentMedia', 'HideMediaButton',
+           'StudentHoverInfo', 'Notice'
         ]
 
 
 from ..Logging import LoggingManager as logging
+from pygame import Surface
 
 
 class ComponentWarning(Exception):
@@ -80,17 +83,21 @@ class Interface:
     # MD: MeDia
     MD_HideMediaBtn : HideMediaButton
 
+    # LY: LaYer
+    LY_StudentInfo  : StudentHoverInfo
+    LY_Notice       : Notice
+
 
     @staticmethod
-    def Init():
+    def Init(Layer0: Surface, Layer1: Surface):
         try:
-            Interface._Init()
+            Interface._Init(Layer0, Layer1)
         except Exception as e:
             logging.error('인터페이스를 불러오는 중 오류가 발생하였습니다.', e, True, True)
 
 
     @staticmethod
-    def _Init():
+    def _Init(Layer0: Surface, Layer1: Surface):
         """ Interface 초기화 함수 """
 
         Interface.SD_DateTime        = DateTimeDisplay()
@@ -120,6 +127,10 @@ class Interface:
 
         # 미디어
         Interface.MD_HideMediaBtn = HideMediaButton()
+
+        # 레이어
+        Interface.LY_StudentInfo = StudentHoverInfo(Layer1)
+        Interface.LY_Notice = Notice(Layer1)
 
         # 준비 완료
         Interface.Ready = True

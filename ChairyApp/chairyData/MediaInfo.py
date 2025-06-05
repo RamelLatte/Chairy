@@ -3,12 +3,14 @@ from winrt.windows.media.control import \
             GlobalSystemMediaTransportControlsSessionManager as MediaManager
 from winrt.windows.storage.streams import DataReader
 import array, hashlib
+from dataclasses import dataclass
 
 from pygame import Surface, image
 from io import BytesIO
 
 
 
+@dataclass(slots=True)
 class MediaInfo:
     """
     ### 미디어 정보 데이터
@@ -17,8 +19,6 @@ class MediaInfo:
 
     **update() 메서드는 UpdateExecuter에서 실행하여 미디어 정보를 업데이트 함.**
     """
-
-    __slots__ = ('UseMediaDetection', 'Playing', 'Updated', 'Album', 'Artist', 'Title', 'Thumbnail', 'Thumbnail_Hash', 'Thumbnail_Retry')
 
 
     UseMediaDetection: bool # 미디어 감지 사용 여부, Configuration에 값이 있음.

@@ -1,5 +1,6 @@
 import openpyxl as xl
 from datetime import time
+from dataclasses import dataclass
 
 
 
@@ -10,6 +11,7 @@ class ConfigurationError(Exception):
 
 
 
+@dataclass(slots=True)
 class Configuration():
     """
     ### 구성 데이터
@@ -17,9 +19,6 @@ class Configuration():
     '/school_data/configuration.xlsx'로부터 설정 값을 읽고 저장하는 클래스.
     """
 
-    __slots__ = ('NeisOpenApiKey', 'NeisOfficeCode', 'NeisSchoolCode', 'NeisCanIgnoreSSL', 'NeisTargetGrade',
-                 'ReservedSeatInHoliday', 'Students', 'StudentIDs', 'Arrangement', 'MediaDetection', 'Alphabet',
-                 'SelfStudyTimeData', 'SelfStudyTimeVaild', 'Directory')
 
     # Neis 연동 관련 설정
     NeisOpenApiKey  : str
@@ -45,6 +44,9 @@ class Configuration():
     # 자습 시간 정보
     SelfStudyTimeData: list[list]
     SelfStudyTimeVaild: bool
+
+    # 디렉토리 저장
+    Directory: str
 
 
 

@@ -33,11 +33,14 @@ class RestartScene(Scene):
 
     Timer: int
 
+    Init: bool
+
 
     def __init__(self):
         super().__init__()
         UpdateExecutor.Freeze()
         self.Identifier = 'start'
+        self.Init = False
 
 
     def On_Init(self, DISPLAY):
@@ -94,6 +97,11 @@ class RestartScene(Scene):
 
 
     def On_Render(self, ANIMATION_OFFSET, TICK, DISPLAY, RECTS):
+        # 초기 렌더링
+        if not self.Init:
+            self.Init = True
+            RECTS.updateFull()
+
         # 로딩 상황 렌더링
         if not self.Task.done():
             DISPLAY.blit(self.CurrentProcess_Surface, (560, 970))

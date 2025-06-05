@@ -2293,7 +2293,7 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
  * 
  * cpdef float Animate(float Current, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
  * 
- *     if abs(Current - Target) < 1:
+ *     if abs(Current - Target) < 0.5:
 */
 
 static PyObject *__pyx_pw_9animation_1Animate(PyObject *__pyx_self, 
@@ -2311,17 +2311,17 @@ static float __pyx_f_9animation_Animate(float __pyx_v_Current, float __pyx_v_Tar
   /* "animation.pyx":4
  * cpdef float Animate(float Current, float Target, float Speed, float AO):
  * 
- *     if abs(Current - Target) < 1:             # <<<<<<<<<<<<<<
+ *     if abs(Current - Target) < 0.5:             # <<<<<<<<<<<<<<
  *         return Target
  *     else:
 */
   __pyx_t_1 = fabsf((__pyx_v_Current - __pyx_v_Target)); 
-  __pyx_t_2 = (__pyx_t_1 < 1.0);
+  __pyx_t_2 = (__pyx_t_1 < 0.5);
   if (__pyx_t_2) {
 
     /* "animation.pyx":5
  * 
- *     if abs(Current - Target) < 1:
+ *     if abs(Current - Target) < 0.5:
  *         return Target             # <<<<<<<<<<<<<<
  *     else:
  *         return Current + (Target - Current) * AO * Speed
@@ -2332,7 +2332,7 @@ static float __pyx_f_9animation_Animate(float __pyx_v_Current, float __pyx_v_Tar
     /* "animation.pyx":4
  * cpdef float Animate(float Current, float Target, float Speed, float AO):
  * 
- *     if abs(Current - Target) < 1:             # <<<<<<<<<<<<<<
+ *     if abs(Current - Target) < 0.5:             # <<<<<<<<<<<<<<
  *         return Target
  *     else:
 */
@@ -2354,7 +2354,7 @@ static float __pyx_f_9animation_Animate(float __pyx_v_Current, float __pyx_v_Tar
  * 
  * cpdef float Animate(float Current, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
  * 
- *     if abs(Current - Target) < 1:
+ *     if abs(Current - Target) < 0.5:
 */
 
   /* function exit code */
@@ -3176,7 +3176,7 @@ __Pyx_RefNannySetupContext("PyInit_animation", 0);
  * 
  * cpdef float Animate(float Current, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
  * 
- *     if abs(Current - Target) < 1:
+ *     if abs(Current - Target) < 0.5:
 */
   __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9animation_1Animate, 0, __pyx_mstate_global->__pyx_n_u_Animate, NULL, __pyx_mstate_global->__pyx_n_u_animation, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[0])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
@@ -3199,7 +3199,7 @@ __Pyx_RefNannySetupContext("PyInit_animation", 0);
  * 
  * cpdef float Animate(float Current, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
  * 
- *     if abs(Current - Target) < 1:
+ *     if abs(Current - Target) < 0.5:
 */
   __pyx_t_2 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 2, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);

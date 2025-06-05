@@ -1,7 +1,7 @@
 
 cpdef float Animate(float Current, float Target, float Speed, float AO):
     
-    if abs(Current - Target) < 1:
+    if abs(Current - Target) < 0.5:
         return Target
     else:
         return Current + (Target - Current) * AO * Speed

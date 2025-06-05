@@ -3,19 +3,19 @@ from datetime import date, datetime
 from .RoomData import RoomData
 import openpyxl as xl
 from openpyxl.styles import *
+from dataclasses import dataclass
 
 from ..Logging import LoggingManager as logging
 
 
 
+@dataclass(slots=True)
 class DailyStatistics():
     """
     ### 일간 출석부 데이터
 
     특정 일자의 RoomData를 기반으로 학번, 이름, 입실 시간, 퇴실 시간, 좌석, 이동 횟수를 확인해 통계를 만드는 클래스.
     """
-
-    __slots__ = ('Statistics', 'Empty', 'TotalMove', 'DATE')
 
     
     Statistics: list[list[str]]
@@ -24,6 +24,7 @@ class DailyStatistics():
     Empty: bool # 비어있음 여부
     TotalMove: int # 전체 누적 이동 수
 
+    DATE: date
 
 
     def __init__(self, Date: date = None):

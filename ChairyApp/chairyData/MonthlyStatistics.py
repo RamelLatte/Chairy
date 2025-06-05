@@ -5,19 +5,19 @@ from datetime import date, datetime
 from .RoomData import RoomData
 import openpyxl as xl
 from openpyxl.styles import *
+from dataclasses import dataclass
 
 from ..Logging import LoggingManager as logging
 
 
 
+@dataclass(slots=True)
 class MonthlyStatistics():
     """
     ### 월간 출석부 데이터
 
     특정한 달의 RoomData를 모두 취합하여 그 달의 일자별 입퇴실 시간, 이용 좌석을 통계로 만드는 클래스.
     """
-
-    __slots__ = ('Year', 'Month', 'FileDates', 'Statistics', 'Empty')
 
 
     Year    : int

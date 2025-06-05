@@ -53,6 +53,18 @@ class Scene:
         - **RECTS:** 화면 상에서 업데이트 된 영역, list 유형이며, Rect를 추가하여 화면에서 어디를 업데이트해야하는지 결정함.
         """
         ...
+    def On_Layer(self, ANIMATION_OFFSET: float, TICK: int, LAYER: Surface, RECTS: DirtyRectsManager):
+        """
+        ChiaryApp에서 매 프레임마다 호출되는 레이어 렌더링 함수.
+        On_Render() 메서드 이후로 호출되며, 메인 화면 위에 얹어지는 레이어의 요소를 렌더링하는 목적임.
+        - - -
+        #### 매개변수:
+        - **ANIMATION_OFFSET:** 프레임레이트에 따라 변화하는 값이며, 프레임레이트의 변동에 따라 애니메이션 위치 변화를 보정하는데 사용됨.
+        - **TICK:** 프레임레이트에 따라 변화하는 값이며, 프레임레이트의 변동에 따라 특정한 Surface의 Alpha 값 변화를 보정하는데 사용됨.
+        - **LAYER:** 렌더링할 레이어, **1920x1080** 크기임.
+        - **RECTS:** 화면 상에서 업데이트 된 영역, list 유형이며, Rect를 추가하여 화면에서 어디를 업데이트해야하는지 결정함.
+        """
+        ...
 
     def Draw(self, SURFACE: Surface):
         """
