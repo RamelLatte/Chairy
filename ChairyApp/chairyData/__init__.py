@@ -88,7 +88,9 @@ class ChairyData:
             logging.info("등록된 이용자 " + str(len(ChairyData.CONFIGURATION.Students)) + "명.")
         except Exception as e:
             logging.error("구성 데이터(configuration.xlsx)를 읽는 도중에 오류가 발생하였습니다.", e, True)
-            return        
+            return
+
+        RoomData.CONFIG = ChairyData.CONFIGURATION   
 
         # NEIS
         ChairyData.Progress('NEIS와 동기화 중') # 2

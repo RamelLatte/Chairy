@@ -351,7 +351,7 @@ class RoomData():
         RoomData.FILENAME = now.strftime("%Y%m%d.json")
 
         RoomData.DIRECTORY  = DIR
-        RoomData.CONFIG     = config
+        #RoomData.CONFIG     = config  # 오류로 인해 얘만 chairyData/__init__.py로 옮김
         from os.path import exists
 
         if not exists(DIR + '/RoomData/' + RoomData.DIRNAME + '/' + RoomData.FILENAME):
@@ -389,6 +389,16 @@ class RoomData():
                 for line in f.readlines():
                     s += line
             return RoomData.FromRaw(orjson.loads(s))
+        
+
+    @staticmethod
+    def _getDataDate():
+        now = datetime.now()
+
+        if now.hour < 5:
+            now -= timedelta(days=1)
+
+        return now.date()
                 
 
     @staticmethod
@@ -396,10 +406,10 @@ class RoomData():
         """ 휴일 여부, 주말이거나 Neis에서 오늘 학사 일정이 공휴일이거나 휴업일이면 True를 반환, 그 외는 False를 반환함. """
         from . import ChairyData as CD
 
-        return (RoomData.DATA_DATE.weekday() >= 5 or CD.NEISDATA.Holiday)
+        return (RoomData._getDataDate().weekday() >= 5 or CD.NEISDATA.Holiday)
     
 
     @staticmethod
     def TodayReservedSeat() -> bool:
         """ 오늘 지정석을 시행하는 날인지 여부를 반환. """
-        return (RoomData.DATA_DATE.weekday() >= 5 or RoomData._holiday()) and RoomData.CONFIG.ReservedSeatInHoliday
+        return RoomData._holiday() and RoomData.CONFIG.ReservedSeatInHoliday

@@ -1,7 +1,7 @@
 
 from ..interface    import Scene, Styles, SceneManager, Interface
 from ..chairyData   import ChairyData, RoomData
-from pygame         import Surface, draw
+from pygame         import Surface, draw, K_ESCAPE
 from datetime       import datetime, date
 from array import array
 
@@ -212,6 +212,11 @@ class RoomdataLog(Scene):
             DISP.blit(txt, center_top(1178, 508, txt.get_size()))
             txt = Styles.SANS_B4.render("다른 날짜로 다시 시도해주십시오.", 1, Styles.BLACK, Styles.SPRLIGHTGRAY)
             DISP.blit(txt, center_top(1178, 559, txt.get_size()))
+
+
+    def Event_KeyDown(self, KEY):
+        if KEY == K_ESCAPE:
+            SceneManager.setScene('MainScene')
 
 
     def Event_MouseMotion(self, POS):

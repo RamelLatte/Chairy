@@ -69,6 +69,8 @@ class MainScene(Scene):
 
         self.ID_Group_Y = 432
 
+        Interface.SD_SeatingStatus.RoomUpdated()
+
         Interface.SD_DateTime.Reset()
         Interface.SD_DietAndSchedule.Reset()
         Interface.SD_SeatingStatus.Reset()
@@ -86,6 +88,8 @@ class MainScene(Scene):
         Interface.BTN_Move.Reset()
 
         Interface.OT_CurrentMedia.Reset()
+
+        self.Draw(DISPLAY)
 
         if not MainScene.Init:
             MainScene.Init = True
@@ -836,6 +840,9 @@ class MainScene(Scene):
 
     def Event_MouseButtonDown(self, POS, BUTTON):
 
+        if BUTTON != 1:
+            return
+
         self.NotIdle()
 
         # 빠른 접근 버튼
@@ -863,6 +870,9 @@ class MainScene(Scene):
 
 
     def Event_MouseButtonUp(self, POS, BUTTON):
+
+        if BUTTON != 1:
+            return
 
         self.NotIdle()
 

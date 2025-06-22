@@ -2,7 +2,7 @@
 from . import Configuration
 from datetime import datetime
 from os import path
-from . import RoomData
+from .RoomData import RoomData
 import orjson
 from dataclasses import dataclass
 import bcrypt
@@ -117,7 +117,7 @@ class StudentData():
                         self.Name = s[1]
                     if str(s[2]).strip() not in ("", "None") and RoomData.TodayReservedSeat():
                         self.SeatReserved = True
-                        self.ReservedSeat = s[2]
+                        self.ReservedSeat = str(s[2]).strip()
                     break
 
             if d['Week'] == datetime.now().isocalendar()[1]:

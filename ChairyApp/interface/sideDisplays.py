@@ -97,10 +97,12 @@ class DietAndScheduleDisplay(Component):
 
     
     def Update(self):
-        return True
+        return self.Updated
     
 
     def Frame(self, DISP):
+        self.Updated = False
+
         # 스케줄
         DISP.blit(self.ScheduleFrame, (1567, 129))
 
@@ -219,7 +221,7 @@ class SeatingStatus(Component):
 
 
     def Update(self, A_OFFSET):
-        if self.Bar_Length != self.Bar_Length_:
+        if abs(self.Bar_Length - self.Bar_Length_) > 0.5:
             self.Bar_Length_ = Animate(self.Bar_Length_, self.Bar_Length, 1.0, A_OFFSET)
             self.Updated = True
         return self.Updated
@@ -229,7 +231,7 @@ class SeatingStatus(Component):
         self.Updated = False
         DISP.blit(self.Asset, (1567, 765))
         DISP.blit(self.Layer, (1567, 765))
-        DISP.blit(self.Bar.subsurface((0, 0, min(self.Bar_Length_, 220), 15)), (1580, 832))
+        DISP.blit(self.Bar.subsurface((0, 0, min(self.Bar_Length_, self.Bar_Length), 15)), (1580, 832))
         return array('i', (1567, 765, 310, 100))
     
 
@@ -310,6 +312,7 @@ class QuickAccessButtons(Component):
     
 
     def Frame(self, DISP):
+        self.Updated = False
 
         if self.Enabled:
 

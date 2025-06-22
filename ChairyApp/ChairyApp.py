@@ -201,7 +201,7 @@ class ChairyApp:
                 ChairyApp.LAYER0_RECTS.calculate()
 
                 for r in ChairyApp.LAYER0_RECTS.iter():
-                    ChairyApp.DISPLAY.blit(ChairyApp.LAYER0, (r[0], r[1]), r)
+                    ChairyApp.DISPLAY.blit(ChairyApp.LAYER0, r, r)
 
             
             # 서브 레이어 처리    
