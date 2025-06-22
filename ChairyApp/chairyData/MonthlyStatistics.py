@@ -148,6 +148,9 @@ class MonthlyStatistics():
             self.Statistics[id][index][0] = firstChkIn
             self.Statistics[id][index][2] = seat
 
+        if self.Statistics[id][index][1] != None and self.Statistics[id][index][1] < firstChkIn:
+            self.Statistics[id][index][1] = None
+
 
     def _ChkOut(self, index: int, id: str, lastChkOut: datetime):
         """

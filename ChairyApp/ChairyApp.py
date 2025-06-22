@@ -125,7 +125,7 @@ class ChairyApp:
             # 리셋 확인
             if SceneManager.RESET:
                 SceneManager.RESET = False
-                SceneManager.setScene(RestartScene())
+                SceneManager.setSceneRaw(RestartScene())
 
             ## 이벤트 처리
             for event in pg.event.get():
@@ -182,8 +182,8 @@ class ChairyApp:
                 return
 
             ## 화면 업데이트
-            if SceneManager.CURRENT_SCENE.INIT:
-                SceneManager.CURRENT_SCENE.INIT = False
+            if SceneManager.INIT:
+                SceneManager.INIT = False
                 SceneManager.CURRENT_SCENE.On_Init(ChairyApp.LAYER0)
                 ChairyApp.DISPLAY.blit(ChairyApp.LAYER0, (0, 0))
                 ChairyApp.LAYER1.fill((0, 0, 0, 0))
@@ -192,9 +192,6 @@ class ChairyApp:
             SceneManager.CURRENT_SCENE.On_Update(ChairyApp.ANIMATION_OFFSET, ChairyApp.TICK)
             SceneManager.CURRENT_SCENE.On_Render(ChairyApp.ANIMATION_OFFSET, ChairyApp.TICK, ChairyApp.LAYER0, ChairyApp.LAYER0_RECTS)
             SceneManager.CURRENT_SCENE.On_Layer (ChairyApp.ANIMATION_OFFSET, ChairyApp.TICK, ChairyApp.LAYER1, ChairyApp.LAYER1_RECTS)
-
-            ## 프레임 모니터링하고 싶다면 주석 해제
-            #ChairyApp.RECTS.append(ChairyApp.DISPLAY.blit(Styles.SANS_H4.render(str(int(ChairyApp.CLOCK.get_fps())), 1, Styles.BLACK, Styles.SPRLIGHTGRAY), (0, 0))
 
             # 메인 레이어 처리
             if ChairyApp.LAYER0_RECTS.Full:
@@ -215,13 +212,14 @@ class ChairyApp:
                 ChairyApp.LAYER1_RECTS.calculate()
 
                 for r in ChairyApp.LAYER1_RECTS.iter():
-                    ChairyApp.DISPLAY.blit(ChairyApp.LAYER1, (r[0], r[1]), r)
+                    ChairyApp.DISPLAY.blit(ChairyApp.LAYER0, r, r)
+                    ChairyApp.DISPLAY.blit(ChairyApp.LAYER1, r, r)
                     ChairyApp.LAYER0_RECTS.append(r)
 
 
             # 마무리 렌더링
             if ChairyApp.LAYER0_RECTS.Full:
-                pg.display.update()
+                pg.display.update(ChairyApp.LAYER0_RECTS.get())
             else:
                 ChairyApp.LAYER0_RECTS.calculate()
 

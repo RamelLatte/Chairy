@@ -5,6 +5,7 @@ from os import path
 from . import RoomData
 import orjson
 from dataclasses import dataclass
+import bcrypt
 
 
 
@@ -56,6 +57,8 @@ class StudentData():
 
     TotalMove: int
 
+    Password: str
+
 
     def __init__(self, studentID: str):
         """ **studentID:** 데이터를 불러올 학번 """
@@ -76,6 +79,8 @@ class StudentData():
         self.LastUsedSeat = None
         self.LastChkIn = None
         self.LastChkOut = None
+
+        self.Password = None
 
         # 기존 데이터가 없으면 만듦
         if not path.exists(StudentData.DIRECTORY + "/student_data/" + self.StudentID + ".json"):
@@ -124,6 +129,9 @@ class StudentData():
 
             self.Activity = d['Activity']
 
+            if 'Password' in d:
+                self.Password = d['Password']
+
             self.updateLatest()
 
 
@@ -147,7 +155,8 @@ class StudentData():
             'WeekStamp' : self.WeeklyCheckInStamp,
             'Week'      : self.WeeklyCheckInStamp_,
 
-            'Activity': self.Activity
+            'Activity': self.Activity,
+            'Password': self.Password
 
         }
     
@@ -174,3 +183,21 @@ class StudentData():
             self.LastChkOut = None
 
         self.LastUsedSeat = self.Activity[str(Latest)][2]
+
+
+    def setPassword(self, pw: str):
+        self.Password = bcrypt.hashpw(pw.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+        self.save()
+
+
+    def matchPassword(self, pw: str):
+        return bcrypt.checkpw(pw.encode('utf-8'), self.Password.encode('utf-8'))
+    
+
+    def hasPassword(self):
+        return self.Password is not None
+    
+
+    def removePassword(self):
+        self.Password = None
+        self.save()

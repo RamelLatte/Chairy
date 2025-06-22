@@ -28,12 +28,6 @@ class StatisticDialog(Dialog):
 class ExportDaily(Scene):
     """ ### 일간 출석부 내보내기 """
 
-
-    @staticmethod
-    def Init():
-        SceneManager.ExportDaily = ExportDaily()
-
-
     Preview: Surface # 에셋
     PreviewScreen: Surface # 미리보기 Surface
     DateSelection: Surface # 에셋
@@ -49,6 +43,7 @@ class ExportDaily(Scene):
 
 
     def __init__(self):
+        self.Identifier = 'ExportDaily'
         self.Preview = SceneManager.loadAsset('/ChairyApp/assets/statistics/PreviewDaily.png').convert()
         self.DateSelection = SceneManager.loadAsset('/ChairyApp/assets/statistics/DateSelection.png').convert()
         self.Index = 0
@@ -105,7 +100,7 @@ class ExportDaily(Scene):
 
     # ChatGPT가 써준 코드
     def _Scrollbar(self):
-        """ 스크롤바 렌더링링 """
+        """ 스크롤바 렌더링 """
         list_height = 50 * 15  # 한 페이지에 최대 15개
 
         if self.Total <= 15:
@@ -213,7 +208,7 @@ class ExportDaily(Scene):
 
         if Interface.SC_QuitButton.MouseButtonUp(POS, BUTTON):
             from .transition import Transition
-            Transition(SceneManager.MainScene)
+            Transition(SceneManager.Scenes['MainScene'])
         
         if Interface.SC_ExportButton.MouseButtonUp(POS, BUTTON):
             StatisticDialog(self.CurrentStatistics)
@@ -231,17 +226,22 @@ class ExportDaily(Scene):
         #    Interface.SC_TopBar.attendance()
         if collidepoint(822, 15, 131, 40, POS):
             Interface.SC_TopBar.monthly()
-            SceneManager.setScene(SceneManager.ExportMonthly)
+            SceneManager.setScene('ExportMonthly')
         elif collidepoint(967, 15, 131, 40, POS):
             Interface.SC_TopBar.period()
-            SceneManager.setScene(SceneManager.ExportPeriod)
+            SceneManager.setScene('ExportPeriod')
         elif collidepoint(1112, 15, 131, 40, POS):
             Interface.SC_TopBar.arrangement()
-            SceneManager.setScene(SceneManager.ExportSeats)
+            SceneManager.setScene('ExportSeats')
 
 
     def Event_KeyDown(self, KEY):
         
         if KEY == constants.K_F9:
             from .transition import Transition
-            Transition(SceneManager.MainScene)
+            Transition(SceneManager.Scenes['MainScene'])
+
+
+    def On_Layer(self, ANIMATION_OFFSET, TICK, LAYER, RECTS):
+        if Interface.LY_Notice.Update(ANIMATION_OFFSET, TICK):
+            RECTS.append(Interface.LY_Notice.Frame(LAYER))

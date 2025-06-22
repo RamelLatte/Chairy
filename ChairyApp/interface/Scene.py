@@ -1,9 +1,9 @@
 
 from pygame import constants, Surface, image
 from os.path import exists
-from gc import collect
 
 from ..optimization.rects import DirtyRectsManager
+from gc import collect
 
 class SceneWarning(Exception):
 
@@ -19,8 +19,9 @@ class Scene:
     **프로그램에서 기능별로 그 로직을 구분하고 기능 간 꼬임을 방지하는 기능을 하는 클래스.**
     """
 
-    INIT     : bool = False # 초기화해야하는지 여부
-    Identifier: str = '' # 구분자. 사실상 ErrorDialog 말고는 쓰지 않음.
+    DIR: bool = '' # Static
+    Identifier: str = '' # 구분자.
+
 
     def On_Init  (self, DISPLAY: Surface):
         """
@@ -63,6 +64,11 @@ class Scene:
         - **TICK:** 프레임레이트에 따라 변화하는 값이며, 프레임레이트의 변동에 따라 특정한 Surface의 Alpha 값 변화를 보정하는데 사용됨.
         - **LAYER:** 렌더링할 레이어, **1920x1080** 크기임.
         - **RECTS:** 화면 상에서 업데이트 된 영역, list 유형이며, Rect를 추가하여 화면에서 어디를 업데이트해야하는지 결정함.
+        """
+        ...
+    def On_Exit(self):
+        """
+        ChiaryApp에서 Scene을 종료할 때 호출되는 함수.
         """
         ...
 
@@ -112,17 +118,13 @@ class SceneManager:
 
     SCENE_TIME: int  = 0
     
+    INIT    : bool = False
     QUIT    : bool = False
     RESET   : bool = False
 
     ## Scene들은 순환 Import 문제로 인해 SceneManager 클래스에서 Static으로 저장함. ##
 
-    MainScene      : Scene
-
-    ExportDaily     : Scene
-    ExportMonthly   : Scene
-    ExportPeriod    : Scene
-    ExportSeats     : Scene
+    Scenes: dict[str, Scene] = {}
     
     ####
 
@@ -130,6 +132,17 @@ class SceneManager:
     def directory(dir: str):
         """ 디렉토리 지정 """
         SceneManager.DIRECTORY = dir
+
+
+    @staticmethod
+    def Register(scene: Scene):
+        SceneManager.Scenes[scene.Identifier] = scene
+
+
+    @staticmethod
+    def Clear():
+        SceneManager.Scenes.clear()
+        collect()
 
 
     @staticmethod
@@ -155,7 +168,22 @@ class SceneManager:
 
     
     @staticmethod
-    def setScene(scene: Scene, init: bool = True):
+    def setScene(scene_id: str, init: bool = True):
+        """
+        Scene을 지정함. init 매개변수가 True인 경우, 장면 전환 이후 **On_Init()** 메서드가 호출됨.
+        - - -
+        #### 매개변수:
+        - **scene:** 전환할 장면
+        - **init:** 초기화 함수 호출 여부(기본값 True)
+        """
+        SceneManager.CURRENT_SCENE.On_Exit()
+        SceneManager.CURRENT_SCENE  = SceneManager.Scenes[scene_id]
+        SceneManager.INIT           = init
+        SceneManager.SCENE_TIME     = 0
+
+
+    @staticmethod
+    def setSceneRaw(scene: Scene, init: bool = True):
         """
         Scene을 지정함. init 매개변수가 True인 경우, 장면 전환 이후 **On_Init()** 메서드가 호출됨.
         - - -
@@ -164,9 +192,8 @@ class SceneManager:
         - **init:** 초기화 함수 호출 여부(기본값 True)
         """
         SceneManager.CURRENT_SCENE  = scene
-        scene.INIT                  = init
+        SceneManager.INIT           = init
         SceneManager.SCENE_TIME     = 0
-        collect()
 
 
     @staticmethod

@@ -176,13 +176,11 @@ class SeatsDisplay(Component):
     def show(self):
         """ 좌석을 표시함. """
         self.ShowSeats = True
-        self.Alpha = 0.
 
 
     def hide(self):
         """ 좌석을 숨기고 미리보기로 전환함. """
         self.ShowSeats = False
-        self.Alpha = 255.
 
 
     def mySeat(self, seatID: str):

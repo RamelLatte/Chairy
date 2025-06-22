@@ -100,7 +100,10 @@ class PeriodStatistics():
                     if times[id][index][0] is None or times[id][index][0] > ts:
                         times[id][index][0] = ts
 
-                # 퇴실 기록인 경우우
+                    if times[id][index][1] is not None and times[id][index][1] < ts:
+                        times[id][index][1] = None
+
+                # 퇴실 기록인 경우
                 elif log['Action'] == 'ChkOut':
                     ts = datetime.strptime(log['TimeStamp'], '%Y%m%d%H%M%S.%f')
                     if times[id][index][1] is None or times[id][index][1] < ts:

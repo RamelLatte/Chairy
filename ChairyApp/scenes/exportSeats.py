@@ -80,11 +80,6 @@ class StatisticDialog(Dialog):
 class ExportSeats(Scene):
     """ ### 시간별 좌석 내보내기 """
 
-    @staticmethod
-    def Init():
-        SceneManager.ExportSeats = ExportSeats()
-
-
     Structure: Surface  # 에셋
     AssetIcons: Surface # 에셋
 
@@ -122,6 +117,8 @@ class ExportSeats(Scene):
 
 
     def __init__(self):
+        self.Identifier = 'ExportSeats'
+
         self.Structure = SceneManager.loadAsset('/school_data/structure.png').convert()
         self.AssetIcons = [
             SceneManager.loadAsset('/ChairyApp/assets/seatIcons/VacantSeat0.png').convert(),
@@ -238,8 +235,8 @@ class ExportSeats(Scene):
             surface = Surface((50, 50))
 
             surface.blit(self.AssetIcons[0], (0, 0))
-            txt = Styles.SANS_H5.render(seat[0], 1, Styles.BLUE)
-            surface.blit(txt, center_top(25, 5, txt.get_size()))
+            txt = Styles.ANTON_H5.render(seat[0], 1, Styles.BLUE)
+            surface.blit(txt, center_top(25, 10, txt.get_size()))
             self.Seats_P.append(surface)
 
         # 좌석 배치 대입
@@ -247,8 +244,8 @@ class ExportSeats(Scene):
             index = self.Seats_I.index(seat)
 
             self.Seats_P[index].blit(self.AssetIcons[1], (0, 0))
-            txt = Styles.SANS_H5.render(seat, 1, Styles.RED)
-            self.Seats_P[index].blit(txt, center_top(25, 5, txt.get_size()))
+            txt = Styles.ANTON_H5.render(seat, 1, Styles.RED)
+            self.Seats_P[index].blit(txt, center_top(25, 2, txt.get_size()))
             txt = Styles.SANS_H6.render(student[1], 1, Styles.WHITE)
             self.Seats_P[index].blit(txt, center_top(25, 30, txt.get_size()))
 
@@ -415,7 +412,7 @@ class ExportSeats(Scene):
 
         if Interface.SC_QuitButton.MouseButtonUp(POS, BUTTON):
             from .transition import Transition
-            Transition(SceneManager.MainScene)
+            Transition(SceneManager.Scenes['MainScene'])
         
         if Interface.SC_ExportButton.MouseButtonUp(POS, BUTTON):
             StatisticDialog(self.Seats, self.CurrentTime, self.Total, self.Occupied, self.Vacant)
@@ -428,13 +425,13 @@ class ExportSeats(Scene):
         
         if collidepoint(45, 15, 131, 40, POS):
             Interface.SC_TopBar.attendance()
-            SceneManager.setScene(SceneManager.ExportDaily)
+            SceneManager.setScene('ExportDaily')
         if collidepoint(190, 15, 131, 40, POS):
             Interface.SC_TopBar.monthly()
-            SceneManager.setScene(SceneManager.ExportMonthly)
+            SceneManager.setScene('ExportMonthly')
         elif collidepoint(335, 15, 131, 40, POS):
             Interface.SC_TopBar.period()
-            SceneManager.setScene(SceneManager.ExportPeriod)
+            SceneManager.setScene('ExportPeriod')
         #elif collidepoint(1112, 15, 131, 40, POS):
         #    Interface.SC_TopBar.arrangement()
 
@@ -443,7 +440,7 @@ class ExportSeats(Scene):
         
         if KEY == constants.K_F9:
             from .transition import Transition
-            Transition(SceneManager.MainScene)
+            Transition(SceneManager.Scenes['MainScene'])
         elif KEY in (constants.K_LSHIFT, constants.K_RSHIFT):
             self.KeyDownShift = True
         elif KEY in (constants.K_LCTRL, constants.K_RCTRL):
@@ -460,3 +457,8 @@ class ExportSeats(Scene):
             self.KeyDownCtrl = False
         elif KEY in (constants.K_LALT, constants.K_RALT):
             self.KeyDownAlt = False
+
+
+    def On_Layer(self, ANIMATION_OFFSET, TICK, LAYER, RECTS):
+        if Interface.LY_Notice.Update(ANIMATION_OFFSET, TICK):
+            RECTS.append(Interface.LY_Notice.Frame(LAYER))

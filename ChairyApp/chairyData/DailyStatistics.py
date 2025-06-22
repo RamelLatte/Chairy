@@ -70,6 +70,9 @@ class DailyStatistics():
 
                 if Students[id][2] == None or Students[id][2] > timestamp:
                     Students[id][2] = timestamp
+
+                if Students[id][3] != None and Students[id][3] < timestamp:
+                    Students[id][3] = None
                 
             # 퇴실 기록인 경우
             elif log['Action'] == 'ChkOut':

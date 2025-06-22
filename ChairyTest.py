@@ -15,6 +15,7 @@
 #  - requests : NEIS 연동용 API 호출
 #  - cython   : Cython 언어
 #  - pyinstaller: Executable 파일로 처리
+#  - bcrypt   : 비밀번호 해시화
 #
 # ■ 미디어 재생 현황 확인 기능에 쓰이는 라이브러리는 다음과 같음.
 #  - winrt-Windows.media

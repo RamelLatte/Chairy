@@ -18,6 +18,7 @@ class StudentHoverInfo(Component):
     SURFACE: Surface
 
     Show: bool
+    Clear: bool
 
     M_POS: tuple[int]
 
@@ -29,6 +30,7 @@ class StudentHoverInfo(Component):
         self.SURFACE = Surface((190, 90), (SRCALPHA))
 
         self.Show = False
+        self.Clear = False
         self.M_POS = (0, 0)
         self.Reset()
 
@@ -73,6 +75,7 @@ class StudentHoverInfo(Component):
     def hide(self):
         self.Show = False
         self.Updated = True
+        self.Clear = True
     
 
     def Reset(self):
@@ -80,13 +83,18 @@ class StudentHoverInfo(Component):
 
 
     def Update(self):
-        return self.Updated
+        return self.Updated or self.Clear
 
 
     def Frame(self, DISP):
         self.Updated = False
         
         r = self.calculateRect()
+
+        if self.Clear:
+            self.Clear = False
+            DISP.fill((0, 0, 0, 0), r)
+            return r
 
         DISP.fill((0, 0, 0, 0), r)
 
@@ -102,37 +110,49 @@ class StudentHoverInfo(Component):
         if self.Show:
             self.X = POS[0] + 15
             self.Y = POS[1] + 15
+            self.Updated = True
 
 
 
 class Notice(Component):
     """ ### 레이어에 띄우는 안내문 """
 
-    Assets: list[Surface]
+    Assets: tuple[Surface]
     Index: int
     Show: bool
     Time: int
+
+    Max_Time: int
+    Idle_Reset: bool
+
 
 
     def __init__(self, layer1: Surface):
         super().__init__(753, -114, 414, 114)
 
-        self.Assets = [
+        self.Assets = (
             SM.loadAsset('/ChairyApp/assets/layer/Idle0.png').convert_alpha(layer1),
             SM.loadAsset('/ChairyApp/assets/layer/Idle1.png').convert_alpha(layer1),
             SM.loadAsset('/ChairyApp/assets/layer/IdFirst.png').convert_alpha(layer1),
-            SM.loadAsset('/ChairyApp/assets/layer/LowEnergy.png').convert_alpha(layer1)
-        ]
+            SM.loadAsset('/ChairyApp/assets/layer/LowEnergy.png').convert_alpha(layer1),
+            SM.loadAsset('/ChairyApp/assets/layer/VersionCheck0.png').convert_alpha(layer1),
+            SM.loadAsset('/ChairyApp/assets/layer/VersionCheck1.png').convert_alpha(layer1),
+            SM.loadAsset('/ChairyApp/assets/layer/Developing.png').convert_alpha(layer1)
+        )
         self.Index = 0
         self.Show = False
         self.Time = 0
-        self.Reset()
+        self.Idle_Reset = False
+        self.Max_Time = 2000
+        #self.Reset()
 
 
     def show_Idle0(self):
         self.Index = 0
         self.Y = -114
         self.Time = 0
+        self.Max_Time = 10000
+        self.Idle_Reset = False
         self.Show = True
 
 
@@ -140,6 +160,8 @@ class Notice(Component):
         self.Index = 1
         self.Y = -114
         self.Time = 0
+        self.Max_Time = 10000
+        self.Idle_Reset = False
         self.Show = True
 
 
@@ -147,6 +169,8 @@ class Notice(Component):
         self.Index = 2
         self.Y = -114
         self.Time = 0
+        self.Max_Time = 2000
+        self.Idle_Reset = False
         self.Show = True
 
 
@@ -154,31 +178,72 @@ class Notice(Component):
         self.Index = 3
         self.Y = -114
         self.Time = 0
+        self.Max_Time = 10000
+        self.Idle_Reset = False
         self.Show = True
 
 
+    def show_LatestVersion(self):
+        self.Index = 4
+        self.Y = -114
+        self.Time = 0
+        self.Max_Time = 2000
+        self.Idle_Reset = False
+        self.Show = True
+
+
+    def show_Update(self):
+        self.Index = 5
+        self.Y = -114
+        self.Time = 0
+        self.Max_Time = 2000
+        self.Idle_Reset = False
+        self.Show = True
+
+
+    def show_Developing(self):
+        self.Index = 6
+        self.Y = -114
+        self.Time = 0
+        self.Max_Time = 2000
+        self.Idle_Reset = False
+        self.Show = True
+
+
+
     def hide(self):
+        self.Idle_Reset = False
         self.Show = False
     
 
     def Reset(self):
-        ...
+        self.Index = 0
+        self.Y = -114
+        self.Time = 0
+        self.Max_Time = 10000
+        self.Idle_Reset = False
+        self.Show = False
 
 
     def Update(self, A_OFFSET, TICK):
         if self.Show:
             self.Time += TICK
 
-            if self.Time > 2000:
-                self.Show = False
-                self.Time = 0
+            if self.Time > self.Max_Time:
+
+                if self.Index in (0, 1, 3):
+                    if not self.Idle_Reset:
+                        self.Idle_Reset = True
+                else:
+                    self.Show = False
+                    self.Time = 0
 
             self.Animate_Y(15, 1.5, A_OFFSET)
 
             return True
         
-        elif self.Y != -114:
-            self.AnimateSpdUp_Y(True, 15, -114, 2.5, A_OFFSET)
+        elif self._Y != -120:
+            self.AnimateSpdUp_Y(True, 15, -120, 2.5, A_OFFSET)
 
             return True
 
@@ -188,8 +253,10 @@ class Notice(Component):
     def Frame(self, DISP):
         r = self.calculateRect()
 
-        if self.Y > -114:
-            DISP.fill((0, 0, 0, 0), r)
-            DISP.blit(self.Assets[self.Index], (753, self.Y))
+        DISP.fill((0, 0, 0, 0), r)
+        DISP.blit(self.Assets[self.Index], (753, self.Y))
+
+        if self.Index in (0, 1, 3):
+            DISP.fill(Styles.WHITE, (871, self.Y + 84, 260 * min(1, self.Time / self.Max_Time), 5))
 
         return r

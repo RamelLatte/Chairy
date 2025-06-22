@@ -3,7 +3,7 @@ from .Scene import Scene, SceneManager, SceneWarning
 from .Styles import Styles
 
 
-from .sideDisplays      import DateTimeDisplay, DietAndScheduleDisplay, SeatingStatus
+from .sideDisplays      import DateTimeDisplay, DietAndScheduleDisplay, SeatingStatus, QuickAccessButtons
 from .keyInstruction    import KeyInstructionDisplay
 from .idInputDialog     import IdInputDialog
 from .scrollingTextbox  import ScrollingTextbox
@@ -14,11 +14,13 @@ from .statistics        import TopBar
 from .dateSelection     import DateSelection, MonthSelection
 from .currentMedia      import CurrentMedia
 from .layerComponents   import StudentHoverInfo, Notice
+from .password          import SetPasswordButton, PasswordDialog, DeletePasswordButton
+from .shrinkfade        import ShrinkFadeAnimation
 
 
 
 __all__ = ['Scene', 'SceneManager', 'SceneWarning', 'ComponentWarning', 'Interface', 'Styles',
-           'DateTimeDisplay', 'DietAndScheduleDisplay', 'SeatingStatus',
+           'DateTimeDisplay', 'DietAndScheduleDisplay', 'SeatingStatus', 'QuickAccessButtons',
            'KeyInstructionDisplay',
            'IdInputDialog',
            'ScrollingTextbox',
@@ -26,7 +28,9 @@ __all__ = ['Scene', 'SceneManager', 'SceneWarning', 'ComponentWarning', 'Interfa
            'StudentInfoBox',
            'CancelButton', 'CheckoutButton', 'MoveButton', 'StatisticsExitButton', 'StatisticsExportButton',
            'CurrentMedia', 'HideMediaButton',
-           'StudentHoverInfo', 'Notice'
+           'StudentHoverInfo', 'Notice',
+           'SetPasswordButton', 'PasswordDialog', 'DeletePasswordButton',
+           'ShrinkFadeAnimation'
         ]
 
 
@@ -55,11 +59,14 @@ class Interface:
     SD_DateTime        : DateTimeDisplay       
     SD_DietAndSchedule : DietAndScheduleDisplay
     SD_SeatingStatus   : SeatingStatus         
+    SD_QuickAccess     : QuickAccessButtons
 
     # ID: student ID
     ID_InstructionText : ScrollingTextbox     
     ID_IdInputDialog   : IdInputDialog        
     ID_KeyInstruction  : KeyInstructionDisplay
+
+    ID_PasswordButton  : SetPasswordButton
 
     # ST: SeaTing
     ST_SeatDisplay     : SeatsDisplay
@@ -103,6 +110,9 @@ class Interface:
         Interface.SD_DateTime        = DateTimeDisplay()
         Interface.SD_DietAndSchedule = DietAndScheduleDisplay()
         Interface.SD_SeatingStatus   = SeatingStatus()
+        Interface.SD_QuickAccess     = QuickAccessButtons()
+
+        Interface.ID_PasswordButton  = SetPasswordButton()
 
         Interface.ID_InstructionText = ScrollingTextbox(300, Styles.SANS_H4, "학번을 입력합니다", Styles.BLACK)
         Interface.ID_IdInputDialog   = IdInputDialog()

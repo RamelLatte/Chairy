@@ -2109,6 +2109,10 @@ static int __Pyx_State_RemoveModule(void*);
 /* Module declarations from "animation" */
 static float __pyx_f_9animation_Animate(float, float, float, float, int __pyx_skip_dispatch); /*proto*/
 static float __pyx_f_9animation_AnimateSpdUp(int, float, float, float, float, float, int __pyx_skip_dispatch); /*proto*/
+static float __pyx_f_9animation_FineAnimate(float, float, float, float, float, int __pyx_skip_dispatch); /*proto*/
+static float __pyx_f_9animation_FineAnimateSpdUp(int, float, float, float, float, float, int __pyx_skip_dispatch); /*proto*/
+static float __pyx_f_9animation_ease_in_out(float); /*proto*/
+static float __pyx_f_9animation_SmoothEasedAnimate(float, float, float, float, float, int __pyx_skip_dispatch); /*proto*/
 /* #### Code section: typeinfo ### */
 /* #### Code section: before_global_var ### */
 #define __Pyx_MODULE_NAME "animation"
@@ -2133,17 +2137,27 @@ static const char __pyx_k_Animate[] = "Animate";
 static const char __pyx_k_Current[] = "Current";
 static const char __pyx_k_Negative[] = "Negative";
 static const char __pyx_k_qualname[] = "__qualname__";
+static const char __pyx_k_Threshold[] = "Threshold";
 static const char __pyx_k_animation[] = "animation";
+static const char __pyx_k_FineAnimate[] = "FineAnimate";
 static const char __pyx_k_AnimateSpdUp[] = "AnimateSpdUp";
 static const char __pyx_k_is_coroutine[] = "_is_coroutine";
+static const char __pyx_k_FineAnimateSpdUp[] = "FineAnimateSpdUp";
+static const char __pyx_k_SmoothEasedAnimate[] = "SmoothEasedAnimate";
 static const char __pyx_k_asyncio_coroutines[] = "asyncio.coroutines";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_1_s_82XRq_q_xs_9Bc_1[] = "\320\000\023\2201\340\004\007\200s\210!\2108\2202\220X\230R\230q\330\010\017\210q\340\010\017\210x\220s\230'\240\022\2409\250B\250c\260\022\2601";
+static const char __pyx_k_q_s_82XRq_q_xs_9Bc_1[] = "\320\000\027\220q\340\004\007\200s\210!\2108\2202\220X\230R\230q\330\010\017\210q\340\010\017\210x\220s\230'\240\022\2409\250B\250c\260\022\2601";
 static const char __pyx_k_optimization_animation_pyx[] = "optimization/animation.pyx";
+static const char __pyx_k_A_xs_q_q_82Q_1_xs_Qhb_r_Ba_82Q[] = "\320\000\034\230A\340\004\007\200x\210s\220!\330\010\017\210q\340\004\007\200q\330\010\013\2108\2202\220Q\330\014\023\2201\330\010\017\210x\220s\230#\230Q\230h\240b\250\007\250r\260\023\260B\260a\340\010\013\2108\2202\220Q\330\014\023\2201\330\010\017\210x\220s\230#\230Q\230h\240b\250\007\250r\260\022\2602\260S\270\002\270!";
+static const char __pyx_k_a_xs_q_Cq_r_Q_q_Qhb_2Q_y_1_A_1[] = "\320\000\036\230a\330\004\007\200x\210s\220!\330\010\017\210q\340\004\034\230C\230q\240\007\240r\250\021\330\004\007\200{\220#\220Q\330\010\017\210q\340\004\032\230#\230Q\230h\240b\250\001\330\004\032\230)\2402\240Q\330\004\007\200y\220\002\220!\330\010\023\2201\330\t\022\220\"\220A\330\010\023\2201\340\004\027\220{\240!\2401\330\004\030\230\007\230r\240\031\250\"\250F\260\"\260C\260r\270\021\360\006\000\005\010\200w\210b\220\010\230\004\230H\240B\240f\250B\250a\330\010\017\210q\330\t\020\220\002\220(\230$\230h\240b\250\006\250b\260\001\330\010\017\210q\330\004\013\2108\2202\220Q";
 static const char __pyx_k_xs_q_q_82Q_1_xt3axr_Rs_A_82Q_1[] = "\320\000\030\230\001\340\004\007\200x\210s\220!\330\010\017\210q\340\004\007\200q\330\010\013\2108\2202\220Q\330\014\023\2201\330\010\017\210x\220t\2303\230a\230x\240r\250\027\260\002\260#\260R\260s\270\"\270A\340\010\013\2108\2202\220Q\330\014\023\2201\330\010\017\210x\220t\2303\230a\230x\240r\250\027\260\002\260#\260R\260s\270\"\270A";
 /* #### Code section: decls ### */
 static PyObject *__pyx_pf_9animation_Animate(CYTHON_UNUSED PyObject *__pyx_self, float __pyx_v_Current, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO); /* proto */
 static PyObject *__pyx_pf_9animation_2AnimateSpdUp(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_Negative, float __pyx_v_Current, float __pyx_v_Start, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO); /* proto */
+static PyObject *__pyx_pf_9animation_4FineAnimate(CYTHON_UNUSED PyObject *__pyx_self, float __pyx_v_Current, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO, float __pyx_v_Threshold); /* proto */
+static PyObject *__pyx_pf_9animation_6FineAnimateSpdUp(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_Negative, float __pyx_v_Current, float __pyx_v_Start, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO); /* proto */
+static PyObject *__pyx_pf_9animation_8SmoothEasedAnimate(CYTHON_UNUSED PyObject *__pyx_self, float __pyx_v_Current, float __pyx_v_Start, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO); /* proto */
 /* #### Code section: late_includes ### */
 /* #### Code section: module_state ### */
 /* SmallCodeConfig */
@@ -2183,8 +2197,8 @@ typedef struct {
   PyTypeObject *__pyx_CoroutineType;
   #endif
   __Pyx_CachedCFunction __pyx_umethod_PyDict_Type_pop;
-  PyObject *__pyx_codeobj_tab[2];
-  PyObject *__pyx_string_tab[21];
+  PyObject *__pyx_codeobj_tab[5];
+  PyObject *__pyx_string_tab[25];
 /* #### Code section: module_state_contents ### */
 /* CachedMethodType.module_state_decls */
 #if CYTHON_COMPILING_IN_LIMITED_API
@@ -2224,22 +2238,26 @@ static __pyx_mstatetype * const __pyx_mstate_global = &__pyx_mstate_global_stati
 #define __pyx_n_u_Animate __pyx_string_tab[2]
 #define __pyx_n_u_AnimateSpdUp __pyx_string_tab[3]
 #define __pyx_n_u_Current __pyx_string_tab[4]
-#define __pyx_n_u_Negative __pyx_string_tab[5]
-#define __pyx_n_u_Speed __pyx_string_tab[6]
-#define __pyx_n_u_Start __pyx_string_tab[7]
-#define __pyx_n_u_Target __pyx_string_tab[8]
-#define __pyx_n_u_animation __pyx_string_tab[9]
-#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[10]
-#define __pyx_n_u_cline_in_traceback __pyx_string_tab[11]
-#define __pyx_n_u_func __pyx_string_tab[12]
-#define __pyx_n_u_is_coroutine __pyx_string_tab[13]
-#define __pyx_n_u_main __pyx_string_tab[14]
-#define __pyx_n_u_module __pyx_string_tab[15]
-#define __pyx_n_u_name __pyx_string_tab[16]
-#define __pyx_kp_u_optimization_animation_pyx __pyx_string_tab[17]
-#define __pyx_n_u_pop __pyx_string_tab[18]
-#define __pyx_n_u_qualname __pyx_string_tab[19]
-#define __pyx_n_u_test __pyx_string_tab[20]
+#define __pyx_n_u_FineAnimate __pyx_string_tab[5]
+#define __pyx_n_u_FineAnimateSpdUp __pyx_string_tab[6]
+#define __pyx_n_u_Negative __pyx_string_tab[7]
+#define __pyx_n_u_SmoothEasedAnimate __pyx_string_tab[8]
+#define __pyx_n_u_Speed __pyx_string_tab[9]
+#define __pyx_n_u_Start __pyx_string_tab[10]
+#define __pyx_n_u_Target __pyx_string_tab[11]
+#define __pyx_n_u_Threshold __pyx_string_tab[12]
+#define __pyx_n_u_animation __pyx_string_tab[13]
+#define __pyx_n_u_asyncio_coroutines __pyx_string_tab[14]
+#define __pyx_n_u_cline_in_traceback __pyx_string_tab[15]
+#define __pyx_n_u_func __pyx_string_tab[16]
+#define __pyx_n_u_is_coroutine __pyx_string_tab[17]
+#define __pyx_n_u_main __pyx_string_tab[18]
+#define __pyx_n_u_module __pyx_string_tab[19]
+#define __pyx_n_u_name __pyx_string_tab[20]
+#define __pyx_kp_u_optimization_animation_pyx __pyx_string_tab[21]
+#define __pyx_n_u_pop __pyx_string_tab[22]
+#define __pyx_n_u_qualname __pyx_string_tab[23]
+#define __pyx_n_u_test __pyx_string_tab[24]
 /* #### Code section: module_state_clear ### */
 #if CYTHON_USE_MODULE_STATE
 static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
@@ -2260,8 +2278,8 @@ static CYTHON_SMALL_CODE int __pyx_m_clear(PyObject *m) {
   #if CYTHON_PEP489_MULTI_PHASE_INIT
   __Pyx_State_RemoveModule(NULL);
   #endif
-  for (int i=0; i<2; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<21; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<5; ++i) { Py_CLEAR(clear_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<25; ++i) { Py_CLEAR(clear_module_state->__pyx_string_tab[i]); }
   return 0;
 }
 #endif
@@ -2282,8 +2300,8 @@ static CYTHON_SMALL_CODE int __pyx_m_traverse(PyObject *m, visitproc visit, void
   #ifdef __Pyx_FusedFunction_USED
   Py_VISIT(traverse_module_state->__pyx_FusedFunctionType);
   #endif
-  for (int i=0; i<2; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
-  for (int i=0; i<21; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
+  for (int i=0; i<5; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_codeobj_tab[i]); }
+  for (int i=0; i<25; ++i) { __Pyx_VISIT_CONST(traverse_module_state->__pyx_string_tab[i]); }
   return 0;
 }
 #endif
@@ -2622,6 +2640,7 @@ static float __pyx_f_9animation_AnimateSpdUp(int __pyx_v_Negative, float __pyx_v
  *         if Current > Target:
  *             return Target             # <<<<<<<<<<<<<<
  *         return Current + ((abs(Current - Start) + 1) * AO * Speed)
+ * 
 */
       __pyx_r = __pyx_v_Target;
       goto __pyx_L0;
@@ -2639,6 +2658,8 @@ static float __pyx_f_9animation_AnimateSpdUp(int __pyx_v_Negative, float __pyx_v
  *         if Current > Target:
  *             return Target
  *         return Current + ((abs(Current - Start) + 1) * AO * Speed)             # <<<<<<<<<<<<<<
+ * 
+ * 
 */
     __pyx_t_2 = fabsf((__pyx_v_Current - __pyx_v_Start)); 
     __pyx_r = (__pyx_v_Current + (((__pyx_t_2 + 1.0) * __pyx_v_AO) * __pyx_v_Speed));
@@ -2804,6 +2825,1042 @@ static PyObject *__pyx_pf_9animation_2AnimateSpdUp(CYTHON_UNUSED PyObject *__pyx
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
   __Pyx_AddTraceback("animation.AnimateSpdUp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "animation.pyx":25
+ * 
+ * 
+ * cpdef float FineAnimate(float Current, float Target, float Speed, float AO, float Threshold):             # <<<<<<<<<<<<<<
+ * 
+ *     if abs(Current - Target) < Threshold:
+*/
+
+static PyObject *__pyx_pw_9animation_5FineAnimate(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static float __pyx_f_9animation_FineAnimate(float __pyx_v_Current, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO, float __pyx_v_Threshold, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  float __pyx_r;
+  float __pyx_t_1;
+  int __pyx_t_2;
+
+  /* "animation.pyx":27
+ * cpdef float FineAnimate(float Current, float Target, float Speed, float AO, float Threshold):
+ * 
+ *     if abs(Current - Target) < Threshold:             # <<<<<<<<<<<<<<
+ *         return Target
+ *     else:
+*/
+  __pyx_t_1 = fabsf((__pyx_v_Current - __pyx_v_Target)); 
+  __pyx_t_2 = (__pyx_t_1 < __pyx_v_Threshold);
+  if (__pyx_t_2) {
+
+    /* "animation.pyx":28
+ * 
+ *     if abs(Current - Target) < Threshold:
+ *         return Target             # <<<<<<<<<<<<<<
+ *     else:
+ *         return Current + (Target - Current) * AO * Speed
+*/
+    __pyx_r = __pyx_v_Target;
+    goto __pyx_L0;
+
+    /* "animation.pyx":27
+ * cpdef float FineAnimate(float Current, float Target, float Speed, float AO, float Threshold):
+ * 
+ *     if abs(Current - Target) < Threshold:             # <<<<<<<<<<<<<<
+ *         return Target
+ *     else:
+*/
+  }
+
+  /* "animation.pyx":30
+ *         return Target
+ *     else:
+ *         return Current + (Target - Current) * AO * Speed             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  /*else*/ {
+    __pyx_r = (__pyx_v_Current + (((__pyx_v_Target - __pyx_v_Current) * __pyx_v_AO) * __pyx_v_Speed));
+    goto __pyx_L0;
+  }
+
+  /* "animation.pyx":25
+ * 
+ * 
+ * cpdef float FineAnimate(float Current, float Target, float Speed, float AO, float Threshold):             # <<<<<<<<<<<<<<
+ * 
+ *     if abs(Current - Target) < Threshold:
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9animation_5FineAnimate(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_9animation_5FineAnimate = {"FineAnimate", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9animation_5FineAnimate, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9animation_5FineAnimate(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  float __pyx_v_Current;
+  float __pyx_v_Target;
+  float __pyx_v_Speed;
+  float __pyx_v_AO;
+  float __pyx_v_Threshold;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[5] = {0,0,0,0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("FineAnimate (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_Current,&__pyx_mstate_global->__pyx_n_u_Target,&__pyx_mstate_global->__pyx_n_u_Speed,&__pyx_mstate_global->__pyx_n_u_AO,&__pyx_mstate_global->__pyx_n_u_Threshold,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 25, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  5:
+        values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 25, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  4:
+        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 25, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 25, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 25, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 25, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "FineAnimate", 0) < 0) __PYX_ERR(0, 25, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 5; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("FineAnimate", 1, 5, 5, i); __PYX_ERR(0, 25, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 5)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 25, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 25, __pyx_L3_error)
+      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 25, __pyx_L3_error)
+      values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 25, __pyx_L3_error)
+      values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 25, __pyx_L3_error)
+    }
+    __pyx_v_Current = __Pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_Current == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
+    __pyx_v_Target = __Pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_Target == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
+    __pyx_v_Speed = __Pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_Speed == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
+    __pyx_v_AO = __Pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_AO == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
+    __pyx_v_Threshold = __Pyx_PyFloat_AsFloat(values[4]); if (unlikely((__pyx_v_Threshold == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L3_error)
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("FineAnimate", 1, 5, 5, __pyx_nargs); __PYX_ERR(0, 25, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("animation.FineAnimate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_9animation_4FineAnimate(__pyx_self, __pyx_v_Current, __pyx_v_Target, __pyx_v_Speed, __pyx_v_AO, __pyx_v_Threshold);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9animation_4FineAnimate(CYTHON_UNUSED PyObject *__pyx_self, float __pyx_v_Current, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO, float __pyx_v_Threshold) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  float __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("FineAnimate", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_9animation_FineAnimate(__pyx_v_Current, __pyx_v_Target, __pyx_v_Speed, __pyx_v_AO, __pyx_v_Threshold, 1); if (unlikely(__pyx_t_1 == ((float)-1) && PyErr_Occurred())) __PYX_ERR(0, 25, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("animation.FineAnimate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "animation.pyx":33
+ * 
+ * 
+ * cpdef float FineAnimateSpdUp(bint Negative, float Current, float Start, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
+ * 
+ *     if Current == Target:
+*/
+
+static PyObject *__pyx_pw_9animation_7FineAnimateSpdUp(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static float __pyx_f_9animation_FineAnimateSpdUp(int __pyx_v_Negative, float __pyx_v_Current, float __pyx_v_Start, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  float __pyx_r;
+  int __pyx_t_1;
+  float __pyx_t_2;
+
+  /* "animation.pyx":35
+ * cpdef float FineAnimateSpdUp(bint Negative, float Current, float Start, float Target, float Speed, float AO):
+ * 
+ *     if Current == Target:             # <<<<<<<<<<<<<<
+ *         return Target
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_Current == __pyx_v_Target);
+  if (__pyx_t_1) {
+
+    /* "animation.pyx":36
+ * 
+ *     if Current == Target:
+ *         return Target             # <<<<<<<<<<<<<<
+ * 
+ *     if Negative: # -
+*/
+    __pyx_r = __pyx_v_Target;
+    goto __pyx_L0;
+
+    /* "animation.pyx":35
+ * cpdef float FineAnimateSpdUp(bint Negative, float Current, float Start, float Target, float Speed, float AO):
+ * 
+ *     if Current == Target:             # <<<<<<<<<<<<<<
+ *         return Target
+ * 
+*/
+  }
+
+  /* "animation.pyx":38
+ *         return Target
+ * 
+ *     if Negative: # -             # <<<<<<<<<<<<<<
+ *         if Current < Target:
+ *             return Target
+*/
+  if (__pyx_v_Negative) {
+
+    /* "animation.pyx":39
+ * 
+ *     if Negative: # -
+ *         if Current < Target:             # <<<<<<<<<<<<<<
+ *             return Target
+ *         return Current - (abs(Current - Start) * AO * Speed)
+*/
+    __pyx_t_1 = (__pyx_v_Current < __pyx_v_Target);
+    if (__pyx_t_1) {
+
+      /* "animation.pyx":40
+ *     if Negative: # -
+ *         if Current < Target:
+ *             return Target             # <<<<<<<<<<<<<<
+ *         return Current - (abs(Current - Start) * AO * Speed)
+ *     else: # +
+*/
+      __pyx_r = __pyx_v_Target;
+      goto __pyx_L0;
+
+      /* "animation.pyx":39
+ * 
+ *     if Negative: # -
+ *         if Current < Target:             # <<<<<<<<<<<<<<
+ *             return Target
+ *         return Current - (abs(Current - Start) * AO * Speed)
+*/
+    }
+
+    /* "animation.pyx":41
+ *         if Current < Target:
+ *             return Target
+ *         return Current - (abs(Current - Start) * AO * Speed)             # <<<<<<<<<<<<<<
+ *     else: # +
+ *         if Current > Target:
+*/
+    __pyx_t_2 = fabsf((__pyx_v_Current - __pyx_v_Start)); 
+    __pyx_r = (__pyx_v_Current - ((__pyx_t_2 * __pyx_v_AO) * __pyx_v_Speed));
+    goto __pyx_L0;
+
+    /* "animation.pyx":38
+ *         return Target
+ * 
+ *     if Negative: # -             # <<<<<<<<<<<<<<
+ *         if Current < Target:
+ *             return Target
+*/
+  }
+
+  /* "animation.pyx":43
+ *         return Current - (abs(Current - Start) * AO * Speed)
+ *     else: # +
+ *         if Current > Target:             # <<<<<<<<<<<<<<
+ *             return Target
+ *         return Current + (abs(Current - Start) + 1 * AO * Speed)
+*/
+  /*else*/ {
+    __pyx_t_1 = (__pyx_v_Current > __pyx_v_Target);
+    if (__pyx_t_1) {
+
+      /* "animation.pyx":44
+ *     else: # +
+ *         if Current > Target:
+ *             return Target             # <<<<<<<<<<<<<<
+ *         return Current + (abs(Current - Start) + 1 * AO * Speed)
+ * 
+*/
+      __pyx_r = __pyx_v_Target;
+      goto __pyx_L0;
+
+      /* "animation.pyx":43
+ *         return Current - (abs(Current - Start) * AO * Speed)
+ *     else: # +
+ *         if Current > Target:             # <<<<<<<<<<<<<<
+ *             return Target
+ *         return Current + (abs(Current - Start) + 1 * AO * Speed)
+*/
+    }
+
+    /* "animation.pyx":45
+ *         if Current > Target:
+ *             return Target
+ *         return Current + (abs(Current - Start) + 1 * AO * Speed)             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+    __pyx_t_2 = fabsf((__pyx_v_Current - __pyx_v_Start)); 
+    __pyx_r = (__pyx_v_Current + (__pyx_t_2 + ((1.0 * __pyx_v_AO) * __pyx_v_Speed)));
+    goto __pyx_L0;
+  }
+
+  /* "animation.pyx":33
+ * 
+ * 
+ * cpdef float FineAnimateSpdUp(bint Negative, float Current, float Start, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
+ * 
+ *     if Current == Target:
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9animation_7FineAnimateSpdUp(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_9animation_7FineAnimateSpdUp = {"FineAnimateSpdUp", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9animation_7FineAnimateSpdUp, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9animation_7FineAnimateSpdUp(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  int __pyx_v_Negative;
+  float __pyx_v_Current;
+  float __pyx_v_Start;
+  float __pyx_v_Target;
+  float __pyx_v_Speed;
+  float __pyx_v_AO;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[6] = {0,0,0,0,0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("FineAnimateSpdUp (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_Negative,&__pyx_mstate_global->__pyx_n_u_Current,&__pyx_mstate_global->__pyx_n_u_Start,&__pyx_mstate_global->__pyx_n_u_Target,&__pyx_mstate_global->__pyx_n_u_Speed,&__pyx_mstate_global->__pyx_n_u_AO,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 33, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  6:
+        values[5] = __Pyx_ArgRef_FASTCALL(__pyx_args, 5);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 33, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  5:
+        values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 33, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  4:
+        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 33, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 33, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 33, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 33, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "FineAnimateSpdUp", 0) < 0) __PYX_ERR(0, 33, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 6; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("FineAnimateSpdUp", 1, 6, 6, i); __PYX_ERR(0, 33, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 6)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 33, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 33, __pyx_L3_error)
+      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 33, __pyx_L3_error)
+      values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 33, __pyx_L3_error)
+      values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 33, __pyx_L3_error)
+      values[5] = __Pyx_ArgRef_FASTCALL(__pyx_args, 5);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[5])) __PYX_ERR(0, 33, __pyx_L3_error)
+    }
+    __pyx_v_Negative = __Pyx_PyObject_IsTrue(values[0]); if (unlikely((__pyx_v_Negative == (int)-1) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L3_error)
+    __pyx_v_Current = __Pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_Current == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L3_error)
+    __pyx_v_Start = __Pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_Start == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L3_error)
+    __pyx_v_Target = __Pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_Target == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L3_error)
+    __pyx_v_Speed = __Pyx_PyFloat_AsFloat(values[4]); if (unlikely((__pyx_v_Speed == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L3_error)
+    __pyx_v_AO = __Pyx_PyFloat_AsFloat(values[5]); if (unlikely((__pyx_v_AO == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L3_error)
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("FineAnimateSpdUp", 1, 6, 6, __pyx_nargs); __PYX_ERR(0, 33, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("animation.FineAnimateSpdUp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_9animation_6FineAnimateSpdUp(__pyx_self, __pyx_v_Negative, __pyx_v_Current, __pyx_v_Start, __pyx_v_Target, __pyx_v_Speed, __pyx_v_AO);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9animation_6FineAnimateSpdUp(CYTHON_UNUSED PyObject *__pyx_self, int __pyx_v_Negative, float __pyx_v_Current, float __pyx_v_Start, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  float __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("FineAnimateSpdUp", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_9animation_FineAnimateSpdUp(__pyx_v_Negative, __pyx_v_Current, __pyx_v_Start, __pyx_v_Target, __pyx_v_Speed, __pyx_v_AO, 1); if (unlikely(__pyx_t_1 == ((float)-1) && PyErr_Occurred())) __PYX_ERR(0, 33, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("animation.FineAnimateSpdUp", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+/* "animation.pyx":50
+ * # ChatGPT  :
+ * 
+ * cdef float ease_in_out(float t):             # <<<<<<<<<<<<<<
+ *     if t < 0.5:
+ *         return 2 * t * t
+*/
+
+static float __pyx_f_9animation_ease_in_out(float __pyx_v_t) {
+  float __pyx_r;
+  int __pyx_t_1;
+
+  /* "animation.pyx":51
+ * 
+ * cdef float ease_in_out(float t):
+ *     if t < 0.5:             # <<<<<<<<<<<<<<
+ *         return 2 * t * t
+ *     else:
+*/
+  __pyx_t_1 = (__pyx_v_t < 0.5);
+  if (__pyx_t_1) {
+
+    /* "animation.pyx":52
+ * cdef float ease_in_out(float t):
+ *     if t < 0.5:
+ *         return 2 * t * t             # <<<<<<<<<<<<<<
+ *     else:
+ *         return -1 + (4 - 2 * t) * t
+*/
+    __pyx_r = ((2.0 * __pyx_v_t) * __pyx_v_t);
+    goto __pyx_L0;
+
+    /* "animation.pyx":51
+ * 
+ * cdef float ease_in_out(float t):
+ *     if t < 0.5:             # <<<<<<<<<<<<<<
+ *         return 2 * t * t
+ *     else:
+*/
+  }
+
+  /* "animation.pyx":54
+ *         return 2 * t * t
+ *     else:
+ *         return -1 + (4 - 2 * t) * t             # <<<<<<<<<<<<<<
+ * 
+ * 
+*/
+  /*else*/ {
+    __pyx_r = (-1.0 + ((4.0 - (2.0 * __pyx_v_t)) * __pyx_v_t));
+    goto __pyx_L0;
+  }
+
+  /* "animation.pyx":50
+ * # ChatGPT  :
+ * 
+ * cdef float ease_in_out(float t):             # <<<<<<<<<<<<<<
+ *     if t < 0.5:
+ *         return 2 * t * t
+*/
+
+  /* function exit code */
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "animation.pyx":57
+ * 
+ * 
+ * cpdef float SmoothEasedAnimate(float Current, float Start, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
+ *     if Current == Target:
+ *         return Target
+*/
+
+static PyObject *__pyx_pw_9animation_9SmoothEasedAnimate(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static float __pyx_f_9animation_SmoothEasedAnimate(float __pyx_v_Current, float __pyx_v_Start, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO, CYTHON_UNUSED int __pyx_skip_dispatch) {
+  float __pyx_v_total_dist;
+  float __pyx_v_traveled;
+  float __pyx_v_progress;
+  float __pyx_v_eased;
+  float __pyx_v_delta;
+  float __pyx_r;
+  int __pyx_t_1;
+  float __pyx_t_2;
+  int __pyx_t_3;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+
+  /* "animation.pyx":58
+ * 
+ * cpdef float SmoothEasedAnimate(float Current, float Start, float Target, float Speed, float AO):
+ *     if Current == Target:             # <<<<<<<<<<<<<<
+ *         return Target
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_Current == __pyx_v_Target);
+  if (__pyx_t_1) {
+
+    /* "animation.pyx":59
+ * cpdef float SmoothEasedAnimate(float Current, float Start, float Target, float Speed, float AO):
+ *     if Current == Target:
+ *         return Target             # <<<<<<<<<<<<<<
+ * 
+ *     cdef float total_dist = abs(Target - Start)
+*/
+    __pyx_r = __pyx_v_Target;
+    goto __pyx_L0;
+
+    /* "animation.pyx":58
+ * 
+ * cpdef float SmoothEasedAnimate(float Current, float Start, float Target, float Speed, float AO):
+ *     if Current == Target:             # <<<<<<<<<<<<<<
+ *         return Target
+ * 
+*/
+  }
+
+  /* "animation.pyx":61
+ *         return Target
+ * 
+ *     cdef float total_dist = abs(Target - Start)             # <<<<<<<<<<<<<<
+ *     if total_dist == 0:
+ *         return Target
+*/
+  __pyx_t_2 = fabsf((__pyx_v_Target - __pyx_v_Start)); 
+  __pyx_v_total_dist = __pyx_t_2;
+
+  /* "animation.pyx":62
+ * 
+ *     cdef float total_dist = abs(Target - Start)
+ *     if total_dist == 0:             # <<<<<<<<<<<<<<
+ *         return Target
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_total_dist == 0.0);
+  if (__pyx_t_1) {
+
+    /* "animation.pyx":63
+ *     cdef float total_dist = abs(Target - Start)
+ *     if total_dist == 0:
+ *         return Target             # <<<<<<<<<<<<<<
+ * 
+ *     cdef float traveled = abs(Current - Start)
+*/
+    __pyx_r = __pyx_v_Target;
+    goto __pyx_L0;
+
+    /* "animation.pyx":62
+ * 
+ *     cdef float total_dist = abs(Target - Start)
+ *     if total_dist == 0:             # <<<<<<<<<<<<<<
+ *         return Target
+ * 
+*/
+  }
+
+  /* "animation.pyx":65
+ *         return Target
+ * 
+ *     cdef float traveled = abs(Current - Start)             # <<<<<<<<<<<<<<
+ *     cdef float progress = traveled / total_dist
+ *     if progress > 1.0:
+*/
+  __pyx_t_2 = fabsf((__pyx_v_Current - __pyx_v_Start)); 
+  __pyx_v_traveled = __pyx_t_2;
+
+  /* "animation.pyx":66
+ * 
+ *     cdef float traveled = abs(Current - Start)
+ *     cdef float progress = traveled / total_dist             # <<<<<<<<<<<<<<
+ *     if progress > 1.0:
+ *         progress = 1.0
+*/
+  __pyx_v_progress = (__pyx_v_traveled / __pyx_v_total_dist);
+
+  /* "animation.pyx":67
+ *     cdef float traveled = abs(Current - Start)
+ *     cdef float progress = traveled / total_dist
+ *     if progress > 1.0:             # <<<<<<<<<<<<<<
+ *         progress = 1.0
+ *     elif progress < 0.0:
+*/
+  __pyx_t_1 = (__pyx_v_progress > 1.0);
+  if (__pyx_t_1) {
+
+    /* "animation.pyx":68
+ *     cdef float progress = traveled / total_dist
+ *     if progress > 1.0:
+ *         progress = 1.0             # <<<<<<<<<<<<<<
+ *     elif progress < 0.0:
+ *         progress = 0.0
+*/
+    __pyx_v_progress = 1.0;
+
+    /* "animation.pyx":67
+ *     cdef float traveled = abs(Current - Start)
+ *     cdef float progress = traveled / total_dist
+ *     if progress > 1.0:             # <<<<<<<<<<<<<<
+ *         progress = 1.0
+ *     elif progress < 0.0:
+*/
+    goto __pyx_L5;
+  }
+
+  /* "animation.pyx":69
+ *     if progress > 1.0:
+ *         progress = 1.0
+ *     elif progress < 0.0:             # <<<<<<<<<<<<<<
+ *         progress = 0.0
+ * 
+*/
+  __pyx_t_1 = (__pyx_v_progress < 0.0);
+  if (__pyx_t_1) {
+
+    /* "animation.pyx":70
+ *         progress = 1.0
+ *     elif progress < 0.0:
+ *         progress = 0.0             # <<<<<<<<<<<<<<
+ * 
+ *     cdef float eased = ease_in_out(progress)
+*/
+    __pyx_v_progress = 0.0;
+
+    /* "animation.pyx":69
+ *     if progress > 1.0:
+ *         progress = 1.0
+ *     elif progress < 0.0:             # <<<<<<<<<<<<<<
+ *         progress = 0.0
+ * 
+*/
+  }
+  __pyx_L5:;
+
+  /* "animation.pyx":72
+ *         progress = 0.0
+ * 
+ *     cdef float eased = ease_in_out(progress)             # <<<<<<<<<<<<<<
+ *     cdef float delta = (Target - Current) * eased * AO * Speed
+ * 
+*/
+  __pyx_t_2 = __pyx_f_9animation_ease_in_out(__pyx_v_progress); if (unlikely(__pyx_t_2 == ((float)-1) && PyErr_Occurred())) __PYX_ERR(0, 72, __pyx_L1_error)
+  __pyx_v_eased = __pyx_t_2;
+
+  /* "animation.pyx":73
+ * 
+ *     cdef float eased = ease_in_out(progress)
+ *     cdef float delta = (Target - Current) * eased * AO * Speed             # <<<<<<<<<<<<<<
+ * 
+ *     # overshoot
+*/
+  __pyx_v_delta = ((((__pyx_v_Target - __pyx_v_Current) * __pyx_v_eased) * __pyx_v_AO) * __pyx_v_Speed);
+
+  /* "animation.pyx":76
+ * 
+ *     # overshoot
+ *     if Target > Current and Current + delta > Target:             # <<<<<<<<<<<<<<
+ *         return Target
+ *     elif Target < Current and Current + delta < Target:
+*/
+  __pyx_t_3 = (__pyx_v_Target > __pyx_v_Current);
+  if (__pyx_t_3) {
+  } else {
+    __pyx_t_1 = __pyx_t_3;
+    goto __pyx_L7_bool_binop_done;
+  }
+  __pyx_t_3 = ((__pyx_v_Current + __pyx_v_delta) > __pyx_v_Target);
+  __pyx_t_1 = __pyx_t_3;
+  __pyx_L7_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "animation.pyx":77
+ *     # overshoot
+ *     if Target > Current and Current + delta > Target:
+ *         return Target             # <<<<<<<<<<<<<<
+ *     elif Target < Current and Current + delta < Target:
+ *         return Target
+*/
+    __pyx_r = __pyx_v_Target;
+    goto __pyx_L0;
+
+    /* "animation.pyx":76
+ * 
+ *     # overshoot
+ *     if Target > Current and Current + delta > Target:             # <<<<<<<<<<<<<<
+ *         return Target
+ *     elif Target < Current and Current + delta < Target:
+*/
+  }
+
+  /* "animation.pyx":78
+ *     if Target > Current and Current + delta > Target:
+ *         return Target
+ *     elif Target < Current and Current + delta < Target:             # <<<<<<<<<<<<<<
+ *         return Target
+ *     return Current + delta
+*/
+  __pyx_t_3 = (__pyx_v_Target < __pyx_v_Current);
+  if (__pyx_t_3) {
+  } else {
+    __pyx_t_1 = __pyx_t_3;
+    goto __pyx_L9_bool_binop_done;
+  }
+  __pyx_t_3 = ((__pyx_v_Current + __pyx_v_delta) < __pyx_v_Target);
+  __pyx_t_1 = __pyx_t_3;
+  __pyx_L9_bool_binop_done:;
+  if (__pyx_t_1) {
+
+    /* "animation.pyx":79
+ *         return Target
+ *     elif Target < Current and Current + delta < Target:
+ *         return Target             # <<<<<<<<<<<<<<
+ *     return Current + delta
+*/
+    __pyx_r = __pyx_v_Target;
+    goto __pyx_L0;
+
+    /* "animation.pyx":78
+ *     if Target > Current and Current + delta > Target:
+ *         return Target
+ *     elif Target < Current and Current + delta < Target:             # <<<<<<<<<<<<<<
+ *         return Target
+ *     return Current + delta
+*/
+  }
+
+  /* "animation.pyx":80
+ *     elif Target < Current and Current + delta < Target:
+ *         return Target
+ *     return Current + delta             # <<<<<<<<<<<<<<
+*/
+  __pyx_r = (__pyx_v_Current + __pyx_v_delta);
+  goto __pyx_L0;
+
+  /* "animation.pyx":57
+ * 
+ * 
+ * cpdef float SmoothEasedAnimate(float Current, float Start, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
+ *     if Current == Target:
+ *         return Target
+*/
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_AddTraceback("animation.SmoothEasedAnimate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = -1;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* Python wrapper */
+static PyObject *__pyx_pw_9animation_9SmoothEasedAnimate(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+); /*proto*/
+static PyMethodDef __pyx_mdef_9animation_9SmoothEasedAnimate = {"SmoothEasedAnimate", (PyCFunction)(void(*)(void))(__Pyx_PyCFunction_FastCallWithKeywords)__pyx_pw_9animation_9SmoothEasedAnimate, __Pyx_METH_FASTCALL|METH_KEYWORDS, 0};
+static PyObject *__pyx_pw_9animation_9SmoothEasedAnimate(PyObject *__pyx_self, 
+#if CYTHON_METH_FASTCALL
+PyObject *const *__pyx_args, Py_ssize_t __pyx_nargs, PyObject *__pyx_kwds
+#else
+PyObject *__pyx_args, PyObject *__pyx_kwds
+#endif
+) {
+  float __pyx_v_Current;
+  float __pyx_v_Start;
+  float __pyx_v_Target;
+  float __pyx_v_Speed;
+  float __pyx_v_AO;
+  #if !CYTHON_METH_FASTCALL
+  CYTHON_UNUSED Py_ssize_t __pyx_nargs;
+  #endif
+  CYTHON_UNUSED PyObject *const *__pyx_kwvalues;
+  PyObject* values[5] = {0,0,0,0,0};
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("SmoothEasedAnimate (wrapper)", 0);
+  #if !CYTHON_METH_FASTCALL
+  #if CYTHON_ASSUME_SAFE_SIZE
+  __pyx_nargs = PyTuple_GET_SIZE(__pyx_args);
+  #else
+  __pyx_nargs = PyTuple_Size(__pyx_args); if (unlikely(__pyx_nargs < 0)) return NULL;
+  #endif
+  #endif
+  __pyx_kwvalues = __Pyx_KwValues_FASTCALL(__pyx_args, __pyx_nargs);
+  {
+    PyObject ** const __pyx_pyargnames[] = {&__pyx_mstate_global->__pyx_n_u_Current,&__pyx_mstate_global->__pyx_n_u_Start,&__pyx_mstate_global->__pyx_n_u_Target,&__pyx_mstate_global->__pyx_n_u_Speed,&__pyx_mstate_global->__pyx_n_u_AO,0};
+    const Py_ssize_t __pyx_kwds_len = (__pyx_kwds) ? __Pyx_NumKwargs_FASTCALL(__pyx_kwds) : 0;
+    if (unlikely(__pyx_kwds_len) < 0) __PYX_ERR(0, 57, __pyx_L3_error)
+    if (__pyx_kwds_len > 0) {
+      switch (__pyx_nargs) {
+        case  5:
+        values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 57, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  4:
+        values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 57, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  3:
+        values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 57, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  2:
+        values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 57, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  1:
+        values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+        if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 57, __pyx_L3_error)
+        CYTHON_FALLTHROUGH;
+        case  0: break;
+        default: goto __pyx_L5_argtuple_error;
+      }
+      const Py_ssize_t kwd_pos_args = __pyx_nargs;
+      if (__Pyx_ParseKeywords(__pyx_kwds, __pyx_kwvalues, __pyx_pyargnames, 0, values, kwd_pos_args, __pyx_kwds_len, "SmoothEasedAnimate", 0) < 0) __PYX_ERR(0, 57, __pyx_L3_error)
+      for (Py_ssize_t i = __pyx_nargs; i < 5; i++) {
+        if (unlikely(!values[i])) { __Pyx_RaiseArgtupleInvalid("SmoothEasedAnimate", 1, 5, 5, i); __PYX_ERR(0, 57, __pyx_L3_error) }
+      }
+    } else if (unlikely(__pyx_nargs != 5)) {
+      goto __pyx_L5_argtuple_error;
+    } else {
+      values[0] = __Pyx_ArgRef_FASTCALL(__pyx_args, 0);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[0])) __PYX_ERR(0, 57, __pyx_L3_error)
+      values[1] = __Pyx_ArgRef_FASTCALL(__pyx_args, 1);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[1])) __PYX_ERR(0, 57, __pyx_L3_error)
+      values[2] = __Pyx_ArgRef_FASTCALL(__pyx_args, 2);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[2])) __PYX_ERR(0, 57, __pyx_L3_error)
+      values[3] = __Pyx_ArgRef_FASTCALL(__pyx_args, 3);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[3])) __PYX_ERR(0, 57, __pyx_L3_error)
+      values[4] = __Pyx_ArgRef_FASTCALL(__pyx_args, 4);
+      if (!CYTHON_ASSUME_SAFE_MACROS && unlikely(!values[4])) __PYX_ERR(0, 57, __pyx_L3_error)
+    }
+    __pyx_v_Current = __Pyx_PyFloat_AsFloat(values[0]); if (unlikely((__pyx_v_Current == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
+    __pyx_v_Start = __Pyx_PyFloat_AsFloat(values[1]); if (unlikely((__pyx_v_Start == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
+    __pyx_v_Target = __Pyx_PyFloat_AsFloat(values[2]); if (unlikely((__pyx_v_Target == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
+    __pyx_v_Speed = __Pyx_PyFloat_AsFloat(values[3]); if (unlikely((__pyx_v_Speed == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
+    __pyx_v_AO = __Pyx_PyFloat_AsFloat(values[4]); if (unlikely((__pyx_v_AO == (float)-1) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L3_error)
+  }
+  goto __pyx_L6_skip;
+  __pyx_L5_argtuple_error:;
+  __Pyx_RaiseArgtupleInvalid("SmoothEasedAnimate", 1, 5, 5, __pyx_nargs); __PYX_ERR(0, 57, __pyx_L3_error)
+  __pyx_L6_skip:;
+  goto __pyx_L4_argument_unpacking_done;
+  __pyx_L3_error:;
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_AddTraceback("animation.SmoothEasedAnimate", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_RefNannyFinishContext();
+  return NULL;
+  __pyx_L4_argument_unpacking_done:;
+  __pyx_r = __pyx_pf_9animation_8SmoothEasedAnimate(__pyx_self, __pyx_v_Current, __pyx_v_Start, __pyx_v_Target, __pyx_v_Speed, __pyx_v_AO);
+
+  /* function exit code */
+  for (Py_ssize_t __pyx_temp=0; __pyx_temp < (Py_ssize_t)(sizeof(values)/sizeof(values[0])); ++__pyx_temp) {
+    Py_XDECREF(values[__pyx_temp]);
+  }
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
+}
+
+static PyObject *__pyx_pf_9animation_8SmoothEasedAnimate(CYTHON_UNUSED PyObject *__pyx_self, float __pyx_v_Current, float __pyx_v_Start, float __pyx_v_Target, float __pyx_v_Speed, float __pyx_v_AO) {
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  float __pyx_t_1;
+  PyObject *__pyx_t_2 = NULL;
+  int __pyx_lineno = 0;
+  const char *__pyx_filename = NULL;
+  int __pyx_clineno = 0;
+  __Pyx_RefNannySetupContext("SmoothEasedAnimate", 0);
+  __Pyx_XDECREF(__pyx_r);
+  __pyx_t_1 = __pyx_f_9animation_SmoothEasedAnimate(__pyx_v_Current, __pyx_v_Start, __pyx_v_Target, __pyx_v_Speed, __pyx_v_AO, 1); if (unlikely(__pyx_t_1 == ((float)-1) && PyErr_Occurred())) __PYX_ERR(0, 57, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_t_1); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = 0;
+  goto __pyx_L0;
+
+  /* function exit code */
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_2);
+  __Pyx_AddTraceback("animation.SmoothEasedAnimate", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -3195,6 +4252,42 @@ __Pyx_RefNannySetupContext("PyInit_animation", 0);
   if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_AnimateSpdUp, __pyx_t_2) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
 
+  /* "animation.pyx":25
+ * 
+ * 
+ * cpdef float FineAnimate(float Current, float Target, float Speed, float AO, float Threshold):             # <<<<<<<<<<<<<<
+ * 
+ *     if abs(Current - Target) < Threshold:
+*/
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9animation_5FineAnimate, 0, __pyx_mstate_global->__pyx_n_u_FineAnimate, NULL, __pyx_mstate_global->__pyx_n_u_animation, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[2])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_FineAnimate, __pyx_t_2) < 0) __PYX_ERR(0, 25, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "animation.pyx":33
+ * 
+ * 
+ * cpdef float FineAnimateSpdUp(bint Negative, float Current, float Start, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
+ * 
+ *     if Current == Target:
+*/
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9animation_7FineAnimateSpdUp, 0, __pyx_mstate_global->__pyx_n_u_FineAnimateSpdUp, NULL, __pyx_mstate_global->__pyx_n_u_animation, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[3])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_FineAnimateSpdUp, __pyx_t_2) < 0) __PYX_ERR(0, 33, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
+  /* "animation.pyx":57
+ * 
+ * 
+ * cpdef float SmoothEasedAnimate(float Current, float Start, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
+ *     if Current == Target:
+ *         return Target
+*/
+  __pyx_t_2 = __Pyx_CyFunction_New(&__pyx_mdef_9animation_9SmoothEasedAnimate, 0, __pyx_mstate_global->__pyx_n_u_SmoothEasedAnimate, NULL, __pyx_mstate_global->__pyx_n_u_animation, __pyx_mstate_global->__pyx_d, ((PyObject *)__pyx_mstate_global->__pyx_codeobj_tab[4])); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 57, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_2);
+  if (PyDict_SetItem(__pyx_mstate_global->__pyx_d, __pyx_mstate_global->__pyx_n_u_SmoothEasedAnimate, __pyx_t_2) < 0) __PYX_ERR(0, 57, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_2); __pyx_t_2 = 0;
+
   /* "animation.pyx":2
  * 
  * cpdef float Animate(float Current, float Target, float Speed, float AO):             # <<<<<<<<<<<<<<
@@ -3269,10 +4362,14 @@ static const __Pyx_StringTabEntry __pyx_string_tab[] = {
   {__pyx_k_Animate, sizeof(__pyx_k_Animate), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Animate */
   {__pyx_k_AnimateSpdUp, sizeof(__pyx_k_AnimateSpdUp), 0, 1, 1}, /* PyObject cname: __pyx_n_u_AnimateSpdUp */
   {__pyx_k_Current, sizeof(__pyx_k_Current), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Current */
+  {__pyx_k_FineAnimate, sizeof(__pyx_k_FineAnimate), 0, 1, 1}, /* PyObject cname: __pyx_n_u_FineAnimate */
+  {__pyx_k_FineAnimateSpdUp, sizeof(__pyx_k_FineAnimateSpdUp), 0, 1, 1}, /* PyObject cname: __pyx_n_u_FineAnimateSpdUp */
   {__pyx_k_Negative, sizeof(__pyx_k_Negative), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Negative */
+  {__pyx_k_SmoothEasedAnimate, sizeof(__pyx_k_SmoothEasedAnimate), 0, 1, 1}, /* PyObject cname: __pyx_n_u_SmoothEasedAnimate */
   {__pyx_k_Speed, sizeof(__pyx_k_Speed), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Speed */
   {__pyx_k_Start, sizeof(__pyx_k_Start), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Start */
   {__pyx_k_Target, sizeof(__pyx_k_Target), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Target */
+  {__pyx_k_Threshold, sizeof(__pyx_k_Threshold), 0, 1, 1}, /* PyObject cname: __pyx_n_u_Threshold */
   {__pyx_k_animation, sizeof(__pyx_k_animation), 0, 1, 1}, /* PyObject cname: __pyx_n_u_animation */
   {__pyx_k_asyncio_coroutines, sizeof(__pyx_k_asyncio_coroutines), 0, 1, 1}, /* PyObject cname: __pyx_n_u_asyncio_coroutines */
   {__pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 1, 1}, /* PyObject cname: __pyx_n_u_cline_in_traceback */
@@ -3324,7 +4421,7 @@ static int __Pyx_InitConstants(__pyx_mstatetype *__pyx_mstate) {
             unsigned int num_kwonly_args : 1;
             unsigned int nlocals : 3;
             unsigned int flags : 10;
-            unsigned int first_line : 4;
+            unsigned int first_line : 6;
             unsigned int line_table_length : 12;
         } __Pyx_PyCode_New_function_description;
 /* NewCodeObj.proto */
@@ -3350,6 +4447,21 @@ static int __Pyx_CreateCodeObjects(__pyx_mstatetype *__pyx_mstate) {
     const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 10, 110};
     PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_Negative, __pyx_mstate->__pyx_n_u_Current, __pyx_mstate->__pyx_n_u_Start, __pyx_mstate->__pyx_n_u_Target, __pyx_mstate->__pyx_n_u_Speed, __pyx_mstate->__pyx_n_u_AO};
     __pyx_mstate_global->__pyx_codeobj_tab[1] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_animation_pyx, __pyx_mstate->__pyx_n_u_AnimateSpdUp, __pyx_k_xs_q_q_82Q_1_xt3axr_Rs_A_82Q_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[1])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {5, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 25, 48};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_Current, __pyx_mstate->__pyx_n_u_Target, __pyx_mstate->__pyx_n_u_Speed, __pyx_mstate->__pyx_n_u_AO, __pyx_mstate->__pyx_n_u_Threshold};
+    __pyx_mstate_global->__pyx_codeobj_tab[2] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_animation_pyx, __pyx_mstate->__pyx_n_u_FineAnimate, __pyx_k_q_s_82XRq_q_xs_9Bc_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[2])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {6, 0, 0, 6, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 33, 106};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_Negative, __pyx_mstate->__pyx_n_u_Current, __pyx_mstate->__pyx_n_u_Start, __pyx_mstate->__pyx_n_u_Target, __pyx_mstate->__pyx_n_u_Speed, __pyx_mstate->__pyx_n_u_AO};
+    __pyx_mstate_global->__pyx_codeobj_tab[3] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_animation_pyx, __pyx_mstate->__pyx_n_u_FineAnimateSpdUp, __pyx_k_A_xs_q_q_82Q_1_xs_Qhb_r_Ba_82Q, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[3])) goto bad;
+  }
+  {
+    const __Pyx_PyCode_New_function_description descr = {5, 0, 0, 5, (unsigned int)(CO_OPTIMIZED|CO_NEWLOCALS), 57, 185};
+    PyObject* const varnames[] = {__pyx_mstate->__pyx_n_u_Current, __pyx_mstate->__pyx_n_u_Start, __pyx_mstate->__pyx_n_u_Target, __pyx_mstate->__pyx_n_u_Speed, __pyx_mstate->__pyx_n_u_AO};
+    __pyx_mstate_global->__pyx_codeobj_tab[4] = __Pyx_PyCode_New(descr, varnames, __pyx_mstate->__pyx_kp_u_optimization_animation_pyx, __pyx_mstate->__pyx_n_u_SmoothEasedAnimate, __pyx_k_a_xs_q_Cq_r_Q_q_Qhb_2Q_y_1_A_1, tuple_dedup_map); if (unlikely(!__pyx_mstate_global->__pyx_codeobj_tab[4])) goto bad;
   }
   Py_DECREF(tuple_dedup_map);
   return 0;

@@ -22,10 +22,9 @@ ENV/
 !cython/build/
 !cython/**/*.pyx
 !cython/build/*.pyd
-!cython/build/*.c
-!cython/optimization/*.c
 !cython/build/*.cpp
 cython/build/temp.win-amd64-cpython-310/
+cython/**/*.c
 
 !**/ChairyApp/**/*.pyd
 !**/testCodes/**/*.pyd
@@ -35,6 +34,7 @@ cython/build/temp.win-amd64-cpython-310/
 **/student_data/*.json
 **/RoomData/*
 **/installer.log
+**/Statistics/*
 
 # PyInstaller
 *.spec

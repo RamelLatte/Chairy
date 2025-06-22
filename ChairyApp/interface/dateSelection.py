@@ -16,10 +16,10 @@ class DateSelectionTemplate(Component):
 
     SURFACE: Surface
 
-    ResetBtns: list[Surface]
+    ResetBtns: tuple[Surface]
     ResetBtn : int
 
-    TodayBtns: list[Surface]
+    TodayBtns: tuple[Surface]
     TodayBtn : int
 
     Calendar: list[list[int]]
@@ -200,18 +200,18 @@ class DateSelectionTemplate(Component):
         self.Calendar_D = []
         self.Calendar_S = []
 
-        self.ResetBtns = [
+        self.ResetBtns = (
             SM.loadAsset('/ChairyApp/assets/statistics/Reset0.png').convert(self.SURFACE),
             SM.loadAsset('/ChairyApp/assets/statistics/Reset1.png').convert(self.SURFACE),
             SM.loadAsset('/ChairyApp/assets/statistics/Reset2.png').convert(self.SURFACE)
-        ]
+        )
         self.ResetBtn = 0
 
-        self.TodayBtns = [
+        self.TodayBtns = (
             SM.loadAsset('/ChairyApp/assets/statistics/Today0.png').convert(self.SURFACE),
             SM.loadAsset('/ChairyApp/assets/statistics/Today1.png').convert(self.SURFACE),
             SM.loadAsset('/ChairyApp/assets/statistics/Today2.png').convert(self.SURFACE)
-        ]
+        )
         self.TodayBtn = 0
 
         self._Render()
@@ -375,7 +375,7 @@ class MonthSelection(Component):
 
     Asset   : Surface
 
-    ResetBtns: list[Surface]
+    ResetBtns: tuple[Surface]
     ResetBtn : int
 
     Calendar: list[list[int]]
@@ -495,11 +495,11 @@ class MonthSelection(Component):
 
         self.Asset = SM.loadAsset('/ChairyApp/assets/statistics/MonthSelection.png').convert(self.SURFACE)
 
-        self.ResetBtns = [
+        self.ResetBtns = (
             SM.loadAsset('/ChairyApp/assets/statistics/ResetMonth0.png').convert(self.SURFACE),
             SM.loadAsset('/ChairyApp/assets/statistics/ResetMonth1.png').convert(self.SURFACE),
             SM.loadAsset('/ChairyApp/assets/statistics/ResetMonth2.png').convert(self.SURFACE)
-        ]
+        )
         self.ResetBtn = 0
 
         self._Render()

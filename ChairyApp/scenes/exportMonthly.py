@@ -28,11 +28,6 @@ class StatisticDialog(Dialog):
 class ExportMonthly(Scene):
     """ ### 월간 출석부 내보내기 """
 
-    @staticmethod
-    def Init():
-        SceneManager.ExportMonthly = ExportMonthly()
-
-
     Preview: Surface # 에셋
     PreviewScreen: Surface # 미리보기 Surface
 
@@ -56,6 +51,8 @@ class ExportMonthly(Scene):
 
 
     def __init__(self):
+        self.Identifier = 'ExportMonthly'
+
         self.Preview = SceneManager.loadAsset('/ChairyApp/assets/statistics/PreviewMonthly.png').convert()
         self.DateSelection = SceneManager.loadAsset('/ChairyApp/assets/statistics/DateSelection.png').convert()
         self.CurrentDate = (ChairyData.ROOMDATA.DATA_DATE.year, ChairyData.ROOMDATA.DATA_DATE.month)
@@ -187,6 +184,12 @@ class ExportMonthly(Scene):
             if id not in ('_DATA_DATES', '_NAMES'):
                 self.IDs.append(id)
 
+        self.Index_Vertical  = 0
+        self.Index_Horizonal = 0
+
+        self.Total_Vertical  = len(self.IDs)
+        self.Total_Horizonal = len(self.CurrentStatistics.Statistics['_DATA_DATES'])
+
 
 
     def On_Init(self, DISPLAY):
@@ -199,12 +202,6 @@ class ExportMonthly(Scene):
         self._Statistics(ChairyData.ROOMDATA.DATA_DATE.year, ChairyData.ROOMDATA.DATA_DATE.month)
         
         self.CurrentDate = (ChairyData.ROOMDATA.DATA_DATE.year, ChairyData.ROOMDATA.DATA_DATE.month)
-
-        self.Index_Vertical  = 0
-        self.Index_Horizonal = 0
-
-        self.Total_Vertical  = len(self.IDs)
-        self.Total_Horizonal = len(self.CurrentStatistics.Statistics['_DATA_DATES'])
 
         self.ShiftDown = False
         
@@ -298,7 +295,7 @@ class ExportMonthly(Scene):
 
         if Interface.SC_QuitButton.MouseButtonUp(POS, BUTTON):
             from .transition import Transition
-            Transition(SceneManager.MainScene)
+            Transition(SceneManager.Scenes['MainScene'])
         
         if Interface.SC_ExportButton.MouseButtonUp(POS, BUTTON):
             StatisticDialog(self.CurrentStatistics)
@@ -310,22 +307,22 @@ class ExportMonthly(Scene):
         
         if collidepoint(667, 15, 131, 40, POS):
             Interface.SC_TopBar.attendance()
-            SceneManager.setScene(SceneManager.ExportDaily)
+            SceneManager.setScene('ExportDaily')
         #elif collidepoint(822, 15, 131, 40, POS):
         #    Interface.SC_TopBar.monthly()
         elif collidepoint(967, 15, 131, 40, POS):
             Interface.SC_TopBar.period()
-            SceneManager.setScene(SceneManager.ExportPeriod)
+            SceneManager.setScene('ExportPeriod')
         elif collidepoint(1112, 15, 131, 40, POS):
             Interface.SC_TopBar.arrangement()
-            SceneManager.setScene(SceneManager.ExportSeats)
+            SceneManager.setScene('ExportSeats')
 
 
     def Event_KeyDown(self, KEY):
         
         if KEY == constants.K_F9:
             from .transition import Transition
-            Transition(SceneManager.MainScene)
+            Transition(SceneManager.Scenes['MainScene'])
 
         elif KEY in (constants.K_LSHIFT, constants.K_RSHIFT):
             if not self.ShiftDown:
@@ -338,3 +335,8 @@ class ExportMonthly(Scene):
         if KEY in (constants.K_LSHIFT, constants.K_RSHIFT) and self.ShiftDown:
             self.ShiftDown = False
             self._Preview()
+
+
+    def On_Layer(self, ANIMATION_OFFSET, TICK, LAYER, RECTS):
+        if Interface.LY_Notice.Update(ANIMATION_OFFSET, TICK):
+            RECTS.append(Interface.LY_Notice.Frame(LAYER))

@@ -73,11 +73,31 @@ cdef class Component:
 
         cdef int16_t x = <int16_t> point[0]
         cdef int16_t y = <int16_t> point[1]
+        cdef MouseField MF = self.MouseFields[index]
 
-        cdef int16_t cX = <int16_t> self.X + self.MouseFields[index].X
-        cdef int16_t cY = <int16_t> self.Y + self.MouseFields[index].Y
+        cdef int16_t cX = <int16_t> self.X + MF.X
+        cdef int16_t cY = <int16_t> self.Y + MF.Y
 
-        return x > cX and y > cY and x < cX + self.MouseFields[index].W and y < cY + self.MouseFields[index].H
+        return x > cX and y > cY and x < cX + MF.W and y < cY + MF.H
+
+
+    cpdef int collideindex(self, tuple point):
+
+        cdef int16_t x = <int16_t> point[0]
+        cdef int16_t y = <int16_t> point[1]
+
+        cdef int16_t cX, cY
+        cdef MouseField MF
+
+        for index in range(self.MouseFields_Size):
+            MF = self.MouseFields[index]
+            cX = <int16_t> self.X + MF.X
+            cY = <int16_t> self.Y + MF.Y
+
+            if (x > cX and y > cY and x < cX + MF.W and y < cY + MF.H):
+                return index
+
+        return -1
 
 
 
@@ -139,9 +159,9 @@ cdef class Component:
             self._X = self.X
             self._Y = self.Y
 
-            return array('i', [<int>(fminf(self.X, _x) - 1), <int>(fminf(self.Y, _y) - 1), <int>(self.W + dx + 2), <int>(self.H + dy + 2)])
+            return array('i', [<int>(fminf(self.X, _x) - 2), <int>(fminf(self.Y, _y) - 2), <int>(self.W + dx + 4), <int>(self.H + dy + 4)])
         else:
-            return array('i', [<int>self.X, <int>self.Y, <int>self.W, <int>self.H])
+            return array('i', [<int>self.X - 2, <int>self.Y - 2, <int>self.W + 4, <int>self.H + 4])
 
 
     cpdef object convertRect(self, object rect):
@@ -152,20 +172,20 @@ cdef class Component:
         cdef float dx = self.X - self._X
 
         if dx >= 0:
-            return Rect(<int>self._X - 1, <int>self.Y, <int>fabsf(dx) + 1, self.H)
+            return Rect(<int>self._X - 2, <int>self.Y, <int>fabsf(dx) + 3, self.H)
         else:
-            return Rect(<int>self.X + self.W + 1, <int>self.Y, <int>fabsf(dx) + 1, self.H)
+            return Rect(<int>self.X + self.W - 1, <int>self.Y, <int>fabsf(dx) + 3, self.H)
 
 
     cpdef object calculateTrailRect_Y(self):
         cdef float dy = self.Y - self._Y
 
         if dy >= 0:
-            return Rect(<int>self.X, <int>self._Y - 1, self.W, <int>fabsf(dy) + 1)
+            return Rect(<int>self.X, <int>self._Y - 2, self.W, <int>fabsf(dy) + 3)
         else:
-            return Rect(<int>self.X, <int>self.Y + self.H, self.W, <int>fabsf(dy) + 1)
+            return Rect(<int>self.X, <int>self.Y + self.H - 1, self.W, <int>fabsf(dy) + 3)
     
-
+    
 
     def Reset(self, int x, int y): ...
     def Update(self, float A_OFFSET): ...

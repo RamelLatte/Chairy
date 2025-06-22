@@ -228,6 +228,7 @@ cdef class DirtyRectsManager:
 
         # 화면 전체 업데이트인 경우
         if self.Full:
+            self.Full = False
             return [Rect(0, 0, 1920, 1080)]
 
         cdef list result = []

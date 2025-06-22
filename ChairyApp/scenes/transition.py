@@ -1,5 +1,5 @@
 
-from ..interface import Scene, SceneManager, Styles
+from ..interface import Scene, SceneManager, Styles, Interface
 from pygame import Surface
 
 from ..optimization.rects import EmptyDRManager
@@ -48,7 +48,7 @@ class Transition(Scene):
         self.AnimationStep = False
         self.Continue = False
 
-        SceneManager.setScene(self)
+        SceneManager.setSceneRaw(self)
 
 
     def On_Init(self, DISPLAY):
@@ -84,7 +84,7 @@ class Transition(Scene):
                     self.AnimationStep = True
 
         if SceneManager.SCENE_TIME > 3000:
-            SceneManager.setScene(self.Scene_B)
+            SceneManager.setSceneRaw(self.Scene_B)
 
 
     def On_Render(self, ANIMATION_OFFSET, TICK, DISPLAY, RECTS):
@@ -101,7 +101,7 @@ class Transition(Scene):
         RECTS.updateFull()
 
         if self.Continue:
-            SceneManager.setScene(self.Scene_B, False)
+            SceneManager.setSceneRaw(self.Scene_B, False)
 
 
     def Event_Quit(self):

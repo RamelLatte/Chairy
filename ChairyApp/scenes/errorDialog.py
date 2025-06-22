@@ -59,7 +59,7 @@ class ErrorDialog(Scene):
         self.BackgroundSceneTime = SceneManager.SCENE_TIME
         self.BackgroundScene = SceneManager.CURRENT_SCENE
 
-        SceneManager.setScene(self)
+        SceneManager.setSceneRaw(self)
 
 
 
@@ -138,7 +138,7 @@ class ErrorDialog(Scene):
         RECTS.updateFull()
 
         if not self.Fatal and self.Complete and self.DialogY > 1080 and self.BgAlpha == 255.:
-            SceneManager.setScene(self.BackgroundScene, False)
+            SceneManager.setSceneRaw(self.BackgroundScene, False)
 
 
 

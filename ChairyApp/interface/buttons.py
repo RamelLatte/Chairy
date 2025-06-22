@@ -10,7 +10,7 @@ from array import array
 class CancelButton(Component):
     """ ### 취소 버튼 """
 
-    Assets  : list[Surface]
+    Assets  : tuple[Surface]
     Button  : int
 
     Updated : bool
@@ -22,11 +22,11 @@ class CancelButton(Component):
     def __init__(self, x = 123, y = 1080):
         super().__init__(x, y, 283, 60)
         
-        self.Assets = [
+        self.Assets = (
                     SM.loadAsset('/ChairyApp/assets/components/CancelBtn0.png').convert(),
                     SM.loadAsset('/ChairyApp/assets/components/CancelBtn1.png').convert(),
                     SM.loadAsset('/ChairyApp/assets/components/CancelBtn2.png').convert()
-                ]
+        )
         self.Reset()
 
 
@@ -120,7 +120,7 @@ class CancelButton(Component):
 class CheckoutButton(Component):
     """ ### 퇴실 버튼 """
 
-    Assets  : list[Surface]
+    Assets  : tuple[Surface]
     Button  : int
 
     Updated : bool
@@ -136,11 +136,11 @@ class CheckoutButton(Component):
     def __init__(self, x = 123, y = 1080):
         super().__init__(x, y, 283, 60)
 
-        self.Assets = [
+        self.Assets = (
                     SM.loadAsset('/ChairyApp/assets/components/CheckoutBtn0.png'),
                     SM.loadAsset('/ChairyApp/assets/components/CheckoutBtn1.png'),
                     SM.loadAsset('/ChairyApp/assets/components/CheckoutBtn2.png')
-                ]
+        )
         self.Reset()
 
     def Reset(self, x = 123, y = 1080):
@@ -226,6 +226,9 @@ class CheckoutButton(Component):
 
     def MouseMotion(self, POS):
 
+        if not self.Show:
+            return
+
         if self._collide(POS):
 
             if not self.MouseIn:
@@ -246,7 +249,7 @@ class CheckoutButton(Component):
 
     
     def MouseButtonDown(self, POS, BUTTON):
-        if BUTTON != 1:
+        if BUTTON != 1 or not self.Show:
             return
         
         if self._collide(POS) and not self.Clicked:
@@ -256,7 +259,7 @@ class CheckoutButton(Component):
 
 
     def MouseButtonUp(self, POS, BUTTON) -> bool:
-        if BUTTON != 1:
+        if BUTTON != 1 or not self.Show:
             return False
         
         if self.Clicked:
@@ -275,9 +278,9 @@ class CheckoutButton(Component):
 
 
 class MoveButton(Component):
-    """ ### 이동동 버튼 """
+    """ ### 이동 버튼 """
 
-    Assets  : list[Surface]
+    Assets  : tuple[Surface]
     Button  : int
 
     Updated : bool
@@ -294,12 +297,12 @@ class MoveButton(Component):
     def __init__(self, x = 123, y = 1080):
         super().__init__(x, y, 283, 60)
 
-        self.Assets = [
+        self.Assets = (
                     SM.loadAsset('/ChairyApp/assets/components/MoveBtn0.png'),
                     SM.loadAsset('/ChairyApp/assets/components/MoveBtn1.png'),
                     SM.loadAsset('/ChairyApp/assets/components/MoveBtn2.png'),
                     SM.loadAsset('/ChairyApp/assets/components/MoveBtn3.png')
-                ]
+        )
         self.Reset()
 
 
@@ -336,12 +339,10 @@ class MoveButton(Component):
 
     def hide(self):
         self.Button = 0
-        self.Alpha = 255.
         self.Show   = False
 
 
     def show(self):
-        self.Alpha = 0.
         self.Show = True
 
 
@@ -402,7 +403,7 @@ class MoveButton(Component):
     
 
     def MouseMotion(self, POS):
-        if not self.Enabled:
+        if not self.Enabled or not self.Show:
             return
 
         if self._collide(POS):
@@ -425,7 +426,7 @@ class MoveButton(Component):
 
     
     def MouseButtonDown(self, POS, BUTTON):
-        if BUTTON != 1 or not self.Enabled:
+        if BUTTON != 1 or not self.Enabled or not self.Show:
             return
         
         if self._collide(POS) and not self.Clicked:
@@ -435,7 +436,7 @@ class MoveButton(Component):
 
 
     def MouseButtonUp(self, POS, BUTTON) -> bool:
-        if BUTTON != 1 or not self.Enabled:
+        if BUTTON != 1 or not self.Enabled or not self.Show:
             return False
         
         if self.Clicked:
@@ -456,7 +457,7 @@ class MoveButton(Component):
 class StatisticsExitButton(Component):
     """ ### 통계 화면에서 '처음 화면으로 돌아가기' 버튼 """
 
-    Assets  : list[Surface]
+    Assets  : tuple[Surface]
     Button  : int
 
     Updated : bool
@@ -468,11 +469,11 @@ class StatisticsExitButton(Component):
     def __init__(self):
         super().__init__(1680, 15, 200, 40)
 
-        self.Assets = [
+        self.Assets = (
                     SM.loadAsset('/ChairyApp/assets/statistics/StatisticsCancelBtn0.png'),
                     SM.loadAsset('/ChairyApp/assets/statistics/StatisticsCancelBtn1.png'),
                     SM.loadAsset('/ChairyApp/assets/statistics/StatisticsCancelBtn2.png'),
-                ]
+        )
         self.Reset(1680, 15)
 
 
@@ -557,7 +558,7 @@ class StatisticsExitButton(Component):
 class StatisticsExportButton(Component):
     """ ### 통계 내보내기 버튼 """
 
-    Assets  : list[Surface]
+    Assets  : tuple[Surface]
     Button  : int
 
     Updated : bool
@@ -569,11 +570,11 @@ class StatisticsExportButton(Component):
     def __init__(self, x, y):
         super().__init__(x, y, 250, 70)
 
-        self.Assets = [
+        self.Assets = (
                     SM.loadAsset('/ChairyApp/assets/statistics/Export0.png'),
                     SM.loadAsset('/ChairyApp/assets/statistics/Export1.png'),
                     SM.loadAsset('/ChairyApp/assets/statistics/Export2.png'),
-                ]
+        )
         self.Reset(x, y)
 
 
@@ -658,7 +659,7 @@ class StatisticsExportButton(Component):
 class HideMediaButton(Component):
     """ ### 미디어 정보 접기 버튼 """
 
-    Assets  : list[Surface]
+    Assets  : tuple[Surface]
     Button  : int
 
     Updated : bool
@@ -670,11 +671,11 @@ class HideMediaButton(Component):
     def __init__(self, x = 165, y = 1080):
         super().__init__(x, y, 210, 50)
         
-        self.Assets = [
+        self.Assets = (
                     SM.loadAsset('/ChairyApp/assets/media/Hide0.png').convert(),
                     SM.loadAsset('/ChairyApp/assets/media/Hide1.png').convert(),
                     SM.loadAsset('/ChairyApp/assets/media/Hide2.png').convert()
-                ]
+        )
         self.Reset()
 
 

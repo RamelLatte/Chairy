@@ -92,7 +92,7 @@ class RestartScene(Scene):
             UpdateExecutor.Unfreeze()
             self.Timer += TICK
             if self.Timer > 1000:
-                Transition(SceneManager.MainScene)
+                Transition(SceneManager.Scenes['MainScene'])
         
 
 

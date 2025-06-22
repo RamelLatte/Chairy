@@ -6,7 +6,7 @@ from .Styles import Styles
 from datetime import datetime
 from .Scene import SceneManager as SM
 
-from ..optimization.positioning import center_center
+from ..optimization.positioning import center_center, right_top
 
 
 
@@ -15,8 +15,6 @@ class StudentInfoBox(Component):
 
     Asset_Frame_Normal  : Surface
     Asset_Frame_Reserved: Surface
-    Asset_Blue_Stamp    : Surface
-    Asset_Yellow_Stamp  : Surface
 
     SURFACE: Surface
 
@@ -26,7 +24,7 @@ class StudentInfoBox(Component):
 
 
     @staticmethod
-    def timeStr(dt: datetime) -> str:
+    def timeStr(dt: datetime) -> tuple[str]:
         """
         datetime 클래스를 읽을 수 있는 문자열로 변환함.
         - - -
@@ -34,23 +32,21 @@ class StudentInfoBox(Component):
         - **dt:** 문자열로 변환할 시간
         """
         if dt.hour > 12:
-            return dt.strftime(f"오후 {dt.hour - 12}:%M")
+            return ('오후', dt.strftime(f"{dt.hour - 12:02d}:%M"))
         elif dt.hour == 12:
-            return dt.strftime(f"오후 12:%M")
+            return ('오후', dt.strftime("12:%M"))
         elif dt.hour == 0:
-            return dt.strftime("오전 12:%M")
+            return ('오전', dt.strftime("12:%M"))
         else:
-            return dt.strftime("오전 %H:%M")
+            return ('오전', dt.strftime("%H:%M"))
 
 
-    def __init__(self, x = 123, y = 1080):
-        super().__init__(x, y, 284, 548)
+    def __init__(self, x = 120, y = 1080):
+        super().__init__(x, y, 290, 450)
         
-        self.SURFACE = Surface((284, 548))
-        self.Asset_Frame_Normal   = SM.loadAsset("/ChairyApp/assets/components/StudentInfo1.png").convert(self.SURFACE)
-        self.Asset_Frame_Reserved = SM.loadAsset("/ChairyApp/assets/components/StudentInfo2.png").convert(self.SURFACE)
-        self.Asset_Blue_Stamp     = SM.loadAsset("/ChairyApp/assets/components/WeekStampBlue.png").convert(self.SURFACE)
-        self.Asset_Yellow_Stamp   = SM.loadAsset("/ChairyApp/assets/components/WeekStampYellow.png").convert(self.SURFACE)
+        self.SURFACE = Surface((290, 450))
+        self.Asset_Frame_Normal   = SM.loadAsset("/ChairyApp/assets/components/StudentInfo0.png").convert(self.SURFACE)
+        self.Asset_Frame_Reserved = SM.loadAsset("/ChairyApp/assets/components/StudentInfo1.png").convert(self.SURFACE)
 
         self.Reset()
 
@@ -71,52 +67,58 @@ class StudentInfoBox(Component):
         #### 매개변수:
         - **SID:** 학번
         """
+        self.SURFACE.fill(Styles.SPRLIGHTGRAY, (0, 0, 290, 4))
+
         sd: StudentData = ChairyData.STUDENTS[SID]
 
         if not sd.SeatReserved:
-            self.SURFACE.blit(self.Asset_Frame_Normal, (0, 0))
+            self.SURFACE.blit(self.Asset_Frame_Normal, (0, 4))
 
             if sd.LastUsedSeat != None:
-                t = Styles.SANS_H3.render(sd.LastUsedSeat, 1, Styles.DARKGRAY, Styles.WHITE)
-                self.SURFACE.blit(t, center_center(142, 517, t.get_size()))        
+                t = Styles.ANTON_H4.render(sd.LastUsedSeat, 1, Styles.PURPLE, Styles.WHITE)
+                self.SURFACE.blit(t, center_center(217, 311, t.get_size()))
             else:
-                t = Styles.SANS_H3.render("기록 없음", 1, Styles.DARKGRAY, Styles.WHITE)
-                self.SURFACE.blit(t, center_center(142, 517, t.get_size()))        
+                t = Styles.ANTON_H4.render("?", 1, Styles.DARKGRAY, Styles.WHITE)
+                self.SURFACE.blit(t, center_center(217, 311, t.get_size()))
 
         else:
-            self.SURFACE.blit(self.Asset_Frame_Reserved, (0, 0))
+            self.SURFACE.blit(self.Asset_Frame_Reserved, (0, 4))
 
             if sd.ReservedSeat != None:
-                t = Styles.SANS_H3.render(sd.ReservedSeat, 1, Styles.DARKGRAY, Styles.WHITE)
-                self.SURFACE.blit(t, center_center(142, 517, t.get_size()))        
+                t = Styles.SANS_H3.render(sd.ReservedSeat, 1, Styles.PURPLE, Styles.WHITE)
+                self.SURFACE.blit(t, center_center(217, 311, t.get_size()))        
 
-        t = Styles.SANS_H3.render(sd.Name, 1, Styles.BLUE, Styles.WHITE)
-        self.SURFACE.blit(t, center_center(142, 67, t.get_size()))
+        t = Styles.SANS_H4.render(sd.Name, 1, Styles.BLACK, Styles.SPRLIGHTGRAY)
+        self.SURFACE.blit(t, right_top(280, -4, t.get_size()))
 
         for i in range(7):
             if sd.WeeklyCheckInStamp[i]:
-                self.SURFACE.blit(self.Asset_Blue_Stamp, (42 * i, 172))
-        self.SURFACE.blit(self.Asset_Yellow_Stamp, (42 * ChairyData.ROOMDATA.DATA_DATE.weekday(), 172))
+                self.SURFACE.fill(Styles.GREEN, (27 + 35 * i, 119, 25, 30))
+        self.SURFACE.fill(Styles.ORANGE, (27 + 35 * ChairyData.ROOMDATA.DATA_DATE.weekday(), 119, 25, 30))
         
         if sd.LastChkIn != None:
-            t = Styles.SANS_H3.render(StudentInfoBox.timeStr(sd.LastChkIn), 1, Styles.DARKGRAY, Styles.WHITE)
-            self.SURFACE.blit(t, center_center(142, 293, t.get_size()))
+            ts = StudentInfoBox.timeStr(sd.LastChkIn)
+
+            self.SURFACE.blit(Styles.SANS_H5.render(ts[0], 1, Styles.BLUE, Styles.WHITE), (20, 222))
+            t = Styles.ANTON_H3.render(ts[1], 1, Styles.BLUE, Styles.WHITE)
+            self.SURFACE.blit(t, right_top(128, 202, t.get_size()))
         else:
-            t = Styles.SANS_H3.render("기록 없음", 1, Styles.DARKGRAY, Styles.WHITE)
-            self.SURFACE.blit(t, center_center(142, 293, t.get_size()))
+            self.SURFACE.blit(Styles.SANS_H4.render("기록 없음", 1, Styles.GRAY, Styles.WHITE), (22, 209))
 
         if sd.LastChkOut != None:
-            t = Styles.SANS_H3.render(StudentInfoBox.timeStr(sd.LastChkOut), 1, Styles.DARKGRAY, Styles.WHITE)
-            self.SURFACE.blit(t, center_center(142, 405, t.get_size()))
+            ts = StudentInfoBox.timeStr(sd.LastChkOut)
+
+            self.SURFACE.blit(Styles.SANS_H5.render(ts[0], 1, Styles.BLUE, Styles.WHITE), (163, 222))
+            t = Styles.ANTON_H3.render(ts[1], 1, Styles.BLUE, Styles.WHITE)
+            self.SURFACE.blit(t, right_top(271, 202, t.get_size()))
         else:
-            t = Styles.SANS_H3.render("기록 없음", 1, Styles.DARKGRAY, Styles.WHITE)
-            self.SURFACE.blit(t, center_center(142, 405, t.get_size()))
+            self.SURFACE.blit(Styles.SANS_H4.render("기록 없음", 1, Styles.GRAY, Styles.WHITE), (165, 209))
 
         self.Updated = True
 
 
 
-    def Reset(self, x = 123, y = 1080):
+    def Reset(self, x = 120, y = 1080):
         self.MoveTo(x, y)
 
         self.Alpha = 255.
@@ -129,10 +131,10 @@ class StudentInfoBox(Component):
         
         if self.Show:
 
-            if self.Y != 390:
+            if self.Y != 374:
                 updated = True
 
-            self.Animate_Y(390, 1.0, A_OFFSET)
+            self.Animate_Y(374, 1.0, A_OFFSET)
 
             if self.Alpha < 255:
                 self.Alpha += TICK * 1.5
@@ -147,7 +149,7 @@ class StudentInfoBox(Component):
             if self.Y != 1080:
                 updated = True
 
-            self.AnimateSpdUp_Y(False, 356, 1080, 1.0, A_OFFSET)
+            self.AnimateSpdUp_Y(False, 340, 1080, 1.0, A_OFFSET)
 
             if self.Alpha > 0:
                 self.Alpha -= TICK
@@ -167,7 +169,11 @@ class StudentInfoBox(Component):
 
         r = self.calculateRect()
 
-        DISP.fill(Styles.SPRLIGHTGRAY, (r[0], r[1], r[2], r[3]))
+        DISP.fill(Styles.SPRLIGHTGRAY, r)
         DISP.blit(self.SURFACE, (self.X, self.Y))
 
         return r
+    
+
+    def getSurface(self):
+        return self.SURFACE.copy()

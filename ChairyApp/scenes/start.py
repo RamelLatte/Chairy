@@ -7,6 +7,7 @@ from .exportMonthly import ExportMonthly
 from .exportPeriod  import ExportPeriod
 from .exportSeats   import ExportSeats
 from .mainScene     import MainScene
+from .roomDataLog   import RoomdataLog
 from .transition    import Transition
 from pygame         import Surface, draw
 from array import array
@@ -93,11 +94,12 @@ class StartScene(Scene):
             ChairyApp.Init_UpdateExecutor()
 
         if ChairyData.Ready and Interface.Ready and self.Bar_Length == 800:
-            MainScene.Init()
-            ExportDaily.Init()
-            ExportMonthly.Init()
-            ExportPeriod.Init()
-            ExportSeats.Init()
+            SceneManager.Register(MainScene())
+            SceneManager.Register(ExportDaily())
+            SceneManager.Register(ExportMonthly())
+            SceneManager.Register(ExportPeriod())
+            SceneManager.Register(ExportSeats())
+            SceneManager.Register(RoomdataLog())
 
             self.Executor.shutdown()
             self.Complete = True
@@ -113,7 +115,7 @@ class StartScene(Scene):
             if self.Complete:
                 self.Timer += TICK
                 if self.Timer > 1000:
-                    Transition(SceneManager.MainScene)
+                    Transition(SceneManager.Scenes['MainScene'])
         
 
 

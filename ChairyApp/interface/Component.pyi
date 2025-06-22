@@ -55,6 +55,15 @@ class Component:
 
         **인덱스가 잘못 지정이 된 경우 무조건 False를 반환함.**
         """
+        ...
+
+    def collideindex(self, point: tuple[int]) -> int:
+        """
+        어느 마우스 버튼 인식 구역에 점이 위치해 있는지 판단함.
+
+        **어느 구역 안에도 위치해 있지 않으면 -1을 반환함.**
+        """
+        ...
 
 
     def MoveTo(self, X: float, Y: float) -> Rect:

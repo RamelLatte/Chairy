@@ -42,6 +42,8 @@ class Dialog(Scene, Thread):
         """
         Scene.__init__(self)
 
+        self.Identifier = 'Dialog'
+
         self.Title = title
         self.Description = desc
         self.Lower = lower
@@ -58,7 +60,7 @@ class Dialog(Scene, Thread):
         self.Except = False
         self.Except_ = None
 
-        SceneManager.setScene(self)
+        SceneManager.setSceneRaw(self)
         super().__init__()
 
 
@@ -178,4 +180,4 @@ class Dialog(Scene, Thread):
         RECTS.updateFull()
 
         if self.Complete and self.DialogY == 1080 and self.BgAlpha == 255.:
-            SceneManager.setScene(self.BackgroundScene, False)
+            SceneManager.setSceneRaw(self.BackgroundScene, False)

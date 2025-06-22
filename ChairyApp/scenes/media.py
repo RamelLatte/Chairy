@@ -40,9 +40,13 @@ class Media(Scene):
 
     Asset_Album : Surface # 앨범 썸네일 기본 에셋
 
+    IdleTime: int
+
 
 
     def __init__(self):
+        self.Identifier = 'Media'
+
         self.ID_Group_Y = 432
         self.Y = 1080
         self.Y_ = self.Y
@@ -50,6 +54,8 @@ class Media(Scene):
         self.ScrollDirection = False
         self.TxtPos_Title = 0
         self.TxtPos_Title_ = 0
+
+        self.IdleTime = 0
         
         self.Render()
         
@@ -103,10 +109,27 @@ class Media(Scene):
     
     def On_Init(self, DISPLAY):
         DISPLAY.fill(Styles.SPRLIGHTGRAY)
+        Interface.LY_Notice.Reset()
+        Interface.SD_QuickAccess.disable()
         return super().On_Init(DISPLAY)
 
 
     def On_Update(self, ANIMATION_OFFSET, TICK):
+
+        if self.InteractionStep == 2:
+            self.IdleTime += TICK
+
+            if self.IdleTime > 30000:
+                if not Interface.LY_Notice.Show:
+                    Interface.LY_Notice.show_Idle1()
+
+                if Interface.LY_Notice.Idle_Reset:
+                    Interface.LY_Notice.hide()
+                    self.IdleTime = 0
+                    self.InteractionStep = 3
+            else:
+                if Interface.LY_Notice.Show:
+                    Interface.LY_Notice.hide()
 
         if ChairyData.CURRENT_MEDIA.Updated and ChairyData.CURRENT_MEDIA.Playing:
             self.Render()
@@ -175,8 +198,10 @@ class Media(Scene):
             self.ID_Group_Y = Animate(self.ID_Group_Y, 432, 1.0, ANIMATION_OFFSET)
 
             if (Interface.OT_CurrentMedia.Y == 955 or not ChairyData.CURRENT_MEDIA.Playing) and self.ID_Group_Y == 432:
-                SceneManager.MainScene.InteractionStep = 0
-                SceneManager.setScene(SceneManager.MainScene, False)
+                Interface.SD_QuickAccess.enable()
+                SceneManager.Scenes['MainScene'].InteractionStep = 0
+                Interface.LY_Notice.Reset()
+                SceneManager.setScene('MainScene', False)
 
 
     def On_Render(self, ANIMATION_OFFSET, TICK, DISPLAY, RECTS):
@@ -191,6 +216,9 @@ class Media(Scene):
         if Interface.SD_SeatingStatus.Update(ANIMATION_OFFSET):
             RECTS.append(Interface.SD_SeatingStatus.Frame(DISPLAY))
 
+        if Interface.SD_QuickAccess.Update():
+            RECTS.append(Interface.SD_QuickAccess.Frame(DISPLAY))
+
         # 좌석표 렌더링
         if Interface.ST_SeatDisplay.Update(TICK):
             RECTS.append(Interface.ST_SeatDisplay.Frame(DISPLAY))
@@ -204,14 +232,13 @@ class Media(Scene):
                     DISPLAY.fill(Styles.SPRLIGHTGRAY, (51, self.Y, 438, - d + 405))
                     DISPLAY.blit(self.Surface_Top, (69, self.Y))
                     DISPLAY.blit(self.Surface_Bottom, (51, self.Y + 291))
-                    self.Y_ = self.Y
                     RECTS.append(array('i', (51, int(self.Y), 438, int(405 - d))))
                 else:
                     DISPLAY.fill(Styles.SPRLIGHTGRAY, (51, self.Y_ - 1, 438, d + 406))
                     DISPLAY.blit(self.Surface_Top, (69, self.Y))
                     DISPLAY.blit(self.Surface_Bottom, (51, self.Y + 291))
-                    self.Y_ = self.Y
-                    RECTS.append(array('i', (51, int(self.Y_), 438, int(404 + d))))
+                    RECTS.append(array('i', (51, int(self.Y_), 438, int(406 + d))))
+                self.Y_ = self.Y
             else:
                 DISPLAY.fill(Styles.SPRLIGHTGRAY, (51, 338, 438, 404))
                 DISPLAY.blit(self.Surface_Top, (69, self.Y))
@@ -253,8 +280,9 @@ class Media(Scene):
         # 화면 오른쪽 요소 렌더링
         Interface.SD_DateTime.Frame(SURFACE)
         Interface.SD_DietAndSchedule.Frame(SURFACE)
-
+        
         Interface.SD_SeatingStatus.Frame(SURFACE)
+        Interface.SD_QuickAccess.Frame(SURFACE)
 
         # 좌석표 렌더링
         Interface.ST_SeatDisplay.Frame(SURFACE)
@@ -277,6 +305,8 @@ class Media(Scene):
 
 
     def Event_MouseMotion(self, POS):
+
+        self.IdleTime = 0
         
         Interface.MD_HideMediaBtn.MouseMotion(POS)
 
@@ -285,11 +315,21 @@ class Media(Scene):
 
 
     def Event_MouseButtonDown(self, POS, BUTTON):
+
+        self.IdleTime = 0
         
         Interface.MD_HideMediaBtn.MouseButtonDown(POS, BUTTON)
 
 
     def Event_MouseButtonUp(self, POS, BUTTON):
+
+        self.IdleTime = 0
         
         if Interface.MD_HideMediaBtn.MouseButtonUp(POS, BUTTON) and self.InteractionStep < 3:
             self.InteractionStep = 3
+
+
+    def On_Layer(self, ANIMATION_OFFSET, TICK, LAYER, RECTS):
+
+        if Interface.LY_Notice.Update(ANIMATION_OFFSET, TICK):
+            RECTS.append(Interface.LY_Notice.Frame(LAYER))

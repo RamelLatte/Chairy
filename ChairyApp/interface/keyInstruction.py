@@ -10,7 +10,7 @@ from ..optimization.animation import Animate
 class KeyInstructionDisplay(Component):
     """ ### 입력 가이드 """
 
-    Asset   : list[Surface]
+    Asset   : tuple[Surface]
 
     Use     : int # 0: Mouse, 1: Keypad, 2: Both
     _Use    : int
@@ -24,12 +24,12 @@ class KeyInstructionDisplay(Component):
         super().__init__(x, y, 223, 29)
         
         self.SURFACE = Surface((223, 29))
-        self.Asset = [ 
+        self.Asset = (
                         SM.loadAsset("/ChairyApp/assets/components/useMouse.png").convert(self.SURFACE),
                         SM.loadAsset("/ChairyApp/assets/components/useKeypad.png").convert(self.SURFACE),
                         SM.loadAsset("/ChairyApp/assets/components/useBoth.png").convert(self.SURFACE),
                         SM.loadAsset("/ChairyApp/assets/components/wait.png").convert(self.SURFACE)
-                    ]
+        )
 
         self.Reset()
 

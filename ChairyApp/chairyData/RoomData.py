@@ -4,6 +4,8 @@ from datetime import datetime, timedelta, time, date
 from ..Info import ChairyInfo as CI
 from dataclasses import dataclass
 
+from ..Logging import LoggingManager as logging
+
 
 
 @dataclass(slots=True)
@@ -121,6 +123,8 @@ class RoomData():
         - **student:** 입실한 학생의 StudentData
         - **seat:** 입실 좌석
         """
+        logging.info(f"입실 처리 >>> {student.StudentID} : {student.Name} - 지정석 없음 >>> X → {seat}")
+
         now = datetime.now()
 
         self.Logs.append({'TimeStamp': now.strftime('%Y%m%d%H%M%S.%f'), 'ID': student.StudentID, 'Name': student.Name, 'Action': 'ChkIn', 'Seat': seat})
@@ -136,6 +140,7 @@ class RoomData():
         else:
             student.Activity[date] = [now.strftime('%Y%m%d%H%M%S.%f'), None, "", 0]
 
+        student.Activity[date][1] = None
         student.Activity[date][2] = seat
 
         student.CurrentSeat = seat
@@ -162,6 +167,8 @@ class RoomData():
         """
 
         if student.SeatReserved:
+            logging.info(f"지정석 입실 처리 >>> {student.StudentID} : {student.Name} >>> X → {student.ReservedSeat}")
+
             now = datetime.now()
 
             self.Logs.append({'TimeStamp': now.strftime('%Y%m%d%H%M%S.%f'), 'ID': student.StudentID, 'Name': student.Name, 'Action': 'ChkIn', 'Seat': student.ReservedSeat, 'Comment':'Reserved'})
@@ -177,6 +184,7 @@ class RoomData():
             else:
                 student.Activity[date] = [now.strftime('%Y%m%d%H%M%S.%f'), None, "", 0]
 
+            student.Activity[date][1] = None
             student.Activity[date][2] = student.ReservedSeat
 
             student.CurrentSeat = student.ReservedSeat
@@ -215,8 +223,10 @@ class RoomData():
                 student.Activity[date][1] = now.strftime('%Y%m%d%H%M%S.%f')
 
         if not student.SeatReserved:
+            logging.info(f"퇴실 처리 >>> {student.StudentID} : {student.Name} - 지정석 없음 >>> {student.CurrentSeat} → X")
             self.Current[student.CurrentSeat] = ['VAC_FRE', None, None]
         else:
+            logging.info(f"퇴실 처리 >>> {student.StudentID} : {student.Name} - 지정석 있음 >>> {student.CurrentSeat} → X")
             self.Current[student.CurrentSeat] = ['VAC_RES', student.StudentID, student.Name]
 
         student.CurrentSeat = None
@@ -233,6 +243,7 @@ class RoomData():
         - **student:** 퇴실한 학생의 StudentData
         - **seatTo:** 이동한 좌석 번호
         """
+        logging.info(f"이동 처리 >>> {student.StudentID} : {student.Name} >>> {student.CurrentSeat} → {seatTo}")
 
         now = datetime.now()
 
@@ -249,6 +260,22 @@ class RoomData():
             self.Current[seatTo] = ['OCC_FRE', student.StudentID, student.Name]
 
         student.CurrentSeat = seatTo
+
+        self.Save()
+
+
+    def SetPassword(self, student: StudentData):
+        """
+        비밀번호 변경 기록 추가, 비밀번호 내용은 기록되지 않음
+        - - -
+        #### 매개변수:
+        - **student:** 비밀번호를 변경한 학생의 StudentData
+        """
+        logging.info(f"비밀번호 설정 >>> {student.StudentID} : {student.Name}")
+
+        now = datetime.now()
+
+        self.Logs.append({'TimeStamp': now.strftime('%Y%m%d%H%M%S.%f'), 'ID': student.StudentID, 'Name': student.Name, 'Action': 'Password', 'From': None, 'Seat': None})
 
         self.Save()
 

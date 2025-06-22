@@ -29,11 +29,6 @@ class StatisticDialog(Dialog):
 class ExportPeriod(Scene):
     """ ### 교시별 출석부 내보내기 """
 
-    @staticmethod
-    def Init():
-        SceneManager.ExportPeriod = ExportPeriod()
-
-
     Preview: Surface # 에셋
     PreviewScreen: Surface # 미리보기 Surface
     PeroidDataNotAvailableAsset: Surface # 에셋
@@ -59,6 +54,8 @@ class ExportPeriod(Scene):
 
 
     def __init__(self):
+        self.Identifier = 'ExportPeriod'
+
         self.Preview = SceneManager.loadAsset('/ChairyApp/assets/statistics/PreviewPeriod.png').convert()
         self.DateSelection = SceneManager.loadAsset('/ChairyApp/assets/statistics/DateSelection.png').convert()
         self.PeroidDataNotAvailableAsset = SceneManager.loadAsset('/ChairyApp/assets/statistics/PeriodDataNotAvailable.png').convert()
@@ -215,6 +212,12 @@ class ExportPeriod(Scene):
             if id not in ('_DATA_DATES', '_NAMES'):
                 self.IDs.append(id)
 
+        self.Index_Vertical  = 0
+        self.Index_Horizonal = 0
+
+        self.Total_Vertical  = len(self.IDs)
+        self.Total_Horizonal = len(self.CurrentStatistics.Statistics['_DATA_DATES'])
+
 
 
     def On_Init(self, DISPLAY):
@@ -244,12 +247,6 @@ class ExportPeriod(Scene):
         self._Statistics(ChairyData.ROOMDATA.DATA_DATE.year, ChairyData.ROOMDATA.DATA_DATE.month)
         
         self.CurrentDate = (ChairyData.ROOMDATA.DATA_DATE.year, ChairyData.ROOMDATA.DATA_DATE.month)
-
-        self.Index_Vertical  = 0
-        self.Index_Horizonal = 0
-
-        self.Total_Vertical  = len(self.IDs)
-        self.Total_Horizonal = len(self.CurrentStatistics.Statistics['_DATA_DATES'])
 
         self.ShiftDown = False
         
@@ -359,19 +356,19 @@ class ExportPeriod(Scene):
 
         if Interface.SC_QuitButton.MouseButtonUp(POS, BUTTON):
             from .transition import Transition
-            Transition(SceneManager.MainScene)
+            Transition(SceneManager.Scenes['MainScene'])
 
         if collidepoint(667, 15, 131, 40, POS):
             Interface.SC_TopBar.attendance()
-            SceneManager.setScene(SceneManager.ExportDaily)
+            SceneManager.setScene('ExportDaily')
         elif collidepoint(822, 15, 131, 40, POS):
             Interface.SC_TopBar.monthly()
-            SceneManager.setScene(SceneManager.ExportMonthly)
+            SceneManager.setScene('ExportMonthly')
         #elif collidepoint(967, 15, 131, 40, POS):
         #    Interface.SC_TopBar.period()
         elif collidepoint(1112, 15, 131, 40, POS):
             Interface.SC_TopBar.arrangement()
-            SceneManager.setScene(SceneManager.ExportSeats)
+            SceneManager.setScene('ExportSeats')
 
         if not ChairyData.CONFIGURATION.SelfStudyTimeVaild:
             return
@@ -389,7 +386,7 @@ class ExportPeriod(Scene):
         
         if KEY == constants.K_F9:
             from .transition import Transition
-            Transition(SceneManager.MainScene)
+            Transition(SceneManager.Scenes['MainScene'])
 
         if not ChairyData.CONFIGURATION.SelfStudyTimeVaild:
             return
@@ -427,3 +424,8 @@ class ExportPeriod(Scene):
 
         # 최종 포맷
         return f"{period} {hour:02d}시 {dt.minute:02d}분"
+    
+
+    def On_Layer(self, ANIMATION_OFFSET, TICK, LAYER, RECTS):
+        if Interface.LY_Notice.Update(ANIMATION_OFFSET, TICK):
+            RECTS.append(Interface.LY_Notice.Frame(LAYER))

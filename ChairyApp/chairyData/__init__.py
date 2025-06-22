@@ -21,19 +21,21 @@ __all__ = ['Configuration', 'ConfigurationError',
 
 from datetime import datetime, time, timedelta
 from ..Logging import LoggingManager as logging
-
+from ..Info import ChairyInfo
 
 
 class ChairyData:
     """ 다양한 형태의 데이터를 저장하고 관리하는 클래스. """
 
     LOADPROGRESS    : int = 0
-    MAX_PROGRESS    : int = 5
+    MAX_PROGRESS    : int = 6
     CURRENT_PROGRESS: str = 'Chairy 시작 중'
     
     Ready: bool = False
 
     _Dir            : str
+
+    LATEST_VERSION: bool = True
 
     DATETIME        : datetime      = None
 
@@ -86,8 +88,7 @@ class ChairyData:
             logging.info("등록된 이용자 " + str(len(ChairyData.CONFIGURATION.Students)) + "명.")
         except Exception as e:
             logging.error("구성 데이터(configuration.xlsx)를 읽는 도중에 오류가 발생하였습니다.", e, True)
-            return
-        
+            return        
 
         # NEIS
         ChairyData.Progress('NEIS와 동기화 중') # 2
@@ -140,7 +141,13 @@ class ChairyData:
             logging.error("[" + CurrentID + "] 학번의 데이터를 처리하는 도중 오류가 발생했습니다.", e, True)
             return
 
-        ChairyData.Progress('인터페이스를 불러오는 중') # 5
+        # 버전 확인
+        ChairyData.Progress('버전 확인 중') # 5
+
+        ChairyData.LATEST_VERSION = ChairyInfo.getLatestVersion()
+        logging.info('확인된 Chairy 최신 버전: ' + ChairyInfo.LatestVersion)
+
+        ChairyData.Progress('인터페이스를 불러오는 중') # 6
 
         # 이외 Class Init
         ChairyData.CURRENT_MEDIA = MediaInfo()
@@ -151,6 +158,7 @@ class ChairyData:
 
         # 재설정 시각 지정
         ChairyData.RESTART_AT = datetime.combine(ChairyData.ROOMDATA.DATA_DATE + timedelta(days=1), time(5, 0, 0))
+        logging.info(ChairyData.RESTART_AT.strftime('%Y-%m-%d %H:%M:%S에 자동으로 재시작합니다.'))
 
 
     @staticmethod
@@ -221,8 +229,19 @@ class ChairyData:
         except Exception as e:
             logging.error("[" + CurrentID + "] 학번의 데이터를 처리하는 도중 오류가 발생했습니다.", e, True)
             return
+        
+        # 버전 확인
+        ChairyData.Progress('버전 확인 중') # 5
 
-        ChairyData.Progress('데이터 재설정 완료') # 5
+        ChairyData.LATEST_VERSION = ChairyInfo.getLatestVersion()
+        logging.info('확인된 Chairy 최신 버전: ' + ChairyInfo.LatestVersion)
+
+        # 재설정 시각 지정
+        ChairyData.RESTART_AT = datetime.combine(ChairyData.ROOMDATA.DATA_DATE + timedelta(days=1), time(5, 0, 0))
+        logging.info(ChairyData.RESTART_AT.strftime('%Y-%m-%d %H:%M:%S에 자동으로 재시작합니다.'))
+
+        # 재설정 완료
+        ChairyData.Progress('데이터 재설정 완료') # 6
         logging.info("데이터 재설정 완료")
 
         # 준비 완료 표시
